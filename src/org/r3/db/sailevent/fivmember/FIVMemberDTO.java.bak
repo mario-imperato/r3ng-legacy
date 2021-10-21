@@ -42,7 +42,7 @@ public class FIVMemberDTO extends FIVMemberDTOBase
 	public boolean isValid()
 	{
 		boolean rc = false;
-		if (getEnumeratedCardNumberStatus() == CardNumberStatus.fiv_cn_exist && getCardexpirationdate() != null)
+		if (getEnumeratedCardNumberStatus() == CardNumberStatus.fiv_cn_exist)
 		{
 			java.sql.Timestamp now = currentTimestamp();
 			if (getCardexpirationdate().after(now) && getMedexamexpirationdate().after(now))
