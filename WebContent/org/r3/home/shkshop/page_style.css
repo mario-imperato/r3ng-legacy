@@ -1,0 +1,38 @@
+body
+{
+	background-color: #ecf0f5;
+}
+
+#claim 
+{
+	font-weight: 300;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    line-height: 19px;
+}
+
+#claim .ttl,
+#claim .ttl * {
+    font-size: 65px;
+    line-height: 1;
+}
+#claim .ttl:after {
+    margin-top:20px;
+    margin-bottom:40px
+}
+#claim .ttl strong {
+    font-weight: bold;
+}
+#claim .ttl {
+    margin-top: 31px;
+}
+#claim p {
+    font-size: 20px;
+}
+#claim p strong {
+    font-size: 29px;
+    font-weight: bolder;
+}
+#claim * {
+    line-height: 1;
+}

@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+-->
+<Context 
+    antiResourceLocking="false" 
+    className="org.apache.catalina.core.StandardContext" 
+    cachingAllowed="true" 
+    cookies="true" 
+    crossContext="false" 
+    debug="5"
+    docBase="C:\usr\eclipseKeplero\workspace_bs\r3ng\WebContent"
+    path="/r3ng" 
+    privileged="false" 
+    reloadable="false" 
+    swallowOutput="false" 
+    useNaming="true" 
+    wrapperClass="org.apache.catalina.core.StandardWrapper">
+    
+    <Valve 
+        className="org.apache.catalina.valves.AccessLogValve"
+        prefix="localhost_R3NG_log." 
+        suffix=".txt"  
+        />
+  
+    <!--
+    Attributi commentati. 
+        defaultTransactionIsolation="TRANSACTION_REPEATABLE_READ"  : Puo' servire nello sviluppo WebSphere che impone un default diverso rispetto a quello del driver.
+        validationQuery="select count(*) from b2bg.user"
+
+        url="jdbc:microsoft:sqlserver://localhost:1433;databaseName=GWF_30_DB"        
+        driverClassName="com.microsoft.jdbc.sqlserver.SQLServerDriver"        
+    <Resource               
+        name="jdbc/r3ng_default" 
+        auth="Container" 
+        type="javax.sql.DataSource"
+        scope="Shareable"
+        logAbandoned="true"
+        removeAbandoned="true"
+        removeAbandonedTimeout="300"
+        maxIdle="3"
+        maxActive="10"
+        maxWait="5000"
+
+        driverClassName="org.postgresql.Driver"        
+        username="postgres"            
+        password="cyrano"             
+        url="jdbc:postgresql://localhost:5432/r3ng"
+        
+        defaultAutoCommit="true"
+        defaultReadOnly="false"
+        />
+      -->          
+
+    <Resource               
+        name="r3DS" 
+        auth="Container" 
+        type="javax.sql.DataSource"
+        scope="Shareable"
+        
+        maxTotal="10" 
+        maxIdle="0" 
+        maxWaitMillis="5000"
+        
+        removeAbandonedOnBorrow="true"
+        removeAbandonedOnMaintenance="true"
+        removeAbandonedTimeout="60"
+        logAbandoned="true"
+        
+        driverClassName="com.mysql.jdbc.Driver"        
+        username="root"            
+        password="cyrano"             
+        url="jdbc:mysql://localhost:3306/regatta3"
+        
+        defaultAutoCommit="false"
+        defaultReadOnly="false"
+        />
+                
+</Context>            

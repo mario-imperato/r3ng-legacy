@@ -1,0 +1,115 @@
+
+.wizardNavigator {
+    margin-top: 5px;	
+    margin-bottom: 5px;	
+}
+ 
+.wizardNavigatorSteps {	
+	min-height: 13px;
+	/* padding-bottom: 1px; padding-left: 0px; padding-right: 0px; padding-top: 0px; */
+	padding : 10px 5px 5px 10px;
+	background-color: #fff;
+	border: 1px solid @panel-default-border;
+	list-style-type: none; list-style-image: none;
+	margin: 10px 0;   	
+}
+
+.wizardNavigatorSteps:after 
+{
+	display: block; 
+	clear: both; 
+	content: " ";
+}
+
+.wizardNavigatorSteps li 
+{
+	margin: 0px 0px 0px 0px;
+	background: url('img/wizard_navigator/wizardStepConnector.png') repeat-x; 
+	float: left;
+}
+
+.wizardStepStart
+{
+	background: transparent url('img/wizard_navigator/wizardStepNavigatorDecorator.png') no-repeat scroll left top;
+    width: 15px;
+	text-align: left;
+	line-height: 2em;
+	color: #aaaaaa;
+}
+
+.wizardSelectedStep 
+{
+	background: transparent url('img/wizard_navigator/wizardSelectedStep.png') no-repeat scroll center top;
+	line-height: 2em;
+    text-align: center;
+    margin-left: 15px;
+    margin-right: 15px;
+    width: 56px;
+    color: #000; 
+    font-weight: bold;
+}
+
+.wizardStep
+{
+	background: transparent url('img/wizard_navigator/wizardStep.png') no-repeat scroll center top;
+	line-height: 2em;  
+    text-align: center;		
+    margin-left: 15px;
+    margin-right: 15px;
+    width: 56px;
+    font-weight: bold;
+}
+
+.wizardActiveStep
+{
+	COLOR: #367ECE; TEXT-DECORATION: none;	
+}
+
+.wizardActiveStep:hover
+{
+	CURSOR: pointer;
+	COLOR: #FC9A04;
+}
+
+.wizardActiveStep A {
+	COLOR: #367ECE; TEXT-DECORATION: none;
+}
+
+.wizardActiveStep A:hover {
+	CURSOR: pointer;
+	COLOR: #FC9A04;
+}
+
+.wizardStepEnd
+{
+		background: transparent url('img/wizard_navigator/wizardStepNavigatorDecorator.png') no-repeat scroll right top;
+		text-align: right;
+		width: 15px;
+		line-height: 2em;  
+		color: #aaaaaa;
+}
+
+.wizardNavigatorTitle {	
+    color: #AAAAAA;
+    font-size: 1.5em;
+    margin-top: 5px;
+    margin-left: 5px;
+    padding-bottom: 5px;
+    float: left;
+}
+
+.wizardNavigatorLegend
+{
+    font-size: 0.7em;	
+}
+
+.wizardNavigatorStepNumber {	
+    background-color: #FC9A04;
+    color: #FFFFFF;
+    font-size: 1.3em;
+    padding: 5px;
+    float: left;
+    text-align: center;
+    width: 35px;
+}
+

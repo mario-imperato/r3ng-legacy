@@ -1,0 +1,67 @@
+
+<ul class="list-group">
+<li class="list-group-item">
+
+ <h4 style='font-weight: bold'>
+ Registrazione
+ </h4>
+  
+ <p>
+ Per motivi organizzativi vi chiediamo cortesemente di registrarvi. La registrazione e' molto semplice e richiede la semplice compilazione di poche informazioni.
+ <a id="loginactionform_link_registration" href="#">Registrati ora!</a></p>
+ 
+ <h4 style='font-weight: bold'>
+ Log-In
+ </h4>
+ 
+ <p>
+ <!-- Attivando questo link sar� possibile iscrivere la barca alla manifestazione. 
+ Per iscrivere la barca alla manifestazione e' necessario essere registrati. Se avete gi&agrave; una utenza
+ vi preghiamo di effettuare log-in al sito con le vostre credenziali; in caso contrario vi invitiamo a registrarvi.
+ </p>
+ -->
+
+  <p>Sono gi&agrave; registrato ma ho dimenticato la parola chiave.... <a id="loginactionform_link_resetuserpwd" href="#">Richiedi nuova parola chiave</a></p>
+  
+  <div id="loginform_form_fieldset_message" ></div>
+  
+  <form id="loginform_form" method="POST" class="form-horizontal">
+  <div class="form-group">
+    <label class="col-sm-4 control-label fieldRequired">Utente / EMail</label>
+    <div class='col-sm-8'>
+    <input type="text" class="form-control" name="nickname" id="loginform_form_nickname" maxlength='60'/>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label class="col-sm-4 control-label fieldRequired">Parola chiave</label>
+    <div class='col-sm-8'>
+    <input  class="form-control" type="password" name="password" id="loginform_form_password" maxlength='10'/>
+    </div>
+  </div>
+  
+  <div class="form-action-bar">
+        <button type="button" id="loginButton" class="btn btn-default" >
+          <span>Log-in</span>
+        </button>                                       
+   </div>     
+   
+  </form>
+
+  <p>
+    Per accedere è ora possibile utilizzare il proprio account FaceBook. Il pulsante successivo vi permette sia di effettuare il Log-In nel caso in cui
+    la vostra email FaceBook sia già censita a sistema, sia di registrarvi automaticamente nel caso questa non lo sia.
+    Evidentemente, se avete già una utenza associata a mail diversa da quella di Facebook, il sistema vi fornirà un accesso nuovo e non sarete 
+    in grado di accedere ad eventuali iscrizioni precedenti effettuate con l'altra utenza. Per maggiori chiarimenti si prega di rivolgersi alla segreteria.    
+  </p>
+
+  <p class="fbloginform_progress" style="color: #B22222; display: none">
+      <i class="fa fa-spinner fa-spin fa-2x fa-fw"></i><span class="">Connessione Facebook In Corso.... Attendere Prego</span></p>
+
+  <div class="action-bar">               
+        <button class="btn btn-social-icon btn-facebook" id='FBLoginAction'><i class="fa fa-facebook"></i></button>                
+  </div> 
+        
+</li>
+</ul>
+  

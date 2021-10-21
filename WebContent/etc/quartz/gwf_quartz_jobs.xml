@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<quartz>
+  
+  <job>
+    <job-detail>
+     <name>DefaultTask</name>
+     <group>DEFAULT</group>
+     <description>
+          A job that executes a number of steps
+     </description>
+     <job-class>
+            org.r3ng.r3_quartz.job.TaskJob
+     </job-class>
+     <volatility>false</volatility>
+     <durability>false</durability>
+     <recover>false</recover>
+     <job-data-map allows-transient-data="true">
+         <entry>
+         <key>taskFileName</key>
+         <value>C:/usr/eclipseWorkspace/r3ng/WebContent/etc/quartz/quartz.default.taskfile.xml</value>
+       </entry>
+     </job-data-map>
+    </job-detail>
+
+    <trigger>
+     <simple>
+       <name>DefaultTaskTrigger</name>
+       <group>DEFAULT</group>
+       <job-name>DefaultTask</job-name>
+       <job-group>DEFAULT</job-group>
+       <start-time>2010-01-14 6:10:00 PM</start-time>
+       <repeat-count>-1</repeat-count>
+       <repeat-interval>30000</repeat-interval>
+     </simple>
+    </trigger>
+
+  </job>
+    
+</quartz>

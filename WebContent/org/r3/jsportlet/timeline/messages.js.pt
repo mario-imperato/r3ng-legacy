@@ -1,0 +1,13 @@
+
+$.r3Utils.namespace("org.r3.jsportlet.timeline", window, function(aNamespace) 
+{
+  aNamespace.message = {
+     bbsPostIsEmpty : "Atençâo: a contribuição que pretende enviar no quadro de avisos é branco",
+     action_clearform: "Excluir comente",
+     action_newpost : "Novo comente",
+     thread_name : "Nome da discussão.",
+     remarks_multiple: "Comentes",
+     remarks_single: "Comento"
+    	 
+  };
+});

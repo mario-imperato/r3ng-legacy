@@ -1,0 +1,40 @@
+<div class="panel tabbed-panel">
+  <div class="panel-heading" style='background: white;'>  
+    <h3 class="panel-title" >{%=org.r3.jsportlet.cmsconsole.message.cardtextactionform_form_legend%}  <span id='cardtextactionform_form_cardid_label'></span>&nbsp;<select id='cardtextactionform_form_languagecode' class='form-control' style="display: inline; width: 164px" name='languagecode' ></select></h3>
+  </div>
+  
+  <div class="panel-body">
+  <div id="cardtextactionform_fieldset_message" ></div>
+  <form id="cardtextactionform_form" class='form-horizontal'>
+  
+    <div class="form-group">
+    <label class="col-md-2  control-label fieldRequired">{%=org.r3.db.cms.carddescr.message.title%}</label>
+    <div class='col-md-10 '>
+    <input name="title" class='form-control' id="cardtextactionform_form_title" type="text"  maxlength="80" />
+    </div>
+    </div>
+
+    <div class="form-group">
+    <label class="col-md-2  control-label fieldRequired">{%=org.r3.db.cms.carddescr.message.summary%}</label>
+    <div class='col-md-10 '>
+    <textarea name="summary" class='form-control' id="cardtextactionform_form_summary"  rows="2" ></textarea>
+    </div>
+    </div>
+    
+   <textarea class="ckeditor"  class='form-control' id="cardtextactionform_form_textbody" name="textbody" style="width: 90%" rows="5"></textarea>
+       
+  </form>
+
+  <div class="form-action-bar">
+        <button type="button" id="cardtextactionform_action_saveitem" class="btn btn-default" >
+          <span>{%=org.r3.message.action_save%}</span>
+        </button>
+
+        <button type="button" id="cardtextactionform_action_cancel" class="btn btn-default" >
+          <span>{%=org.r3.message.action_cancel%}</span>
+        </button>       
+   </div> 
+   
+  </div>
+</div>
+

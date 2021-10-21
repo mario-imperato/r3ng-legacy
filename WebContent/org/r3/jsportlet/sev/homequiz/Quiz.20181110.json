@@ -1,0 +1,739 @@
+{
+    "quizid" : "quiz20181109",
+    "mode" : "simple",
+    "useweight": true,
+    "title" : "Il QuizOne: Test per Skipper.",
+    "description" : "Da una idea di Massimo Pettirossi. CVF. Un gioco per scoprire come te la cavi. Rispondi a 30 domande in 10 minuti per un punteggio totale di 60/60",
+    "duration": "12m",
+    "score_comment": [    	
+    	{ "score_level": 35, "score_comment": "Hai ottenuto meno di 36/60? Hai bisogno di qualche ripetizione" },
+    	{ "score_level": 42, "score_comment": "Sei promosso per il rotto della cuffia" },
+    	{ "score_level": 48, "score_comment": "Hai ottenuto + di 42? Te la cavi abbastanza bene ma puoi impegnarti di pi&ugrave;" },    	    	    			    			
+    	{ "score_level": 53, "score_comment": "Hai ottenuto + di 48? Buon risultato ma non ti vantare troppo" },
+    	{ "score_level": 59, "score_comment": "Hai ottenuto pi&ugrave; di 54?  Puoi vantartene in banchina" },
+    	{ "score_level": 60, "score_comment": "60/60  Eccellente risultato Comandante!" }
+    ],
+    
+    "questions" : [
+        {
+            "questionid" : "quiz20181109_01_02",
+            "text" : "In navigazione in fil di ruota con vento medio....",
+            "answers" : [
+                {
+                    "answerid" : "quiz20181109_01_02_A",
+                    "text" : "Tesiamo la base di randa",
+                    "valid" : false,
+                    "weight" : 0
+                },
+                {
+                    "answerid" : "quiz20181109_01_02_B",
+                    "text" : "Tesiamo il vang",
+                    "valid" : true,
+                    "weight" : 1
+                },
+                {
+                    "answerid" : "quiz20181109_01_02_C",
+                    "text" : "Tesiamo le borose",
+                    "valid" : false,
+                    "weight" : 0
+                }
+            ]
+        },
+        {
+            "questionid" : "quiz20181109_01_06",
+            "text" : "Quando la barca a vela armata a sloop accosta il suo centro di rotazione &egrave; posizionato ...",
+            "answers" : [
+                {
+                    "answerid" : "quiz20181109_01_06_A",
+                    "text" : "All'altezza dell'albero",
+                    "valid" : true,
+                    "weight" : 1
+                },
+                {
+                    "answerid" : "quiz20181109_01_06_B",
+                    "text" : "Verso  poppa",
+                    "valid" : false,
+                    "weight" : 0
+                },
+                {
+                    "answerid" : "quiz20181109_01_06_C",
+                    "text" : "Al centro",
+                    "valid" : false,
+                    "weight" : 0
+                }
+            ]
+        },
+        {
+            "questionid" : "quiz20181109_01_10",
+            "text" : "In acque tranquille per virare in poppa &egrave; necessario avere una velocit&agrave; ....",
+            "answers" : [
+                {
+                    "answerid" : "quiz20181109_01_10_A",
+                    "text" : "Alta",
+                    "valid" : false,
+                    "weight" : 0
+                },
+                {
+                    "answerid" : "quiz20181109_01_10_B",
+                    "text" : "Bassa",
+                    "valid" : false,
+                    "weight" : 0
+                },
+                {
+                    "answerid" : "quiz20181109_01_10_C",
+                    "text" : "Indifferente",
+                    "valid" : true,
+                    "weight" : 2
+                }
+            ]
+        },
+        {
+            "questionid" : "quiz20181109_10_06",
+            "text" : "Spostando il carrello del fiocco verso poppa...",
+            "answers" : [
+                {
+                    "answerid" : "quiz20181109_10_06_A",
+                    "text" : "Si aumenta lo svergolamento",
+                    "valid" : true,
+                    "weight" : 2
+                },
+                {
+                    "answerid" : "quiz20181109_10_06_B",
+                    "text" : "Si diminuisce lo svergolamento",
+                    "valid" : false,
+                    "weight" : 0
+                },
+                {
+                    "answerid" : "quiz20181109_10_06_C",
+                    "text" : "Si aumenta il grasso",
+                    "valid" : false,
+                    "weight" : 0
+                }
+            ]
+        },
+        {
+            "questionid" : "quiz20181109_11_03",
+            "text" : "Come evitare la strambata 'cinese'",
+            "answers" : [
+                {
+                    "answerid" : "quiz20181109_11_03_A",
+                    "text" : "Tenendo il vang cazzato durante l'abbattuta",
+                    "valid" : true,
+                    "weight" : 3
+                },
+                {
+                    "answerid" : "quiz20181109_11_03_B",
+                    "text" : "Tesando il paterazzo durante l'abbattuta",
+                    "valid" : false,
+                    "weight" : 0
+                },
+                {
+                    "answerid" : "quiz20181109_11_03_C",
+                    "text" : "Mollando un po di drizza della randa",
+                    "valid" : false,
+                    "weight" : 0
+                }
+            ]
+        },
+        {
+            "questionid" : "quiz20181109_12_05",
+            "text" : "Se nel genoa si formano lunghe pieghe parallele all'inferituta",
+            "answers" : [
+                {
+                    "answerid" : "quiz20181109_12_05_A",
+                    "text" : "La vela &egrave; a segno",
+                    "valid" : false,
+                    "weight" : 0
+                },
+                {
+                    "answerid" : "quiz20181109_12_05_B",
+                    "text" : "La drizza &egrave; troppo cazzata",
+                    "valid" : true,
+                    "weight" : 2
+                },
+                {
+                    "answerid" : "quiz20181109_12_05_C",
+                    "text" : "La drizza &egrave; troppo lascata",
+                    "valid" : false,
+                    "weight" : 0
+                }
+            ]
+        },
+        {
+            "questionid" : "quiz20181109_15_07",
+            "text" : "In mediterraneo , nelle aree di bassa pressione  il vento tende a girare in senso ..",
+            "answers" : [
+                {
+                    "answerid" : "quiz20181109_15_07_A",
+                    "text" : "Orario",
+                    "valid" : false,
+                    "weight" : 0
+                },
+                {
+                    "answerid" : "quiz20181109_15_07_B",
+                    "text" : "Antiorario",
+                    "valid" : true,
+                    "weight" : 3
+                },
+                {
+                    "answerid" : "quiz20181109_15_07_C",
+                    "text" : "Verso l'esterno ",
+                    "valid" : false,
+                    "weight" : 0
+                }
+            ]
+        },
+        {
+            "questionid" : "quiz20181109_16_07",
+            "text" : "Il barometro della barca indica una caduta di pressione di 2 ecto-pascal in una ora, &egrave; atteso un vento di circa ...",
+            "answers" : [
+                {
+                    "answerid" : "quiz20181109_16_07_A",
+                    "text" : "6 nodi",
+                    "valid" : false,
+                    "weight" : 0
+                },
+                {
+                    "answerid" : "quiz20181109_16_07_B",
+                    "text" : "25 nodi",
+                    "valid" : true,
+                    "weight" : 3
+                },
+                {
+                    "answerid" : "quiz20181109_16_07_C",
+                    "text" : "40 nodi",
+                    "valid" : false,
+                    "weight" : 0
+                }
+            ]
+        },
+        {
+            "questionid" : "quiz20181109_16_10",
+            "text" : "Il battello del CdR espone la lettera 'L' e inizia a muovere, significa ...",
+            "answers" : [
+                {
+                    "answerid" : "quiz20181109_16_10_A",
+                    "text" : "Non ci saranno altre regate",
+                    "valid" : false,
+                    "weight" : 0
+                },
+                {
+                    "answerid" : "quiz20181109_16_10_B",
+                    "text" : "Seguite questo battello",
+                    "valid" : true,
+                    "weight" : 3
+                },
+                {
+                    "answerid" : "quiz20181109_16_10_C",
+                    "text" : "Ulteriori segnali a terra",
+                    "valid" : false,
+                    "weight" : 0
+                }
+            ]
+        },
+        {
+            "questionid" : "quiz20181109_17_01",
+            "text" : "Tesando la drizza di una vela per spostare la freccia massima a prua, il bordo di attacco si modifica....",
+            "answers" : [
+                {
+                    "answerid" : "quiz20181109_17_01_A",
+                    "text" : "Diviene pi&ugrave; arrotondato peggiorando l'angolo di bolina",
+                    "valid" : true,
+                    "weight" : 2
+                },
+                {
+                    "answerid" : "quiz20181109_17_01_B",
+                    "text" : "Si spiana migliorando l'angolo di bolina",
+                    "valid" : false,
+                    "weight" : 0
+                },
+                {
+                    "answerid" : "quiz20181109_17_01_C",
+                    "text" : "Appaiono pieghe orizzontali lungo l'ineritura",
+                    "valid" : false,
+                    "weight" : 0
+                }
+            ]
+        },
+        {
+            "questionid" : "quiz20181109_18_09",
+            "text" : "L'operazione di tesare una manovra passando la stessa sotto la galloccia e con una mano tenderla prima della galloccia e mentre l'altra mano recupera l'imbando si chiama ..",
+            "answers" : [
+                {
+                    "answerid" : "quiz20181109_18_09_A",
+                    "text" : "Bordare",
+                    "valid" : false,
+                    "weight" : 0
+                },
+                {
+                    "answerid" : "quiz20181109_18_09_B",
+                    "text" : "Balestrare",
+                    "valid" : true,
+                    "weight" : 1
+                },
+                {
+                    "answerid" : "quiz20181109_18_09_C",
+                    "text" : "Inferire",
+                    "valid" : false,
+                    "weight" : 0
+                }
+            ]
+        },
+        {
+            "questionid" : "quiz20181109_02_03",
+            "text" : "Nell'albero passante cosa &egrave; la mastra?",
+            "answers" : [
+                {
+                    "answerid" : "quiz20181109_02_03_A",
+                    "text" : "Dove poggia l'albero",
+                    "valid" : false,
+                    "weight" : 0
+                },
+                {
+                    "answerid" : "quiz20181109_02_03_B",
+                    "text" : "Il foro in coperta dove passa l'albero",
+                    "valid" : true,
+                    "weight" : 1
+                },
+                {
+                    "answerid" : "quiz20181109_02_03_C",
+                    "text" : "La testa d'albero",
+                    "valid" : false,
+                    "weight" : 0
+                }
+            ]
+        },
+        {
+            "questionid" : "quiz20181109_02_04",
+            "text" : "In navigazione quando il windex indica un vento perpendicolare alla barca, quale &egrave; l'andatura?",
+            "answers" : [
+                {
+                    "answerid" : "quiz20181109_02_04_A",
+                    "text" : "Traverso",
+                    "valid" : false,
+                    "weight" : 0
+                },
+                {
+                    "answerid" : "quiz20181109_02_04_B",
+                    "text" : "Lasco",
+                    "valid" : true,
+                    "weight" : 2
+                },
+                {
+                    "answerid" : "quiz20181109_02_04_C",
+                    "text" : "Bolina",
+                    "valid" : false,
+                    "weight" : 0
+                }
+            ]
+        },
+        {
+            "questionid" : "quiz20181109_02_07",
+            "text" : "In caso di cappa la barra del timone va portata ....",
+            "answers" : [
+                {
+                    "answerid" : "quiz20181109_02_07_A",
+                    "text" : "Sottovento",
+                    "valid" : true,
+                    "weight" : 2
+                },
+                {
+                    "answerid" : "quiz20181109_02_07_B",
+                    "text" : "Sopravento",
+                    "valid" : false,
+                    "weight" : 0
+                },
+                {
+                    "answerid" : "quiz20181109_02_07_C",
+                    "text" : "Al centro",
+                    "valid" : false,
+                    "weight" : 0
+                }
+            ]
+        },
+        {
+            "questionid" : "quiz20181109_02_08",
+            "text" : "In fil di ruota le vele sono regolate in modo che il centro di pressione sia ......",
+            "answers" : [
+                {
+                    "answerid" : "quiz20181109_02_08_A",
+                    "text" : "Sottovento",
+                    "valid" : false,
+                    "weight" : 0
+                },
+                {
+                    "answerid" : "quiz20181109_02_08_B",
+                    "text" : "Sopravento",
+                    "valid" : false,
+                    "weight" : 0
+                },
+                {
+                    "answerid" : "quiz20181109_02_08_C",
+                    "text" : "Lungo l'asse longitudinale della barca",
+                    "valid" : true,
+                    "weight" : 3
+                }
+            ]
+        },
+        {
+            "questionid" : "quiz20181109_03_03",
+            "text" : "Come si chiamano le due estremit&agrave; del boma?",
+            "answers" : [
+                {
+                    "answerid" : "quiz20181109_03_03_A",
+                    "text" : "Trozza e Mura",
+                    "valid" : false,
+                    "weight" : 0
+                },
+                {
+                    "answerid" : "quiz20181109_03_03_B",
+                    "text" : "Trozza e Bugna",
+                    "valid" : false,
+                    "weight" : 0
+                },
+                {
+                    "answerid" : "quiz20181109_03_03_C",
+                    "text" : "Trozza e Varea",
+                    "valid" : true,
+                    "weight" : 1
+                }
+            ]
+        },
+        {
+            "questionid" : "quiz20181109_03_06",
+            "text" : "Una barca ardente il centro di deriva rispetto al centro velico si trova ....",
+            "answers" : [
+                {
+                    "answerid" : "quiz20181109_03_06_A",
+                    "text" : "Pi&ugrave; a prua",
+                    "valid" : true,
+                    "weight" : 3
+                },
+                {
+                    "answerid" : "quiz20181109_03_06_B",
+                    "text" : "Pi&ugrave; a poppa",
+                    "valid" : false,
+                    "weight" : 0
+                },
+                {
+                    "answerid" : "quiz20181109_03_06_C",
+                    "text" : "Indifferente",
+                    "valid" : false,
+                    "weight" : 0
+                }
+            ]
+        },
+        {
+            "questionid" : "quiz20181109_03_10",
+            "text" : "Se la mia barca si trova a Est del faro di Porto Ferraio, per quanto rilevo questo faro?",
+            "answers" : [
+                {
+                    "answerid" : "quiz20181109_03_10_A",
+                    "text" : "180°",
+                    "valid" : false,
+                    "weight" : 0
+                },
+                {
+                    "answerid" : "quiz20181109_03_10_B",
+                    "text" : "270°",
+                    "valid" : true,
+                    "weight" : 3
+                },
+                {
+                    "answerid" : "quiz20181109_03_10_C",
+                    "text" : "90°",
+                    "valid" : false,
+                    "weight" : 0
+                }
+            ]
+        },
+        {
+            "questionid" : "quiz20181109_04_01",
+            "text" : "In navigazione di bolina cazzando la drizza del fiocco ....",
+            "answers" : [
+                {
+                    "answerid" : "quiz20181109_04_01_A",
+                    "text" : "Si aumenta la catenaria",
+                    "valid" : false,
+                    "weight" : 0
+                },
+                {
+                    "answerid" : "quiz20181109_04_01_B",
+                    "text" : "Si sposta il grasso verso prua",
+                    "valid" : true,
+                    "weight" : 2
+                },
+                {
+                    "answerid" : "quiz20181109_04_01_C",
+                    "text" : "Aumenta il grasso",
+                    "valid" : false,
+                    "weight" : 0
+                }
+            ]
+        },
+        {
+            "questionid" : "quiz20181109_04_04",
+            "text" : "La bandiera di cortesia va issata ....",
+            "answers" : [
+                {
+                    "answerid" : "quiz20181109_04_04_A",
+                    "text" : "Sulla sartia di dritta",
+                    "valid" : true,
+                    "weight" : 1
+                },
+                {
+                    "answerid" : "quiz20181109_04_04_B",
+                    "text" : "Sulla sartia di sinistra",
+                    "valid" : false,
+                    "weight" : 0
+                },
+                {
+                    "answerid" : "quiz20181109_04_04_C",
+                    "text" : "Sullo strallo di poppa",
+                    "valid" : false,
+                    "weight" : 0
+                }
+            ]
+        },
+        {
+            "questionid" : "quiz20181109_04_07",
+            "text" : "Nelle andature portanti all'aumentare del vento il tangone va .....",
+            "answers" : [
+                {
+                    "answerid" : "quiz20181109_04_07_A",
+                    "text" : "Alzato",
+                    "valid" : true,
+                    "weight" : 2
+                },
+                {
+                    "answerid" : "quiz20181109_04_07_B",
+                    "text" : "Abbassato",
+                    "valid" : false,
+                    "weight" : 0
+                },
+                {
+                    "answerid" : "quiz20181109_04_07_C",
+                    "text" : "Mollato",
+                    "valid" : false,
+                    "weight" : 0
+                }
+            ]
+        },
+        {
+            "questionid" : "quiz20181109_04_10",
+            "text" : "Una barca che mantiene una Rv=050&deg; segue un percorso...",
+            "answers" : [
+                {
+                    "answerid" : "quiz20181109_04_10_A",
+                    "text" : "Lossodromico",
+                    "valid" : true,
+                    "weight" : 2
+                },
+                {
+                    "answerid" : "quiz20181109_04_10_B",
+                    "text" : "Ortodromico",
+                    "valid" : false,
+                    "weight" : 0
+                },
+                {
+                    "answerid" : "quiz20181109_04_10_C",
+                    "text" : "Lossodromico e ortodromico contemporaneamente",
+                    "valid" : false,
+                    "weight" : 0
+                }
+            ]
+        },
+        {
+            "questionid" : "quiz20181109_05_09",
+            "text" : "Che cosa &egrave; il FETCH?",
+            "answers" : [
+                {
+                    "answerid" : "quiz20181109_05_09_A",
+                    "text" : "E' l'angolo della vela",
+                    "valid" : false,
+                    "weight" : 0
+                },
+                {
+                    "answerid" : "quiz20181109_05_09_B",
+                    "text" : "E' l'estensione di mare che il vento percorre prima di incontrare la costa",
+                    "valid" : true,
+                    "weight" : 1
+                },
+                {
+                    "answerid" : "quiz20181109_05_09_C",
+                    "text" : "E' l'unit&agrave; di misura della pressione atmosferica",
+                    "valid" : false,
+                    "weight" : 0
+                }
+            ]
+        },
+        {
+            "questionid" : "quiz20181109_06_07",
+            "text" : "Di bolina l'intensit&agrave; del vento apparente rispetto al vento reale &egrave; sempre...",
+            "answers" : [
+                {
+                    "answerid" : "quiz20181109_06_07_A",
+                    "text" : "Maggiore",
+                    "valid" : true,
+                    "weight" : 2
+                },
+                {
+                    "answerid" : "quiz20181109_06_07_B",
+                    "text" : "Minore",
+                    "valid" : false,
+                    "weight" : 0
+                },
+                {
+                    "answerid" : "quiz20181109_06_07_C",
+                    "text" : "Uguale",
+                    "valid" : false,
+                    "weight" : 0
+                }
+            ]
+        },
+        {
+            "questionid" : "quiz20181109_07_03",
+            "text" : "Quale tessuto si usa di norma per la costruzione degli spinnaker",
+            "answers" : [
+                {
+                    "answerid" : "quiz20181109_07_03_A",
+                    "text" : "Mylar",
+                    "valid" : false,
+                    "weight" : 0
+                },
+                {
+                    "answerid" : "quiz20181109_07_03_B",
+                    "text" : "Nylon",
+                    "valid" : true,
+                    "weight" : 1
+                },
+                {
+                    "answerid" : "quiz20181109_07_03_C",
+                    "text" : "Dacron",
+                    "valid" : false,
+                    "weight" : 0
+                }
+            ]
+        },
+        {
+            "questionid" : "quiz20181109_07_07",
+            "text" : "In regata se il CdR espone la bandiera Y (strisce diagonali rosse e gialle) occorre ..",
+            "answers" : [
+                {
+                    "answerid" : "quiz20181109_07_07_A",
+                    "text" : "Riportarsi sulla linea di partenza per richiamo generale",
+                    "valid" : false,
+                    "weight" : 0
+                },
+                {
+                    "answerid" : "quiz20181109_07_07_B",
+                    "text" : "Indossare il giubbetto salvagente",
+                    "valid" : true,
+                    "weight" : 2
+                },
+                {
+                    "answerid" : "quiz20181109_07_07_C",
+                    "text" : "Una o pi&ugrave; barche sono partite in anticipo",
+                    "valid" : false,
+                    "weight" : 0
+                }
+            ]
+        },
+        {
+            "questionid" : "quiz20181109_07_09",
+            "text" : "Il dislocamento di una imbarcazione &egrave;...",
+            "answers" : [
+                {
+                    "answerid" : "quiz20181109_07_09_A",
+                    "text" : "Il peso dell'imbarcazione",
+                    "valid" : true,
+                    "weight" : 2
+                },
+                {
+                    "answerid" : "quiz20181109_07_09_B",
+                    "text" : "La stazza dell'imbarcazione",
+                    "valid" : false,
+                    "weight" : 0
+                },
+                {
+                    "answerid" : "quiz20181109_07_09_C",
+                    "text" : "Il volume dell'imbarcazione",
+                    "valid" : false,
+                    "weight" : 0
+                }
+            ]
+        },
+        {
+            "questionid" : "quiz20181109_08_01",
+            "text" : "In navigazione di bolina, si spezza lo strallo di prua occorre.....",
+            "answers" : [
+                {
+                    "answerid" : "quiz20181109_08_01_A",
+                    "text" : "Virare e cambiare mura",
+                    "valid" : false,
+                    "weight" : 0
+                },
+                {
+                    "answerid" : "quiz20181109_08_01_B",
+                    "text" : "Poggiare e andare in poppa",
+                    "valid" : true,
+                    "weight" : 2
+                },
+                {
+                    "answerid" : "quiz20181109_08_01_C",
+                    "text" : "Ammainare il fiocco",
+                    "valid" : false,
+                    "weight" : 0
+                }
+            ]
+        },
+        {
+            "questionid" : "quiz20181109_09_02",
+            "text" : "Una intensit&agrave; del vento di 6 nodi equivale circa a....",
+            "answers" : [
+                {
+                    "answerid" : "quiz20181109_09_02_A",
+                    "text" : "6 metri al secondo",
+                    "valid" : false,
+                    "weight" : 0
+                },
+                {
+                    "answerid" : "quiz20181109_09_02_B",
+                    "text" : "3 metri al secondo",
+                    "valid" : true,
+                    "weight" : 3
+                },
+                {
+                    "answerid" : "quiz20181109_09_02_C",
+                    "text" : "12 metri al secondo",
+                    "valid" : false,
+                    "weight" : 0
+                }
+            ]
+        },
+        {
+            "questionid" : "quiz20181109_09_09",
+            "text" : "Cosa significa la caratteristica  del faro 'Int (2) 10 s 26 m 20M'",
+            "answers" : [
+                {
+                    "answerid" : "quiz20181109_09_09_A",
+                    "text" : "Faro di secondo tipo, periodo 10 sec portata geografica 26 miglia, portata 20 miglia",
+                    "valid" : false,
+                    "weight" : 0
+                },
+                {
+                    "answerid" : "quiz20181109_09_09_B",
+                    "text" : "Faro 2 intermittenze luce bianca,10 sec, elevazione 26 mt, portata nominale 20 mg",
+                    "valid" : true,
+                    "weight" : 2
+                },
+                {
+                    "answerid" : "quiz20181109_09_09_C",
+                    "text" : "Faro 2 intermittenze periodo 10 sec, portata 26 miglia, elevazione 20 metri",
+                    "valid" : false,
+                    "weight" : 0
+                }
+            ]
+        }
+    ]
+}

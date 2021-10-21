@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--
+  TODO: xmlCopyRight.txt
+   
+  -->
+<!--
+  TODO: xmlReadme.txt
+   
+  -->
+
+<!-- <mapper resource="org/r3/db/system/queues/queue/QueueMapper.xml"/> -->
+<mapper namespace="org.r3.db.system.queues.queue.QueueMapper" >
+    <resultMap id="BaseResultMap" type="org.r3.db.system.queues.queue.QueueDTO" >
+         <id column="queueid" property="queueid" jdbcType="VARCHAR" />
+           <result column="queuename" property="queuename" jdbcType="VARCHAR" />
+           <result column="queuephysicalname" property="queuephysicalname" jdbcType="VARCHAR" />
+           <result column="queuetype" property="queuetype" jdbcType="VARCHAR" />
+           <result column="deadqueueid" property="deadqueueid" jdbcType="VARCHAR" />
+           <result column="retryqueueid" property="retryqueueid" jdbcType="VARCHAR" />
+           <result column="notifyqueueid" property="notifyqueueid" jdbcType="VARCHAR" />
+           <result column="maxnumberofretries" property="maxnumberofretries" jdbcType="INTEGER" />
+    </resultMap>
+
+  <sql id="Filter_Where_Clause" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+                <when test="criterion.subSelectCriterion" >
+                  and ${criterion.prefixCondition} #{criterion.value} ${criterion.suffixCondition}
+                </when>                                
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <!--
+  <sql id="Filter_Where_Clause_4_Update" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  -->  
+  <sql id="Base_Column_List" >
+    queueid,  queuename,  queuephysicalname,  queuetype,  deadqueueid,  retryqueueid,  notifyqueueid,  maxnumberofretries  </sql>
+  <select id="selectByQueueid" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from r3_queue
+    where queueid = #{queueid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByQueueid" parameterType="map" >
+    delete
+    from r3_queue
+    where queueid = #{queueid,jdbcType=VARCHAR}
+  </delete>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from r3_queue    
+    where  queueid = #{pk.queueid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete
+    from r3_queue
+    where  queueid = #{pk.queueid,jdbcType=VARCHAR}
+  </delete>  
+  <select id="select" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <if test="filter != null &amp;&amp; filter.distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from r3_queue
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+    <if test="filter != null &amp;&amp; filter.orderByClause != null" >
+      order by ${filter.orderByClause}
+    </if>
+    <if test="filter != null &amp;&amp; filter.limitFetch > 0" >
+      limit ${filter.limitFetch}
+    </if>
+  </select>
+  <select id="count" parameterType="map" resultType="java.lang.Integer" >
+    select count(*) from r3_queue
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </select>  
+  <delete id="delete" parameterType="map" >
+    delete from r3_queue
+    <!-- _parameter: dato che e' una map lo sostituisco con il nome del parametro in quanto non è l'unico -->
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="map" >
+    insert into r3_queue (
+ queueid, queuename, queuephysicalname, queuetype, deadqueueid, retryqueueid, notifyqueueid, maxnumberofretries      )
+    values (
+ 
+ #{record.queueid,jdbcType=VARCHAR}, 
+ #{record.queuename,jdbcType=VARCHAR}, 
+ #{record.queuephysicalname,jdbcType=VARCHAR}, 
+ #{record.queuetype,jdbcType=VARCHAR},
+ 
+ #{record.deadqueueid,jdbcType=VARCHAR}, 
+ #{record.retryqueueid,jdbcType=VARCHAR}, 
+ #{record.notifyqueueid,jdbcType=VARCHAR}, 
+ #{record.maxnumberofretries,jdbcType=INTEGER}
+      )
+  </insert>
+  <update id="update" parameterType="map" >
+    update r3_queue
+    <set >
+      <if test="record.queuenameDirty" >
+        queuename = #{record.queuename,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.queuephysicalnameDirty" >
+        queuephysicalname = #{record.queuephysicalname,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.queuetypeDirty" >
+        queuetype = #{record.queuetype,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.deadqueueidDirty" >
+        deadqueueid = #{record.deadqueueid,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.retryqueueidDirty" >
+        retryqueueid = #{record.retryqueueid,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.notifyqueueidDirty" >
+        notifyqueueid = #{record.notifyqueueid,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.maxnumberofretriesDirty" >
+        maxnumberofretries = #{record.maxnumberofretries,jdbcType=INTEGER},
+      </if>      
+    </set>
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+      <!-- Non dovrebbe servire in quanto il filter e' sempre named. -->
+      <!-- <include refid="Filter_Where_Clause_4_Update" /> -->
+    </if>
+  </update>
+  <update id="updateByPrimaryKey" parameterType="map" >
+    update r3_queue
+    <set >
+      <if test="record.queuenameDirty" >
+        queuename = #{record.queuename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.queuephysicalnameDirty" >
+        queuephysicalname = #{record.queuephysicalname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.queuetypeDirty" >
+        queuetype = #{record.queuetype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deadqueueidDirty" >
+        deadqueueid = #{record.deadqueueid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.retryqueueidDirty" >
+        retryqueueid = #{record.retryqueueid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.notifyqueueidDirty" >
+        notifyqueueid = #{record.notifyqueueid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.maxnumberofretriesDirty" >
+        maxnumberofretries = #{record.maxnumberofretries,jdbcType=INTEGER},
+      </if>
+    </set>
+    where  queueid = #{record.queueid,jdbcType=VARCHAR}
+  </update>
+
+</mapper>

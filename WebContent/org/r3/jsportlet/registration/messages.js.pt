@@ -1,0 +1,17 @@
+
+$.r3Utils.namespace("org.r3.jsportlet.registration", window, function(aNamespace) 
+{
+  aNamespace.message = {
+		  
+    panel_title : 'Cadastra-se',
+    panel_info : "Para cadastrar-se é necessário fornecer algumas informações. Verifique se o endereço de e-mail que você inseriu é válido e se pode receber mensagens.",
+    securecode : 'Código de segurança',
+    name: 'Nome',
+    lastname: 'Sobrenome',
+    email: 'E-mail',
+    nickname: 'Nome de Usuário',
+    password : 'Senha',
+    confirmpassword: 'Conf. senha',
+    resetpwd: 'Ripristina Parola Chiave'
+  };
+});

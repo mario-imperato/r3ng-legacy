@@ -1,0 +1,117 @@
+#[[ID;PWXL;N;E
+P;PGeneral
+P;P0
+P;P0.00
+P;P#,##0
+P;P#,##0.00
+P;P#,##0;;\-#,##0
+P;P#,##0;;[Red]\-#,##0
+P;P#,##0.00;;\-#,##0.00
+P;P#,##0.00;;[Red]\-#,##0.00
+P;P"$"\ #,##0;;\-"$"\ #,##0
+P;P"$"\ #,##0;;[Red]\-"$"\ #,##0
+P;P"$"\ #,##0.00;;\-"$"\ #,##0.00
+P;P"$"\ #,##0.00;;[Red]\-"$"\ #,##0.00
+P;P0%
+P;P0.00%
+P;P0.00E+00
+P;P##0.0E+0
+P;P#\ ?/?
+P;P#\ ??/??
+P;Pdd/mm/yyyy
+P;Pdd\-mmm\-yy
+P;Pdd\-mmm
+P;Pmmm\-yy
+P;Ph:mm\ AM/PM
+P;Ph:mm:ss\ AM/PM
+P;Phh:mm
+P;Phh:mm:ss
+P;Pdd/mm/yyyy\ hh:mm
+P;Pmm:ss
+P;Pmm:ss.0
+P;P@
+P;P[h]:mm:ss
+P;P_-"$"\ * #,##0_-;;\-"$"\ * #,##0_-;;_-"$"\ * "-"_-;;_-@_-
+P;P_-* #,##0_-;;\-* #,##0_-;;_-* "-"_-;;_-@_-
+P;P_-"$"\ * #,##0.00_-;;\-"$"\ * #,##0.00_-;;_-"$"\ * "-"??_-;;_-@_-
+P;P_-* #,##0.00_-;;\-* #,##0.00_-;;_-* "-"??_-;;_-@_-
+P;FCalibri;M220;L9
+P;FCalibri;M220;L9
+P;FCalibri;M220;L9
+P;FCalibri;M220;L9
+P;ECalibri;M220;L9
+P;ECambria;M360;SB;L57
+P;ECalibri;M300;SB;L57
+P;ECalibri;M260;SB;L57
+P;ECalibri;M220;SB;L57
+P;ECalibri;M220;L18
+P;ECalibri;M220;L21
+P;ECalibri;M220;L61
+P;ECalibri;M220;L63
+P;ECalibri;M220;SB;L64
+P;ECalibri;M220;SB;L53
+P;ECalibri;M220;L53
+P;ECalibri;M220;SB;L10
+P;ECalibri;M220;L11
+P;ECalibri;M220;SI;L24
+P;ECalibri;M220;SB;L9
+P;ECalibri;M220;L10
+F;P0;DG0G8;M300
+B;Y254;X8;D0 0 253 7
+O;L;D;V0;K47;G100 0.001
+F;W1 2 21
+F;W3 3 20
+F;W4 4 13
+F;W5 5 48
+F;W6 6 23
+F;W7 7 15
+F;W8 8 16
+F;P0;FG0R;C1
+F;P0;FG0R;C3
+F;P0;FG0R;C4
+F;P0;FG0R;C5
+F;P0;FG0R;C6
+F;P0;FG0R;C7
+F;P0;FG0R;C8
+F;SDM20;Y1;X1
+C;K"N.Tessera"
+F;SDM20;X2
+C;K"Nome"
+F;SDM20;X3
+C;K"Cognome"
+F;SDM20;X4
+C;K"Peso"
+F;SDM20;X5
+C;K"Club"
+F;SDM20;X6
+C;K"Scad. Visita Med."
+F;SDM20;X7
+C;K"Data Rinnovo"
+F;SDM20;X8
+C;K"Verifica Sistema"
+F;SDM20;X9
+C;K"Iscrizione"
+F;SDM20;X10
+C;K"Yacht"
+]]#
+
+#if (${listOfDTOs.getiTotalRecords()} > 0)
+#set  ( $rowCounter = 2 ) 
+#foreach ( $dto in $listOfDTOs.aaData)
+C;Y${rowCounter};X1;K${dto.cardnumber}
+C;X2;K"$!{dto.cardholdername}"
+C;X3;K"$!{dto.cardholderlastname}"
+C;X4;K"$!{dto.weight}"
+C;X5;K"$!{dto.yachtclub}"
+F;P27;FG0R;X6
+C;K0;EDATEVALUE("$!{dto.medexamexpirationdateAsPrintDateFormat}")
+F;P27;FG0R;X7
+C;K0;EDATEVALUE("$!{dto.renewaldateAsPrintDateFormat}")
+F;P27;FG0R;X8
+C;K0;EDATEVALUE("$!{dto.systemcheckdateAsPrintDateFormat}")
+C;X9;K"$!{dto.applicationid}"
+C;X10;K"$!{dto.yachtname}"
+#set  ( $rowCounter = $rowCounter + 1 ) 
+#end
+#end
+E

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+  <!DOCTYPE configuration PUBLIC 
+     "-//mybatis.org//DTD Config 3.0//EN"   
+     "http://mybatis.org/dtd/mybatis-3-config.dtd"> 
+
+<configuration>     
+        
+  <settings>   
+  <setting name="useGeneratedKeys" value="true"/> 
+  <setting name="cacheEnabled" value="true"/>   
+  </settings>        
+     
+  <environments default="development">         
+  <environment id="development">    
+     <!-- <transactionManager type="JDBC"/>  -->    
+     <transactionManager type="org.r3.db.system.transaction.JDBCMySQLTransactionFactory"/>
+     <dataSource type="JNDI">     
+        <property name="initial_context" value="java:comp/env"/>     
+        <property name="data_source" value="/r3DS"/>     
+     </dataSource>
+  </environment>        
+  </environments>
+  
+  <mappers>
+  <mapper resource="org/r3/db/system/script/SQLStatementMapper.xml"/>
+  <mapper resource="org/r3/db/system/sequence/SequenceMapper.xml"/>  
+  <mapper resource="org/r3/db/system/otp/OTPMapper.xml"/>
+  <mapper resource="org/r3/db/system/classifieritem/ClassifierItemMapper.xml"/>
+  <mapper resource="org/r3/db/system/classifier/ClassifierMapper.xml"/>
+  <mapper resource="org/r3/db/system/address/AddressMapper.xml"/>
+  <mapper resource="org/r3/db/system/calendar/SystemCalendarMapper.xml"/>
+  <mapper resource="org/r3/db/system/calendarperiod/SystemCalendarPeriodMapper.xml"/>
+  
+  <mapper resource="org/r3/db/system/site/SiteMapper.xml"/>  
+  <mapper resource="org/r3/db/system/siteportletcfg/SitePortletConfigMapper.xml"/>  
+  <mapper resource="org/r3/db/system/sitecmspropertyview/SiteCMSPropertyViewMapper.xml"/>
+  <mapper resource="org/r3/db/system/siteproperty/SitePropertyMapper.xml"/>
+  <mapper resource="org/r3/db/system/siteview/SiteViewMapper.xml"/>
+
+  <mapper resource="org/r3/db/system/country/CountryMapper.xml"/>
+  <mapper resource="org/r3/db/system/lut/LUTDictionaryMapper.xml"/>
+  <mapper resource="org/r3/db/system/eventlog/EventLogMapper.xml"/>
+
+  <mapper resource="org/r3/db/system/queues/queue/QueueMapper.xml"/>
+  <mapper resource="org/r3/db/system/queues/queuemessage/QueueMessageMapper.xml"/>
+  <mapper resource="org/r3/db/system/queues/queuework/QueueWorkMapper.xml"/>
+      
+  <mapper resource="org/r3/db/system/user/usersession/UserSessionMapper.xml"/>
+  <mapper resource="org/r3/db/system/user/userprofileview/UserProfileViewMapper.xml"/>
+  <!-- 
+  <mapper resource="org/r3/db/system/user/actoruserprofileview/ActorUserProfileViewMapper.xml"/>
+   -->
+   
+  <mapper resource="org/r3/db/system/user/user/UserMapper.xml"/>
+  <mapper resource="org/r3/db/system/user/userrole/UserRoleMapper.xml"/>
+  <mapper resource="org/r3/db/system/user/userroleview/UserRoleViewMapper.xml"/>
+  <mapper resource="org/r3/db/system/user/authrole/AuthRoleMapper.xml"/>
+  
+  <mapper resource="org/r3/db/actor/actor/ActorMapper.xml"/>
+  <mapper resource="org/r3/db/actor/group/ActorGroupMapper.xml"/>
+  <mapper resource="org/r3/db/actor/relactorgroup/ActorGroupRelationMapper.xml"/>
+  
+  <mapper resource="org/r3/db/sailevent/event/SailEventMapper.xml"/>
+  <mapper resource="org/r3/db/sailevent/application/SailApplicationMapper.xml"/>
+  <mapper resource="org/r3/db/sailevent/appcrewmember/SailApplicationCrewMemberMapper.xml"/>
+  <mapper resource="org/r3/db/sailevent/appdocument/SailApplicationDocumentMapper.xml"/>
+  <mapper resource="org/r3/db/sailevent/appdata/SailApplicationDataMapper.xml"/>
+  <!-- <mapper resource="org/r3/db/sailevent/actor/SailEventActorMapper.xml"/> -->
+  <mapper resource="org/r3/db/sailevent/homeentrylist/SailHomeEntryListMapper.xml"/>
+  <mapper resource="org/r3/db/sailevent/entrylist/SailEntryListMapper.xml"/>
+  <mapper resource="org/r3/db/sailevent/racegroupview/SailRaceGroupViewMapper.xml"/>
+  <mapper resource="org/r3/db/sailevent/applicationview/SailApplicationViewMapper.xml"/>
+  <mapper resource="org/r3/db/sailevent/appeventlogview/SailApplicationEventLogViewMapper.xml"/>
+  <mapper resource="org/r3/db/sailevent/fivmember/FIVMemberMapper.xml"/>
+  <mapper resource="org/r3/db/sailevent/appcrewmemberview/SailApplicationCrewMemberViewMapper.xml"/>
+  
+  <mapper resource="org/r3/db/dms/device/DMSDeviceMapper.xml"/>
+  <mapper resource="org/r3/db/dms/devicealias/DMSDeviceAliasMapper.xml"/>
+  <mapper resource="org/r3/db/dms/file/DMSFileMapper.xml"/>
+  <mapper resource="org/r3/db/dms/fileproperty/DMSFilePropertyMapper.xml"/>
+  <mapper resource="org/r3/db/dms/folder/DMSFolderMapper.xml"/>
+  
+  <mapper resource="org/r3/db/cms/card/CardMapper.xml"/>
+  <mapper resource="org/r3/db/cms/cardcategory/CardCategoryMapper.xml"/>
+  <mapper resource="org/r3/db/cms/carddescr/CardDescrMapper.xml"/>
+  <mapper resource="org/r3/db/cms/cardproperty/CardPropertyMapper.xml"/>
+  <mapper resource="org/r3/db/cms/cardview/CardViewMapper.xml"/>
+  <mapper resource="org/r3/db/cms/category/CategoryMapper.xml"/>
+  <mapper resource="org/r3/db/cms/categoryview/CategoryViewMapper.xml"/>
+  <mapper resource="org/r3/db/cms/cardfullview/CardFullViewMapper.xml"/>
+  <mapper resource="org/r3/db/cms/group/GroupMapper.xml"/>
+  <mapper resource="org/r3/db/cms/cardgroup/CardGroupMapper.xml"/>
+  <mapper resource="org/r3/db/cms/attachmenttype/AttachmentTypeMapper.xml"/>
+  <mapper resource="org/r3/db/cms/page/PageMapper.xml"/>
+  <mapper resource="org/r3/db/cms/pagedescr/PageDescrMapper.xml"/>
+  <mapper resource="org/r3/db/cms/pageview/PageViewMapper.xml"/>
+  
+  <mapper resource="org/r3/db/cms/cardchannel/CardChannelMapper.xml"/>
+  <mapper resource="org/r3/db/cms/cardchannelview/CardChannelViewMapper.xml"/>  
+  <mapper resource="org/r3/db/cms/channel/ChannelMapper.xml"/>
+  
+  <mapper resource="org/r3/db/system/smsqueue/SMSQueueMapper.xml"/>
+  <mapper resource="org/r3/db/system/smsqueueitem/SMSQueueItemMapper.xml"/>
+  
+  <mapper resource="org/r3/db/system/outmailspooler/OutMailSpoolerMapper.xml"/>
+  <mapper resource="org/r3/db/system/outmailspoolerrecipient/OutMailSpoolerRecipientMapper.xml"/>
+  <mapper resource="org/r3/db/system/outmailattachment/OutMailAttachmentMapper.xml"/>
+  
+  <mapper resource="org/r3/db/sailevent/ranking/RankingMapper.xml"/>
+  <mapper resource="org/r3/db/sailevent/rankinginstance/RankingInstanceMapper.xml"/>
+  <mapper resource="org/r3/db/sailevent/rankinginstancedetail/RankingInstanceDetailMapper.xml"/>
+  <mapper resource="org/r3/db/sailevent/rankingview/RankingViewMapper.xml"/>
+  <mapper resource="org/r3/db/sailevent/rankinginstanceview/RankingInstanceViewMapper.xml"/>
+  <mapper resource="org/r3/db/sailevent/rankinginstancedetailview/RankingInstanceDetailViewMapper.xml"/>
+  
+  <mapper resource="org/r3/db/sailevent/openregattas/openregattasview/OpenRegattasViewMapper.xml"/>
+  
+  <mapper resource="org/r3/db/agenda/agenda/AgendaMapper.xml"/> 
+  <mapper resource="org/r3/db/agenda/agendaentry/AgendaEntryMapper.xml"/>
+
+  <mapper resource="org/r3/db/wbs/wbs/WBSMapper.xml"/>
+  <mapper resource="org/r3/db/wbs/wbsnode/WBSNodeMapper.xml"/>
+  <mapper resource="org/r3/db/wbs/wbsactor/WBSActorMapper.xml"/>
+
+  <mapper resource="org/r3/db/system/fileimport/fileimport/FileImportMapper.xml"/>
+  <mapper resource="org/r3/db/system/fileimport/fileimportdata/FileImportDataMapper.xml"/>
+    
+  <mapper resource="org/r3/db/bbs/bbstopic/BBSTopicMapper.xml"/>
+  <mapper resource="org/r3/db/bbs/bbsthreadnode/BBSThreadNodeMapper.xml"/>
+  <mapper resource="org/r3/db/bbs/bbsthreadnodeview/BBSThreadNodeViewMapper.xml"/>
+  <mapper resource="org/r3/db/bbs/bbsthread/BBSThreadMapper.xml"/>
+  <mapper resource="org/r3/db/bbs/bbstopicview/BBSTopicViewMapper.xml"/>
+  
+  <mapper resource="org/r3/db/project/resource/ResourceMapper.xml"/>
+  <mapper resource="org/r3/db/project/team/TeamMapper.xml"/>
+  <mapper resource="org/r3/db/project/teamresource/TeamResourceMapper.xml"/>
+  <mapper resource="org/r3/db/project/teamresourceview/TeamResourceViewMapper.xml"/>
+
+  <mapper resource="org/r3/db/project/teammemberprofile/TeamMemberProfileMapper.xml"/>
+  <mapper resource="org/r3/db/project/wbsnodeteammemberprofile/WBSNodeTeamMemberProfileMapper.xml"/>
+  <mapper resource="org/r3/db/project/wbsnodeteammemberprofileview/WBSNodeTeamMemberProfileViewMapper.xml"/>
+  <mapper resource="org/r3/db/project/resourcetimesheet/ResourceTimesheetMapper.xml"/>
+  <mapper resource="org/r3/db/project/resourcetimesheetview/ResourceTimesheetViewMapper.xml"/>
+  
+  <mapper resource="org/r3/db/orc/rms/RMSMapper.xml"/>
+  <mapper resource="org/r3/db/system/metadata/tmetadataview/TableColumnsMetadataMapper.xml"/>
+  
+  </mappers>
+  
+</configuration> 

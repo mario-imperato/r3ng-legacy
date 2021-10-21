@@ -1,0 +1,36 @@
+##
+## Variabili in ingresso:
+##     String                     as $schemehostport
+##     String                     as $targetSite
+##     String                     as $targetLanguage
+##     String                     as $targetSiteDomain 
+##     UserDTO                    as $userObj
+##     SiteDTO                    as $siteObj
+##     OTPDTO                     as $otpObj
+##
+## The variable userDataBean is supposed to hold the GWFUserDataBean
+## The variable password contains the imposed user password.
+
+
+<p>
+Gentile $userObj.lastname,<br />
+&egrave; stato creato un nuovo OEL. Ti preghiamo di procedere alla sua configurazione per permettere 
+agli altri utenti di collegarsi.<br />
+Accedendo al link seguente con la tua utenza e parola chiave potrai entrare nell'area privata di amministrazione. Ti preghiamo per prima cosa di
+inserire l'indirizzo.<br />
+<a href="${schemehostport}/r3ng/${siteObj.site}/it/org/r3/home.do">Home Page</a>
+</p>
+
+<p>
+Qualora non fosse cliccabile, puoi copiare e incollare nella barra del tuo browser il seguente indirizzo:<br />
+${schemehostport}/r3ng/${siteObj.site}/it/org/r3/home.do
+</p>
+
+<p>
+Buona navigazione.
+</p>
+ 
+<p>
+Distinti Saluti,<br />
+Team R3
+</p>

@@ -1,0 +1,133 @@
+<div class="panel tabbed-panel">
+  <div class="panel-heading" >  
+    <h3 class="panel-title" >{%=org.r3.jsportlet.cmsconsole.message.carddetailactionform_form_legend%} <span id='carddetailactionform_form_cardid_label'></span></h3>
+  </div>
+  
+  <div class="panel-body">
+  <div id="carddetailactionform_fieldset_message" ></div>
+    
+  <form id="carddetailactionform_form" method="POST" class="form-horizontal">
+  
+  <div class='row'>
+  
+  <div class='col-md-6 col-sm-12'>
+  <div class="form-group">
+    <label class="col-md-4  control-label">{%=org.r3.db.cms.card.message.cardid%}</label>
+    <div class='col-md-8 '>
+    <input name="cardid" class="form-control" id="carddetailactionform_form_cardid" type="text"  maxlength="25" />
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-4  control-label fieldRequired">{%=org.r3.db.cms.card.message.categoryid%}</label>
+    <div class='col-md-8 '>
+    <select name="categoryid"  class="form-control" id="carddetailactionform_form_categoryid" ></select>
+    </div>
+  </div>
+  
+ <div class="form-group">
+    <label class="col-md-4  control-label fieldRequired">{%=org.r3.db.cms.card.message.systemtitle%}</label>
+    <div class='col-md-8 '>
+    <input name="systemtitle" class="form-control" id="carddetailactionform_form_systemtitle" type="text"  maxlength="80" />
+    </div>
+  </div>
+    
+  <div class="form-group">
+    <label class="col-md-4  control-label fieldRequired">{%=org.r3.db.cms.card.message.refdate%}</label>
+    <div class='col-md-8 '>
+    <input name="refdate" class="form-control" id="carddetailactionform_form_refdate" type="text" class="date_picker" />
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-4  control-label">{%=org.r3.jsportlet.cmsconsole.message.carddetailactionform_pubchannels%}</label>
+    <div class='col-md-8 '>
+    <select name="pubchannels" class="form-control" id="carddetailactionform_form_pubchannels" ></select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-4  control-label">{%=org.r3.jsportlet.cmsconsole.message.carddetailactionform_cardgroup%}</label>
+    <div class='col-md-8 '>
+    <select name="cardgroup" class="form-control" id="carddetailactionform_form_cardgroup" multiple="multiple" ></select>
+    </div>
+  </div>
+  
+  </div>
+  
+  <div class='col-md-6 col-sm-12'>
+    <div class="form-group">
+    <label class="col-md-4  control-label fieldRequired">{%=org.r3.db.cms.card.message.validityrule%}</label>
+    <div class='col-md-8 columns'>
+     <label class="radio-inline" >
+         <input name="validityrule" id="carddetailactionform_form_validityrule_always" type="radio" value="always" checked /> {%=org.r3.db.cms.card.message.validityrule_always%}</label> 
+     <label class="radio-inline" >
+         <input name="validityrule" id="carddetailactionform_form_validityrule_never" value="never" type="radio" /> {%=org.r3.db.cms.card.message.validityrule_never%}</label> 
+     <label class="radio-inline" >
+         <input name="validityrule" id="carddetailactionform_form_validityrule_date" value="date" type="radio" /> {%=org.r3.db.cms.card.message.validityrule_date%}</label>
+    </div>
+    </div>
+    
+    <div class="form-group">
+    <label class="col-md-4  control-label  fieldRequired">{%=org.r3.db.cms.card.message.validfrom%}</label>
+    <div class="col-md-8">
+       <div class="input-daterange input-group r3_datepicker validation-error-anchor">    
+       <input type="text" class="input-sm form-control" name="validfrom" id="carddetailactionform_form_validfrom"  />
+       <span class="input-group-addon">{%=org.r3.db.cms.card.message.validto%}</span>
+       <input type="text" class="input-sm form-control" name="validto" id="carddetailactionform_form_validto" />
+       </div>
+    </div>
+    </div>
+
+    <div class="form-group">
+    <label class="col-md-4  control-label  fieldRequired">{%=org.r3.db.cms.card.message.pagelinktype%}</label>
+    <div class='col-md-8 columns radio-medium'>
+     <label class="radio-inline">
+         <input name="pagelinktype" id="carddetailactionform_form_pagelinktype_none" type="radio" value="none" checked /> {%=org.r3.db.cms.card.message.pagelinktype_none%}</label> 
+     <label class="radio-inline">
+         <input name="pagelinktype" id="carddetailactionform_form_pagelinktype_page" value="page" type="radio" /> {%=org.r3.db.cms.card.message.pagelinktype_page%}</label> 
+     <label class="radio-inline">
+         <input name="pagelinktype" id="carddetailactionform_form_pagelinktype_custom" value="custom" type="radio" /> {%=org.r3.db.cms.card.message.pagelinktype_custom%}</label>
+    </div>
+    </div>
+
+    <div class="form-group">
+    <label class="col-md-4  control-label  fieldRequired">{%=org.r3.db.cms.card.message.pagelink%}</label>
+    <div class='col-md-8 '>
+    <input name="pagelink" class="form-control" id="carddetailactionform_form_pagelink" type="text"  maxlength="255" />
+    </div>
+    </div>
+      
+    <div class="form-group">
+    <label class="col-md-4  control-label  fieldRequired">{%=org.r3.db.cms.card.message.pageid%}</label>
+    <div class='col-md-8 '>
+    <select name="pageid" class="form-control" id="carddetailactionform_form_pageid" ></select>
+    </div>
+    </div>
+    
+  </div>
+  
+  </div>
+  
+  <div class="form-action-bar">
+        <button type="button" id="carddetailactionform_action_saveitem" class="btn btn-default" >
+          <span>{%=org.r3.message.action_save%}</span>
+        </button>
+
+        <button type="button" id="carddetailactionform_action_cancel" class="btn btn-default" >
+          <span>{%=org.r3.message.action_cancel%}</span>
+        </button>
+
+      <button type="button" id="carddetailactionform_action_delete" class="btn btn-danger" >
+        <span>{%=org.r3.message.action_delete%}</span>
+      </button>                
+   </div> 
+    
+  </form>
+  
+  </div>
+
+</div>
+
+
+    

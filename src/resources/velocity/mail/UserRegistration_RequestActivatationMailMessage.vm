@@ -1,0 +1,33 @@
+##
+## Variabili in ingresso:
+##     String                     as $schemehostport
+##     String                     as $targetSite
+##     String                     as $targetLanguage
+##     String                     as $targetSiteDomain 
+##     UserDTO                    as $userObj
+##     OTPDTO                     as $otpObj
+##
+## The variable userDataBean is supposed to hold the GWFUserDataBean
+## The variable password contains the imposed user password.
+
+
+<p>
+Gentile $userObj.lastname,<br />
+per confermare il tuo indirizzo di posta elettronica e completare la registrazione, puoi utilizzare il seguente link<br /> 
+<a href="${schemehostport}/r3ng/${targetSite}/${targetLanguage}/org/r3/registration/activate.do?otp=$otpObj.digest">Per confermare la registrazione clicca qui</a>
+</p>
+
+<p>
+Qualora non fosse click-abile, puoi copiare e incollare nella barra del tuo browser il seguente indirizzo:<br />
+${schemehostport}/r3ng/${targetSite}/${targetLanguage}/org/r3/registration/activate.do?otp=$otpObj.digest
+</p>
+
+<p>
+Ti ricordiamo che per confermare l'indirizzo hai a disposizione 48 ore, al termine delle quali dovrai nuovamente avviare il processo di registrazione.<br />
+Buona navigazione.
+</p>
+ 
+<p>
+Distinti Saluti,<br />
+Team R3
+</p>

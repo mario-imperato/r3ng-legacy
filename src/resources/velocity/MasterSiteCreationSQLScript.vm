@@ -1,0 +1,215 @@
+##
+##
+## $siteDTO: DTO site regata in fase di registrazione
+## $sevEventDTO: DTO sev_event
+## $siteSequence: String
+## $userDTO: Logged User
+
+## insert into sev_event (eventid, eventtitle, eventdescr, eventgroup, eventstatus,applicationstatus) 
+##  values ('${siteDTO.site}',${VTH.makeSQLString($siteDTO.sitedescr)},${VTH.makeSQLString($siteDTO.sitedescr)},'cvfonline','running','open');
+  
+ 
+insert into r3_userrole ( site, userId, roleid) values ( '${siteDTO.site}', 'root',  'roleadmin' );(EOS)
+insert into r3_userrole ( site, userId, roleid) values ( '${siteDTO.site}', 'guest', 'rolebase' );(EOS)
+
+#if ($userDTO && $userDTO.userid != 'root') 
+INSERT INTO r3_userrole (site,userid,roleid) VALUES ('${siteDTO.site}','$userDTO.userid','rlregatta_adm');(EOS)
+INSERT INTO r3_userrole (site,userid,roleid) VALUES ('${siteDTO.site}','$userDTO.userid','rlregatta_usr');(EOS)
+#end
+
+insert into r3_actorgroup (eventid, groupid, grouptitle, groupnature, grouptype, businesskey, grouporder)
+ values ('${siteDTO.site}', 'ACGLOGIN', 'Contatto Log-in', 'system', 'grpt_login', 'login', 20);(EOS)
+
+insert into r3_agenda (site, agendaid, actorid)
+ values('${siteDTO.site}', '${siteDTO.site}', '${siteDTO.site}');(EOS)
+ 
+insert into r3_cmscategory (site, categoryid, categorydescr, previewtmpl, fulltmpl, categorymode)
+ values('${siteDTO.site}', 'system', 'Speciale Sistema', 'cms_tpl_simple', 'cms_tpl_simple', 'normal');(EOS)
+
+insert into r3_cmscategory (site, categoryid, categorydescr, previewtmpl, fulltmpl,categorymode)
+ values('${siteDTO.site}', 'article', 'Articolo', 'cms_tpl_simple', 'cms_tpl_simple', 'promoted');(EOS)
+
+insert into r3_cmscategory (site, categoryid, categorydescr, previewtmpl, fulltmpl,categorymode)
+ values('${siteDTO.site}', 'bbs', 'Discussione', 'cms_tpl_simple', 'cms_tpl_simple', 'promoted');(EOS)
+
+insert into r3_cmscategory (site, categoryid, categorydescr, previewtmpl, fulltmpl,categorymode)
+ values('${siteDTO.site}', 'c_carousel', 'Scheda Carousel', 'cms_tpl_simple', 'cms_tpl_simple', 'promoted');(EOS)
+
+insert into r3_cmscategory (site, categoryid, categorydescr, previewtmpl, fulltmpl,categorymode)
+ values('${siteDTO.site}', 'mail', 'Template Mail', 'cms_tpl_simple', 'cms_tpl_simple', 'normal');(EOS)
+
+insert into r3_cmscategory (site, categoryid, categorydescr, previewtmpl, fulltmpl,categorymode)
+ values('${siteDTO.site}', 'miscellanea', 'Generica', 'cms_tpl_simple', 'cms_tpl_simple', 'promoted');(EOS)
+
+insert into r3_cmscategory (site, categoryid, categorydescr, previewtmpl, fulltmpl,categorymode)
+ values('${siteDTO.site}', 'help', 'Help', 'cms_tpl_simple', 'cms_tpl_simple','normal');(EOS)
+   
+insert into  r3_cmsattachmenttype (site, attachtypeid, attachtypedescr, contenttype, imagescaling, iconscaling, propertyrole, attachscope)
+values ('${siteDTO.site}', 'cms_linkicon', 'Immagine Per Link', 'jpg,jpeg,png,gif', '180,80', null, 'cms_linkicon', 'card_scope');(EOS)
+
+insert into  r3_cmsattachmenttype (site, attachtypeid, attachtypedescr, contenttype, imagescaling, iconscaling, propertyrole, attachscope)
+values ('${siteDTO.site}', 'cms_htmlexe', 'Embeddable Html Fragment', 'html,htm', null, null, 'cms_htmlexe', 'card_scope');(EOS)
+
+insert into  r3_cmsattachmenttype (site, attachtypeid, attachtypedescr, contenttype, imagescaling, iconscaling, propertyrole, attachscope)
+values ('${siteDTO.site}', 'cms_card_icon', 'Icona Scheda', 'image/jpeg,image/gif,image/png', '180,135', null, 'cms_card_icon', 'card_scope');(EOS)
+
+insert into  r3_cmsattachmenttype (site, attachtypeid, attachtypedescr, contenttype, imagescaling, iconscaling, propertyrole, attachscope)
+values ('${siteDTO.site}', 'cms_img_gallery', 'Immagine Gallery', 'image/jpeg,image/gif,image/png', '640,480', '150,150', 'cms_img_gallery', 'card_scope');(EOS)
+  
+insert into  r3_cmsattachmenttype (site, attachtypeid, attachtypedescr, contenttype, imagescaling, iconscaling, propertyrole, attachscope)
+values ('${siteDTO.site}', 'cms_card_image', 'Immagine Scheda', 'image/jpeg,image/gif,image/png', '640,480', '180,135', 'cms_card_image', 'card_scope');(EOS)
+
+insert into  r3_cmsattachmenttype (site, attachtypeid, attachtypedescr, contenttype, imagescaling, iconscaling, propertyrole, attachscope)
+values ('${siteDTO.site}', 'cms_carousel_lg', 'Banner Grande Carousel', 'image/jpeg,image/gif,image/png', null, null, 'cms_carousel_lg', 'card_scope');(EOS)
+
+insert into  r3_cmsattachmenttype (site, attachtypeid, attachtypedescr, contenttype, imagescaling, iconscaling, propertyrole, attachscope)
+values ('${siteDTO.site}', 'cms_carousel_sm', 'Banner Piccolo Carousel', 'image/jpeg,image/gif,image/png', '140,80', null, 'cms_carousel_sm', 'card_scope');(EOS)
+    
+insert into  r3_cmsattachmenttype (site, attachtypeid, attachtypedescr, contenttype, imagescaling, iconscaling, propertyrole, attachscope)
+values ('${siteDTO.site}', 'mail_attach', 'Mail Attachment', null, null, null, 'mail_attach', 'card_scope');(EOS)
+
+insert into  r3_cmsattachmenttype (site, attachtypeid, attachtypedescr, contenttype, imagescaling, iconscaling, propertyrole, attachscope)
+values ('${siteDTO.site}', 'mail_sysattach', 'Mail System Attachment', null, null, null, 'mail_sysattach', 'card_scope');(EOS)
+
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'articles', 'Articoli', 'sys_recact');(EOS)
+  
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'Miscellanea', 'Altre Notizie', 'sys_recact');(EOS)
+
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'c_homecarousel', 'Home Carousel', 'sys_recact');(EOS)
+
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'friendcarousel', 'Friend Carousel', 'sys_recact');(EOS)
+
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'homearticles', 'Articoli Home Page', 'sys_recact');(EOS)
+
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'sponsorcarousel', 'Sponsor Carousel', 'sys_recact');(EOS)
+         
+insert into r3_cmspage ( 
+  site, pageid, pagetype, pagetitle, pagelink, pageorder, visibility, pagestyle, forwardview, onuserstatus, permissions, viewoptions ) 
+  values('${siteDTO.site}', 'contacts', 'page', 'Contatti', '/org/r3/console/contacts.do', 20, 'cmspg_consolemenu', 'grade1', 'Success', 'userlogged', null, null) 
+  ;(EOS)
+   
+insert into r3_cmspage ( 
+  site, pageid, pagetype, pagetitle, pagelink, pageorder, visibility, pagestyle, forwardview, onuserstatus, permissions, viewoptions ) 
+  values('${siteDTO.site}', 'manage_cms', 'page', 'Contenuti CMS', '/org/r3/console/cms/cards.do', 40, 'cmspg_consolemenu', 'grade1', 'Success', 'userlogged', null, null) 
+  ;(EOS)
+
+insert into r3_cmspage ( 
+  site, pageid, pagetype, pagetitle, pagelink, pageorder, visibility, pagestyle, forwardview, onuserstatus, permissions, viewoptions ) 
+  values('${siteDTO.site}', 'manage_bbs', 'page', 'Discussioni (BBS)', '/org/r3/console/bbs.do', 50, 'cmspg_consolemenu', 'grade1', 'Success', 'userlogged', null, null) 
+  ;(EOS)
+  
+insert into r3_cmspage ( 
+  site, pageid, pagetype, pagetitle, pagelink, pageorder, visibility, pagestyle, forwardview, onuserstatus, permissions, viewoptions ) 
+  values('${siteDTO.site}', 'manage_wbs', 'page', 'Amministrazione WBS', '/org/r3/console/wbs.do', 60, 'cmspg_consolemenu', 'grade1', 'Success', 'userlogged', null, null) 
+  ;(EOS)
+
+insert into r3_cmspage ( 
+  site, pageid, pagetype, pagetitle, pagelink, pageorder, visibility, pagestyle, forwardview, onuserstatus, permissions, viewoptions ) 
+  values('${siteDTO.site}', 'siteconfig', 'page', 'Configurazione', '/org/r3/console/siteconfig.do', 70, 'cmspg_consolemenu', 'grade1', 'Success', 'userlogged', null, null) 
+  ;(EOS)
+        
+insert into r3_cmspage (site, pageid, pagetitle, forwardview, visibility, pagetype)
+   values('${siteDTO.site}', 'miscellanea', 'Pag. Altre Notizie', 'miscellanea', 'cmspg_none', 'cmspage');(EOS)
+
+insert into r3_cmspage (site, pageid, pagetitle, forwardview, visibility, pagetype, pageorder, pagelink, pageicon1, pagestyle)
+   values('${siteDTO.site}', 'articles', 'Articoli', 'articles', 'cmspg_txtmenu,cmspg_iconmenu', 'cmspage', 20, '/org/r3/cms/cmspage.do?pageid=articles', 'icon_002.jpg', 'grade3');(EOS)
+
+insert into r3_cmspage (site, pageid, pagetitle, forwardview, visibility, pagetype, pageorder, pagelink, pageicon1, pagestyle)
+   values('${siteDTO.site}', 'home', 'Home', 'articles', 'cmspg_iconmenu', 'page', 10, '/org/r3/home.do', 'icon_cvf.png', 'grade4');(EOS)
+
+insert into r3_cmspagedescr (site, pageid, languagecode, pagetitle)
+  select site, pageid, 'it', pagetitle from r3_cmspage where site = '${siteDTO.site}';(EOS)
+  
+##
+## Site Properties
+##
+insert into r3_siteproperty 
+ (site, propertyscope, propertykey, propertyvalue)
+ select '${siteDTO.site}', propertyscope, propertykey, propertyvalue 
+ from r3_siteproperty 
+ where propertykey like 'mail%' and site = '__any__' and propertyscope = 'system';(EOS)
+ 
+INSERT INTO r3_siteproperty (site, propertyscope, propertykey, propertyvalue) VALUES ('${siteDTO.site}','google','google.analytics.domain','cvfiumicino.org');(EOS)
+INSERT INTO r3_siteproperty (site, propertyscope, propertykey, propertyvalue) VALUES ('${siteDTO.site}','google','google.analytics.trackerid','UA-48183016-1');(EOS)
+
+INSERT INTO r3_siteproperty (site, propertyscope, propertykey, propertyvalue) VALUES ('${siteDTO.site}','sms','smslogin','sbuser1303');(EOS)
+INSERT INTO r3_siteproperty (site, propertyscope, propertykey, propertyvalue) VALUES ('${siteDTO.site}','sms','smspasswd','dwhmr73');(EOS)
+INSERT INTO r3_siteproperty (site, propertyscope, propertykey, propertyvalue) VALUES ('${siteDTO.site}','sms','smssender','cvf2');(EOS)
+INSERT INTO r3_siteproperty (site, propertyscope, propertykey, propertyvalue) VALUES ('${siteDTO.site}','ui.cfg','menus','socialmenu,iconmenu,txtmenu');(EOS)
+
+## OUTMAIL ---------
+INSERT INTO r3_cmscard (site,cardid,systemtitle,pagelinktype,pagelink,pageid,refdate,options,validityrule,validfrom,validto,recstatus,rectimestamp,categoryid) 
+  VALUES ('${siteDTO.site}','OUTMAIL','Posta in uscita','none',NULL,NULL,'2014-01-24',NULL,'never',NULL,NULL,'sys_recact','2014-01-24 19:58:43','mail');(EOS)
+
+##
+## Help CMS Cards
+##
+## HLP_CHANGEPWDOK ---------
+INSERT INTO r3_cmscard (site,cardid,systemtitle,pagelinktype,pagelink,pageid,refdate,options,validityrule,validfrom,validto,recstatus,rectimestamp,categoryid) 
+ VALUES ('${siteDTO.site}','HLP_CHANGEPWDOK','Help: Cambio Parola Chiave OK','none',NULL,NULL,NULL,NULL,'always',NULL,NULL,'sys_recact',NULL,'help');(EOS)
+ 
+INSERT INTO r3_cmscarddescr (site,cardid,languagecode,title,summary,textbody,recstatus,rectimestamp)
+ VALUES ('${siteDTO.site}','HLP_CHANGEPWDOK','it','Modifica Parola Chiave','Modifica Parola Chiave','<p>Operazione terminata con successo</p>','sys_recact',NULL);(EOS)
+ 
+## HLP_REGISTRATION --------
+INSERT INTO r3_cmscard (site,cardid,systemtitle,pagelinktype,pagelink,pageid,refdate,options,validityrule,validfrom,validto,recstatus,rectimestamp,categoryid) 
+ VALUES ('${siteDTO.site}','HLP_REGISTRATION','HELP: Registrazione','none',NULL,NULL,NULL,NULL,'always',NULL,NULL,'sys_recact',NULL,'help');(EOS)
+
+INSERT INTO r3_cmscarddescr (site,cardid,languagecode,title,summary,textbody,recstatus,rectimestamp)
+ VALUES ('${siteDTO.site}','HLP_REGISTRATION','it','Help Registrazione','Help Registrazione','<h2>Aiuto rapido</h2>
+<p>Per procedere con la registrazione compilare i campi riportati. Nel caso il codice di sicurezza non risulti facilmente leggibile e&#39; possibile aggiornarlo attivando l&#39;icona posta sulla destra del codice stesso.</p>
+<p>A valle della registrazione vi verra&#39; inviato un messaggio di posta elettronica contenente un link da attivare per il corretto completamento della registrazione.</p>','sys_recact',NULL);(EOS)
+
+## HLP_RESETPWD --------
+INSERT INTO r3_cmscard (site,cardid,systemtitle,pagelinktype,pagelink,pageid,refdate,options,validityrule,validfrom,validto,recstatus,rectimestamp,categoryid) 
+ VALUES ('${siteDTO.site}','HLP_RESETPWD','HELP: Reset Parola Chiave','none',NULL,NULL,NULL,NULL,'always',NULL,NULL,'sys_recact',NULL,'help');(EOS)
+
+INSERT INTO r3_cmscarddescr (site,cardid,languagecode,title,summary,textbody,recstatus,rectimestamp)
+ VALUES ('${siteDTO.site}','HLP_RESETPWD','it','Reset Parola Chiave','Reset Parola Chiave','<h2>Aiuto Rapido</h2>
+<p>Nel caso vi siate dimenticati la vostra parola chiave e&#39; possibile chiedere aiuto al sistema. Dopo aver compilato la scheda seguente e indicato il vostro indirizzo di posta elettronica il sistema vi inviera&#39; una mail con la nuova parola chiave necessaria per l&#39;accesso al sito.</p>','sys_recact',NULL);(EOS)
+
+## HLP_RESETPWDOK --------
+INSERT INTO r3_cmscard (site,cardid,systemtitle,pagelinktype,pagelink,pageid,refdate,options,validityrule,validfrom,validto,recstatus,rectimestamp,categoryid) 
+ VALUES ('${siteDTO.site}','HLP_RESETPWDOK','Help: Reset Password OK','none',NULL,NULL,NULL,NULL,'always',NULL,NULL,'sys_recact',NULL,'help');(EOS)
+
+INSERT INTO r3_cmscarddescr (site,cardid,languagecode,title,summary,textbody,recstatus,rectimestamp)
+ VALUES ('${siteDTO.site}','HLP_RESETPWDOK','it','Reset Parola Chiave OK','Reset Parola Chiave OK','<h2>Reset Parola Chiave</h2>
+<p>L&#39;operazione e&#39; terminata con successo. A breve riceverete una email con la nuova parola chiave necessaria per l&#39;accesso al sito.</p>','sys_recact',NULL);(EOS)
+
+## HLP_USRREG_OK --------
+INSERT INTO r3_cmscard (site,cardid,systemtitle,pagelinktype,pagelink,pageid,refdate,options,validityrule,validfrom,validto,recstatus,rectimestamp,categoryid) 
+ VALUES ('${siteDTO.site}','HLP_USRREG_OK','Help: Registrazione OK','none',NULL,NULL,NULL,NULL,'always',NULL,NULL,'sys_recact',NULL,'help');(EOS)
+
+INSERT INTO r3_cmscarddescr (site,cardid,languagecode,title,summary,textbody,recstatus,rectimestamp)
+ VALUES ('${siteDTO.site}','HLP_USRREG_OK','it','Registrazione Utente OK','Registrazione Utente OK','<p>La registrazione ha avuto esito positivo. A breve riceverai una email contenente un link da attivare che completera&#39; l&#39;iter.</p>
+<p>&nbsp;</p>','sys_recact',NULL);(EOS)
+
+##
+## Schede Registrazione OK - KO
+##
+## REGACT_KO --------
+INSERT INTO r3_cmscard (site,cardid,systemtitle,pagelinktype,pagelink,pageid,refdate,options,validityrule,validfrom,validto,recstatus,rectimestamp,categoryid) 
+ VALUES ('${siteDTO.site}','REGACT_KO','Attivazione KO','none',NULL,NULL,NULL,NULL,'always',NULL,NULL,'sys_recact',NULL,'help');(EOS)
+
+INSERT INTO r3_cmscarddescr (site,cardid,languagecode,title,summary,textbody,recstatus,rectimestamp)
+ VALUES ('${siteDTO.site}','REGACT_KO','it','Attivazione Fallita','Attivazione Fallita','<h2>Errore nell&#39;attivazione dell&#39;utenza</h2>
+<p>Si e&#39; verificata un&#39;anomalia nella procedura di attivazione della tua utenza. E&#39; possibile che il link utilizzato per l&#39;attivazione non risulti piu&#39; valido. Ti preghiamo di contattare la segreteria per le verifiche del caso.</p>
+<p>Grazie</p>
+<p><strong>Franco Quadrana Presidente Circolo Velico di Fiumicino</strong></p>','sys_recact',NULL);(EOS)
+
+## REGACT_OK --------
+INSERT INTO r3_cmscard (site,cardid,systemtitle,pagelinktype,pagelink,pageid,refdate,options,validityrule,validfrom,validto,recstatus,rectimestamp,categoryid) 
+ VALUES ('${siteDTO.site}','REGACT_OK','Attivazione OK','none',NULL,NULL,NULL,NULL,'always',NULL,NULL,'sys_recact',NULL,'help');(EOS)
+ 
+INSERT INTO r3_cmscarddescr (site,cardid,languagecode,title,summary,textbody,recstatus,rectimestamp)
+ VALUES ('${siteDTO.site}','REGACT_OK','it','Attivazione Utenza OK','Attivazione Utenza OK','<p>Utenza attivata con successo.</p>
+<p>A nome del Circolo ti ringraziamo per esserti registrato.</p>
+<p>Grazie,</p>
+<p><strong>Franco Quadrana - Presidente Circolo Velico di Fiumicino</strong></p>','sys_recact',NULL);(EOS)
+ 

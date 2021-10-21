@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<templates>
+     
+                                   
+     <!-- BOF SYLK Report -->
+     <template name="SylkAthletesReport">
+        <filename>resources/velocity/sylk/SylkAthletesReport.vm</filename>
+     </template>     
+     <!-- EOF SYLK Report -->
+                               
+</templates>

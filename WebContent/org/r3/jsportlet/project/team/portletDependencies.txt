@@ -1,0 +1,70 @@
+  <!-- Canvas dependencies -->
+  <div id="teamQueryActionForm"  class="actionForm"></div>
+  <div id="teamDetailActionForm" class="actionForm" ></div>
+   
+  <!-- JS dependencies -->
+  <r3_lang:script path2resolve="/org/r3/jsportlet/project/team/messages.js" />    
+  <r3_lang:script path2resolve="/org/r3/jsportlet/project/team/TeamQueryActionForm.js" />
+  <r3_lang:script path2resolve="/org/r3/jsportlet/project/team/TeamDetailActionForm.js" />
+  <r3_lang:script path2resolve="/org/r3/jsportlet/project/team/TeamDetailActionFormView.js" />
+  <r3_lang:script path2resolve="/org/r3/jsportlet/project/team/TeamCreateActionFormView.js" />
+  <r3_lang:script path2resolve="/org/r3/jsportlet/project/team/TeamDetailActionFormView_validation.js" />
+  
+  <r3_lang:script path2resolve="/org/r3/jsportlet/project/team/TeamDetailActionFormView_TabResources.js" />  
+  <r3_lang:script path2resolve="/org/r3/jsportlet/project/team/TeamDetailActionFormView_TabResources_validation.js" />
+  
+  <r3_lang:script path2resolve="/org/r3/db/project/team/TeamQueryActionFormView.js" />
+  <r3_lang:script path2resolve="/org/r3/db/project/team/TeamDTOAdapter.js" />
+  <r3_lang:script path2resolve="/org/r3/db/project/team/TeamDTO.js" />
+  <r3_lang:script path2resolve="/org/r3/db/project/team/TeamDictionary.js" /> 
+    
+  <r3_lang:script path2resolve="/org/r3/db/project/teamresourceview/TeamResourceViewQueryActionFormView.js" />
+  <r3_lang:script path2resolve="/org/r3/db/project/teamresourceview/TeamResourceViewDTOAdapter.js" />
+  <r3_lang:script path2resolve="/org/r3/db/project/teamresourceview/TeamResourceViewDTO.js" />
+  <r3_lang:script path2resolve="/org/r3/db/project/teamresourceview/TeamResourceViewDictionary.js" /> 
+
+    
+  <!-- PageManager dependency -->
+  this.teamQueryActionForm = new org.r3.jsportlet.project.team.TeamQueryActionForm(this, "#teamQueryActionForm");		 
+  this.teamDetailActionForm = new org.r3.jsportlet.project.team.TeamDetailActionForm(this, "#teamDetailActionForm", "#teamDetailActionFormView_tab_generale");
+		
+    openTeamQueryActionFormPanel: function()
+	 {		 
+		 org.r3.PageManager.pushBreadCrumb(
+		{
+			"title" : "Elenco Team",
+			"actionForm" : this.teamQueryActionForm
+		});
+		 
+		 this.teamQueryActionForm.open();
+		 $('#gsidebar-navanchor').gsidebar('select', 'act_queryteams');		 
+	 },
+	 
+	 openNewTeamPanel : function()
+	 {
+		org.r3.PageManager.pushBreadCrumb(
+		{
+			"title" : "Nuovo Team",
+			"actionForm" : this.teamDetailActionForm
+		});
+
+		this.teamDetailActionForm.open();
+	},
+
+	closeNewTeamPanel : function()
+    {
+   	     org.r3.PageManager.closeAllBreadCrumbs();
+	     this.openTeamQueryActionFormPanel();
+    },
+    
+	 openTeamDetailPanel : function(aTeamDTOAdapter)
+	 {
+		org.r3.PageManager.pushBreadCrumb(
+		{
+			"title" : "Det. Team",
+			"actionForm" : this.teamDetailActionForm
+		});
+
+		this.teamDetailActionForm.open(aTeamDTOAdapter);
+	},
+    	

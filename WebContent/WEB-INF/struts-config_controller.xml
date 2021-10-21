@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+    <!-- 
+      Controller Configuration.
+      locale="true" Disabilitato. Forza la creazione di una session.      
+      org.apache.struts.tiles.TilesRequestProcessor
+        -->
+    <controller
+       className="org.r3.system.struts.GWFControllerConfig"
+       processorClass="org.apache.struts.chain.ComposableRequestProcessor"
+       nocache="true"
+       bufferSize="4096"
+       maxFileSize="5M"
+       tempDir="C:/tmp/regattacubed_log"
+       locale="false"
+       >
+
+       <set-property property="guestUserId"                        value="guest"       />
+       <set-property property="guestPassword"                      value="sprint"      />
+        
+    </controller>
+    
+    

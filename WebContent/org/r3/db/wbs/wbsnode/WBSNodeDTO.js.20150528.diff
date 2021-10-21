@@ -1,0 +1,30 @@
+<< BOF Changing rows at: 32
+        this.duration = aDataBean.duration || 0;
+        this.duration = aDataBean.duration || null;
+<< BOF Changing rows at: 36
+        this.completiondescr = aDataBean.completiondescr || '';
+        this.completion = aDataBean.completion || 0;
+        this.completionfrom = aDataBean.completionfrom || 0;
+        this.completionto = aDataBean.completionto || 0;
+        this.completionstatus = aDataBean.completionstatus || null;
+        this.completiondescr = aDataBean.completiondescr || null;
+        this.completion = aDataBean.completion || null;
+        this.completionfrom = aDataBean.completionfrom || null;
+        this.completionto = aDataBean.completionto || null;
+<< BOF Changing rows at: 43
+        this.economicvalue = aDataBean.economicvalue || 0;
+        this.economicvalue2 = aDataBean.economicvalue2 || 0;
+        this.economicvalue3 = aDataBean.economicvalue3 || 0;
+        this.economicvalue = aDataBean.economicvalue || null;
+        this.economicvalue2 = aDataBean.economicvalue2 || null;
+        this.economicvalue3 = aDataBean.economicvalue3 || null;
+<< BOF Deleting rows at: 51
+        // Inserito
+        this.children = [];
+        if (aDataBean.children)
+        {
+           	for(var i = 0; i < aDataBean.children.length; i++)
+           	{
+           	    this.children.push(new org.r3.db.wbs.wbsnode.WBSNodeDTOAdapter(aDataBean.children[i]));	
+           	}
+        }  

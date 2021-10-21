@@ -1,0 +1,132 @@
+ul.home_header_menu
+{
+	margin-top: 10px
+}
+
+ul.home_header_menu li
+{
+	font-size: 1.3em;
+	
+	padding: 8px
+}
+
+ul.home_header_menu li:hover
+{
+   background-color: #90AAD5;  /* #7A94AB; #1B4E88; */
+}
+
+
+ul.home_header_menu li a:link,  ul.home_header_menu li a:visited
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+ul.home_header_menu li a:hover, ul.home_header_menu li a:active
+{
+	color: #FFFFFF; 
+	text-decoration: none;	
+}
+
+
+
+#footer {
+    background: none repeat scroll 0 0 #292929;
+    border-top: 1px solid #444444;
+}
+
+#footer .yachtclubname
+{
+	color: #6E6E6E;
+	line-height: 3em;
+}
+
+.centered_layout
+{
+    margin: 0 auto;
+    position: relative;
+    width: 900px;    
+}
+
+#contacts_canvas
+{
+    background: none repeat scroll 0 0 #373737;
+    border-top: 5px solid #7A94AB;
+    color: #B1B1B1;	    
+}
+
+.h2 {
+    border-bottom: 1px solid #252525;
+    box-shadow: 0 1px 0 #555555;
+    color: #E2E2E2;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
+#contacts_canvas ul {
+    /* margin: 0 0 10px 25px; */
+    padding: 0;
+}
+
+#contacts_canvas ul li {    
+    line-height: 2.2em;
+    list-style: none outside none !important;
+/*     padding-left: 15px; */
+}
+
+
+.html_carousel {	
+    width: 100%;
+}
+.html_carousel div.slide {
+    position: relative;
+}  
+.html_carousel div.slide img {
+    width: 100%;
+    height: 100%;
+}
+.html_carousel div.slide > div {
+    background-color: rgba(128, 128, 128, 0.6);
+    width: 100%;
+    /* display: none; */
+    position: absolute;
+    bottom: 0;
+}
+
+.html_carousel div.slide div div.slide-caption
+{
+	background: url('logoSS.png') center left no-repeat ;
+	padding-left: 150px;
+	/* width: 960px; 
+	margin: 0 auto; */
+	margin: 0px 20px 0px 20px;
+}
+
+.html_carousel div.slide h4 {
+    font-size: 35px;
+    padding: 30px 0 0 0px;
+    margin: 0;
+    color: #000000;
+}
+.html_carousel div.slide p {
+    font-size: 16px;
+    padding: 0 0 30px 0px;
+}
+
+.html_carousel div.slide p {
+    color: white;
+    margin: 0;  
+}
+.clearfix {
+    float: none;
+    clear: both;
+}
+
+
+hr 
+{
+    color: #dddddd;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}

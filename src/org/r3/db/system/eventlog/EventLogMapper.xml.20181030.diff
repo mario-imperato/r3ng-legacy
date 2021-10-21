@@ -1,0 +1,207 @@
+<< BOF Inserting rows at: 11
+
+<!-- Mapper Target DBMS: [SERVER_MYSQL] -->
+<< BOF Inserting rows at: 31
+           <result column="usersessionid" property="usersessionid" jdbcType="VARCHAR" />
+<< BOF Changing rows at: 100
+  refentityid5,  refdate1,  refdate2,  counter1,  counter2,  counter3,  msg,  userid,  recstatus,
+  rectimestamp  </sql>
+  refentityid5,  refdate1,  refdate2,  counter1,  counter2,  counter3,  msg,  userid,  usersessionid,
+  recstatus,  rectimestamp  </sql>
+  
+  <sql id='GroupBy_Column_List'>
+    <trim suffixOverrides=",">
+        <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('eventid')" >
+           eventid,
+       </when>
+       <otherwise>
+           null as eventid,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('site')" >
+           site,
+       </when>
+       <otherwise>
+           null as site,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('usecaseambit')" >
+           usecaseambit,
+       </when>
+       <otherwise>
+           null as usecaseambit,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('usecase')" >
+           usecase,
+       </when>
+       <otherwise>
+           null as usecase,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('reason')" >
+           reason,
+       </when>
+       <otherwise>
+           null as reason,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('refentityid1')" >
+           refentityid1,
+       </when>
+       <otherwise>
+           null as refentityid1,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('refentityid2')" >
+           refentityid2,
+       </when>
+       <otherwise>
+           null as refentityid2,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('refentityid3')" >
+           refentityid3,
+       </when>
+       <otherwise>
+           null as refentityid3,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('refentityid4')" >
+           refentityid4,
+       </when>
+       <otherwise>
+           null as refentityid4,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('refentityid5')" >
+           refentityid5,
+       </when>
+       <otherwise>
+           null as refentityid5,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('refdate1')" >
+           refdate1,
+       </when>
+       <otherwise>
+           null as refdate1,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('refdate2')" >
+           refdate2,
+       </when>
+       <otherwise>
+           null as refdate2,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('counter1')" >
+           counter1,
+       </when>
+       <otherwise>
+           null as counter1,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('counter2')" >
+           counter2,
+       </when>
+       <otherwise>
+           null as counter2,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('counter3')" >
+           counter3,
+       </when>
+       <otherwise>
+           null as counter3,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('msg')" >
+           msg,
+       </when>
+       <otherwise>
+           null as msg,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('userid')" >
+           userid,
+       </when>
+       <otherwise>
+           null as userid,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('usersessionid')" >
+           usersessionid,
+       </when>
+       <otherwise>
+           null as usersessionid,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('recstatus')" >
+           recstatus,
+       </when>
+       <otherwise>
+           null as recstatus,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('rectimestamp')" >
+           rectimestamp,
+       </when>
+       <otherwise>
+           null as rectimestamp,
+       </otherwise>         
+     </choose> 
+	       </trim>       
+  </sql>
+  
+<< BOF Changing rows at: 129
+    <include refid="Base_Column_List" />
+    
+    <choose>
+       <when test="filter != null &amp;&amp; filter.groupByClause != null" >
+           <include refid="GroupBy_Column_List" />
+       </when>
+       <otherwise>
+           <include refid="Base_Column_List" />
+       </otherwise>
+    </choose>
+        
+<< BOF Inserting rows at: 134
+    <if test="filter != null &amp;&amp; filter.groupByClause != null" >
+      group by ${filter.groupByClause}
+    </if>
+<< BOF Changing rows at: 157
+ refentityid5, refdate1, refdate2, counter1, counter2, counter3, msg, userid, recstatus,
+ rectimestamp      )
+ refentityid5, refdate1, refdate2, counter1, counter2, counter3, msg, userid, usersessionid,
+ recstatus, rectimestamp      )
+<< BOF Inserting rows at: 182
+ #{record.usersessionid,jdbcType=VARCHAR}, 
+<< BOF Inserting rows at: 237
+      <if test="record.usersessionidDirty" >
+        usersessionid = #{record.usersessionid,jdbcType=VARCHAR},
+      </if>      
+<< BOF Inserting rows at: 301
+      <if test="record.usersessionidDirty" >
+        usersessionid = #{record.usersessionid,jdbcType=VARCHAR},
+      </if>

@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--
+  TODO: xmlCopyRight.txt
+   
+  -->
+<!--
+  TODO: xmlReadme.txt
+   
+  -->
+
+<!-- <mapper resource="org/r3/db/actor/actor/ActorMapper.xml"/> -->
+<mapper namespace="org.r3.db.actor.actor.ActorMapper" >
+    <resultMap id="BaseResultMap" type="org.r3.db.actor.actor.ActorDTO" >
+         <id column="eventid" property="eventid" jdbcType="VARCHAR" />
+           <id column="actorid" property="actorid" jdbcType="VARCHAR" />
+           <result column="userid" property="userid" jdbcType="VARCHAR" />
+           <result column="firstname" property="firstname" jdbcType="VARCHAR" />
+           <result column="lastname" property="lastname" jdbcType="VARCHAR" />
+           <result column="phone" property="phone" jdbcType="VARCHAR" />
+           <result column="cellphone" property="cellphone" jdbcType="VARCHAR" />
+           <result column="email" property="email" jdbcType="VARCHAR" />
+           <result column="address" property="address" jdbcType="VARCHAR" />
+           <result column="town" property="town" jdbcType="VARCHAR" />
+           <result column="zipcode" property="zipcode" jdbcType="VARCHAR" />
+           <result column="contactgroup" property="contactgroup" jdbcType="VARCHAR" />
+           <result column="recstatus" property="recstatus" jdbcType="VARCHAR" />
+           <result column="rectimestamp" property="rectimestamp" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+  <sql id="Filter_Where_Clause" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+                <when test="criterion.subSelectCriterion" >
+                  and ${criterion.prefixCondition} #{criterion.value} ${criterion.suffixCondition}
+                </when>                                
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <!--
+  <sql id="Filter_Where_Clause_4_Update" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  -->  
+  <sql id="Base_Column_List" >
+    eventid,  actorid,  userid,  firstname,  lastname,  phone,  cellphone,  email,  address,
+  town,  zipcode,  contactgroup,  recstatus,  rectimestamp  </sql>
+  <select id="selectByEventidActorid" resultMap="BaseResultMap" parameterType="HashMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from r3_actor
+    where  eventid = #{eventid,jdbcType=VARCHAR} and  actorid = #{actorid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByEventidActorid" parameterType="HashMap" >
+    delete
+    from r3_actor
+    where  eventid = #{eventid,jdbcType=VARCHAR} and  actorid = #{actorid,jdbcType=VARCHAR}
+  </delete>  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from r3_actor    
+    where  eventid = #{pk.eventid,jdbcType=VARCHAR} and  actorid = #{pk.actorid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete
+    from r3_actor
+    where  eventid = #{pk.eventid,jdbcType=VARCHAR} and  actorid = #{pk.actorid,jdbcType=VARCHAR}
+  </delete>  
+  <select id="select" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <if test="filter != null &amp;&amp; filter.distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from r3_actor
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+    <if test="filter != null &amp;&amp; filter.orderByClause != null" >
+      order by ${filter.orderByClause}
+    </if>
+    <if test="filter != null &amp;&amp; filter.limitFetch > 0" >
+      limit ${filter.limitFetch}
+    </if>
+  </select>
+  <select id="count" parameterType="map" resultType="java.lang.Integer" >
+    select count(*) from r3_actor
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </select>  
+  <delete id="delete" parameterType="map" >
+    delete from r3_actor
+    <!-- _parameter: dato che e' una map lo sostituisco con il nome del parametro in quanto non è l'unico -->
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="map" >
+    insert into r3_actor (
+ eventid, actorid, userid, firstname, lastname, phone, cellphone, email, address,
+ town, zipcode, contactgroup, recstatus, rectimestamp      )
+    values (
+ 
+ #{record.eventid,jdbcType=VARCHAR}, 
+ #{record.actorid,jdbcType=VARCHAR}, 
+ #{record.userid,jdbcType=VARCHAR}, 
+ #{record.firstname,jdbcType=VARCHAR},
+ 
+ #{record.lastname,jdbcType=VARCHAR}, 
+ #{record.phone,jdbcType=VARCHAR}, 
+ #{record.cellphone,jdbcType=VARCHAR}, 
+ #{record.email,jdbcType=VARCHAR},
+ 
+ #{record.address,jdbcType=VARCHAR}, 
+ #{record.town,jdbcType=VARCHAR}, 
+ #{record.zipcode,jdbcType=VARCHAR}, 
+ #{record.contactgroup,jdbcType=VARCHAR},
+ 
+ #{record.recstatus,jdbcType=VARCHAR}, 
+ #{record.rectimestamp,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="update" parameterType="map" >
+    update r3_actor
+    <set >
+      <if test="record.useridDirty" >
+        userid = #{record.userid,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.firstnameDirty" >
+        firstname = #{record.firstname,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.lastnameDirty" >
+        lastname = #{record.lastname,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.phoneDirty" >
+        phone = #{record.phone,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.cellphoneDirty" >
+        cellphone = #{record.cellphone,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.emailDirty" >
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.addressDirty" >
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.townDirty" >
+        town = #{record.town,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.zipcodeDirty" >
+        zipcode = #{record.zipcode,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.contactgroupDirty" >
+        contactgroup = #{record.contactgroup,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.recstatusDirty" >
+        recstatus = #{record.recstatus,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.rectimestampDirty" >
+        rectimestamp = #{record.rectimestamp,jdbcType=TIMESTAMP},
+      </if>      
+    </set>
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+      <!-- Non dovrebbe servire in quanto il filter e' sempre named. -->
+      <!-- <include refid="Filter_Where_Clause_4_Update" /> -->
+    </if>
+  </update>
+  <update id="updateByPrimaryKey" parameterType="map" >
+    update r3_actor
+    <set >
+      <if test="record.useridDirty" >
+        userid = #{record.userid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.firstnameDirty" >
+        firstname = #{record.firstname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastnameDirty" >
+        lastname = #{record.lastname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phoneDirty" >
+        phone = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cellphoneDirty" >
+        cellphone = #{record.cellphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.emailDirty" >
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addressDirty" >
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.townDirty" >
+        town = #{record.town,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zipcodeDirty" >
+        zipcode = #{record.zipcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contactgroupDirty" >
+        contactgroup = #{record.contactgroup,jdbcType=VARCHAR},
+      </if>
+      <if test="record.recstatusDirty" >
+        recstatus = #{record.recstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rectimestampDirty" >
+        rectimestamp = #{record.rectimestamp,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where  eventid = #{record.eventid,jdbcType=VARCHAR} and  actorid = #{record.actorid,jdbcType=VARCHAR}
+  </update>
+
+  <update id="insertActorsIntoSMS" parameterType="map" >
+    insert into r3_smsqueueitem (site, smsid, phonenumber, businesskey, recstatus)
+    select '${site}', '${smsid}', cellphone, actorid, 'sys_recact' 
+    from r3_actor 
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </update>
+
+  <update id="insertActorsIntoOutMailSpoolerRecipient" parameterType="map" >
+    insert into r3_outmailspoolerrecipient (site, messageid, msgto, businesskey, recstatus)
+    select '${site}', '${messageid}', email, actorid, 'sys_recact' 
+    from r3_actor 
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </update>
+  
+</mapper>

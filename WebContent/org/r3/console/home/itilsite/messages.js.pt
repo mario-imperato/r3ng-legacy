@@ -1,0 +1,10 @@
+
+$.r3Utils.namespace("org.r3.console.home.itilsite", window, function(aNamespace) 
+{
+  aNamespace.message = {
+    waiting:"Aguarde...",
+    initializationerror: "Aviso: ocorreu um erro durante a inicialização da página. O processamento não pode continuar"
+    
+
+  };
+});

@@ -1,0 +1,80 @@
+##
+##
+## $siteDTO: DTO site regata in fase di registrazione
+## $sevEventDTO: DTO sev_event
+## $siteSequence: String
+## $userDTO: Logged User
+
+## Il Layout dipende dal tipo di sito. Lo aggiorno Assegnando un default. Saranno poi i singoli script a farne uno diverso.
+## Forzo le options. I vicinati etc.. vengono creati dagli utenti e non lo specificano
+DELETE from r3_siteproperty where 
+   site = '${siteDTO.site}' and propertyscope = 'site.config' and 
+   propertykey in ('sitelayout', 'options', 'sitetheme');(EOS)
+   
+insert into r3_siteproperty (site, propertyscope, propertykey, propertyvalue)
+   values('${siteDTO.site}', 'site.config', 'sitelayout',  'shakeuslayout');(EOS) 
+      
+insert into r3_siteproperty (site, propertyscope, propertykey, propertyvalue)
+   values('${siteDTO.site}', 'site.config', 'options',  'gsidebar,profile1,profilebase');(EOS) 
+
+insert into r3_siteproperty (site, propertyscope, propertykey, propertyvalue)
+   values('${siteDTO.site}', 'site.config', 'sitetheme',  'skin-red');(EOS) 
+
+
+
+#if ($userDTO.userid != 'root' && $userDTO.nickname != 'root2') 
+INSERT INTO r3_userrole (site,userid,roleid) VALUES ('${siteDTO.site}','$userDTO.userid','shkadmin');(EOS)
+INSERT INTO r3_userrole (site,userid,roleid) VALUES ('${siteDTO.site}','$userDTO.userid','shkowner');(EOS)
+INSERT INTO r3_userrole (site,userid,roleid) VALUES ('${siteDTO.site}','$userDTO.userid','shkfollower');(EOS)
+INSERT INTO r3_userrole (site,userid,roleid) VALUES ('${siteDTO.site}','$userDTO.userid','shkmember');(EOS)
+#end
+
+##
+## BOF CMSCATEGORY  
+
+## EOF CMSCATEGORY  
+##
+
+##
+## BOF CMSGROUP  
+      
+## EOF CMSGROUP  
+##
+
+##
+insert into  r3_cmsattachmenttype (site, attachtypeid, attachtypedescr, contenttype, imagescaling, iconscaling, propertyrole,attachscope)
+values ('${siteDTO.site}', 'imgshkmessage', 'Foto Messaggio Timeline', null, '640,360', '180,110', 'imgshkmessage', 'system_scope');(EOS)
+
+insert into  r3_cmsattachmenttype (site, attachtypeid, attachtypedescr, contenttype, imagescaling, iconscaling, propertyrole,attachscope)
+values ('${siteDTO.site}', 'shksitephoto', 'Immagine Rettangolare Sito', null, '800, 280', '180,100', 'shksitephoto', 'system_scope');(EOS)
+
+insert into  r3_cmsattachmenttype (site, attachtypeid, attachtypedescr, contenttype, imagescaling, iconscaling, propertyrole,attachscope)
+values ('${siteDTO.site}', 'postfadoc', 'Documento', null, null, null, 'postfadoc', 'post_fileattach');(EOS)
+
+insert into  r3_cmsattachmenttype (site, attachtypeid, attachtypedescr, contenttype, imagescaling, iconscaling, propertyrole,attachscope)
+values ('${siteDTO.site}', 'postfalinkimg', 'Link Image', null, '640,360', '180,110', 'linkimage', 'post_fileattach');(EOS)
+
+##
+
+##
+## BOF CMSPAGE
+##
+## insert into r3_cmspage (site, pageid, pagetitle, forwardview, visibility, pagetype, pageicon1, pagelink, pageorder, pagestyle)
+##   values('${siteDTO.site}', 'console', 'Area Amministrativa', null, 'cmspg_txtmenu', 'page', null, '/org/r3/console/home.do', 45, null);(EOS)
+
+insert into r3_cmspage ( 
+  site, pageid, pagetype, pagetitle, pagelink, pageorder, visibility, pagestyle, forwardview, onuserstatus, permissions, viewoptions ) 
+  values('${siteDTO.site}', 'shksiteprofile', 'page', 'ShakeUs Info Profilo', '/org/r3/shkadmin/siteconfig.do', 70, 'cmspg_consolemenu', 'grade1', 'Success', 'userlogged', null, null) 
+  ;(EOS)
+  
+insert into r3_cmspagedescr (site, pageid, languagecode, pagetitle)
+  select site, pageid, 'it', pagetitle from r3_cmspage where site = '${siteDTO.site}';(EOS)
+ 
+##
+## BOF CLASSIFIERS 
+
+
+ 
+## EOF CLASSIFIERS 
+##
+ 

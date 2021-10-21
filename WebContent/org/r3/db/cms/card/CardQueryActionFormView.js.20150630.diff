@@ -1,0 +1,179 @@
+<< BOF Deleting rows at: 8
+
+<< BOF Deleting rows at: 34
+       	  "sClass": "center", "sTitle": "",
+          "fnRender": function ( oObj, sVal ) 
+          {
+          	    var item = oObj.aData; 
+                return item.indexOfItem;
+          }
+       };
+
+   	   defaultColumnDefinitions['valid'] = 
+       {  
+       	  "aTargets": [ -1 ], 
+<< BOF Changing rows at: 50
+                return item.getValidityAsSemaphore();
+                return item.indexOfItem;
+<< BOF Changing rows at: 58
+          "sTitle": "site",
+          "sTitle": org.r3.db.cms.card.message.site,
+<< BOF Changing rows at: 69
+          "sTitle": "Id.",
+          "sTitle": org.r3.db.cms.card.message.cardid,
+<< BOF Deleting rows at: 76
+
+        defaultColumnDefinitions['categoryid'] = 
+        {
+        	  "aTargets": [ -1 ],
+           "sClass": "left",
+           "sTitle": "Tipo",
+           "fnRender": function ( oObj, sVal )
+           {
+              var item = oObj.aData; 
+              return item.getCategorydescr() || '';
+           }       
+        };
+        
+<< BOF Changing rows at: 93
+          "sTitle": "Titolo di sistema",
+          "sTitle": org.r3.db.cms.card.message.systemtitle,
+<< BOF Deleting rows at: 100
+
+<< BOF Changing rows at: 102
+        {
+        	  "aTargets": [ -1 ],
+           "sClass": "left",
+           "sTitle": "pagelinktype",
+           "fnRender": function ( oObj, sVal )
+           {
+              var item = oObj.aData; 
+              return item.dataBean.pagelinktype || '';
+           }       
+        };
+         defaultColumnDefinitions['pagelink'] = 
+        {
+        	  "aTargets": [ -1 ],
+           "sClass": "left",
+           "sTitle": "pagelink",
+           "fnRender": function ( oObj, sVal )
+           {
+              var item = oObj.aData; 
+              return item.dataBean.pagelink || '';
+           }       
+        };
+         defaultColumnDefinitions['pageid'] = 
+        {
+        	  "aTargets": [ -1 ],
+           "sClass": "left",
+           "sTitle": "pageid",
+           "fnRender": function ( oObj, sVal )
+           {
+              var item = oObj.aData; 
+              return item.dataBean.pageid || '';
+           }       
+        };
+         defaultColumnDefinitions['refdate'] = 
+        {
+        	  "aTargets": [ -1 ],
+           "sClass": "left",
+           "sTitle": "Data Rif.",
+           "fnRender": function ( oObj, sVal )
+           {
+              var item = oObj.aData; 
+              return item.dataBean.refdate || '';
+           }       
+        };
+         defaultColumnDefinitions['options'] = 
+        {
+        	  "aTargets": [ -1 ],
+           "sClass": "left",
+           "sTitle": "options",
+           "fnRender": function ( oObj, sVal )
+           {
+              var item = oObj.aData; 
+              return item.dataBean.options || '';
+           }       
+        };
+         
+       {
+       	  "aTargets": [ -1 ],
+          "sClass": "left",
+          "sTitle": org.r3.db.cms.card.message.pagelinktype,
+          "fnRender": function ( oObj, sVal )
+          {
+             var item = oObj.aData; 
+             return item.dataBean.pagelinktype || '';
+          }       
+       };
+        defaultColumnDefinitions['pagelink'] = 
+       {
+       	  "aTargets": [ -1 ],
+          "sClass": "left",
+          "sTitle": org.r3.db.cms.card.message.pagelink,
+          "fnRender": function ( oObj, sVal )
+          {
+             var item = oObj.aData; 
+             return item.dataBean.pagelink || '';
+          }       
+       };
+        defaultColumnDefinitions['pageid'] = 
+       {
+       	  "aTargets": [ -1 ],
+          "sClass": "left",
+          "sTitle": org.r3.db.cms.card.message.pageid,
+          "fnRender": function ( oObj, sVal )
+          {
+             var item = oObj.aData; 
+             return item.dataBean.pageid || '';
+          }       
+       };
+        defaultColumnDefinitions['refdate'] = 
+       {
+       	  "aTargets": [ -1 ],
+          "sClass": "left",
+          "sTitle": org.r3.db.cms.card.message.refdate,
+          "fnRender": function ( oObj, sVal )
+          {
+             var item = oObj.aData; 
+             return item.dataBean.refdate || '';
+          }       
+       };
+        defaultColumnDefinitions['options'] = 
+       {
+       	  "aTargets": [ -1 ],
+          "sClass": "left",
+          "sTitle": org.r3.db.cms.card.message.options,
+          "fnRender": function ( oObj, sVal )
+          {
+             var item = oObj.aData; 
+             return item.dataBean.options || '';
+          }       
+       };
+<< BOF Changing rows at: 161
+          "sTitle": "validityrule",
+          "sTitle": org.r3.db.cms.card.message.validityrule,
+<< BOF Changing rows at: 172
+          "sTitle": "validfrom",
+          "sTitle": org.r3.db.cms.card.message.validfrom,
+<< BOF Changing rows at: 183
+          "sTitle": "validto",
+          "sTitle": org.r3.db.cms.card.message.validto,
+<< BOF Changing rows at: 194
+          "sTitle": "recstatus",
+          "sTitle": org.r3.db.cms.card.message.recstatus,
+<< BOF Changing rows at: 205
+          "sTitle": "rectimestamp",
+          "sTitle": org.r3.db.cms.card.message.rectimestamp,
+<< BOF Inserting rows at: 212
+        defaultColumnDefinitions['categoryid'] = 
+       {
+       	  "aTargets": [ -1 ],
+          "sClass": "left",
+          "sTitle": org.r3.db.cms.card.message.categoryid,
+          "fnRender": function ( oObj, sVal )
+          {
+             var item = oObj.aData; 
+             return item.dataBean.categoryid || '';
+          }       
+       };

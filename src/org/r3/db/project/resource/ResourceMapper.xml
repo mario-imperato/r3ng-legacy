@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--
+  TODO: xmlCopyRight.txt
+   
+  -->
+<!--
+  TODO: xmlReadme.txt
+   
+  -->
+
+<!-- <mapper resource="org/r3/db/project/resource/ResourceMapper.xml"/> -->
+<mapper namespace="org.r3.db.project.resource.ResourceMapper" >
+    <resultMap id="BaseResultMap" type="org.r3.db.project.resource.ResourceDTO" >
+         <id column="resourceid" property="resourceid" jdbcType="VARCHAR" />
+           <result column="resourcetype" property="resourcetype" jdbcType="VARCHAR" />
+           <result column="resourcedescr" property="resourcedescr" jdbcType="VARCHAR" />
+           <result column="sitedomain" property="sitedomain" jdbcType="VARCHAR" />
+           <result column="userid" property="userid" jdbcType="VARCHAR" />
+           <result column="firstname" property="firstname" jdbcType="VARCHAR" />
+           <result column="lastname" property="lastname" jdbcType="VARCHAR" />
+           <result column="phone" property="phone" jdbcType="VARCHAR" />
+           <result column="cellphone" property="cellphone" jdbcType="VARCHAR" />
+           <result column="email" property="email" jdbcType="VARCHAR" />
+           <result column="address" property="address" jdbcType="VARCHAR" />
+           <result column="town" property="town" jdbcType="VARCHAR" />
+           <result column="zipcode" property="zipcode" jdbcType="VARCHAR" />
+           <result column="ssn" property="ssn" jdbcType="VARCHAR" />
+           <result column="sex" property="sex" jdbcType="VARCHAR" />
+           <result column="birthdate" property="birthdate" jdbcType="DATE" />
+           <result column="birthtown" property="birthtown" jdbcType="VARCHAR" />
+           <result column="birthdistrict" property="birthdistrict" jdbcType="VARCHAR" />
+           <result column="resourcecardid" property="resourcecardid" jdbcType="VARCHAR" />
+           <result column="recstatus" property="recstatus" jdbcType="VARCHAR" />
+           <result column="rectimestamp" property="rectimestamp" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+  <sql id="Filter_Where_Clause" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+                <when test="criterion.subSelectCriterion" >
+                  and ${criterion.prefixCondition} #{criterion.value} ${criterion.suffixCondition}
+                </when>                                
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <!--
+  <sql id="Filter_Where_Clause_4_Update" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  -->  
+  <sql id="Base_Column_List" >
+    resourceid,  resourcetype,  resourcedescr,  sitedomain,  userid,  firstname,  lastname,  phone,  cellphone,
+  email,  address,  town,  zipcode,  ssn,  sex,  birthdate,  birthtown,  birthdistrict,
+  resourcecardid,  recstatus,  rectimestamp  </sql>
+  <select id="selectByResourceid" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from prj_resource
+    where resourceid = #{resourceid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByResourceid" parameterType="map" >
+    delete
+    from prj_resource
+    where resourceid = #{resourceid,jdbcType=VARCHAR}
+  </delete>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from prj_resource    
+    where  resourceid = #{pk.resourceid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete
+    from prj_resource
+    where  resourceid = #{pk.resourceid,jdbcType=VARCHAR}
+  </delete>  
+  <select id="select" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <if test="filter != null &amp;&amp; filter.distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from prj_resource
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+    <if test="filter != null &amp;&amp; filter.orderByClause != null" >
+      order by ${filter.orderByClause}
+    </if>
+    <if test="filter != null &amp;&amp; filter.limitFetch > 0" >
+      limit ${filter.limitFetch}
+    </if>
+  </select>
+  <select id="count" parameterType="map" resultType="java.lang.Integer" >
+    select count(*) from prj_resource
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </select>  
+  <delete id="delete" parameterType="map" >
+    delete from prj_resource
+    <!-- _parameter: dato che e' una map lo sostituisco con il nome del parametro in quanto non è l'unico -->
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="map" >
+    insert into prj_resource (
+ resourceid, resourcetype, resourcedescr, sitedomain, userid, firstname, lastname, phone, cellphone,
+ email, address, town, zipcode, ssn, sex, birthdate, birthtown, birthdistrict,
+ resourcecardid, recstatus, rectimestamp      )
+    values (
+ 
+ #{record.resourceid,jdbcType=VARCHAR}, 
+ #{record.resourcetype,jdbcType=VARCHAR}, 
+ #{record.resourcedescr,jdbcType=VARCHAR}, 
+ #{record.sitedomain,jdbcType=VARCHAR},
+ 
+ #{record.userid,jdbcType=VARCHAR}, 
+ #{record.firstname,jdbcType=VARCHAR}, 
+ #{record.lastname,jdbcType=VARCHAR}, 
+ #{record.phone,jdbcType=VARCHAR},
+ 
+ #{record.cellphone,jdbcType=VARCHAR}, 
+ #{record.email,jdbcType=VARCHAR}, 
+ #{record.address,jdbcType=VARCHAR}, 
+ #{record.town,jdbcType=VARCHAR},
+ 
+ #{record.zipcode,jdbcType=VARCHAR}, 
+ #{record.ssn,jdbcType=VARCHAR}, 
+ #{record.sex,jdbcType=VARCHAR}, 
+ #{record.birthdate,jdbcType=DATE},
+ 
+ #{record.birthtown,jdbcType=VARCHAR}, 
+ #{record.birthdistrict,jdbcType=VARCHAR}, 
+ #{record.resourcecardid,jdbcType=VARCHAR}, 
+ #{record.recstatus,jdbcType=VARCHAR},
+ 
+ #{record.rectimestamp,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="update" parameterType="map" >
+    update prj_resource
+    <set >
+      <if test="record.resourcetypeDirty" >
+        resourcetype = #{record.resourcetype,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.resourcedescrDirty" >
+        resourcedescr = #{record.resourcedescr,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.sitedomainDirty" >
+        sitedomain = #{record.sitedomain,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.useridDirty" >
+        userid = #{record.userid,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.firstnameDirty" >
+        firstname = #{record.firstname,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.lastnameDirty" >
+        lastname = #{record.lastname,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.phoneDirty" >
+        phone = #{record.phone,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.cellphoneDirty" >
+        cellphone = #{record.cellphone,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.emailDirty" >
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.addressDirty" >
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.townDirty" >
+        town = #{record.town,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.zipcodeDirty" >
+        zipcode = #{record.zipcode,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.ssnDirty" >
+        ssn = #{record.ssn,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.sexDirty" >
+        sex = #{record.sex,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.birthdateDirty" >
+        birthdate = #{record.birthdate,jdbcType=DATE},
+      </if>      
+      <if test="record.birthtownDirty" >
+        birthtown = #{record.birthtown,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.birthdistrictDirty" >
+        birthdistrict = #{record.birthdistrict,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.resourcecardidDirty" >
+        resourcecardid = #{record.resourcecardid,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.recstatusDirty" >
+        recstatus = #{record.recstatus,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.rectimestampDirty" >
+        rectimestamp = #{record.rectimestamp,jdbcType=TIMESTAMP},
+      </if>      
+    </set>
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+      <!-- Non dovrebbe servire in quanto il filter e' sempre named. -->
+      <!-- <include refid="Filter_Where_Clause_4_Update" /> -->
+    </if>
+  </update>
+  <update id="updateByPrimaryKey" parameterType="map" >
+    update prj_resource
+    <set >
+      <if test="record.resourcetypeDirty" >
+        resourcetype = #{record.resourcetype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.resourcedescrDirty" >
+        resourcedescr = #{record.resourcedescr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sitedomainDirty" >
+        sitedomain = #{record.sitedomain,jdbcType=VARCHAR},
+      </if>
+      <if test="record.useridDirty" >
+        userid = #{record.userid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.firstnameDirty" >
+        firstname = #{record.firstname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastnameDirty" >
+        lastname = #{record.lastname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phoneDirty" >
+        phone = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cellphoneDirty" >
+        cellphone = #{record.cellphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.emailDirty" >
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addressDirty" >
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.townDirty" >
+        town = #{record.town,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zipcodeDirty" >
+        zipcode = #{record.zipcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ssnDirty" >
+        ssn = #{record.ssn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sexDirty" >
+        sex = #{record.sex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.birthdateDirty" >
+        birthdate = #{record.birthdate,jdbcType=DATE},
+      </if>
+      <if test="record.birthtownDirty" >
+        birthtown = #{record.birthtown,jdbcType=VARCHAR},
+      </if>
+      <if test="record.birthdistrictDirty" >
+        birthdistrict = #{record.birthdistrict,jdbcType=VARCHAR},
+      </if>
+      <if test="record.resourcecardidDirty" >
+        resourcecardid = #{record.resourcecardid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.recstatusDirty" >
+        recstatus = #{record.recstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rectimestampDirty" >
+        rectimestamp = #{record.rectimestamp,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where  resourceid = #{record.resourceid,jdbcType=VARCHAR}
+  </update>
+
+</mapper>

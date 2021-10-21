@@ -1,0 +1,35 @@
+ 
+<div class="page-header" style="padding-bottom: 8px; border-bottom: 1px solid #dddddd;">
+    <h1 style="color: #CF221B;">{%=o.title%}</h1>
+    <p>{%=o.subtitle%}</p>
+</div>
+  
+<div class='termsAndConditionsDisclaimerSummary'></div>
+
+<form id="termsandconditionsdisclaimerForm_form" method="POST" class="form-horizontal">
+   
+<div class="form-group">
+     <!-- <label class="col-md-2 control-label "  >&nbsp;</label>  -->
+     <div class="col-md-12 columns" >
+        <label class="checkbox-inline" style="width: 220px; ">
+           <input id="termsandconditionsdisclaimerForm_accept" type="checkbox" value="btrue" name="accept" />Accetto I Termini Esposti</label>               
+     </div>
+ </div>
+ 
+ </form>
+
+ <div class="form-action-bar">
+      <button type="button" id="termsandconditionsdisclaimerForm_showfull_action" class="btn btn-default" >
+        <span>{%=org.r3.shakeus.newsite.message.showfulltermsandconditions%}</span>
+      </button>
+      
+      <button type="button" id="termsandconditionsdisclaimerForm_accept_action" class="btn btn-success" >
+          <span>{%=org.r3.message.action_continue%}</span>
+      </button>
+     
+      <button type="button" id="termsandconditionsdisclaimerForm_deny_action" class="btn btn-danger" >
+        <span>{%=org.r3.message.action_cancel%}</span>
+      </button>
+                 
+ </div> 
+     

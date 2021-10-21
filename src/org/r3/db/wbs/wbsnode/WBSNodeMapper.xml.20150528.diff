@@ -1,0 +1,82 @@
+<< BOF Inserting rows at: 30
+           <result column="completionstatus" property="completionstatus" jdbcType="VARCHAR" />
+<< BOF Changing rows at: 111
+  nodeparentid,  nodepath,  assignedto,  duration,  startdate,  enddate,  completiontype,  completiondescr,  completion,
+  completionfrom,  completionto,  completiondate,  completioneffort,  completioneffunit,  economicvalue,  economicvalue2,  economicvalue3,  remarks,
+  stereotype,  recstatus,  rectimestamp  </sql>
+  nodeparentid,  nodepath,  assignedto,  duration,  startdate,  enddate,  completiontype,  completionstatus,  completiondescr,
+  completion,  completionfrom,  completionto,  completiondate,  completioneffort,  completioneffunit,  economicvalue,  economicvalue2,  economicvalue3,
+  remarks,  stereotype,  recstatus,  rectimestamp  </sql>
+<< BOF Changing rows at: 169
+ nodeparentid, nodepath, assignedto, duration, startdate, enddate, completiontype, completiondescr, completion,
+ completionfrom, completionto, completiondate, completioneffort, completioneffunit, economicvalue, economicvalue2, economicvalue3, remarks,
+ stereotype, recstatus, rectimestamp      )
+ nodeparentid, nodepath, assignedto, duration, startdate, enddate, completiontype, completionstatus, completiondescr,
+ completion, completionfrom, completionto, completiondate, completioneffort, completioneffunit, economicvalue, economicvalue2, economicvalue3,
+ remarks, stereotype, recstatus, rectimestamp      )
+<< BOF Inserting rows at: 194
+ #{record.completionstatus,jdbcType=VARCHAR}, 
+<< BOF Changing rows at: 196
+ #{record.completionfrom,jdbcType=REAL}, 
+ #{record.completionto,jdbcType=REAL},
+ #{record.completionfrom,jdbcType=REAL},
+<< BOF Inserting rows at: 199
+ #{record.completionto,jdbcType=REAL}, 
+<< BOF Changing rows at: 201
+ #{record.completioneffunit,jdbcType=VARCHAR}, 
+ #{record.economicvalue,jdbcType=REAL},
+ #{record.completioneffunit,jdbcType=VARCHAR},
+<< BOF Inserting rows at: 204
+ #{record.economicvalue,jdbcType=REAL}, 
+<< BOF Changing rows at: 206
+ #{record.remarks,jdbcType=VARCHAR}, 
+ #{record.stereotype,jdbcType=VARCHAR},
+ #{record.remarks,jdbcType=VARCHAR},
+<< BOF Inserting rows at: 209
+ #{record.stereotype,jdbcType=VARCHAR}, 
+<< BOF Inserting rows at: 261
+      <if test="record.completionstatusDirty" >
+        completionstatus = #{record.completionstatus,jdbcType=VARCHAR},
+      </if>      
+<< BOF Inserting rows at: 358
+      <if test="record.completionstatusDirty" >
+        completionstatus = #{record.completionstatus,jdbcType=VARCHAR},
+      </if>
+<< BOF Deleting rows at: 404
+  <resultMap id="CountChildrenResultMap" type="org.r3.db.CountByDTO" >
+           <result column="countval"      property="count"  jdbcType="INTEGER" />
+           <result column="minval"        property="minintvalue"     jdbcType="INTEGER" />
+           <result column="maxval"        property="maxintvalue"     jdbcType="INTEGER" />
+  </resultMap>
+  
+  <select id="countChildren" parameterType="map" resultMap="CountChildrenResultMap" >
+    select count(*) as countval, min(nodeorder) as minval, max(nodeorder) as maxval from r3_wbsnode
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </select>  
+
+  <update id="shiftChildrenNodes" parameterType="map" >
+    update r3_wbsnode
+    <set >      
+        nodeorder = nodeorder + #{shiftAmount,jdbcType=INTEGER}
+    </set>
+    
+     <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+     </if>
+     
+  </update>
+
+  <update id="updateChildrenPath" parameterType="map" >
+    update r3_wbsnode
+    <set >      
+        nodepath = concat(#{toPathPrefix,jdbcType=VARCHAR}, right(nodePath, length(nodePath) - #{fromPathPrefixLength,jdbcType=INTEGER}))
+    </set>
+    
+     <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+     </if>
+     
+  </update>
+    

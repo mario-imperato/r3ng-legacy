@@ -1,0 +1,182 @@
+<< BOF Inserting rows at: 11
+
+<!-- Mapper Target DBMS: [SERVER_MYSQL] -->
+<< BOF Inserting rows at: 30
+           <result column="crewmemberid" property="crewmemberid" jdbcType="VARCHAR" />
+<< BOF Changing rows at: 97
+  imageurl,  imageheight,  imagewidth,  iconurl,  iconwidth,  iconheight,  uploadtimestamp  </sql>
+  imageurl,  imageheight,  imagewidth,  iconurl,  iconwidth,  iconheight,  uploadtimestamp,  crewmemberid  </sql>
+  
+  <sql id='GroupBy_Column_List'>
+    <trim suffixOverrides=",">
+        <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('documentid')" >
+           documentid,
+       </when>
+       <otherwise>
+           null as documentid,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('eventid')" >
+           eventid,
+       </when>
+       <otherwise>
+           null as eventid,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('applicationid')" >
+           applicationid,
+       </when>
+       <otherwise>
+           null as applicationid,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('documenttypecode')" >
+           documenttypecode,
+       </when>
+       <otherwise>
+           null as documenttypecode,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('documentname')" >
+           documentname,
+       </when>
+       <otherwise>
+           null as documentname,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('documenturl')" >
+           documenturl,
+       </when>
+       <otherwise>
+           null as documenturl,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('filesize')" >
+           filesize,
+       </when>
+       <otherwise>
+           null as filesize,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('contenttype')" >
+           contenttype,
+       </when>
+       <otherwise>
+           null as contenttype,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('annotation')" >
+           annotation,
+       </when>
+       <otherwise>
+           null as annotation,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('imageurl')" >
+           imageurl,
+       </when>
+       <otherwise>
+           null as imageurl,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('imageheight')" >
+           imageheight,
+       </when>
+       <otherwise>
+           null as imageheight,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('imagewidth')" >
+           imagewidth,
+       </when>
+       <otherwise>
+           null as imagewidth,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('iconurl')" >
+           iconurl,
+       </when>
+       <otherwise>
+           null as iconurl,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('iconwidth')" >
+           iconwidth,
+       </when>
+       <otherwise>
+           null as iconwidth,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('iconheight')" >
+           iconheight,
+       </when>
+       <otherwise>
+           null as iconheight,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('uploadtimestamp')" >
+           uploadtimestamp,
+       </when>
+       <otherwise>
+           null as uploadtimestamp,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('crewmemberid')" >
+           crewmemberid,
+       </when>
+       <otherwise>
+           null as crewmemberid,
+       </otherwise>         
+     </choose> 
+	       </trim>       
+  </sql>
+  
+<< BOF Changing rows at: 125
+    <include refid="Base_Column_List" />
+    
+    <choose>
+       <when test="filter != null &amp;&amp; filter.groupByClause != null" >
+           <include refid="GroupBy_Column_List" />
+       </when>
+       <otherwise>
+           <include refid="Base_Column_List" />
+       </otherwise>
+    </choose>
+        
+<< BOF Inserting rows at: 130
+    <if test="filter != null &amp;&amp; filter.groupByClause != null" >
+      group by ${filter.groupByClause}
+    </if>
+<< BOF Changing rows at: 153
+ imageurl, imageheight, imagewidth, iconurl, iconwidth, iconheight, uploadtimestamp      )
+ imageurl, imageheight, imagewidth, iconurl, iconwidth, iconheight, uploadtimestamp, crewmemberid      )
+<< BOF Changing rows at: 174
+ #{record.uploadtimestamp,jdbcType=TIMESTAMP}
+ #{record.uploadtimestamp,jdbcType=TIMESTAMP},
+ 
+ #{record.crewmemberid,jdbcType=VARCHAR}
+<< BOF Inserting rows at: 225
+      <if test="record.crewmemberidDirty" >
+        crewmemberid = #{record.crewmemberid,jdbcType=VARCHAR},
+      </if>      
+<< BOF Inserting rows at: 280
+      <if test="record.crewmemberidDirty" >
+        crewmemberid = #{record.crewmemberid,jdbcType=VARCHAR},
+      </if>

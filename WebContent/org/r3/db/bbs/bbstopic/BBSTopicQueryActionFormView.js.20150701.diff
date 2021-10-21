@@ -1,0 +1,31 @@
+<< BOF Changing rows at: 33
+       	  "sClass": "center", "sTitle": "",
+       	  "sClass": "center", 
+       	  "sTitle": "",
+<< BOF Changing rows at: 45
+          "sTitle": "site",
+          "sTitle": org.r3.db.bbs.bbstopic.message.site,
+<< BOF Changing rows at: 56
+          "sTitle": "topicid",
+          "sTitle": org.r3.db.bbs.bbstopic.message.topicid,
+<< BOF Changing rows at: 67
+          "sTitle": "topictitle",
+          "sTitle": org.r3.db.bbs.bbstopic.message.topictitle,
+<< BOF Changing rows at: 78
+          "sTitle": "cardid",
+          "sTitle": org.r3.db.bbs.bbstopic.message.cardid,
+<< BOF Changing rows at: 89
+          "sTitle": "moderatorid",
+          "sTitle": org.r3.db.bbs.bbstopic.message.moderatorid,
+<< BOF Changing rows at: 100
+          "sTitle": "moderatormode",
+          "sTitle": org.r3.db.bbs.bbstopic.message.moderatormode,
+<< BOF Changing rows at: 111
+          "sTitle": "options",
+          "sTitle": org.r3.db.bbs.bbstopic.message.options,
+<< BOF Changing rows at: 122
+          "sTitle": "recstatus",
+          "sTitle": org.r3.db.bbs.bbstopic.message.recstatus,
+<< BOF Changing rows at: 133
+          "sTitle": "rectimestamp",
+          "sTitle": org.r3.db.bbs.bbstopic.message.rectimestamp,

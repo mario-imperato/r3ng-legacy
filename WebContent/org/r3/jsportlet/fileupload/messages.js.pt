@@ -1,0 +1,20 @@
+
+$.r3Utils.namespace("org.r3.jsportlet.fileupload", window, function(aNamespace) 
+{
+  aNamespace.message = {
+    waiting:"Aguarde...",
+    checkcolumnmappingsfailed: "Atenção: errado mapeamento de coluna.",
+    
+    jsportletfileuploadform_form_legend: 'Carregar o arquivo',
+    jsportletfileuploadform_form_panelinfo: "Selecionar os arquivos clicando 'Incluir arquivo' e iniciar o carregamento",
+    jsportletfileuploadform_addfile : 'Incluir arquivo...  ',
+    jsportletfileuploadform_startupload  : 'Iniciar o carregamento',
+    jsportletfileuploadform_cancelupload : 'Cancelar carregamento',
+    jsportletfileuploadform_back : 'Voltar',
+    
+    jsportletfileimportform_legend: 'Detalhe dos arquivos',
+    jsportletfileimportform_panelinfo: 'Selecionar o mapeamento correto entre os campos e as colunas',
+    jsportletfileimportform_columnmatch: 'Campo'
+    
+  };
+});

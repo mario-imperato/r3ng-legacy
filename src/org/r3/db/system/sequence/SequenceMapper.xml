@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--
+  TODO: xmlCopyRight.txt
+   
+  -->
+<!--
+  TODO: xmlReadme.txt
+   
+  -->
+
+<mapper namespace="org.r3.db.system.sequence.SequenceMapper" >
+    <resultMap id="BaseResultMap" type="org.r3.db.system.sequence.SequenceDTO" >
+         <id column="sequencecode" property="sequencecode" jdbcType="VARCHAR" />
+           <result column="sequencevalue" property="sequencevalue" jdbcType="INTEGER" />
+           <result column="sequencedescr" property="sequencedescr" jdbcType="VARCHAR" />
+    </resultMap>
+
+  <sql id="Base_Column_List" >
+   sequencecode, sequencevalue, sequencedescr
+  </sql>
+  <select id="selectbySequencecode" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from r3_sequence
+    where sequencecode = #{sequencecode,jdbcType=VARCHAR}
+    for update
+  </select>
+  <update id="updateByPrimaryKey" parameterType="org.r3.db.system.sequence.SequenceDTO" >
+    update r3_sequence
+    <set >
+      <if test="sequencevalueDirty" >
+        sequencevalue = #{sequencevalue,jdbcType=INTEGER},
+      </if>
+      <if test="sequencedescrDirty" >
+        sequencedescr = #{sequencedescr,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where  sequencecode = #{sequencecode,jdbcType=VARCHAR}
+  </update>
+
+</mapper>

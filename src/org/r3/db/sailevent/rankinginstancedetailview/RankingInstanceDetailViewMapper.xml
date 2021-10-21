@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--
+  TODO: xmlCopyRight.txt
+   
+  -->
+<!--
+  TODO: xmlReadme.txt
+   
+  -->
+
+
+
+<!-- <mapper resource="org/r3/db/sailevent/rankinginstancedetailview/RankingInstanceDetailViewMapper.xml"/> -->
+<mapper namespace="org.r3.db.sailevent.rankinginstancedetailview.RankingInstanceDetailViewMapper" >
+    <resultMap id="BaseResultMap" type="org.r3.db.sailevent.rankinginstancedetailview.RankingInstanceDetailViewDTO" >
+         <result column="rankentryid" property="rankentryid" jdbcType="INTEGER" />
+           <result column="eventid" property="eventid" jdbcType="VARCHAR" />
+           <result column="instanceid" property="instanceid" jdbcType="VARCHAR" />
+           <result column="applicationid" property="applicationid" jdbcType="VARCHAR" />
+           <result column="pos" property="pos" jdbcType="INTEGER" />
+           <result column="sailnumber" property="sailnumber" jdbcType="VARCHAR" />
+           <result column="yachtname" property="yachtname" jdbcType="VARCHAR" />
+           <result column="owner" property="owner" jdbcType="VARCHAR" />
+           <result column="club" property="club" jdbcType="VARCHAR" />
+           <result column="model" property="model" jdbcType="VARCHAR" />
+           <result column="racegroup" property="racegroup" jdbcType="VARCHAR" />
+           <result column="division" property="division" jdbcType="VARCHAR" />
+           <result column="timoniere" property="timoniere" jdbcType="VARCHAR" />
+           <result column="arrivaldate" property="arrivaldate" jdbcType="TIMESTAMP" />
+           <result column="realtime" property="realtime" jdbcType="INTEGER" />
+           <result column="drealtime" property="drealtime" jdbcType="INTEGER" />
+           <result column="correctedtime" property="correctedtime" jdbcType="INTEGER" />
+           <result column="annotation" property="annotation" jdbcType="VARCHAR" />
+           <result column="perctempen" property="perctempen" jdbcType="VARCHAR" />
+           <result column="score" property="score" jdbcType="REAL" />
+           <result column="maxraces" property="maxraces" jdbcType="INTEGER" />
+           <result column="scorer01" property="scorer01" jdbcType="REAL" />
+           <result column="scorer02" property="scorer02" jdbcType="REAL" />
+           <result column="scorer03" property="scorer03" jdbcType="REAL" />
+           <result column="scorer04" property="scorer04" jdbcType="REAL" />
+           <result column="scorer05" property="scorer05" jdbcType="REAL" />
+           <result column="scorer06" property="scorer06" jdbcType="REAL" />
+           <result column="scorer07" property="scorer07" jdbcType="REAL" />
+           <result column="scorer08" property="scorer08" jdbcType="REAL" />
+           <result column="scorer09" property="scorer09" jdbcType="REAL" />
+           <result column="scorer10" property="scorer10" jdbcType="REAL" />
+           <result column="scorer11" property="scorer11" jdbcType="REAL" />
+           <result column="scorer12" property="scorer12" jdbcType="REAL" />
+           <result column="scorer13" property="scorer13" jdbcType="REAL" />
+           <result column="scorer14" property="scorer14" jdbcType="REAL" />
+           <result column="scorer15" property="scorer15" jdbcType="REAL" />
+           <result column="scorern01" property="scorern01" jdbcType="VARCHAR" />
+           <result column="scorern02" property="scorern02" jdbcType="VARCHAR" />
+           <result column="scorern03" property="scorern03" jdbcType="VARCHAR" />
+           <result column="scorern04" property="scorern04" jdbcType="VARCHAR" />
+           <result column="scorern05" property="scorern05" jdbcType="VARCHAR" />
+           <result column="scorern06" property="scorern06" jdbcType="VARCHAR" />
+           <result column="scorern07" property="scorern07" jdbcType="VARCHAR" />
+           <result column="scorern08" property="scorern08" jdbcType="VARCHAR" />
+           <result column="scorern09" property="scorern09" jdbcType="VARCHAR" />
+           <result column="scorern10" property="scorern10" jdbcType="VARCHAR" />
+           <result column="scorern11" property="scorern11" jdbcType="VARCHAR" />
+           <result column="scorern12" property="scorern12" jdbcType="VARCHAR" />
+           <result column="scorern13" property="scorern13" jdbcType="VARCHAR" />
+           <result column="scorern14" property="scorern14" jdbcType="VARCHAR" />
+           <result column="scorern15" property="scorern15" jdbcType="VARCHAR" />
+           <result column="rectimestamp" property="rectimestamp" jdbcType="TIMESTAMP" />
+           <result column="yachtbsf" property="yachtbsf" jdbcType="REAL" />
+           <result column="yachtgph" property="yachtgph" jdbcType="REAL" />
+    </resultMap>
+
+  <sql id="Filter_Where_Clause" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose>
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+                <when test="criterion.subSelectCriterion" >
+                  and ${criterion.prefixCondition} #{criterion.value} ${criterion.suffixCondition}
+                </when>                                
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    rankentryid,  eventid,  instanceid,  applicationid,  pos,  sailnumber,  yachtname,  owner,  club,
+  model,  racegroup,  division,  timoniere,  arrivaldate,  realtime,  drealtime,  correctedtime,  annotation,
+  perctempen,  score,  maxraces,  scorer01,  scorer02,  scorer03,  scorer04,  scorer05,  scorer06,
+  scorer07,  scorer08,  scorer09,  scorer10,  scorer11,  scorer12,  scorer13,  scorer14,  scorer15,
+  scorern01,  scorern02,  scorern03,  scorern04,  scorern05,  scorern06,  scorern07,  scorern08,  scorern09,
+  scorern10,  scorern11,  scorern12,  scorern13,  scorern14,  scorern15,  rectimestamp,  yachtbsf,  yachtgph  </sql>
+  
+  <sql id='GroupBy_Column_List'>
+    <trim suffixOverrides=",">
+        <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('rankentryid')" >
+           rankentryid,
+       </when>
+       <otherwise>
+           null as rankentryid,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('eventid')" >
+           eventid,
+       </when>
+       <otherwise>
+           null as eventid,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('instanceid')" >
+           instanceid,
+       </when>
+       <otherwise>
+           null as instanceid,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('applicationid')" >
+           applicationid,
+       </when>
+       <otherwise>
+           null as applicationid,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('pos')" >
+           pos,
+       </when>
+       <otherwise>
+           null as pos,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('sailnumber')" >
+           sailnumber,
+       </when>
+       <otherwise>
+           null as sailnumber,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('yachtname')" >
+           yachtname,
+       </when>
+       <otherwise>
+           null as yachtname,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('owner')" >
+           owner,
+       </when>
+       <otherwise>
+           null as owner,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('club')" >
+           club,
+       </when>
+       <otherwise>
+           null as club,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('model')" >
+           model,
+       </when>
+       <otherwise>
+           null as model,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('racegroup')" >
+           racegroup,
+       </when>
+       <otherwise>
+           null as racegroup,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('division')" >
+           division,
+       </when>
+       <otherwise>
+           null as division,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('timoniere')" >
+           timoniere,
+       </when>
+       <otherwise>
+           null as timoniere,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('arrivaldate')" >
+           arrivaldate,
+       </when>
+       <otherwise>
+           null as arrivaldate,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('realtime')" >
+           realtime,
+       </when>
+       <otherwise>
+           null as realtime,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('drealtime')" >
+           drealtime,
+       </when>
+       <otherwise>
+           null as drealtime,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('correctedtime')" >
+           correctedtime,
+       </when>
+       <otherwise>
+           null as correctedtime,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('annotation')" >
+           annotation,
+       </when>
+       <otherwise>
+           null as annotation,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('perctempen')" >
+           perctempen,
+       </when>
+       <otherwise>
+           null as perctempen,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('score')" >
+           score,
+       </when>
+       <otherwise>
+           null as score,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('maxraces')" >
+           maxraces,
+       </when>
+       <otherwise>
+           null as maxraces,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorer01')" >
+           scorer01,
+       </when>
+       <otherwise>
+           null as scorer01,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorer02')" >
+           scorer02,
+       </when>
+       <otherwise>
+           null as scorer02,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorer03')" >
+           scorer03,
+       </when>
+       <otherwise>
+           null as scorer03,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorer04')" >
+           scorer04,
+       </when>
+       <otherwise>
+           null as scorer04,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorer05')" >
+           scorer05,
+       </when>
+       <otherwise>
+           null as scorer05,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorer06')" >
+           scorer06,
+       </when>
+       <otherwise>
+           null as scorer06,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorer07')" >
+           scorer07,
+       </when>
+       <otherwise>
+           null as scorer07,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorer08')" >
+           scorer08,
+       </when>
+       <otherwise>
+           null as scorer08,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorer09')" >
+           scorer09,
+       </when>
+       <otherwise>
+           null as scorer09,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorer10')" >
+           scorer10,
+       </when>
+       <otherwise>
+           null as scorer10,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorer11')" >
+           scorer11,
+       </when>
+       <otherwise>
+           null as scorer11,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorer12')" >
+           scorer12,
+       </when>
+       <otherwise>
+           null as scorer12,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorer13')" >
+           scorer13,
+       </when>
+       <otherwise>
+           null as scorer13,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorer14')" >
+           scorer14,
+       </when>
+       <otherwise>
+           null as scorer14,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorer15')" >
+           scorer15,
+       </when>
+       <otherwise>
+           null as scorer15,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorern01')" >
+           scorern01,
+       </when>
+       <otherwise>
+           null as scorern01,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorern02')" >
+           scorern02,
+       </when>
+       <otherwise>
+           null as scorern02,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorern03')" >
+           scorern03,
+       </when>
+       <otherwise>
+           null as scorern03,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorern04')" >
+           scorern04,
+       </when>
+       <otherwise>
+           null as scorern04,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorern05')" >
+           scorern05,
+       </when>
+       <otherwise>
+           null as scorern05,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorern06')" >
+           scorern06,
+       </when>
+       <otherwise>
+           null as scorern06,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorern07')" >
+           scorern07,
+       </when>
+       <otherwise>
+           null as scorern07,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorern08')" >
+           scorern08,
+       </when>
+       <otherwise>
+           null as scorern08,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorern09')" >
+           scorern09,
+       </when>
+       <otherwise>
+           null as scorern09,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorern10')" >
+           scorern10,
+       </when>
+       <otherwise>
+           null as scorern10,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorern11')" >
+           scorern11,
+       </when>
+       <otherwise>
+           null as scorern11,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorern12')" >
+           scorern12,
+       </when>
+       <otherwise>
+           null as scorern12,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorern13')" >
+           scorern13,
+       </when>
+       <otherwise>
+           null as scorern13,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorern14')" >
+           scorern14,
+       </when>
+       <otherwise>
+           null as scorern14,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorern15')" >
+           scorern15,
+       </when>
+       <otherwise>
+           null as scorern15,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('rectimestamp')" >
+           rectimestamp,
+       </when>
+       <otherwise>
+           null as rectimestamp,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('yachtbsf')" >
+           yachtbsf,
+       </when>
+       <otherwise>
+           null as yachtbsf,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('yachtgph')" >
+           yachtgph,
+       </when>
+       <otherwise>
+           null as yachtgph,
+       </otherwise>         
+     </choose> 
+	       </trim>       
+  </sql>
+  
+  <select id="select" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <if test="filter != null &amp;&amp; filter.distinct" >
+      distinct
+    </if>
+    <choose>
+       <when test="filter != null &amp;&amp; filter.groupByClause != null">
+           <include refid="GroupBy_Column_List" />
+       </when>
+       <otherwise>
+           <include refid="Base_Column_List" />
+       </otherwise>
+    </choose>
+    
+    from sev_view_rankinginstancedetail
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+    <if test="filter != null &amp;&amp; filter.groupByClause != null" >
+      group by ${filter.groupByClause}
+    </if>    
+    <if test="filter != null &amp;&amp; filter.orderByClause != null" >
+      order by ${filter.orderByClause}
+    </if>
+    <if test="filter != null &amp;&amp; filter.limitFetch > 0" >
+      limit ${filter.limitFetch}
+    </if>
+  </select>
+  <select id="count" parameterType="map" resultType="java.lang.Integer" >
+    select count(*) from sev_view_rankinginstancedetail
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </select>  
+</mapper>

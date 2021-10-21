@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--
+  TODO: xmlCopyRight.txt
+   
+  -->
+<!--
+  TODO: xmlReadme.txt
+   
+  -->
+
+<!-- <mapper resource="org/r3/db/system/queues/queuemessage/QueueMessageMapper.xml"/> -->
+<mapper namespace="org.r3.db.system.queues.queuemessage.QueueMessageMapper" >
+    <resultMap id="BaseResultMap" type="org.r3.db.system.queues.queuemessage.QueueMessageDTO" >
+         <id column="queuemessageid" property="queuemessageid" jdbcType="VARCHAR" />
+           <result column="queueid" property="queueid" jdbcType="VARCHAR" />
+           <result column="correlationid" property="correlationid" jdbcType="VARCHAR" />
+           <result column="srcqueuemessageid" property="srcqueuemessageid" jdbcType="VARCHAR" />
+           <result column="priority" property="priority" jdbcType="VARCHAR" />
+           <result column="messagestatus" property="messagestatus" jdbcType="VARCHAR" />
+           <result column="messagetype" property="messagetype" jdbcType="VARCHAR" />
+           <result column="putdate" property="putdate" jdbcType="TIMESTAMP" />
+           <result column="getdate" property="getdate" jdbcType="TIMESTAMP" />
+           <result column="rectimestamp" property="rectimestamp" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+  <sql id="Filter_Where_Clause" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+                <when test="criterion.subSelectCriterion" >
+                  and ${criterion.prefixCondition} #{criterion.value} ${criterion.suffixCondition}
+                </when>                                
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <!--
+  <sql id="Filter_Where_Clause_4_Update" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  -->  
+  <sql id="Base_Column_List" >
+    queuemessageid,  queueid,  correlationid,  srcqueuemessageid,  priority,  messagestatus,  messagetype,  putdate,  getdate,
+  rectimestamp  </sql>
+  <select id="selectByQueuemessageid" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from r3_queuemessagedefault
+    where queuemessageid = #{queuemessageid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByQueuemessageid" parameterType="map" >
+    delete
+    from r3_queuemessagedefault
+    where queuemessageid = #{queuemessageid,jdbcType=VARCHAR}
+  </delete>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from r3_queuemessagedefault    
+    where  queuemessageid = #{pk.queuemessageid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete
+    from r3_queuemessagedefault
+    where  queuemessageid = #{pk.queuemessageid,jdbcType=VARCHAR}
+  </delete>  
+  <select id="select" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <if test="filter != null &amp;&amp; filter.distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from r3_queuemessagedefault
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+    <if test="filter != null &amp;&amp; filter.orderByClause != null" >
+      order by ${filter.orderByClause}
+    </if>
+    <if test="filter != null &amp;&amp; filter.limitFetch > 0" >
+      limit ${filter.limitFetch}
+    </if>
+  </select>
+  <select id="count" parameterType="map" resultType="java.lang.Integer" >
+    select count(*) from r3_queuemessagedefault
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </select>  
+  <delete id="delete" parameterType="map" >
+    delete from r3_queuemessagedefault
+    <!-- _parameter: dato che e' una map lo sostituisco con il nome del parametro in quanto non è l'unico -->
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="map" >
+    insert into r3_queuemessagedefault (
+ queuemessageid, queueid, correlationid, srcqueuemessageid, priority, messagestatus, messagetype, putdate, getdate,
+ rectimestamp      )
+    values (
+ 
+ #{record.queuemessageid,jdbcType=VARCHAR}, 
+ #{record.queueid,jdbcType=VARCHAR}, 
+ #{record.correlationid,jdbcType=VARCHAR}, 
+ #{record.srcqueuemessageid,jdbcType=VARCHAR},
+ 
+ #{record.priority,jdbcType=VARCHAR}, 
+ #{record.messagestatus,jdbcType=VARCHAR}, 
+ #{record.messagetype,jdbcType=VARCHAR}, 
+ #{record.putdate,jdbcType=TIMESTAMP},
+ 
+ #{record.getdate,jdbcType=TIMESTAMP}, 
+ #{record.rectimestamp,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="update" parameterType="map" >
+    update r3_queuemessagedefault
+    <set >
+      <if test="record.queueidDirty" >
+        queueid = #{record.queueid,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.correlationidDirty" >
+        correlationid = #{record.correlationid,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.srcqueuemessageidDirty" >
+        srcqueuemessageid = #{record.srcqueuemessageid,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.priorityDirty" >
+        priority = #{record.priority,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.messagestatusDirty" >
+        messagestatus = #{record.messagestatus,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.messagetypeDirty" >
+        messagetype = #{record.messagetype,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.putdateDirty" >
+        putdate = #{record.putdate,jdbcType=TIMESTAMP},
+      </if>      
+      <if test="record.getdateDirty" >
+        getdate = #{record.getdate,jdbcType=TIMESTAMP},
+      </if>      
+      <if test="record.rectimestampDirty" >
+        rectimestamp = #{record.rectimestamp,jdbcType=TIMESTAMP},
+      </if>      
+    </set>
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+      <!-- Non dovrebbe servire in quanto il filter e' sempre named. -->
+      <!-- <include refid="Filter_Where_Clause_4_Update" /> -->
+    </if>
+  </update>
+  <update id="updateByPrimaryKey" parameterType="map" >
+    update r3_queuemessagedefault
+    <set >
+      <if test="record.queueidDirty" >
+        queueid = #{record.queueid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.correlationidDirty" >
+        correlationid = #{record.correlationid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.srcqueuemessageidDirty" >
+        srcqueuemessageid = #{record.srcqueuemessageid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.priorityDirty" >
+        priority = #{record.priority,jdbcType=VARCHAR},
+      </if>
+      <if test="record.messagestatusDirty" >
+        messagestatus = #{record.messagestatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.messagetypeDirty" >
+        messagetype = #{record.messagetype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.putdateDirty" >
+        putdate = #{record.putdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.getdateDirty" >
+        getdate = #{record.getdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.rectimestampDirty" >
+        rectimestamp = #{record.rectimestamp,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where  queuemessageid = #{record.queuemessageid,jdbcType=VARCHAR}
+  </update>
+  <select id="selectMessagebodyByPrimaryKey" resultType="org.r3.db.utils.BlobDTO" parameterType="map">
+    select messagebody as blobData from r3_queuemessagedefault
+    where  queuemessageid = #{pk.queuemessageid,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectMessagebodyByQueuemessageid" resultType="org.r3.db.utils.BlobDTO" parameterType="map">
+    select messagebody as blobData from r3_queuemessagedefault
+    where  queuemessageid = #{queuemessageid,jdbcType=VARCHAR}
+  </select>
+
+  <!-- Commented Out for future re-use
+  <select id="selectMessagebodyByQueuemessageidAsInputStream" resultType="java.io.InputStream" parameterType="map">
+    select messagebody from r3_queuemessagedefault
+    where   </select>
+  -->
+
+  <update id="storeMessagebodyByQueuemessageid" parameterType="map" >
+    update r3_queuemessagedefault 
+    <set>
+      messagebody = #{messagebody,jdbcType=BINARY}
+    </set>
+    where  queuemessageid = #{queuemessageid,jdbcType=VARCHAR}
+  </update>
+
+
+</mapper>

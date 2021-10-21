@@ -1,0 +1,232 @@
+
+.pageCanvas
+{
+	padding: 20px;
+}
+
+.appviewer .appviewer_header
+{
+    margin-bottom: 10px;	
+}
+
+.appviewer .appviewer_header .eventLogo 
+{
+	margin: 0;	
+    float: left;
+}
+
+.appviewer .appviewer_header  .eventTitle 
+{		
+	color: #0099CC;
+	float: left;
+	font-size: 2em;
+	font-weight: bold;
+	letter-spacing: -0.0035em;
+	line-height: 1.5em;
+	padding-top: 0.1em;	
+	padding-left: 1em;
+}
+
+.appviewer .appviewer_header  .eventAppStatus
+{
+   text-align: right;
+   padding-left: 10px;
+   float: right;
+}
+
+.event-report
+{
+	font-size: 0.8em	
+}
+
+@media print
+{
+.event-report
+{
+	font-size: 0.8em	
+}
+
+.appviewer .appviewer_header  .eventAppStatus img
+{
+	display: none;
+}
+
+.appviewer .notPrintable
+{
+	display: none;
+}
+}
+
+.appviewer table.framed-table
+{
+  border-collapse:separate;
+  border-spacing: 5px 2px;
+  margin-top: 5px;
+  width: 100%;
+}
+
+.appviewer table.framed-table tr td 
+{
+	border: 1px solid #cccccc;
+	vertical-align: top;
+}
+
+.appviewer table.framed-table .framed-cell .framed-cell-label 
+{
+	font-size: 0.8em; 
+	padding: 2px;
+}
+
+.appviewer table.framed-table .framed-cell .framed-cell-value 
+{
+	font-weight: bold; 
+	padding: 5px; 
+	font-size: 1.0em; 
+	line-height: 1.3em;
+	color: #000000;
+}
+
+.appviewer .checkbox-group > label
+{
+    display: block; width: 150px; float: left; line-height: 20px; padding-right: 10px; 
+}
+
+.appviewer .checkbox-group 
+{
+	margin: 10px;
+}
+
+.appviewer .checkbox-group .checkbox-group-body
+{
+    float: left;
+    width: 640px;
+}
+
+.appviewer .checkbox-group .checkbox-group-body label
+{
+	display: block; float: left;
+	width: 280px;
+    color: #000000;
+    font-weight: bold;
+}
+
+.appviewer .checkbox-group .checkbox-group-body label img
+{
+	border: 0; margin: 5px; vertical-align: middle;
+}
+
+.appviewer table.framed-list
+{
+  margin-top: 5px;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.appviewer table.framed-list tr td, 
+.appviewer table.framed-list tr th   
+{
+	border: 1px solid #cccccc;
+	vertical-align: top;
+	padding: 5px;
+	text-align: left;
+}
+	
+.appviewer table.framed-list tr th   
+{
+	font-weight: bold;
+}
+
+span.linkDocumentItem
+{
+	padding-left: 25px;
+	padding-bottom: 5px; 
+	cursor: pointer;
+	color: #B41617;
+	font-size: 1.1em;
+}
+
+/*
+.eventAppStatus:after
+{
+	DISPLAY: block; CLEAR: both; CONTENT: " "
+}
+
+
+fieldset 
+{
+    margin-right: 5px; margin-bottom: 5px; margin-top: 5px; padding: 5px; 
+    border: 1px solid #cccccc;
+}
+
+legend 
+{
+	padding: 6px 12px; font-weight: bold; font-size: 1.2em;
+}
+
+*/
+
+/*
+    padding-top: 10px; padding-bottom: 10px; padding-right: 10px;
+    padding-left: 20px;	
+ */
+fieldset div.fieldsetChild
+{
+}
+
+fieldset div.fieldsetChild fieldset
+{
+    margin-left: 20px;	
+}
+
+fieldset div.fieldsetChild fieldset legend
+{	
+    font-size: 1.1em;
+}
+
+table.framedForm
+{
+}
+	
+	
+div.fieldsetChild  span.fieldValue
+{
+	font-weight: bold; 
+	padding: 5px; 
+	font-size: 1.0em; 
+	line-height: 1.3em;
+}
+
+div.fieldsetChild  > label
+{
+	line-height: 1.3em;
+	width: 150px;
+}
+
+table.framedList
+{
+}
+	
+table.framedList tr td, table.framedList tr th   
+{
+	border: 1px solid #cccccc;
+	vertical-align: top;
+	padding: 5px;
+}
+
+table.framedList
+{
+}
+	
+table.framedList tr th 
+{
+	background-color: #aaaaaa;
+	font-weight: bold;
+}
+
+span.application_pdf
+{
+	background: url("/regattacubed/themes/regatta/it/images/icons/pdfIconSmall.gif") no-repeat;
+	padding-left: 20px;
+	padding-bottom: 5px; 
+}
+

@@ -1,0 +1,21 @@
+##
+##
+## $userDTO: DTO utente in fase di registrazione
+##
+##
+
+insert into r3_userrole (site, userid, roleid) 
+  select site, '$userDTO.userid', 'rlregatta_usr'    
+  from   r3_site
+  where  sitetype = 'regatta';
+
+## Assegno il base a tutti
+insert into r3_userrole (site, userid, roleid) 
+  select site, '$userDTO.userid', 'rolebase'    
+  from   r3_site
+  where  sitetype not in ( 'shkneighb', 'shkshop', 'shakeus', 'shakeusdom' );  
+  ;
+  
+##
+## insert into r3_userrole (site, userid, roleid) values('default', '$userDTO.userid', 'rolebase');
+## 

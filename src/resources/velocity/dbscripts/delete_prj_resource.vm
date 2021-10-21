@@ -1,0 +1,11 @@
+##
+##
+## $resourceDTO: DTO resource in cancellazione
+##
+##
+
+delete from prj_teamresource where resourceid = '$resourceDTO.resourceid';
+
+update prj_resource set recstatus = 'sys_recdeleted' 
+   where resourceid = '$resourceDTO.resourceid';
+

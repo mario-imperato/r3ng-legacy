@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--
+  TODO: xmlCopyRight.txt
+   
+  -->
+<!--
+  TODO: xmlReadme.txt
+   
+  -->
+
+
+
+<!-- <mapper resource="org/r3/db/sailevent/entrylist/SailEntryListMapper.xml"/> -->
+<mapper namespace="org.r3.db.sailevent.entrylist.SailEntryListMapper" >
+    <resultMap id="BaseResultMap" type="org.r3.db.sailevent.entrylist.SailEntryListDTO" >
+         <result column="eventid" property="eventid" jdbcType="VARCHAR" />
+           <result column="applicationid" property="applicationid" jdbcType="VARCHAR" />
+           <result column="userid" property="userid" jdbcType="VARCHAR" />
+           <result column="verificationstatus" property="verificationstatus" jdbcType="VARCHAR" />
+           <result column="plate" property="plate" jdbcType="VARCHAR" />
+           <result column="sailnumber" property="sailnumber" jdbcType="VARCHAR" />
+           <result column="yachtname" property="yachtname" jdbcType="VARCHAR" />
+           <result column="yachtclub" property="yachtclub" jdbcType="VARCHAR" />
+           <result column="yachttype" property="yachttype" jdbcType="VARCHAR" />
+           <result column="yachtbsf" property="yachtbsf" jdbcType="REAL" />
+           <result column="yachtgph" property="yachtgph" jdbcType="REAL" />
+           <result column="racegroup" property="racegroup" jdbcType="VARCHAR" />
+           <result column="raceclass" property="raceclass" jdbcType="VARCHAR" />
+           <result column="apptype" property="apptype" jdbcType="VARCHAR" />
+           <result column="boatimageurl" property="boatimageurl" jdbcType="VARCHAR" />
+           <result column="boatimageheight" property="boatimageheight" jdbcType="INTEGER" />
+           <result column="boatimagewidth" property="boatimagewidth" jdbcType="INTEGER" />
+           <result column="boaticonurl" property="boaticonurl" jdbcType="VARCHAR" />
+           <result column="boaticonwidth" property="boaticonwidth" jdbcType="INTEGER" />
+           <result column="boaticonheight" property="boaticonheight" jdbcType="INTEGER" />
+           <result column="ownerfirstname" property="ownerfirstname" jdbcType="VARCHAR" />
+           <result column="ownerlastname" property="ownerlastname" jdbcType="VARCHAR" />
+           <result column="owneremail" property="owneremail" jdbcType="VARCHAR" />
+           <result column="ownercellphone" property="ownercellphone" jdbcType="VARCHAR" />
+           <result column="accepted" property="accepted" jdbcType="VARCHAR" />
+    </resultMap>
+
+  <sql id="Filter_Where_Clause" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose>
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+                <when test="criterion.subSelectCriterion" >
+                  and ${criterion.prefixCondition} #{criterion.value} ${criterion.suffixCondition}
+                </when>                                
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    eventid,  applicationid,  userid,  verificationstatus,  plate,  sailnumber,  yachtname,  yachtclub,  yachttype,
+  yachtbsf,  yachtgph,  racegroup,  raceclass,  apptype,  boatimageurl,  boatimageheight,  boatimagewidth,  boaticonurl,
+  boaticonwidth,  boaticonheight,  ownerfirstname,  ownerlastname,  owneremail,  ownercellphone,  accepted  </sql>
+  
+  <sql id='GroupBy_Column_List'>
+    <trim suffixOverrides=",">
+        <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('eventid')" >
+           eventid,
+       </when>
+       <otherwise>
+           null as eventid,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('applicationid')" >
+           applicationid,
+       </when>
+       <otherwise>
+           null as applicationid,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('userid')" >
+           userid,
+       </when>
+       <otherwise>
+           null as userid,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('verificationstatus')" >
+           verificationstatus,
+       </when>
+       <otherwise>
+           null as verificationstatus,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('plate')" >
+           plate,
+       </when>
+       <otherwise>
+           null as plate,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('sailnumber')" >
+           sailnumber,
+       </when>
+       <otherwise>
+           null as sailnumber,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('yachtname')" >
+           yachtname,
+       </when>
+       <otherwise>
+           null as yachtname,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('yachtclub')" >
+           yachtclub,
+       </when>
+       <otherwise>
+           null as yachtclub,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('yachttype')" >
+           yachttype,
+       </when>
+       <otherwise>
+           null as yachttype,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('yachtbsf')" >
+           yachtbsf,
+       </when>
+       <otherwise>
+           null as yachtbsf,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('yachtgph')" >
+           yachtgph,
+       </when>
+       <otherwise>
+           null as yachtgph,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('racegroup')" >
+           racegroup,
+       </when>
+       <otherwise>
+           null as racegroup,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('raceclass')" >
+           raceclass,
+       </when>
+       <otherwise>
+           null as raceclass,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('apptype')" >
+           apptype,
+       </when>
+       <otherwise>
+           null as apptype,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('boatimageurl')" >
+           boatimageurl,
+       </when>
+       <otherwise>
+           null as boatimageurl,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('boatimageheight')" >
+           boatimageheight,
+       </when>
+       <otherwise>
+           null as boatimageheight,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('boatimagewidth')" >
+           boatimagewidth,
+       </when>
+       <otherwise>
+           null as boatimagewidth,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('boaticonurl')" >
+           boaticonurl,
+       </when>
+       <otherwise>
+           null as boaticonurl,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('boaticonwidth')" >
+           boaticonwidth,
+       </when>
+       <otherwise>
+           null as boaticonwidth,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('boaticonheight')" >
+           boaticonheight,
+       </when>
+       <otherwise>
+           null as boaticonheight,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('ownerfirstname')" >
+           ownerfirstname,
+       </when>
+       <otherwise>
+           null as ownerfirstname,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('ownerlastname')" >
+           ownerlastname,
+       </when>
+       <otherwise>
+           null as ownerlastname,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('owneremail')" >
+           owneremail,
+       </when>
+       <otherwise>
+           null as owneremail,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('ownercellphone')" >
+           ownercellphone,
+       </when>
+       <otherwise>
+           null as ownercellphone,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('accepted')" >
+           accepted,
+       </when>
+       <otherwise>
+           null as accepted,
+       </otherwise>         
+     </choose> 
+	       </trim>       
+  </sql>
+  
+  <select id="select" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <if test="filter != null &amp;&amp; filter.distinct" >
+      distinct
+    </if>
+    <choose>
+       <when test="filter != null &amp;&amp; filter.groupByClause != null">
+           <include refid="GroupBy_Column_List" />
+       </when>
+       <otherwise>
+           <include refid="Base_Column_List" />
+       </otherwise>
+    </choose>
+    
+    from sev_view_entrylist
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+    <if test="filter != null &amp;&amp; filter.groupByClause != null" >
+      group by ${filter.groupByClause}
+    </if>    
+    <if test="filter != null &amp;&amp; filter.orderByClause != null" >
+      order by ${filter.orderByClause}
+    </if>
+    <if test="filter != null &amp;&amp; filter.limitFetch > 0" >
+      limit ${filter.limitFetch}
+    </if>
+  </select>
+  <select id="count" parameterType="map" resultType="java.lang.Integer" >
+    select count(*) from sev_view_entrylist
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </select>  
+</mapper>

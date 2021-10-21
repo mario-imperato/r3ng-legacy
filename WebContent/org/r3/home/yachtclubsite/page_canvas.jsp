@@ -1,0 +1,163 @@
+<%@ taglib uri="http://www.r3.org/taglibs/r3/lang-1.00" prefix="r3_lang" %>
+<%@ taglib uri="/tags/struts-tiles" prefix="tiles" %>
+
+<%@ page language="java" session="false" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
+    import="java.io.*,
+    java.util.*
+    " %>
+
+<r3_lang:environment id="r3Env" namespace='org.r3'>
+
+<div class='r3_container' style='margin-top: 30px;'>
+
+<div style='padding: 10px 10px 20px 10px; text-align: center; font-size: 24px; font-family: Arial,'Helvetica Neue',Helvetica,sans-serif !important; line-height: 1.05; font-weight: bold;'>
+<div style='border: 1px solid #C90B0B; padding: 20px'>
+<div style="color: #4040FF; !important"><!-- style="color: #C90B0B #ff00FF;" style="color: #008080;" style="color: #333333;" -->
+<p>
+<!-- INFORMIAMO CHE LA SEGRETERIA RIPRENDERA&rsquo; LA PIANA OPERATIVITA&rsquo; DAL 1&deg; SETTEMBRE <span style='color: #C90B0B'>NEL RISPETTO DELLE DISPOSIZIONI GOVERNATIVE COVID-19</span><br />
+DURANTE IL MESE DI AGOSTO LE RICHIESTE E LE NECESSITA&rsquo; AVVERRANNO VIA E MAIL O TELEFONO<br />
+A seguito dei recenti DPCM e ultime disposizioni della FIV tutte le regate in calendario sono differite a data da destinarsi.
+Comunicheremo non appena possibile la ripresa delle attività sportiva.<br />
+-->
+<span style="color: #C90B0B">La segreteria del CVF riaprir&agrave; il 24 Febbraio p.v.</span><br />
+<span >Si prega di effettuare ON LINE le iscrizioni del Trofeo Porti Imperiali come da bando</span><br />
+<span style="color: #C90B0B">Si chiarisce che in accordo con il DPCM in atto, &egrave; possibile effettuare solo le regate di interesse nazionale, incluso il Trofeo Porti Imperiali, 
+mentre tutte le altre, campionato compreso, sono annullate fino al 15 aprile.</span>
+</p>
+</div>
+<!-- 
+<div style="color: #C90B0B; !important">
+In considerazione del DCPM del 4 marzo 2020, nonch&eacute;,delle disposizioni del Presidente della FIV tutte le attivit&agrave; sportive sono sospese fino al 22 marzo p.v.<br />
+Pertanto la regata dell&rsquo;8 marzo &egrave; stata annullata e il campionato &egrave; da considerarsi concluso e la premiazione rimandata a data da destinarsi.<br />
+Il presidente e Il comitato organizzatore.
+</div>
+-->
+</div>
+</div>
+
+
+<!-- #300AAB
+La Segreteria del Circolo Velico causa lavori di ristrutturazione della club house sar&agrave; chiuso da <b>mercoled&igrave; 9/12</b> fino a <span style='color: #C90B0B'><b>Gioved&igrave; 07/01</b></span>
+<div style='color: #C90B0B !important;'>Anche il Sito del Circolo sar&agrave; oggetto di manutenzione durante le festivit&agrave;. Potrebbe non risultare raggiungibile nei giorni tra Natale e Capodanno. Poich&egrave; cambieranno diverse cose vi preghiamo di rientrare da http://www.cvfiumicino.it
+e non utilizzare eventuali bookmark salvati. Vi preghiamo infine di segnalarci tempestivamente qualsiasi problema si possa manifestare in seguito a detto aggiornamento.
+</div>
+<div style='color: #058b7b; !important;'>Ci scusiamo per qualsiasi inconveniente e vi auguriamo Buone Feste!
+</div>
+-->
+
+
+
+
+<div class="row">
+<div class="col-md-3 hidden-sm hidden-xs">
+<div id='JSPortlet_HomeChannelsActionForm' style='margin-bottom: 10px; background-color: #eeeeff; border: 1px solid #dddddd; display: none'></div>
+</div>
+
+<div class="col-md-5 col-sm-12">
+
+<div class="box box-solid box-grade1 box-noborder">
+  <div class="box-header ">
+    <h3 class="box-title"><a href='cms/cmspage.do?pageid=regattas'>Regate</a></h3>
+    <div class="box-tools pull-right">
+       <a href='cms/cmspage.do?pageid=regattas' class="btn btn-box-tool" title="Vai alla Pagina">
+            <i class="fa fa-chevron-circle-right"></i>
+       </a>            
+    </div>
+  </div>
+  <div class="box-body" id='homesailevent'>
+ 
+  </div>
+</div>
+
+<div class="box box-solid box-grade2 box-noborder">
+  <div class="box-header ">
+    <h3 class="box-title"><a href='cms/cmspage.do?pageid=articles'>Articoli</a></h3>
+    <div class="box-tools pull-right">
+       <a href='cms/cmspage.do?pageid=articles' class="btn btn-box-tool" title="Vai alla Pagina">
+            <i class="fa fa-chevron-circle-right"></i>
+       </a>            
+    </div>
+  </div>
+  <div class="box-body" id='homearticles'>
+ 
+  </div>
+</div>
+
+<!-- 
+  <div style='margin-bottom: 15px;'>  
+   <h3 class='actionable grade1' style='margin-top: 0px'><a href='cms/cmspage.do?pageid=regattas'><i class="fa fa-file-o"></i> <span data-i18n='org.r3.home.yachtclubsite:regattas'>Regate</span></a></h3>  
+  <div id='homesailevent' ></div>
+  </div>
+
+  <div style='margin-bottom: 15px;'>
+  <h3 class='actionable grade2' style='margin-top: 0px'><a href='cms/cmspage.do?pageid=articles'><i class="fa fa-file-o"></i> <span data-i18n='org.r3.home.yachtclubsite:articoli'>Articoli</span></a></h3>  
+  <div id='homearticles'></div>  
+  </div>
+-->
+
+</div>
+
+<div class="col-md-4 col-sm-12">
+
+  <div class='row'>
+  
+  <!-- 
+  <div class='col-md-12 col-sm-6 hidden-xs'>
+  <a class="twitter-timeline" href="https://twitter.com/cvfiumicino" data-widget-id="483963506908069888">Tweets di @cvfiumicino</a>  
+  </div>
+  -->
+
+  <div class='col-md-12 col-sm-6 hidden-xs'>
+  <div style='margin-bottom: 10px;'>
+  <div class="fb-page" data-href="https://www.facebook.com/Circolo-Velico-Fiumicino-714928588568140/" data-tabs="timeline" data-width="500" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/Circolo-Velico-Fiumicino-714928588568140/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Circolo-Velico-Fiumicino-714928588568140/">Circolo Velico Fiumicino</a></blockquote></div>
+  </div>
+  </div>
+
+  <!-- 
+  <div class='col-md-12 col-sm-6 hidden-xs'>
+  <div id="JSPortlet_NewsLetterActionForm"></div>  
+  </div>
+  -->
+  </div>
+  
+  <div class='row'>
+  
+  <div class='col-md-12 col-sm-6 col-xs-12'>      
+  
+  <div style='position: relative; width: 100%; height: 0; padding-bottom: 56%; margin-bottom: 10px;'>
+  <iframe style='position: absolute; width: 100%; height: 100%; left: 0; top: 0;' src="https://www.youtube.com/embed/PrxHIG33Fow" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+  
+  <div style='position: relative; width: 100%; height: 0; padding-bottom: 56%; margin-bottom: 10px;'>
+  <iframe style='position: absolute; width: 100%; height: 100%; left: 0; top: 0;' src="https://www.youtube.com/embed/kxwu6Y61zHg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+  
+  <div style='position: relative; width: 100%; height: 0; padding-bottom: 56%; margin-bottom: 10px;'>
+  <iframe style='position: absolute; width: 100%; height: 100%; left: 0; top: 0;' src="https://www.youtube.com/embed/Leyumvi3Hp4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+
+  <div style='position: relative; width: 100%; height: 0; padding-bottom: 56%; margin-bottom: 10px;'>
+  <iframe style='position: absolute; width: 100%; height: 100%; left: 0; top: 0;' src="https://www.youtube.com/embed/qafcFOBraUM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+
+  </div>
+  </div>
+  
+
+  
+</div>
+</div>
+
+<div class="box box-solid box-grade6 box-noborder">
+  <div class="box-header ">
+    <h3 class="box-title"><a href='cms/cmspage.do?pageid=articles'>Links</a></h3>
+  </div>
+  <div class="box-body" id="friendcarouselview">
+ 
+  </div>
+</div>
+
+
+</div>
+            
+</r3_lang:environment>

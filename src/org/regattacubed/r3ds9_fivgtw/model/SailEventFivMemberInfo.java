@@ -1,0 +1,170 @@
+package org.regattacubed.r3ds9_fivgtw.model;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.util.Calendar;
+
+public class SailEventFivMemberInfo {
+
+    private long codiceTessera;
+    private long idPersona;
+    private long idSocieta;
+    private String yachtclub;
+    private int idTipoTessera;
+    private int idCategoriaTessera;
+    private int livelloTessera;
+    private String dataEmissione;
+    private String dataScadenza;
+    private String nome;
+    private String cognome;
+    private String certificatoScadenza;
+    private int certificatoTipo;
+    private int certificatoScaduto;
+    private String dataNascita;
+    private String sesso;
+    private String codiceFiscale;
+    private String phone;
+
+    private String dataScadenzaValidita;
+    private String cardnumberstatuscode;
+    private java.util.Calendar systemcheckdate;
+
+    public SailEventFivMemberInfo(StatoTesserato statoTesserato) {
+
+        systemcheckdate = java.util.Calendar.getInstance();
+        int periodoCorrente = systemcheckdate.get(Calendar.YEAR);
+
+        if (statoTesserato != null && statoTesserato.isFound()) {
+            cardnumberstatuscode = "fiv_cn_exist";
+
+            Tesseramento t = statoTesserato.findTesseramento(periodoCorrente);
+            if (t != null) {
+                codiceTessera = t.getCodiceTessera();
+                idPersona = t.getIdPersona();
+                idSocieta = t.getSocieta_id();
+                nome = t.getTesserato_nome();
+                cognome = t.getTesserato_cognome();
+                dataNascita = t.getTesserato_dataNascita();
+                sesso = t.getTesserato_sesso();
+                codiceFiscale = t.getTesserato_codiceFiscale();
+                phone = t.getTelefono1();
+                dataEmissione = t.getDataEmissione();
+                dataScadenza = t.getDataScadenza();
+                yachtclub = t.getSocieta_des();
+                idTipoTessera = t.getIdTipoTessera();
+                idCategoriaTessera = t.getIdCategoria();
+                livelloTessera = t.getLivelloTessera();
+
+                InfoCertificatoMedico cm = statoTesserato.findCertificato(periodoCorrente);
+                if (cm != null) {
+                    certificatoScadenza = cm.getDataFine();
+                    certificatoTipo = cm.getIdTipoCertificato();
+                    certificatoScaduto = cm.getScaduto();
+                }
+
+                if (certificatoScadenza != null && dataScadenza != null) {
+                    if (certificatoScadenza.compareTo(dataScadenza) < 0)
+                        dataScadenzaValidita = certificatoScadenza;
+                    else dataScadenzaValidita = dataScadenza;
+                }
+            }
+        } else {
+            cardnumberstatuscode = "fiv_cn_notexist";
+        }
+    }
+
+
+    public Calendar getSystemcheckdate() {
+        return systemcheckdate;
+    }
+
+    public long getCodiceTessera() {
+        return codiceTessera;
+    }
+
+    public long getIdPersona() {
+        return idPersona;
+    }
+
+    public long getIdSocieta() {
+        return idSocieta;
+    }
+
+    public String getYachtclub() {
+        return yachtclub;
+    }
+
+    public int getIdTipoTessera() {
+        return idTipoTessera;
+    }
+
+    public int getIdCategoriaTessera() {
+        return idCategoriaTessera;
+    }
+
+    public int getLivelloTessera() {
+        return livelloTessera;
+    }
+
+    public String getDataEmissione() {
+        return dataEmissione;
+    }
+
+    public String getDataScadenza() {
+        return dataScadenza;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getCognome() {
+        return cognome;
+    }
+
+    public String getCertificatoScadenza() {
+        return certificatoScadenza;
+    }
+
+    public int getCertificatoTipo() {
+        return certificatoTipo;
+    }
+
+    public String getDataNascita() {
+        return dataNascita;
+    }
+
+    public String getSesso() {
+        return sesso;
+    }
+
+    public String getCodiceFiscale() {
+        return codiceFiscale;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public String getDataScadenzaValidita() {
+        return dataScadenzaValidita;
+    }
+
+    public String getCardnumberstatuscode() {
+        return cardnumberstatuscode;
+    }
+
+    @JsonIgnore
+    public String toJsonString() {
+        ObjectMapper om = new ObjectMapper();
+
+        try {
+            return om.writeValueAsString(this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return "error converting json stato-tesserato to object";
+    }
+}

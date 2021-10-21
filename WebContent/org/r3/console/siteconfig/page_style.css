@@ -1,0 +1,213 @@
+.homeportletslot-canvas
+{
+   background-color: #cccccc;
+}
+
+.homeportletslot-column
+{
+   padding: 1px;
+}
+
+.homeportletslot
+{
+  border: 1px solid #777777;
+  min-height: 20px;
+  background-color: #ffffff;
+  margin: 5px;
+}
+
+.layout1-homeportlet-empty
+{
+}
+
+.layout1-homeportlet-configured
+{
+	
+}
+
+div.homeportletslot.layout1-homeportlet-selected
+{
+	border: 1px solid #ff0000;
+}
+
+.layout1-homeportlet-configured.JSPortlet_HomeComunicatiActionForm
+{
+	background: url('/r3ng/resources/img/cfg_home_layout1/portlet_comunicati.png') no-repeat;
+	background-size: 100%;
+	height: 35px;
+}
+
+.layout1-homeportlet-configured.JSPortlet_HomeCardActionForm
+{
+	background: url('/r3ng/resources/img/cfg_home_layout1/portlet_welcome.png') no-repeat;
+	background-size: 100%;
+	height: 35px;
+}
+
+.layout1-homeportlet-configured.JSPortlet_HomeLoginActionForm
+{
+	background: url('/r3ng/resources/img/cfg_home_layout1/portlet_login.png') no-repeat;
+	background-size: 100%;
+	height: 80px;
+}
+
+.layout1-homeportlet-configured.JSPortlet_HomeVideoActionForm
+{
+	background: url('/r3ng/resources/img/cfg_home_layout1/portlet_video.png') no-repeat;
+	background-size: 100%;
+	height: 50px;
+}
+
+.layout1-homeportlet-configured.JSPortlet_HomeCalendarActionForm
+{
+	background: url('/r3ng/resources/img/cfg_home_layout1/portlet_calendar.png') no-repeat;
+	background-size: 100%;
+	height: 35px;
+}
+
+.layout1-homeportlet-configured.JSPortlet_HomeNORActionForm
+{
+	background: url('/r3ng/resources/img/cfg_home_layout1/portlet_nor.png') no-repeat;
+	background-size: 100%;
+	height: 35px;
+}
+
+.layout1-homeportlet-configured.JSPortlet_HomeChannelsActionForm
+{
+	background: url('/r3ng/resources/img/cfg_home_layout1/portlet_vhf.png') no-repeat;
+	background-size: 100%;
+	height: 35px;
+}
+
+.layout1-homeportlet-configured.JSPortlet_HomeTrackerActionForm
+{
+	background: url('/r3ng/resources/img/cfg_home_layout1/portlet_tracker.png') no-repeat;
+	background-size: 100%;
+	height: 35px;
+}
+
+.layout1-homeportlet-configured.JSPortlet_HomeRankingActionForm
+{
+	background: url('/r3ng/resources/img/cfg_home_layout1/portlet_ranking.png') no-repeat;
+	background-size: 100%;
+	height: 35px;
+}
+
+.layout1-homeportlet-configured.JSPortlet_MyAppActionForm
+{
+	background: url('/r3ng/resources/img/cfg_home_layout1/portlet_myapp.png') no-repeat;
+	background-size: 100%;
+	height: 35px;
+}
+
+.layout1-homeportlet-configured.JSPortlet_HomeEntryListActionForm
+{
+	background: url('/r3ng/resources/img/cfg_home_layout1/portlet_entrylist.png') no-repeat;
+	background-size: 100%;
+	height: 65px;
+}
+
+.layout1-homeportlet-configured.JSPortlet_HomeYachtClubActionForm
+{
+	background: url('/r3ng/resources/img/cfg_home_layout1/portlet_yachtclub.png') no-repeat;
+	background-size: 100%;
+	height: 35px;
+}
+
+.layout1-homeportlet-configured.JSPortlet_HomeTwitterActionForm
+{
+	background: url('/r3ng/resources/img/cfg_home_layout1/portlet_twitter.png') no-repeat;
+	background-size: 100%;
+	height: 35px;
+}
+
+.layout1-homeportlet-configured.JSPortlet_HomeFaceBookActionForm
+{
+	background: url('/r3ng/resources/img/cfg_home_layout1/portlet_facebook.png') no-repeat;
+	background-size: 100%;
+	height: 35px;
+}
+
+.layout1-homeportlet-configured.JSPortlet_MyWbsesPortletActionForm
+{
+	background: url('/r3ng/resources/img/cfg_home_layout1/portlet_wbs.png') no-repeat;
+	background-size: 100%;
+	height: 35px;
+}
+
+.layout1-homeportlet-configured.JSPortlet_MyWbsActionsPortletActionForm
+{
+	background: url('/r3ng/resources/img/cfg_home_layout1/portlet_wbsmytodolist.png') no-repeat;
+	background-size: 100%;
+	height: 35px;
+}
+
+/*
+.layout1-homeportlet-empty
+{
+	height: 20px;
+}
+
+.layout1-homeportlet-configured
+{
+	
+}
+
+.layout1-homeportlet-geometry-left
+{
+  float: left; width: 96px; margin: 1px; padding: 4px; background-color: #dddddd;	
+}
+
+.layout1-homeportlet-geometry-left > div
+{
+	width: 90px; margin: 2px; background-color: #ffffff
+}
+
+.layout1-homeportlet-geometry-left div.homeportletslot
+{
+	width: 90px;
+	border: 1px solid #aaaaaa;
+}
+
+.layout1-homeportlet-geometry-left div.homeportletslot.layout1-homeportlet-selected,
+.layout1-homeportlet-geometry-right div.homeportletslot.layout1-homeportlet-selected,
+.layout1-homeportlet-geometry-bottom div.homeportletslot.layout1-homeportlet-selected
+{
+	border: 1px solid #ff0000;
+}
+
+.layout1-homeportlet-geometry-right
+{
+  float: left; width: 144px; margin: 1px; padding: 4px; background-color: #dddddd	
+}
+
+.layout1-homeportlet-geometry-right > div
+{
+	width: 137px; margin: 2px; background-color: #ffffff
+}
+
+.layout1-homeportlet-geometry-right div.homeportletslot
+{
+	width: 137px;
+	border: 1px solid #aaaaaa; 
+}
+
+.layout1-homeportlet-geometry-bottom
+{
+  	float: left; width: 250px; margin: 1px; padding: 4px; background-color: #dddddd
+}
+
+.layout1-homeportlet-geometry-bottom > div
+{
+	float: left; width: 77px; margin: 2px 2px 2px 2px; background-color: #ffffff
+}
+
+.layout1-homeportlet-geometry-bottom div.homeportletslot
+{
+	width: 77px;
+	border: 1px solid #aaaaaa; 
+}
+
+
+
+*/

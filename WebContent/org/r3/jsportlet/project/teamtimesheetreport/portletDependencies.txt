@@ -1,0 +1,33 @@
+  <!-- Canvas dependencies -->
+  <div id="teamtmesheetReportActionForm"  class="actionForm"></div>
+  
+   
+  <!-- JS dependencies -->
+  <r3_lang:script path2resolve="/org/r3/jsportlet/project/teamtimesheetreport/messages.js" />    
+  <r3_lang:script path2resolve="/org/r3/jsportlet/project/teamtimesheetreport/TeamTimesheetReportActionForm.js" />
+  <r3_lang:script path2resolve="/org/r3/jsportlet/project/teamtimesheetreport/TeamTimesheetReportActionFormView_validation.js" />
+  <r3_lang:script path2resolve="/org/r3/jsportlet/project/teamtimesheetreport/TeamTimesheetReportActionFormView.js" />
+  
+  <r3_lang:script path2resolve="/org/r3/db/project/resourcetimesheetview/ResourceTimesheetViewQueryActionFormView.js" />
+  <r3_lang:script path2resolve="/org/r3/db/project/resourcetimesheetview/ResourceTimesheetViewDTOAdapter.js" />
+  <r3_lang:script path2resolve="/org/r3/db/project/resourcetimesheetview/ResourceTimesheetViewDTO.js" />
+  <r3_lang:script path2resolve="/org/r3/db/project/resourcetimesheetview/ResourceTimesheetViewDictionary.js" /> 
+
+    
+  <!-- PageManager dependency -->
+  this.teamtimesheetReportActionForm = new org.r3.jsportlet.project.teamtimesheetreport.TeamTimesheetReportActionForm(this, "#teamtmesheetReportActionForm", "#teamTimesheetReportDatatableActionForm");		 
+ 		
+    openTeamTimesheetReportActionFormPanel: function()
+	 {		 
+		 org.r3.PageManager.pushBreadCrumb(
+		{
+			"title" : "Report Consuntivazione",
+			"actionForm" : this.teamtimesheetReportActionForm
+		});
+		 
+		 this.teamtimesheetReportActionForm.open();
+		 $('#gsidebar-navanchor').gsidebar('select', 'act_teamtimesheetreport');		 
+	 },
+	 
+	
+    	

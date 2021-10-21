@@ -1,0 +1,50 @@
+##
+##
+## $targetApplicationDTO: DTO applicazione creata nel sito target
+## $sourceApplicationDTO: DTO applicazione creata nel sito source
+## $sourceOwnerId: identificativo del ownerId da copiare
+## $targetOwnerId: identificativo del ownerId target
+## $sourceHelmsmanId: identificativo del helmsmanId da copiare
+## $targetHelmsmanId: identificativo del helmsmanId target
+##
+
+#if ($targetOwnerId) 
+INSERT INTO r3_actor (eventid, actorid, firstname, lastname, phone, cellphone, email, address, town, zipcode, contactgroup, recstatus)
+ select '$targetApplicationDTO.eventid', '$targetOwnerId', firstname, lastname, phone, cellphone, email, address, town, zipcode, contactgroup, recstatus
+ from  r3_actor where eventid = '$sourceApplicationDTO.eventid' and actorid = '$sourceOwnerId';
+
+INSERT INTO r3_relactorgroup (eventid, groupid, actorid)
+ values('$targetApplicationDTO.eventid', 'ACGOWNERS', '$targetOwnerId');
+#end
+
+#if ($targetHelmsmanId) 
+INSERT INTO r3_actor (eventid, actorid, firstname, lastname, phone, cellphone, email, address, town, zipcode, contactgroup, recstatus)
+ select '$targetApplicationDTO.eventid', '$targetHelmsmanId', firstname, lastname, phone, cellphone, email, address, town, zipcode, contactgroup, recstatus
+ from  r3_actor where eventid = '$sourceApplicationDTO.eventid' and actorid = '$sourceHelmsmanId';
+
+INSERT INTO r3_relactorgroup (eventid, groupid, actorid)
+ values('$targetApplicationDTO.eventid', 'ACGHELMSMAN', '$targetHelmsmanId');
+#end
+
+INSERT INTO regatta3.sev_appcrewmember
+(crewmemberid, eventid, applicationid, cardnumber, crewmembername, weight, crewmemberrolecode, memberstatuscode, createtimestamp, deletetimestamp,
+checkcardnumber, checkcardnumber_ts, recstatus)
+select concat('C', right('$targetApplicationDTO.applicationid', 8), '_', right(crewmemberid, 5)), '$targetApplicationDTO.eventid', '$targetApplicationDTO.applicationid', 
+       cardnumber, crewmembername, weight, crewmemberrolecode, memberstatuscode, createtimestamp, deletetimestamp,
+       checkcardnumber, checkcardnumber_ts, recstatus
+from regatta3.sev_appcrewmember where eventid = '$sourceApplicationDTO.eventid' and  applicationid = '$sourceApplicationDTO.applicationid';
+
+INSERT INTO regatta3.sev_appdata (eventid, applicationid, sectionid, paramname, paramvalue)
+ select '$targetApplicationDTO.eventid', '$targetApplicationDTO.applicationid', sectionid, paramname, paramvalue
+ from regatta3.sev_appdata where eventid = '$sourceApplicationDTO.eventid' and  applicationid = '$sourceApplicationDTO.applicationid';
+        
+insert into regatta3.sev_appdocument 
+(documentid, eventid, applicationid, documenttypecode, documentname, documenturl, filesize, contenttype, annotation, imageurl,
+imageheight, imagewidth, iconurl, iconwidth, iconheight, uploadtimestamp)
+select        
+  concat('D', right('$targetApplicationDTO.applicationid', 8), '_', right(documentid, 5)), '$targetApplicationDTO.eventid', '$targetApplicationDTO.applicationid',
+  documenttypecode, documentname, documenturl, filesize, contenttype, annotation, imageurl,
+  imageheight, imagewidth, iconurl, iconwidth, iconheight, uploadtimestamp
+from regatta3.sev_appdocument where eventid = '$sourceApplicationDTO.eventid' and  applicationid = '$sourceApplicationDTO.applicationid';
+  
+          

@@ -1,0 +1,2 @@
+<< BOF Inserting rows at: 25
+        this.alldayflag = aDataBean.alldayflag || null;

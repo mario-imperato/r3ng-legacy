@@ -1,0 +1,76 @@
+  <!-- Canvas dependencies -->
+  <div id="resourceQueryActionForm"  class="actionForm"></div>
+  <div id="resourceDetailActionForm" class="actionForm" ></div>
+  
+  <!-- JS dependencies -->
+  <r3_lang:script path2resolve="/org/r3/jsportlet/project/resource/messages.js" />
+  <r3_lang:script path2resolve="/org/r3/jsportlet/project/resource/ResourceQueryActionForm.js" />
+  <r3_lang:script path2resolve="/org/r3/jsportlet/project/resource/ResourceQueryActionForm_validation.js" />
+  <r3_lang:script path2resolve="/org/r3/jsportlet/project/resource/ResourceDetailActionForm.js" />
+  <r3_lang:script path2resolve="/org/r3/jsportlet/project/resource/ResourceDetailActionFormView.js" />
+  <r3_lang:script path2resolve="/org/r3/jsportlet/project/resource/ResourceCreateActionFormView.js" />  
+  <r3_lang:script path2resolve="/org/r3/jsportlet/project/resource/ResourceDetailActionFormView_validation.js" />  
+  
+  <r3_lang:script path2resolve="/org/r3/jsportlet/project/resource/ResourceDetailActionFormView_TabTeams.js" />  
+  <r3_lang:script path2resolve="/org/r3/jsportlet/project/resource/ResourceDetailActionFormView_TabTeams_validation.js" />
+
+  <r3_lang:script path2resolve="/org/r3/db/project/resource/ResourceQueryActionFormView.js" />
+  <r3_lang:script path2resolve="/org/r3/db/project/resource/ResourceDTOAdapter.js" />
+  <r3_lang:script path2resolve="/org/r3/db/project/resource/ResourceDTO.js" />
+  <r3_lang:script path2resolve="/org/r3/db/project/resource/ResourceDictionary.js" /> 
+  
+  <r3_lang:script path2resolve="/org/r3/db/project/teammemberprofile/TeamMemberProfileDictionary.js" />
+  <r3_lang:script path2resolve="/org/r3/db/project/teammemberprofile/TeamMemberProfileDTO.js" />
+  <r3_lang:script path2resolve="/org/r3/db/project/teammemberprofile/TeamMemberProfileDTOAdapter.js" />
+  <r3_lang:script path2resolve="/org/r3/db/project/teammemberprofile/TeamMemberProfileQueryActionFormView.js" />
+  
+  <r3_lang:script path2resolve="/org/r3/db/project/teamresourceview/TeamResourceViewQueryActionFormView.js" />
+  <r3_lang:script path2resolve="/org/r3/db/project/teamresourceview/TeamResourceViewDTOAdapter.js" />
+  <r3_lang:script path2resolve="/org/r3/db/project/teamresourceview/TeamResourceViewDTO.js" />
+  <r3_lang:script path2resolve="/org/r3/db/project/teamresourceview/TeamResourceViewDictionary.js" /> 
+    
+  <!-- PageManager dependency -->
+  this.resourceQueryActionForm = new org.r3.jsportlet.project.resource.ResourceQueryActionForm(this, "#resourceQueryActionForm");		 
+  this.resourceDetailActionForm = new org.r3.jsportlet.project.resource.ResourceDetailActionForm(this, "#resourceDetailActionForm", "#resourceDetailActionFormView_tab_generale");
+	
+		 openResourceQueryActionFormPanel : function()
+	 {		 
+		 org.r3.PageManager.pushBreadCrumb(
+		{
+			"title" : "Elenco Risorse",
+			"actionForm" : this.resourceQueryActionForm
+		});
+		 
+		 this.resourceQueryActionForm.open();
+		 $('#gsidebar-navanchor').gsidebar('select', 'act_queryresources');		 
+	 },
+	 
+		 openResourceDetailPanel : function(aResourceSiteViewDTOAdapter)
+	 {
+		org.r3.PageManager.pushBreadCrumb(
+		{
+			"title" : "Det. Risorsa",
+			"actionForm" : this.resourceDetailActionForm
+		});
+
+		this.resourceDetailActionForm.open(aResourceSiteViewDTOAdapter);
+	},
+	
+	 openNewResourcePanel : function()
+	 {
+		org.r3.PageManager.pushBreadCrumb(
+		{
+			"title" : "Nuova Risorsa",
+			"actionForm" : this.resourceDetailActionForm
+		});
+
+		this.resourceDetailActionForm.open();
+	},
+
+	closeNewResourcePanel : function()
+    {
+   	     org.r3.PageManager.closeAllBreadCrumbs();
+	     this.openResourceQueryActionFormPanel();
+    },
+    
+    	

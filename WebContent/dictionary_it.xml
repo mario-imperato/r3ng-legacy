@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!DOCTYPE xhtml
+  PUBLIC "XHTML1.0"
+  "assets/xhtml1-strict.dtd">
+
+<dictionary namespace='org.r3'>
+
+   <string id="wait_please">Attendere Prego</string>
+   <string id="admin_area">Area Amministrativa</string>
+   <string id='log_out'>Log-out</string>
+   <string id='my_profile'>My S100</string>
+        
+</dictionary>

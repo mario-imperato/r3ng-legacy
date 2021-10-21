@@ -1,0 +1,43 @@
+.mapexplorer-canvas
+{
+	height: 100%;
+	padding-top: 50px;
+	padding-bottom: 0px;
+}
+
+#mapexplorer-sidebar
+{
+  	top: 60px;
+}
+  
+/* Layout top-navigation .... */
+@media (max-width: 767px)
+{
+  #mapexplorer-sidebar
+  {
+  	top: 50px;
+  }
+
+  /*
+  .mapexplorer-canvas
+  {
+     padding-top: 107px;
+  }
+  
+  #mapexplorer-sidebar
+  {
+  	top: 107px;
+  }
+  */
+}
+
+
+/* Questa mi serve perche' va in conflitto con le skin adminLTE */
+#mapexplorer-sidebar.sidebar a {
+    color: inherit;
+}
+
+#mapexplorer-sidebar h1.sidebar-header
+{
+	margin-bottom: 20px;
+} 

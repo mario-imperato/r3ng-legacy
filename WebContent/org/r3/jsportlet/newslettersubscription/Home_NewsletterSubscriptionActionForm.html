@@ -1,0 +1,36 @@
+     
+  <div style='margin-bottom: 10px; background-color: #eeeeff; border: 1px solid #274E90; background: url("/r3ng/resources/sites/cvfonline/pages/articles_headline.png") no-repeat top right; padding-top: 30px'>          
+  <!-- 
+  <img src='/r3ng/resources/sites/cvfonline/pages/articles_headline.png' style="width: 100%; display: block" />
+   -->
+     
+  <form id="newslettersubscription_form" method="POST" style='padding: 10px;'>
+  
+  <p>Tieniti aggiornato con le nostre attivit&agrave;</p>
+
+  <div class="form-group">
+     <img src="/r3ng/simpleCaptcha.png?token={%=encodeURIComponent(o.correlationid)%}" id="newslettersubscription_captcha_img" style='max-height: 50px; max-width: 70%'/>
+     <a id="newslettersubscription_refreshcaptcha_action" href="javascript:void(0)"><img src="/r3ng/resources/img/icons/refreshIcon.jpg" /></a>
+  </div>
+  
+  <div class="form-group">
+    <input type="hidden" name="securetoken" id="newslettersubscription_securetoken" value="{%=o.correlationid%}" />
+    <input type="text"   name="securecode"  id="newslettersubscription_securecode" maxlength="8" value='Codice' class="form-control" />
+  </div>
+  <div class="form-group">
+    <input type="text" name="email" id="newslettersubscription_email" maxlength="50"  value='E-mail' class="form-control" />
+  </div> 
+
+  <div class="form-group">
+    <input type="text" name="confirm_email" id="newslettersubscription_confirm_email" maxlength="50"  value='Conf. E-mail' class="form-control" />
+  </div> 
+
+  <div class="form-action-bar">
+        <button type="button" id="newslettersubscription_confirm_action" class="btn btn-default" >
+          <span>Iscriviti alla newsletter</span>
+        </button>
+  </div>
+      
+</form>
+</div>
+

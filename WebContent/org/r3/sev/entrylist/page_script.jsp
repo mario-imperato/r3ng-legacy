@@ -1,0 +1,55 @@
+<%@ taglib uri="http://www.r3.org/taglibs/r3/lang-1.00" prefix="r3_lang" %>
+<%@ taglib uri="/tags/struts-tiles" prefix="tiles" %>
+
+<%@ page language="java" session="false" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"
+    import="java.io.*,
+    java.util.*
+    " %>
+    
+<r3_lang:environment id="r3Env">
+
+  <r3_lang:script path2resolve="/org/r3/sev/entrylist/PageManager.js" />
+  <r3_lang:script path2resolve="/org/r3/sev/entrylist/messages.js" />
+  
+  <r3_lang:script path2resolve="/org/r3/db/sailevent/entrylist/SailEntryListQueryActionFormView.js" />
+  <r3_lang:script path2resolve="/org/r3/db/sailevent/entrylist/SailEntryListDTOAdapter.js" />
+  <r3_lang:script path2resolve="/org/r3/db/sailevent/entrylist/SailEntryListDTO.js" />
+  <r3_lang:script path2resolve="/org/r3/db/sailevent/entrylist/SailEntryListDictionary.js" />
+  
+  <r3_lang:script path2resolve="/org/r3/jsportlet/sev/entrylist/EntryListActionForm.js" />
+  <r3_lang:script path2resolve="/org/r3/jsportlet/sev/entrylist/EntryListActionForm_validation.js" />
+  <r3_lang:script path2resolve="/org/r3/jsportlet/sev/entrylist/messages.js" />
+        
+  <script type="text/javascript">
+  $(document).ready(function()
+  {
+	org.r3.Constants.init('<%=r3Env.getRequestSiteId()%>', '<%=r3Env.getRequestLanguage()%>');
+	$('#pageAction_home').attr('href', "home.do");
+	
+	org.r3.PageManager.init();
+    org.r3.PageManager.wait("org.r3.message.waiting");
+
+
+      
+    org.r3.PageManager.networkInitialization(
+    {
+      success : function()
+      {
+    	  org.r3.PageManager.canvasInitialization(); 
+        
+        org.r3.sev.entrylist.PageManager.init();
+        org.r3.PageManager.closeNotifier();
+      },
+
+      error : function()
+      {
+        org.r3.PageManager.error("org.r3.message.initializationerror");
+      },
+
+      verifyIdentity : true
+    });
+  });
+  </script>   
+
+</r3_lang:environment>
+      

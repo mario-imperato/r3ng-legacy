@@ -1,0 +1,15 @@
+##
+##
+## $actorDTO: DTO actor in cancellazione
+##
+##
+
+update r3_wbsnode set assignedto = NULL 
+   where site = '$actorDTO.eventid' and assignedto = '$actorDTO.actorid';
+
+delete from prj_siteresource where  site = '$actorDTO.eventid' and resourceid = '$actorDTO.actorid' and resourcetype = 'actor';
+delete from r3_wbsactor where  site = '$actorDTO.eventid' and actorid = '$actorDTO.actorid';
+delete from r3_relactorgroup where eventid = '$actorDTO.eventid' and actorid = '$actorDTO.actorid';
+delete from r3_actor where eventid = '$actorDTO.eventid' and actorid = '$actorDTO.actorid';
+
+   

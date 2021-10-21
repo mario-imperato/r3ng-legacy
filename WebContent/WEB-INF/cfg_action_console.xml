@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<action path="/org/r3/console/home"
+    className="org.r3.system.struts.GWFActionMapping"            
+    type="org.r3.system.struts.R3Manager"
+    parameter="home" >
+
+    <!--
+    scope="request"
+    name="loginForm"
+    validate="true"
+    input="/security/signin.jsp">-->
+       <set-property property="sessionBehaviour"   value="required"     />
+       <set-property property="functionId"         value="console"      />    
+       <set-property property="functionalAreaId"   value="home"         />           
+       <set-property property="enforceTimeToken"   value="false"        />           
+       
+       <set-property property="sessionRequiredFailureForward"        value="ConsoleSessionRequiredFailure"  />
+       <set-property property="authorizationRequiredFailureForward"  value="ConsoleSessionRequiredFailure"  />
+       
+       <forward name="YachtClubSiteHome"      path="/org/r3/console/home/yachtclubsite/home.jsp"      redirect="false" />
+       <forward name="RegattaSiteHome"        path="/org/r3/console/home/site/home.jsp"               redirect="false" />        
+       <forward name="DefaultSiteHome"        path="/org/r3/console/home/defaultsite/home.jsp"        redirect="false" />                         
+       <forward name="SpeedSailsHome"         path="/org/r3/console/home/speedsails/home.jsp"         redirect="false" />  
+       <forward name="WorkshopHome"           path="/org/r3/console/home/workshop/home.jsp"           redirect="false" />
+       <forward name="MasterSiteHome"         path="/org/r3/console/home/mastersite/home.jsp"         redirect="false" />
+       <forward name="ITILServiceSiteHome"    path="/org/r3/console/home/itilsite/home.jsp"           redirect="false" />
+       <forward name="ShakeusHome"            path="/org/r3/console/home/shakeus/home.jsp"            redirect="false" />
+       <forward name="ShakeusNeighbHome"      path="/org/r3/console/home/shakeusneighb/home.jsp"      redirect="false" />          
+       <forward name="ShakeusShopHome"        path="/org/r3/console/home/shkshop/home.jsp"            redirect="false" />
+</action>
+
+<action path="/org/r3/console/login"
+    className="org.r3.system.struts.GWFActionMapping"            
+    type="org.r3.system.struts.R3Manager"
+    parameter="success" >
+
+    <!--
+    scope="request"
+    name="loginForm"
+    validate="true"
+    input="/security/signin.jsp">-->
+       <set-property property="sessionBehaviour"   value="create"    />
+       <set-property property="functionId"         value="pub"          />    
+       <set-property property="functionalAreaId"   value="home"         />           
+       <set-property property="enforceTimeToken"   value="false"        />           
+       
+       <forward name="Success"              path="/org/r3/console/login/login.jsp"    redirect="false" />               
+
+</action>
+
+<action path="/org/r3/console/system/resturls"
+    className="org.r3.system.struts.GWFActionMapping"            
+    type="org.r3.system.struts.R3Manager"
+    parameter="success" >
+
+    <!--
+    scope="request"
+    name="loginForm"
+    validate="true"
+    input="/security/signin.jsp">-->
+       <set-property property="sessionBehaviour"   value="required"     />
+       <set-property property="functionId"         value="consoleext"      />    
+       <set-property property="functionalAreaId"   value="home"         />           
+       <set-property property="enforceTimeToken"   value="false"        />           
+       
+       <set-property property="sessionRequiredFailureForward"        value="ConsoleSessionRequiredFailure"  />
+       <set-property property="authorizationRequiredFailureForward"  value="ConsoleSessionRequiredFailure"  />
+       
+       <forward name="Success"              path="/org/r3/console/system/resturls/resturls.jsp"    redirect="false" />        
+       
+</action>
+
+<action path="/org/r3/console/system/tutorials"
+    className="org.r3.system.struts.GWFActionMapping"            
+    type="org.r3.system.struts.R3Manager"
+    parameter="success" >
+
+    <!--
+    scope="request"
+    name="loginForm"
+    validate="true"
+    input="/security/signin.jsp">-->
+       <set-property property="sessionBehaviour"   value="required"     />
+       <set-property property="functionId"         value="console"      />    
+       <set-property property="functionalAreaId"   value="home"         />           
+       <set-property property="enforceTimeToken"   value="false"        />           
+       
+       <set-property property="sessionRequiredFailureForward"        value="ConsoleSessionRequiredFailure"  />
+       <set-property property="authorizationRequiredFailureForward"  value="ConsoleSessionRequiredFailure"  />
+       
+       <forward name="Success"              path="/org/r3/console/system/tutorials/tutorials.jsp"    redirect="false" />        
+       
+</action>
+
+<action path="/org/r3/console/users"
+    className="org.r3.system.struts.GWFActionMapping"            
+    type="org.r3.system.struts.R3Manager"
+    parameter="success" >
+
+    <!--
+    scope="request"
+    name="loginForm"
+    validate="true"
+    input="/security/signin.jsp">-->
+       <set-property property="sessionBehaviour"   value="required"     />
+       <set-property property="functionId"         value="consoleext"      />    
+       <set-property property="functionalAreaId"   value="home"         />           
+       <set-property property="enforceTimeToken"   value="false"        />           
+       
+       <set-property property="sessionRequiredFailureForward"        value="ConsoleSessionRequiredFailure"  />
+       <set-property property="authorizationRequiredFailureForward"  value="ConsoleSessionRequiredFailure"  />
+       
+       <forward name="Success"              path="/org/r3/console/users/users.jsp"    redirect="false" />        
+       
+</action>
+
+<action path="/org/r3/console/cms/cards"
+    className="org.r3.system.struts.GWFActionMapping"            
+    type="org.r3.system.struts.R3Manager"
+    parameter="success" >
+
+    <!--
+    scope="request"
+    name="loginForm"
+    validate="true"
+    input="/security/signin.jsp">-->
+       <set-property property="sessionBehaviour"   value="required"     />
+       <set-property property="functionId"         value="console"      />    
+       <set-property property="functionalAreaId"   value="home"         />           
+       <set-property property="enforceTimeToken"   value="false"        />           
+       
+       <set-property property="sessionRequiredFailureForward"        value="ConsoleSessionRequiredFailure"  />
+       <set-property property="authorizationRequiredFailureForward"  value="ConsoleSessionRequiredFailure"  />
+       
+       <forward name="Success"              path="/org/r3/console/cms/cards/cards.jsp"    redirect="false" />        
+       
+</action>
+
+<action path="/org/r3/console/contacts"
+    className="org.r3.system.struts.GWFActionMapping"            
+    type="org.r3.system.struts.R3Manager"
+    parameter="success" >
+
+    <!--
+    scope="request"
+    name="loginForm"
+    validate="true"
+    input="/security/signin.jsp">-->
+       <set-property property="sessionBehaviour"   value="required"     />
+       <set-property property="functionId"         value="console"      />    
+       <set-property property="functionalAreaId"   value="home"         />           
+       <set-property property="enforceTimeToken"   value="false"        />           
+       
+       <set-property property="sessionRequiredFailureForward"        value="ConsoleSessionRequiredFailure"  />
+       <set-property property="authorizationRequiredFailureForward"  value="ConsoleSessionRequiredFailure"  />
+       
+       <forward name="Success"              path="/org/r3/console/contacts/contacts.jsp"    redirect="false" />        
+       
+</action>
+
+<action path="/org/r3/console/resources"
+    className="org.r3.system.struts.GWFActionMapping"            
+    type="org.r3.system.struts.R3Manager"
+    parameter="success" >
+
+    <!--
+    scope="request"
+    name="loginForm"
+    validate="true"
+    input="/security/signin.jsp">-->
+       <set-property property="sessionBehaviour"   value="required"     />
+       <set-property property="functionId"         value="console"      />    
+       <set-property property="functionalAreaId"   value="home"         />           
+       <set-property property="enforceTimeToken"   value="false"        />           
+       
+       <set-property property="sessionRequiredFailureForward"        value="ConsoleSessionRequiredFailure"  />
+       <set-property property="authorizationRequiredFailureForward"  value="ConsoleSessionRequiredFailure"  />
+       
+       <forward name="Success"              path="/org/r3/console/resources/resources.jsp"    redirect="false" />        
+       
+</action>
+
+<action path="/org/r3/console/sev/ranking"
+    className="org.r3.system.struts.GWFActionMapping"            
+    type="org.r3.system.struts.R3Manager"
+    parameter="success" >
+
+    <!--
+    scope="request"
+    name="loginForm"
+    validate="true"
+    input="/security/signin.jsp">-->
+       <set-property property="sessionBehaviour"   value="required"     />
+       <set-property property="functionId"         value="console"      />    
+       <set-property property="functionalAreaId"   value="home"         />           
+       <set-property property="enforceTimeToken"   value="false"        />           
+       
+       <set-property property="sessionRequiredFailureForward"        value="ConsoleSessionRequiredFailure"  />
+       <set-property property="authorizationRequiredFailureForward"  value="ConsoleSessionRequiredFailure"  />
+       
+       <forward name="Success"              path="/org/r3/console/sev/ranking/ranking.jsp"    redirect="false" />        
+       
+</action>
+
+<action path="/org/r3/console/siteconfig"
+    className="org.r3.system.struts.GWFActionMapping"            
+    type="org.r3.system.struts.R3Manager"
+    parameter="success" >
+
+    <!--
+    scope="request"
+    name="loginForm"
+    validate="true"
+    input="/security/signin.jsp">-->
+       <set-property property="sessionBehaviour"   value="required"     />
+       <set-property property="functionId"         value="console"      />    
+       <set-property property="functionalAreaId"   value="home"         />           
+       <set-property property="enforceTimeToken"   value="false"        />           
+       
+       <set-property property="sessionRequiredFailureForward"        value="ConsoleSessionRequiredFailure"  />
+       <set-property property="authorizationRequiredFailureForward"  value="ConsoleSessionRequiredFailure"  />
+       
+       <forward name="Success"              path="/org/r3/console/siteconfig/siteconfig.jsp"    redirect="false" />        
+       
+</action>
+
+<action path="/org/r3/console/wbs"
+    className="org.r3.system.struts.GWFActionMapping"            
+    type="org.r3.system.struts.R3Manager"
+    parameter="success" >
+
+    <!--
+    scope="request"
+    name="loginForm"
+    validate="true"
+    input="/security/signin.jsp">-->
+       <set-property property="sessionBehaviour"   value="required"     />
+       <set-property property="functionId"         value="console"      />    
+       <set-property property="functionalAreaId"   value="home"         />           
+       <set-property property="enforceTimeToken"   value="false"        />           
+       
+       <set-property property="sessionRequiredFailureForward"        value="ConsoleSessionRequiredFailure"  />
+       <set-property property="authorizationRequiredFailureForward"  value="ConsoleSessionRequiredFailure"  />
+       
+       <forward name="Success"              path="/org/r3/console/wbs/wbs.jsp"    redirect="false" />        
+       
+</action>
+
+<action path="/org/r3/console/tow"
+    className="org.r3.system.struts.GWFActionMapping"            
+    type="org.r3.system.struts.R3Manager"
+    parameter="success" >
+
+    <!--
+    scope="request"
+    name="loginForm"
+    validate="true"
+    input="/security/signin.jsp">-->
+       <set-property property="sessionBehaviour"   value="required"     />
+       <set-property property="functionId"         value="console"      />    
+       <set-property property="functionalAreaId"   value="home"         />           
+       <set-property property="enforceTimeToken"   value="false"        />           
+       
+       <set-property property="sessionRequiredFailureForward"        value="ConsoleSessionRequiredFailure"  />
+       <set-property property="authorizationRequiredFailureForward"  value="ConsoleSessionRequiredFailure"  />
+       
+       <forward name="Success"              path="/org/r3/console/tow/tow.jsp"    redirect="false" />        
+       
+</action>
+
+<action path="/org/r3/console/bbs"
+    className="org.r3.system.struts.GWFActionMapping"            
+    type="org.r3.system.struts.R3Manager"
+    parameter="success" >
+
+    <!--
+    scope="request"
+    name="loginForm"
+    validate="true"
+    input="/security/signin.jsp">-->
+       <set-property property="sessionBehaviour"   value="required"     />
+       <set-property property="functionId"         value="console"      />    
+       <set-property property="functionalAreaId"   value="home"         />           
+       <set-property property="enforceTimeToken"   value="false"        />           
+       
+       <set-property property="sessionRequiredFailureForward"        value="ConsoleSessionRequiredFailure"  />
+       <set-property property="authorizationRequiredFailureForward"  value="ConsoleSessionRequiredFailure"  />
+       
+       <forward name="Success"              path="/org/r3/console/bbs/bbs.jsp"    redirect="false" />        
+       
+</action>
+
+<action path="/org/r3/console/orc"
+    className="org.r3.system.struts.GWFActionMapping"            
+    type="org.r3.system.struts.R3Manager"
+    parameter="success" >
+
+    <!--
+    scope="request"
+    name="loginForm"
+    validate="true"
+    input="/security/signin.jsp">-->
+       <set-property property="sessionBehaviour"   value="create"    />
+       <set-property property="functionId"         value="pub"          />    
+       <set-property property="functionalAreaId"   value="home"         />           
+       <set-property property="enforceTimeToken"   value="false"        />           
+       
+       <forward name="Success"              path="/org/r3ts/webconsole/orc/orc.jsp"    redirect="false" />               
+
+</action>

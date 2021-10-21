@@ -1,0 +1,51 @@
+##
+## Variabili in ingresso:
+##     String                     as $schemehostport
+##     String                     as $targetSite
+##     String                     as $targetLanguage
+##     String                     as $targetSiteDomain 
+##     UserDTO                    as $userObj
+##     OTPDTO                     as $otpObj
+##
+## The variable userDataBean is supposed to hold the GWFUserDataBean
+## The variable password contains the imposed user password.
+
+<p>
+Prezado $userObj.lastname,<br />
+para o credenciamento, para acessar o site, você pode usar este link<br /> 
+<a href="${schemehostport}/r3ng/${targetSite}/${targetLanguage}/org/r3/home.do">Pagina inicial</a>
+</p>
+
+<p>
+Se não pode clicar, você pode copiar e colar no seu navegador o seguinte endereço:<br />
+${schemehostport}/r3ng/${targetSite}/${targetLanguage}/org/r3/home.do
+</p>
+
+<p>
+Boa navegação.
+</p>
+ 
+<p>
+Cumprimentos,<br />
+Team S100
+</p>
+
+<p>
+Gentile $userObj.lastname,<br />
+per la registrazione, per accedere al sito puoi utilizzare il seguente link<br /> 
+<a href="${schemehostport}/r3ng/${targetSite}/it/org/r3/home.do">Home Page</a>
+</p>
+
+<p>
+Qualora non fosse cliccabile, puoi copiare e incollare nella barra del tuo browser il seguente indirizzo:<br />
+${schemehostport}/r3ng/${targetSite}/it/org/r3/home.do
+</p>
+
+<p>
+Buona navigazione.
+</p>
+ 
+<p>
+Distinti Saluti,<br />
+Team S100
+</p>

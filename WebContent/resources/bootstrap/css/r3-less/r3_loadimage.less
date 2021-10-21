@@ -1,0 +1,101 @@
+/* Stili utilizzati per la funzionalità di upload singole immagini (Immagine Profilo.. etc) */
+
+.r3_loadimage_canvas
+{
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    padding: 5px;
+    /* width: 220px;  N  */
+    /* height: 220px;  N  */
+    position: relative;
+}
+
+.r3_loadimage_canvas > div.loadimage_canvas_image_canvas
+{
+    border: 1px dashed #aaa;
+    border-radius: 4px;
+    /* text-align: center; */
+    vertical-align: middle;
+    /* margin: 12px 15px 12px 12px; */ 
+    padding: 5px;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.r3_loadimage_canvas > div.loadimage_canvas_image_canvas > img
+{
+    width: 100%;
+    height: 100%;
+}
+
+.r3_loadimage_canvas .overlay {
+    z-index: 50;
+    background: rgba(255,255,255,.7);
+    /* border-radius: 3px; */
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;   /* N */
+    right: 0;    /* N */
+    /* width: 100%; N */
+    /* height: 100%; N */
+    /* padding: 0; N */
+    /* margin: 0; N */
+    /* display: table; N */
+    text-align: center;
+}
+
+.r3_loadimage_canvas .overlay i {
+    /* display: table-cell; N */
+    /* vertical-align: middle; N */
+    /* height: 100%;  N */
+    /* padding: 15% 0; N */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+/* top, left, bottom corrispondono allo stesso padding di .r3_cmsattachment_userphoto_canvas > div.r3_cmsattachment_userphoto_canvas_img */
+.r3_loadimage_canvas .loadimage_canvas_selectiontrigger {
+    z-index: 30;
+    position: absolute; left: 5px; bottom: 5px; right: 5px; 
+    height:  45px; 
+    padding: 10px; 
+    line-height: 1em; 
+    background: none repeat scroll 0 0 #444; 
+    opacity: 0.5; 
+    color: #fff;
+    cursor: pointer;
+}
+
+.r3_img_cropcanvas .result
+{
+   background: #f0f0f0;
+   border: 1px solid #aaa;   
+}
+
+.r3_img_cropcanvas .result,
+.r3_img_cropcanvas .thumbnail {
+  padding: 0px;
+  background: #fff;
+  color: #222;
+  text-align: center;
+}
+.r3_img_cropcanvas .jcrop-holder {
+  margin: 0 auto;
+}
+
+/*
+   .kv-avatar .file-preview-frame,.kv-avatar .file-preview-frame:hover {
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    text-align: center;
+}
+.kv-avatar .file-input {
+    display: table-cell;
+    max-width: 220px;
+}   
+*/

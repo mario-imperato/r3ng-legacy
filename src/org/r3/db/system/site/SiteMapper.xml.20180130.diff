@@ -1,0 +1,379 @@
+<< BOF Inserting rows at: 11
+
+<!-- Mapper Target DBMS: [SERVER_MYSQL] -->
+<< BOF Inserting rows at: 15
+           <result column="parentsite" property="parentsite" jdbcType="VARCHAR" />
+<< BOF Inserting rows at: 20
+           <result column="hostname" property="hostname" jdbcType="VARCHAR" />
+           <result column="homeurl" property="homeurl" jdbcType="VARCHAR" />
+           <result column="consoleurl" property="consoleurl" jdbcType="VARCHAR" />
+<< BOF Deleting rows at: 21
+           <result column="sitelayout" property="sitelayout" jdbcType="VARCHAR" />
+           <result column="siteresourcepath" property="siteresourcepath" jdbcType="VARCHAR" />
+           <result column="sitecss" property="sitecss" jdbcType="VARCHAR" />
+           <result column="siteconsolecss" property="siteconsolecss" jdbcType="VARCHAR" />
+           <result column="sitetheme" property="sitetheme" jdbcType="VARCHAR" />
+           <result column="refsitetype" property="refsitetype" jdbcType="VARCHAR" />
+           <result column="refsite" property="refsite" jdbcType="VARCHAR" />
+           <result column="refsitevisible" property="refsitevisible" jdbcType="VARCHAR" />
+           <result column="refsitedescr" property="refsitedescr" jdbcType="VARCHAR" />
+           <result column="admrefsitetype" property="admrefsitetype" jdbcType="VARCHAR" />
+           <result column="admrefsite" property="admrefsite" jdbcType="VARCHAR" />
+           <result column="admrefsitevisible" property="admrefsitevisible" jdbcType="VARCHAR" />
+           <result column="admrefsitedescr" property="admrefsitedescr" jdbcType="VARCHAR" />
+           <result column="cardid" property="cardid" jdbcType="VARCHAR" />
+           <result column="options" property="options" jdbcType="VARCHAR" />
+
+
+
+<< BOF Deleting rows at: 104
+  <!-- 20180130 Modifica Base_Column_List per togliere alcuni campi dalla tabella...  -->
+<< BOF Changing rows at: 106
+    site,  sitedescr,  sitelanguages,  sitesummary,  sitedomain,  calendarid,  sitetype,  sitelayout,  siteresourcepath,
+  sitecss,  siteconsolecss,  sitetheme,  refsitetype,  refsite,  refsitevisible,  refsitedescr,  admrefsitetype,  admrefsite,
+  admrefsitevisible,  admrefsitedescr,  cardid,  options
+    site,  parentsite,  sitedescr,  sitelanguages,  sitesummary,  sitedomain,  calendarid,  hostname,  homeurl,
+  consoleurl,  sitetype  </sql>
+<< BOF Deleting rows at: 110
+    </sql>
+  
+<< BOF Changing rows at: 114
+        <choose >
+        <choose>
+<< BOF Changing rows at: 122
+	      <choose >
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('parentsite')" >
+           parentsite,
+       </when>
+       <otherwise>
+           null as parentsite,
+       </otherwise>         
+     </choose> 
+	       <choose>
+<< BOF Changing rows at: 130
+	      <choose >
+	       <choose>
+<< BOF Changing rows at: 138
+	      <choose >
+	       <choose>
+<< BOF Changing rows at: 146
+	      <choose >
+	       <choose>
+<< BOF Changing rows at: 154
+	      <choose >
+	       <choose>
+<< BOF Changing rows at: 162
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('sitetype')" >
+           sitetype,
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('hostname')" >
+           hostname,
+<< BOF Changing rows at: 167
+           null as sitetype,
+           null as hostname,
+<< BOF Changing rows at: 170
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('sitelayout')" >
+           sitelayout,
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('homeurl')" >
+           homeurl,
+<< BOF Changing rows at: 175
+           null as sitelayout,
+           null as homeurl,
+<< BOF Changing rows at: 178
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('siteresourcepath')" >
+           siteresourcepath,
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('consoleurl')" >
+           consoleurl,
+<< BOF Changing rows at: 183
+           null as siteresourcepath,
+           null as consoleurl,
+<< BOF Changing rows at: 186
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('sitecss')" >
+           sitecss,
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('sitetype')" >
+           sitetype,
+<< BOF Changing rows at: 191
+           null as sitecss,
+           null as sitetype,
+<< BOF Changing rows at: 194
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('siteconsolecss')" >
+           siteconsolecss,
+       </when>
+       <otherwise>
+           null as siteconsolecss,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('sitetheme')" >
+           sitetheme,
+       </when>
+       <otherwise>
+           null as sitetheme,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('refsitetype')" >
+           refsitetype,
+       </when>
+       <otherwise>
+           null as refsitetype,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('refsite')" >
+           refsite,
+       </when>
+       <otherwise>
+           null as refsite,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('refsitevisible')" >
+           refsitevisible,
+       </when>
+       <otherwise>
+           null as refsitevisible,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('refsitedescr')" >
+           refsitedescr,
+       </when>
+       <otherwise>
+           null as refsitedescr,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('admrefsitetype')" >
+           admrefsitetype,
+       </when>
+       <otherwise>
+           null as admrefsitetype,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('admrefsite')" >
+           admrefsite,
+       </when>
+       <otherwise>
+           null as admrefsite,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('admrefsitevisible')" >
+           admrefsitevisible,
+       </when>
+       <otherwise>
+           null as admrefsitevisible,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('admrefsitedescr')" >
+           admrefsitedescr,
+       </when>
+       <otherwise>
+           null as admrefsitedescr,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('cardid')" >
+           cardid,
+       </when>
+       <otherwise>
+           null as cardid,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('options')" >
+           options,
+       </when>
+       <otherwise>
+           null as options,
+       </otherwise>         
+     </choose> 
+	      </trim>       
+	       </trim>       
+<< BOF Changing rows at: 307
+    from r3_site
+    from r3_site    
+<< BOF Changing rows at: 321
+    <choose >
+    <choose>
+<< BOF Changing rows at: 329
+
+	<!-- 20180130 Modifica select per togliere alcuni campi dalla tabella...  -->      
+        
+<< BOF Deleting rows at: 346
+    <!-- 20180130 Lscio la count con il riferimento alla tabella giusta...  -->  
+<< BOF Changing rows at: 361
+ site, sitedescr, sitelanguages, sitesummary, sitedomain, calendarid, sitetype, sitelayout, siteresourcepath,
+ sitecss, siteconsolecss, sitetheme, refsitetype, refsite, refsitevisible, refsitedescr, admrefsitetype, admrefsite,
+ admrefsitevisible, admrefsitedescr, cardid, options      )
+ site, parentsite, sitedescr, sitelanguages, sitesummary, sitedomain, calendarid, hostname, homeurl,
+ consoleurl, sitetype      )
+<< BOF Inserting rows at: 367
+ #{record.parentsite,jdbcType=VARCHAR}, 
+<< BOF Changing rows at: 368
+ #{record.sitelanguages,jdbcType=VARCHAR}, 
+ #{record.sitesummary,jdbcType=VARCHAR},
+ #{record.sitelanguages,jdbcType=VARCHAR},
+<< BOF Inserting rows at: 371
+ #{record.sitesummary,jdbcType=VARCHAR}, 
+<< BOF Changing rows at: 373
+ #{record.sitetype,jdbcType=VARCHAR}, 
+ #{record.sitelayout,jdbcType=VARCHAR},
+ #{record.hostname,jdbcType=VARCHAR},
+<< BOF Changing rows at: 376
+ #{record.siteresourcepath,jdbcType=VARCHAR}, 
+ #{record.sitecss,jdbcType=VARCHAR}, 
+ #{record.siteconsolecss,jdbcType=VARCHAR}, 
+ #{record.sitetheme,jdbcType=VARCHAR},
+ 
+ #{record.refsitetype,jdbcType=VARCHAR}, 
+ #{record.refsite,jdbcType=VARCHAR}, 
+ #{record.refsitevisible,jdbcType=VARCHAR}, 
+ #{record.refsitedescr,jdbcType=VARCHAR},
+ 
+ #{record.admrefsitetype,jdbcType=VARCHAR}, 
+ #{record.admrefsite,jdbcType=VARCHAR}, 
+ #{record.admrefsitevisible,jdbcType=VARCHAR}, 
+ #{record.admrefsitedescr,jdbcType=VARCHAR},
+ 
+ #{record.cardid,jdbcType=VARCHAR}, 
+ #{record.options,jdbcType=VARCHAR}
+ #{record.homeurl,jdbcType=VARCHAR}, 
+ #{record.consoleurl,jdbcType=VARCHAR}, 
+ #{record.sitetype,jdbcType=VARCHAR}
+<< BOF Inserting rows at: 398
+      <if test="record.parentsiteDirty" >
+        parentsite = #{record.parentsite,jdbcType=VARCHAR},
+      </if>      
+<< BOF Changing rows at: 413
+      <if test="record.sitetypeDirty" >
+        sitetype = #{record.sitetype,jdbcType=VARCHAR},
+      <if test="record.hostnameDirty" >
+        hostname = #{record.hostname,jdbcType=VARCHAR},
+<< BOF Changing rows at: 416
+      <if test="record.sitelayoutDirty" >
+        sitelayout = #{record.sitelayout,jdbcType=VARCHAR},
+      <if test="record.homeurlDirty" >
+        homeurl = #{record.homeurl,jdbcType=VARCHAR},
+<< BOF Changing rows at: 419
+      <if test="record.siteresourcepathDirty" >
+        siteresourcepath = #{record.siteresourcepath,jdbcType=VARCHAR},
+      <if test="record.consoleurlDirty" >
+        consoleurl = #{record.consoleurl,jdbcType=VARCHAR},
+<< BOF Changing rows at: 422
+      <if test="record.sitecssDirty" >
+        sitecss = #{record.sitecss,jdbcType=VARCHAR},
+      <if test="record.sitetypeDirty" >
+        sitetype = #{record.sitetype,jdbcType=VARCHAR},
+<< BOF Deleting rows at: 425
+      <if test="record.siteconsolecssDirty" >
+        siteconsolecss = #{record.siteconsolecss,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.sitethemeDirty" >
+        sitetheme = #{record.sitetheme,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.refsitetypeDirty" >
+        refsitetype = #{record.refsitetype,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.refsiteDirty" >
+        refsite = #{record.refsite,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.refsitevisibleDirty" >
+        refsitevisible = #{record.refsitevisible,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.refsitedescrDirty" >
+        refsitedescr = #{record.refsitedescr,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.admrefsitetypeDirty" >
+        admrefsitetype = #{record.admrefsitetype,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.admrefsiteDirty" >
+        admrefsite = #{record.admrefsite,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.admrefsitevisibleDirty" >
+        admrefsitevisible = #{record.admrefsitevisible,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.admrefsitedescrDirty" >
+        admrefsitedescr = #{record.admrefsitedescr,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.cardidDirty" >
+        cardid = #{record.cardid,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.optionsDirty" >
+        options = #{record.options,jdbcType=VARCHAR},
+      </if>      
+<< BOF Inserting rows at: 471
+      <if test="record.parentsiteDirty" >
+        parentsite = #{record.parentsite,jdbcType=VARCHAR},
+      </if>
+<< BOF Changing rows at: 486
+      <if test="record.sitetypeDirty" >
+        sitetype = #{record.sitetype,jdbcType=VARCHAR},
+      <if test="record.hostnameDirty" >
+        hostname = #{record.hostname,jdbcType=VARCHAR},
+<< BOF Changing rows at: 489
+      <if test="record.sitelayoutDirty" >
+        sitelayout = #{record.sitelayout,jdbcType=VARCHAR},
+      <if test="record.homeurlDirty" >
+        homeurl = #{record.homeurl,jdbcType=VARCHAR},
+<< BOF Changing rows at: 492
+      <if test="record.siteresourcepathDirty" >
+        siteresourcepath = #{record.siteresourcepath,jdbcType=VARCHAR},
+      <if test="record.consoleurlDirty" >
+        consoleurl = #{record.consoleurl,jdbcType=VARCHAR},
+<< BOF Changing rows at: 495
+      <if test="record.sitecssDirty" >
+        sitecss = #{record.sitecss,jdbcType=VARCHAR},
+      <if test="record.sitetypeDirty" >
+        sitetype = #{record.sitetype,jdbcType=VARCHAR},
+<< BOF Deleting rows at: 498
+      <if test="record.siteconsolecssDirty" >
+        siteconsolecss = #{record.siteconsolecss,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sitethemeDirty" >
+        sitetheme = #{record.sitetheme,jdbcType=VARCHAR},
+      </if>
+      <if test="record.refsitetypeDirty" >
+        refsitetype = #{record.refsitetype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.refsiteDirty" >
+        refsite = #{record.refsite,jdbcType=VARCHAR},
+      </if>
+      <if test="record.refsitevisibleDirty" >
+        refsitevisible = #{record.refsitevisible,jdbcType=VARCHAR},
+      </if>
+      <if test="record.refsitedescrDirty" >
+        refsitedescr = #{record.refsitedescr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.admrefsitetypeDirty" >
+        admrefsitetype = #{record.admrefsitetype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.admrefsiteDirty" >
+        admrefsite = #{record.admrefsite,jdbcType=VARCHAR},
+      </if>
+      <if test="record.admrefsitevisibleDirty" >
+        admrefsitevisible = #{record.admrefsitevisible,jdbcType=VARCHAR},
+      </if>
+      <if test="record.admrefsitedescrDirty" >
+        admrefsitedescr = #{record.admrefsitedescr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cardidDirty" >
+        cardid = #{record.cardid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.optionsDirty" >
+        options = #{record.options,jdbcType=VARCHAR},
+      </if>
+<< BOF Deleting rows at: 538
+

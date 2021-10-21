@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--
+  TODO: xmlCopyRight.txt
+   
+  -->
+<!--
+  TODO: xmlReadme.txt
+   
+  -->
+
+<!-- <mapper resource="org/r3/db/system/outmailspooler/OutMailSpoolerMapper.xml"/> -->
+<mapper namespace="org.r3.db.system.outmailspooler.OutMailSpoolerMapper" >
+    <resultMap id="BaseResultMap" type="org.r3.db.system.outmailspooler.OutMailSpoolerDTO" >
+         <id column="site" property="site" jdbcType="VARCHAR" />
+           <id column="messageid" property="messageid" jdbcType="VARCHAR" />
+           <result column="msgtitle" property="msgtitle" jdbcType="VARCHAR" />
+           <result column="msgtext" property="msgtext" jdbcType="VARCHAR" />
+           <result column="msgfrom" property="msgfrom" jdbcType="VARCHAR" />
+           <result column="msgcc" property="msgcc" jdbcType="VARCHAR" />
+           <result column="msgbcc" property="msgbcc" jdbcType="VARCHAR" />
+           <result column="msgmode" property="msgmode" jdbcType="VARCHAR" />
+           <result column="msgsendat" property="msgsendat" jdbcType="TIMESTAMP" />
+           <result column="numberofattachments" property="numberofattachments" jdbcType="INTEGER" />
+           <result column="numberoftargets" property="numberoftargets" jdbcType="INTEGER" />
+           <result column="numberofsentitems" property="numberofsentitems" jdbcType="INTEGER" />
+           <result column="recstatus" property="recstatus" jdbcType="VARCHAR" />
+           <result column="rectimestamp" property="rectimestamp" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+  <sql id="Filter_Where_Clause" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+                <when test="criterion.subSelectCriterion" >
+                  and ${criterion.prefixCondition} #{criterion.value} ${criterion.suffixCondition}
+                </when>                                
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <!--
+  <sql id="Filter_Where_Clause_4_Update" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  -->  
+  <sql id="Base_Column_List" >
+    site,  messageid,  msgtitle,  msgtext,  msgfrom,  msgcc,  msgbcc,  msgmode,  msgsendat,
+  numberofattachments,  numberoftargets,  numberofsentitems,  recstatus,  rectimestamp  </sql>
+  <select id="selectBySiteMessageid" resultMap="BaseResultMap" parameterType="HashMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from r3_outmailspooler
+    where  site = #{site,jdbcType=VARCHAR} and  messageid = #{messageid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteBySiteMessageid" parameterType="HashMap" >
+    delete
+    from r3_outmailspooler
+    where  site = #{site,jdbcType=VARCHAR} and  messageid = #{messageid,jdbcType=VARCHAR}
+  </delete>  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from r3_outmailspooler    
+    where  site = #{pk.site,jdbcType=VARCHAR} and  messageid = #{pk.messageid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete
+    from r3_outmailspooler
+    where  site = #{pk.site,jdbcType=VARCHAR} and  messageid = #{pk.messageid,jdbcType=VARCHAR}
+  </delete>  
+  <select id="select" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <if test="filter != null &amp;&amp; filter.distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from r3_outmailspooler
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+    <if test="filter != null &amp;&amp; filter.orderByClause != null" >
+      order by ${filter.orderByClause}
+    </if>
+    <if test="filter != null &amp;&amp; filter.limitFetch > 0" >
+      limit ${filter.limitFetch}
+    </if>
+  </select>
+  <select id="count" parameterType="map" resultType="java.lang.Integer" >
+    select count(*) from r3_outmailspooler
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </select>  
+  <delete id="delete" parameterType="map" >
+    delete from r3_outmailspooler
+    <!-- _parameter: dato che e' una map lo sostituisco con il nome del parametro in quanto non è l'unico -->
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="map" >
+    insert into r3_outmailspooler (
+ site, messageid, msgtitle, msgtext, msgfrom, msgcc, msgbcc, msgmode, msgsendat,
+ numberofattachments, numberoftargets, numberofsentitems, recstatus, rectimestamp      )
+    values (
+ 
+ #{record.site,jdbcType=VARCHAR}, 
+ #{record.messageid,jdbcType=VARCHAR}, 
+ #{record.msgtitle,jdbcType=VARCHAR}, 
+ #{record.msgtext,jdbcType=VARCHAR},
+ 
+ #{record.msgfrom,jdbcType=VARCHAR}, 
+ #{record.msgcc,jdbcType=VARCHAR}, 
+ #{record.msgbcc,jdbcType=VARCHAR}, 
+ #{record.msgmode,jdbcType=VARCHAR},
+ 
+ #{record.msgsendat,jdbcType=TIMESTAMP}, 
+ #{record.numberofattachments,jdbcType=INTEGER}, 
+ #{record.numberoftargets,jdbcType=INTEGER}, 
+ #{record.numberofsentitems,jdbcType=INTEGER},
+ 
+ #{record.recstatus,jdbcType=VARCHAR}, 
+ #{record.rectimestamp,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="update" parameterType="map" >
+    update r3_outmailspooler
+    <set >
+      <if test="record.msgtitleDirty" >
+        msgtitle = #{record.msgtitle,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.msgtextDirty" >
+        msgtext = #{record.msgtext,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.msgfromDirty" >
+        msgfrom = #{record.msgfrom,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.msgccDirty" >
+        msgcc = #{record.msgcc,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.msgbccDirty" >
+        msgbcc = #{record.msgbcc,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.msgmodeDirty" >
+        msgmode = #{record.msgmode,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.msgsendatDirty" >
+        msgsendat = #{record.msgsendat,jdbcType=TIMESTAMP},
+      </if>      
+      <if test="record.numberofattachmentsDirty" >
+        numberofattachments = #{record.numberofattachments,jdbcType=INTEGER},
+      </if>      
+      <if test="record.numberoftargetsDirty" >
+        numberoftargets = #{record.numberoftargets,jdbcType=INTEGER},
+      </if>      
+      <if test="record.numberofsentitemsDirty" >
+        numberofsentitems = #{record.numberofsentitems,jdbcType=INTEGER},
+      </if>      
+      <if test="record.recstatusDirty" >
+        recstatus = #{record.recstatus,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.rectimestampDirty" >
+        rectimestamp = #{record.rectimestamp,jdbcType=TIMESTAMP},
+      </if>      
+    </set>
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+      <!-- Non dovrebbe servire in quanto il filter e' sempre named. -->
+      <!-- <include refid="Filter_Where_Clause_4_Update" /> -->
+    </if>
+  </update>
+  <update id="updateByPrimaryKey" parameterType="map" >
+    update r3_outmailspooler
+    <set >
+      <if test="record.msgtitleDirty" >
+        msgtitle = #{record.msgtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.msgtextDirty" >
+        msgtext = #{record.msgtext,jdbcType=VARCHAR},
+      </if>
+      <if test="record.msgfromDirty" >
+        msgfrom = #{record.msgfrom,jdbcType=VARCHAR},
+      </if>
+      <if test="record.msgccDirty" >
+        msgcc = #{record.msgcc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.msgbccDirty" >
+        msgbcc = #{record.msgbcc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.msgmodeDirty" >
+        msgmode = #{record.msgmode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.msgsendatDirty" >
+        msgsendat = #{record.msgsendat,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.numberofattachmentsDirty" >
+        numberofattachments = #{record.numberofattachments,jdbcType=INTEGER},
+      </if>
+      <if test="record.numberoftargetsDirty" >
+        numberoftargets = #{record.numberoftargets,jdbcType=INTEGER},
+      </if>
+      <if test="record.numberofsentitemsDirty" >
+        numberofsentitems = #{record.numberofsentitems,jdbcType=INTEGER},
+      </if>
+      <if test="record.recstatusDirty" >
+        recstatus = #{record.recstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rectimestampDirty" >
+        rectimestamp = #{record.rectimestamp,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where  site = #{record.site,jdbcType=VARCHAR} and  messageid = #{record.messageid,jdbcType=VARCHAR}
+  </update>
+
+  <update id="updateRecstatusBySiteMessageid" parameterType="map" >
+    update r3_outmailspooler
+    set recstatus = #{recstatus,jdbcType=VARCHAR}
+    where site = #{site,jdbcType=VARCHAR} and  messageid = #{messageid,jdbcType=VARCHAR}
+  </update>
+  
+  <resultMap id="BaseResultMapWithCounters" type="org.r3.db.system.outmailspooler.OutMailSpoolerDTO" >
+         <id column="site" property="site" jdbcType="VARCHAR" />
+           <id column="messageid" property="messageid" jdbcType="VARCHAR" />
+           <result column="msgtitle" property="msgtitle" jdbcType="VARCHAR" />
+           <result column="msgtext" property="msgtext" jdbcType="VARCHAR" />
+           <result column="msgfrom" property="msgfrom" jdbcType="VARCHAR" />
+           <result column="msgcc" property="msgcc" jdbcType="VARCHAR" />
+           <result column="msgbcc" property="msgbcc" jdbcType="VARCHAR" />
+           <result column="msgmode" property="msgmode" jdbcType="VARCHAR" />
+           <result column="msgsendat" property="msgsendat" jdbcType="TIMESTAMP" />
+           <result column="numberofattachments" property="numberofattachments" jdbcType="INTEGER" />
+           <result column="numberoftargets" property="numberoftargets" jdbcType="INTEGER" />
+           <result column="numberofsentitems" property="numberofsentitems" jdbcType="INTEGER" />
+           <result column="recstatus" property="recstatus" jdbcType="VARCHAR" />
+           <result column="rectimestamp" property="rectimestamp" jdbcType="TIMESTAMP" />
+           
+           <result column="numprocessed" property="numprocessed" jdbcType="INTEGER" />
+           <result column="numactive" 	 property="numactive" jdbcType="INTEGER" />
+           <result column="numerr" 		 property="numerr" jdbcType="INTEGER" />
+  </resultMap>
+      
+  <select id="selectWithCounters" resultMap="BaseResultMap" parameterType="map" >
+    select
+    
+    <include refid="Base_Column_List" />, numprocessed, numactive, numerr
+    from r3_outmailspooler om 
+    left join (
+    select messageid as messageid1, 
+           count(case when recstatus = 'sys_recprocessed' then 1 else null end) as numprocessed,
+           count(case when recstatus = 'sys_recact' then 1 else null end) as numactive, 
+           count(case when recstatus = 'sys_recerr' then 1 else null end) as numerr 
+           from r3_outmailspoolerrecipient group by messageid
+    ) omr on om.messageid = omr.messageid1 
+    
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+    <if test="filter != null &amp;&amp; filter.orderByClause != null" >
+      order by ${filter.orderByClause}
+    </if>
+    <if test="filter != null &amp;&amp; filter.limitFetch > 0" >
+      limit ${filter.limitFetch}
+    </if>
+  </select> 
+   
+   
+</mapper>

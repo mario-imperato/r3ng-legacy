@@ -1,0 +1,28 @@
+
+$.r3Utils.namespace("org.r3.jsportlet.outmail", window, function(aNamespace) 
+{
+  aNamespace.message = {
+    mailMessageEmptyConfirmation: "Atenção, o email não pode ser vazio",
+    
+    outmailmessageactionform_form_legend: 'Novo Mensagem',
+    outmailmessageactionform_msgfrom: 'De: ',
+    outmailmessageactionform_msgto: 'até:',
+    outmailmessageactionform_msgcc: 'Cc:',
+    outmailmessageactionform_msgbcc: 'CCo:',
+    outmailmessageactionform_msgtitle: 'Assunto',
+    outmailmessageactionform_mailopt2_cnt: 'Opçôes',
+    outmailmessageactionform_mailopt_msg_regular: 'Normal',
+    outmailmessageactionform_mailopt_msg_undisclosed: 'Destinatàrio oculto',
+    outmailmessageactionform_gruppi_actorgroup: 'Restringer on envio para grupos',
+    smsdetailactionform_mailopt_send2all: 'Enviar à todo mundo',
+    
+    outmailuploadfileactionform_form_legend: 'Anexos',
+    outmailuploadfileactionform_form_formmessage: "Selecionar os arquivos clicando 'Incluir arquivo' e iniciar o carregamento",
+    outmailuploadfileactionform_addfile: 'Incluir arquivo...',
+    outmailuploadfileactionform_start: 'Iniciar Carregamento',
+    outmailuploadfileactionform_cancel: 'Cancelar Carregamento',
+    
+    norecipients: 'Non sono presenti destinatari'
+    
+  };
+});

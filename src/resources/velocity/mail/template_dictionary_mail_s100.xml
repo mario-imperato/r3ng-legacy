@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+
+<templates>
+     
+     <template name="UserRegistration_RequestActivatationMailMessage" domain="s100">
+        <filename>resources/velocity/mail/UserRegistration_RequestActivatationMailMessage_s100.vm</filename>
+     </template>
+
+     <template name="UserActivatedRegistrationMailMessage" domain="s100">
+        <filename>resources/velocity/mail/UserActivatedRegistrationMailMessage_s100.vm</filename>
+     </template>
+
+     <template name="UserResetPasswordMailMessage"  domain="s100">
+        <filename>resources/velocity/mail/UserResetPasswordMailMessage_s100.vm</filename>
+     </template>
+                                         
+</templates>

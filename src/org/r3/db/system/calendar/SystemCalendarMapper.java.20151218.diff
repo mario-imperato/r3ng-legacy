@@ -1,0 +1,18 @@
+<< BOF Changing rows at: 17
+  org.r3.db.system.calendar.SystemCalendarDTO  selectByCaldate(
+            @Param("caldate")   java.sql.Date caldate,
+            @Param("pcfg")   org.r3.db.PersistenceConfigInfo pcfg);             
+  org.r3.db.system.calendar.SystemCalendarDTO  selectBySitedomainCalendaridCaldate(
+             @Param("sitedomain") java.lang.String sitedomain, @Param("calendarid") java.lang.String calendarid, @Param("caldate") java.sql.Date caldate,
+            @Param("pcfg")   org.r3.db.PersistenceConfigInfo pcfg);
+<< BOF Changing rows at: 21
+  int deleteByCaldate(
+            @Param("caldate")   java.sql.Date caldate,
+            @Param("pcfg")   org.r3.db.PersistenceConfigInfo pcfg);             
+  int deleteBySitedomainCalendaridCaldate(
+             @Param("sitedomain") java.lang.String sitedomain, @Param("calendarid") java.lang.String calendarid, @Param("caldate") java.sql.Date caldate,
+            @Param("pcfg")   org.r3.db.PersistenceConfigInfo pcfg);            
+<< BOF Deleting rows at: 54
+  int countWorkingDays(
+		    @Param("filter") org.r3.db.system.calendar.SystemCalendarFilter aFilterCondition,
+          @Param("pcfg")   org.r3.db.PersistenceConfigInfo pcfg);

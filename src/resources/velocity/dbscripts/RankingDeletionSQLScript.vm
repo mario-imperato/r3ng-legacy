@@ -1,0 +1,12 @@
+##
+##
+## $rankingDTO: DTO ranking in cancellazione
+##
+##
+
+delete from sev_rankinginstancedetail where eventid = '${rankingDTO.eventid}' and instanceid in 
+  (select instanceid from sev_rankinginstance where eventid = '${rankingDTO.eventid}' and rankid = '${rankingDTO.rankid}');
+
+delete from sev_rankinginstance where eventid = '${rankingDTO.eventid}' and rankid = '${rankingDTO.rankid}';  
+
+delete from sev_ranking where eventid = '${rankingDTO.eventid}' and rankid = '${rankingDTO.rankid}';

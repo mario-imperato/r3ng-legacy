@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+-->
+<Context 
+    antiResourceLocking="false" 
+    className="org.apache.catalina.core.StandardContext" 
+    cachingAllowed="true" 
+    cookies="true" 
+    crossContext="false" 
+    debug="5"
+    docBase="@deployHomeDirectory@"
+    path="/r3ng" 
+    privileged="false" 
+    reloadable="false" 
+    swallowOutput="false" 
+    useNaming="true" 
+    wrapperClass="org.apache.catalina.core.StandardWrapper">
+    
+    <Valve 
+        className="org.apache.catalina.valves.AccessLogValve"
+        prefix="localhost_r3ng_log." 
+        suffix=".txt"  
+        />
+  
+    <!--
+    Attributi commentati. 
+        defaultTransactionIsolation="TRANSACTION_REPEATABLE_READ"  : Puo' servire nello sviluppo WebSphere che impone un default diverso rispetto a quello del driver.
+        validationQuery="select count(*) from b2bg.user"
+
+        url="jdbc:microsoft:sqlserver://localhost:1433;databaseName=GWF_30_DB"        
+        driverClassName="com.microsoft.jdbc.sqlserver.SQLServerDriver"        
+      -->          
+    <Resource               
+        name="r3DS" 
+        auth="Container" 
+        type="javax.sql.DataSource"
+        scope="Shareable"
+        
+        maxTotal="30" 
+        maxIdle="15" 
+        maxWaitMillis="5000"
+        
+        removeAbandonedOnBorrow="true"
+        removeAbandonedOnMaintenance="true"
+        removeAbandonedTimeout="60"
+        logAbandoned="true"
+
+        driverClassName="com.mysql.jdbc.Driver"        
+        username="@jdbcUser@"            
+        password="@jdbcPassword@"             
+        url="@jdbcUrl@"
+        
+        defaultAutoCommit="true"
+        defaultReadOnly="false"
+        />
+        
+</Context>            

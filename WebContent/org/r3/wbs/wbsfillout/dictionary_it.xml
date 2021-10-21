@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!DOCTYPE xhtml
+  PUBLIC "XHTML1.0"
+  "../../../../assets/xhtml1-strict.dtd">
+
+<dictionary namespace='org.r3.wbs.wbsfillout'>
+
+ <string id='windowLayout_pageTitle'>Home - WBS</string>
+<string id='select_wbs_dropdown_caption'>Seleziona WBS</string>
+        
+</dictionary>

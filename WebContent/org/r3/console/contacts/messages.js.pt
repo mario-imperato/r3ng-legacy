@@ -1,0 +1,75 @@
+
+$.r3Utils.namespace("org.r3.console.contacts", window, function(aNamespace) 
+{
+  aNamespace.message = {
+    waiting:"Aguarde...",
+    search_contact: "Busca",
+    search_advanced: "Busca avançada",    
+    initializationerror: "Aviso: ocorreu um erro durante a inicialização da página. O processamento não pode continuar",
+    numberoftargets: "A mensagem SMS  está na fila. Número de contactos: {0}",
+    
+    console_actor_action_refresh: 'Atualização',
+    actordetailactionform_form_legend: 'Detalhe de contato',
+    
+    actorDetailActionFormView_tab_generale_legend: 'Detalhe',
+    actorDetailActionFormView_tab_siteresource_legend: 'Informações sobre recursos',
+    
+    exportcontactsactionform_form_legend: "Exportar contatos",
+    exportcontactsactionform_csvformat: "Formato",
+    exportcontactsactionform_limit2groups : 'Exportação limitadas a os grupos',
+    
+    jsportletfileuploadform_fileimport_minortype : 'Delimitador',
+    jsportletfileuploadform_fileimport_minortype_comma : 'Delimitador vírgula',
+    jsportletfileuploadform_fileimport_minortype_semicolon :'Delimitador ponto e vírgula',
+    jsportletfileuploadform_fileimport_minortype_tab :'Delimitador TAB',
+    
+    jsportletfileimportform_processingopts : 'Opções',
+    jsportletfileimportform_processingopts_mail_required: 'Mail obrigatória',
+    jsportletfileimportform_processingopts_checkduplicates : 'Excluir duplicados',
+    jsportletfileimportform_actorgroup: 'Inserir para o grupo',
+ 
+    importactorgroupfromchildsiteactionform_form_legend: 'Detalhe do grupo',
+    importactorgroupfromchildsiteactionform_sourcesite: 'Site',
+    importactorgroupfromchildsiteactionform_sourcegroup: 'Grupo',
+    importactorgroupfromchildsiteactionform_actorgroup: 'Inserir para o grupo',
+       
+    actorgroupdetailactionform_form_legend: 'Detalhe do grupo',    
+    actorgroupdetailactionform_createfromgroup: 'Copiar contatos',
+    actorgroupdetailactionform_createfromgroup_none: 'Ninguém',
+    actorgroupdetailactionform_createfromgroup_all: 'Todos os contatos',
+    actorgroupdetailactionform_listofactors: 'Contatos no grupo',
+    actorgroupdetailactionform_deleteactorsfromgroup: 'Excluir do gruppo os contatos selecionados', 
+    actorgroupdetailactionform_addactors2group: 'Inserir contatos',     
+    actorgroupdetailactionform_listofcandidateactors: 'Contatos da inserir no grupo',
+    actorgroupdetailactionform_addselectedactors2group: 'Inserir os contatos selecionados no grupo',
+           
+    smsdetailactionform_form_legend: 'Detalhe SMS',
+    smsdetailactionform_smslogin: 'SMS Log-in',
+    smsdetailactionform_smspasswd: 'SMS Senha',
+    smsdetailactionform_smssender: 'Remetente',
+    smsdetailactionform_smsopts_cnt: 'Opções',
+    smsdetailactionform_smsopts_charlimit: 'Limite texto 160 car.',
+    smsdetailactionform_smsopts_send2all: 'Enviar mensagem a todos',
+    smsdetailactionform_smstext: 'Texto',
+    smsdetailactionform_smstext_maxchars: '(max. 160 carat.)',
+    smsdetailactionform_smstext_numchars: 'N. Car',
+    smsdetailactionform_gruppi_actorgroup: 'Limitado a os grupos',
+    smsdetailactionform_action_checksmscredits: 'Verificar o crédito SMS',
+                    
+                    
+    gmenubar_act_newcontact_caption: 'Novo contato',
+    gmenubar_act_querycontacts_caption: 'Lista de contatos',
+    gmenubar_act_exportcontacts_caption	: 'Exportar Contatos',
+    gmenubar_act_filecontacts_caption	: 'Carregar o arquivo dos contatos',
+    gmenubar_act_importcontacts_caption : 'Importar  o arquivo dos contatos',
+    gmenubar_act_importchildsitecontacts_caption : 'Importar contatos da site',
+    gmenubar_act_newsms_caption : 'Novo SMS',
+    gmenubar_act_querysms_caption : 'Log SMS',
+    gmenubar_act_querymail_caption : 'Log Mail...',
+    gmenubar_act_sentmaildetail_caption: 'Dettaglio Mail...',
+    gmenubar_act_newoutmail_caption : 'Bulk Mail',
+    gmenubar_act_act_query_groups_caption : 'Lista de Grupos',
+    gmenubar_act_act_newgroup_caption : 'Novo Grupo'
+    	    
+  };
+});

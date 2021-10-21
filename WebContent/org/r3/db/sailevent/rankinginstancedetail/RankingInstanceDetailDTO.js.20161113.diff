@@ -1,0 +1,2 @@
+<< BOF Inserting rows at: 38
+        this.perctempen = aDataBean.perctempen || null;

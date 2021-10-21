@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!DOCTYPE xhtml
+  PUBLIC "XHTML1.0"
+  "../../../../../assets/xhtml1-strict.dtd">
+
+<dictionary namespace='org.r3.console.home.shakeusneighb'>
+
+     <string id='windowLayout_pageTitle'>Console - página inicial</string>
+     <string id='gmenubar_cms'>Conteúdo CMS</string>
+     <string id='gmenubar_bbs'>Tópicos (BBS)</string>
+     <string id='gmenubar_wbs'>Administração PDA</string>
+     <string id='gmenubar_tow'>Amministrazione TOW</string>
+     <string id='gmenubar_resource'>Risorse...</string>
+     <string id='gmenubar_config'>Configuração</string>
+     <string id='gmenubar_users'>Gerenciamento de usuários</string>
+     <string id='gmenubar_actors'>Contatos</string>
+</dictionary>

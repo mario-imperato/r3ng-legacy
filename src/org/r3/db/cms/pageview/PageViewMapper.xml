@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--
+  TODO: xmlCopyRight.txt
+   
+  -->
+<!--
+  TODO: xmlReadme.txt
+   
+  -->
+
+<!-- <mapper resource="org/r3/db/cms/pageview/PageViewMapper.xml"/> -->
+<mapper namespace="org.r3.db.cms.pageview.PageViewMapper" >
+    <resultMap id="BaseResultMap" type="org.r3.db.cms.pageview.PageViewDTO" >
+         <result column="site" property="site" jdbcType="VARCHAR" />
+           <result column="pageid" property="pageid" jdbcType="VARCHAR" />
+           <result column="languagecode" property="languagecode" jdbcType="VARCHAR" />
+           <result column="pagetype" property="pagetype" jdbcType="VARCHAR" />
+           <result column="pagetitle" property="pagetitle" jdbcType="VARCHAR" />
+           <result column="summary" property="summary" jdbcType="VARCHAR" />
+           <result column="pageicon1" property="pageicon1" jdbcType="VARCHAR" />
+           <result column="pageicon2" property="pageicon2" jdbcType="VARCHAR" />
+           <result column="pagelink" property="pagelink" jdbcType="VARCHAR" />
+           <result column="pageorder" property="pageorder" jdbcType="INTEGER" />
+           <result column="visibility" property="visibility" jdbcType="VARCHAR" />
+           <result column="pagestyle" property="pagestyle" jdbcType="VARCHAR" />
+           <result column="forwardview" property="forwardview" jdbcType="VARCHAR" />
+           <result column="onuserstatus" property="onuserstatus" jdbcType="VARCHAR" />
+           <result column="permissions" property="permissions" jdbcType="VARCHAR" />
+           <result column="viewoptions" property="viewoptions" jdbcType="VARCHAR" />
+           <result column="recstatus" property="recstatus" jdbcType="VARCHAR" />
+           <result column="rectimestamp" property="rectimestamp" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <resultMap id="LUTResultMap" type="org.r3.db.cms.pageview.PageViewLUTDTO" >
+    
+           <id column="site" property="site" jdbcType="VARCHAR" />
+           <result column="languagecode" property="languagecode" jdbcType="VARCHAR" />
+                      
+           <collection property="pages" column="pageid" ofType="org.r3.db.cms.pageview.PageViewDTO">           
+           <id     column="pageid" property="pageid" jdbcType="VARCHAR" />
+           
+           <result column="site" property="site" jdbcType="VARCHAR" />
+           <result column="languagecode" property="languagecode" jdbcType="VARCHAR" />
+           <result column="pagetype" property="pagetype" jdbcType="VARCHAR" />
+           <result column="pagetitle" property="pagetitle" jdbcType="VARCHAR" />
+           <result column="summary" property="summary" jdbcType="VARCHAR" />
+           <result column="pageicon1" property="pageicon1" jdbcType="VARCHAR" />
+           <result column="pageicon2" property="pageicon2" jdbcType="VARCHAR" />
+           <result column="pagelink" property="pagelink" jdbcType="VARCHAR" />
+           <result column="pageorder" property="pageorder" jdbcType="INTEGER" />
+           <result column="visibility" property="visibility" jdbcType="VARCHAR" />
+           <result column="pagestyle" property="pagestyle" jdbcType="VARCHAR" />
+           <result column="forwardview" property="forwardview" jdbcType="VARCHAR" />
+           <result column="onuserstatus" property="onuserstatus" jdbcType="VARCHAR" />
+           <result column="permissions" property="permissions" jdbcType="VARCHAR" />           
+           <result column="viewoptions" property="viewoptions" jdbcType="VARCHAR" />
+           <result column="recstatus" property="recstatus" jdbcType="VARCHAR" />
+           <result column="rectimestamp" property="rectimestamp" jdbcType="TIMESTAMP" />
+           </collection>
+           
+    </resultMap>
+    
+    
+  <sql id="Filter_Where_Clause" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+                <when test="criterion.subSelectCriterion" >
+                  and ${criterion.prefixCondition} #{criterion.value} ${criterion.suffixCondition}
+                </when>                                
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    site,  pageid,  languagecode,  pagetype,  pagetitle,  summary,  pageicon1,  pageicon2,  pagelink,
+  pageorder,  visibility,  pagestyle,  forwardview,  onuserstatus,  permissions,  viewoptions,  recstatus,  rectimestamp  </sql>
+  <select id="select" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <if test="filter != null &amp;&amp; filter.distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from r3_view_cmspage
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+    <if test="filter != null &amp;&amp; filter.orderByClause != null" >
+      order by ${filter.orderByClause}
+    </if>
+    <if test="filter != null &amp;&amp; filter.limitFetch > 0" >
+      limit ${filter.limitFetch}
+    </if>
+  </select>
+  <select id="count" parameterType="map" resultType="java.lang.Integer" >
+    select count(*) from r3_view_cmspage
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </select>  
+  
+<select id="readLUT" resultMap="LUTResultMap" parameterType="map" >
+    select
+    <if test="filter != null &amp;&amp; filter.distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from r3_view_cmspage
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+    <if test="filter != null &amp;&amp; filter.orderByClause != null" >
+      order by ${filter.orderByClause}
+    </if>
+    <if test="filter != null &amp;&amp; filter.limitFetch > 0" >
+      limit ${filter.limitFetch}
+    </if>
+  </select>
+    
+</mapper>

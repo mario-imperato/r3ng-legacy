@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--
+  TODO: xmlCopyRight.txt
+   
+  -->
+<!--
+  TODO: xmlReadme.txt
+   
+  -->
+
+<!-- <mapper resource="org/r3/db/sailevent/application/SailApplicationMapper.xml"/> -->
+<mapper namespace="org.r3.db.sailevent.application.SailApplicationMapper" >
+    <resultMap id="BaseResultMap" type="org.r3.db.sailevent.application.SailApplicationDTO" >
+         <id column="eventid" property="eventid" jdbcType="VARCHAR" />
+           <id column="applicationid" property="applicationid" jdbcType="VARCHAR" />
+           <result column="userid" property="userid" jdbcType="VARCHAR" />
+           <result column="dmsfolderurl" property="dmsfolderurl" jdbcType="VARCHAR" />
+           <result column="annotation" property="annotation" jdbcType="VARCHAR" />
+           <result column="completionstatus" property="completionstatus" jdbcType="VARCHAR" />
+           <result column="verificationstatus" property="verificationstatus" jdbcType="VARCHAR" />
+           <result column="adminchecks" property="adminchecks" jdbcType="VARCHAR" />
+           <result column="adminracegroup" property="adminracegroup" jdbcType="VARCHAR" />
+           <result column="adminraceclass" property="adminraceclass" jdbcType="VARCHAR" />
+           <result column="plate" property="plate" jdbcType="VARCHAR" />
+           <result column="yachtname" property="yachtname" jdbcType="VARCHAR" />
+           <result column="yachtclub" property="yachtclub" jdbcType="VARCHAR" />
+           <result column="yachttype" property="yachttype" jdbcType="VARCHAR" />
+           <result column="mooringloc" property="mooringloc" jdbcType="VARCHAR" />
+           <result column="yachtbsf" property="yachtbsf" jdbcType="REAL" />
+           <result column="yachtgph" property="yachtgph" jdbcType="REAL" />
+           <result column="sailnumber" property="sailnumber" jdbcType="VARCHAR" />
+           <result column="racegroup" property="racegroup" jdbcType="VARCHAR" />
+           <result column="raceclass" property="raceclass" jdbcType="VARCHAR" />
+           <result column="apptype" property="apptype" jdbcType="VARCHAR" />
+           <result column="ownerid" property="ownerid" jdbcType="VARCHAR" />
+           <result column="helmsmanid" property="helmsmanid" jdbcType="VARCHAR" />
+           <result column="boatimageid" property="boatimageid" jdbcType="VARCHAR" />
+           <result column="boatimageurl" property="boatimageurl" jdbcType="VARCHAR" />
+           <result column="boatimageheight" property="boatimageheight" jdbcType="INTEGER" />
+           <result column="boatimagewidth" property="boatimagewidth" jdbcType="INTEGER" />
+           <result column="boaticonurl" property="boaticonurl" jdbcType="VARCHAR" />
+           <result column="boaticonwidth" property="boaticonwidth" jdbcType="INTEGER" />
+           <result column="boaticonheight" property="boaticonheight" jdbcType="INTEGER" />
+           <result column="addtohomeentrylist" property="addtohomeentrylist" jdbcType="VARCHAR" />
+           <result column="createtimestamp" property="createtimestamp" jdbcType="TIMESTAMP" />
+           <result column="committimestamp" property="committimestamp" jdbcType="TIMESTAMP" />
+           <result column="rectimestamp" property="rectimestamp" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+  <sql id="Filter_Where_Clause" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+                <when test="criterion.subSelectCriterion" >
+                  and ${criterion.prefixCondition} #{criterion.value} ${criterion.suffixCondition}
+                </when>                                
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <!--
+  <sql id="Filter_Where_Clause_4_Update" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  -->  
+  <sql id="Base_Column_List" >
+    eventid,  applicationid,  userid,  dmsfolderurl,  annotation,  completionstatus,  verificationstatus,  adminchecks,  adminracegroup,
+  adminraceclass,  plate,  yachtname,  yachtclub,  yachttype,  mooringloc,  yachtbsf,  yachtgph,  sailnumber,
+  racegroup,  raceclass,  apptype,  ownerid,  helmsmanid,  boatimageid,  boatimageurl,  boatimageheight,  boatimagewidth,
+  boaticonurl,  boaticonwidth,  boaticonheight,  addtohomeentrylist,  createtimestamp,  committimestamp,  rectimestamp  </sql>
+  <select id="selectByEventidApplicationid" resultMap="BaseResultMap" parameterType="HashMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from sev_application
+    where  eventid = #{eventid,jdbcType=VARCHAR} and  applicationid = #{applicationid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByEventidApplicationid" parameterType="HashMap" >
+    delete
+    from sev_application
+    where  eventid = #{eventid,jdbcType=VARCHAR} and  applicationid = #{applicationid,jdbcType=VARCHAR}
+  </delete>  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from sev_application    
+    where  eventid = #{pk.eventid,jdbcType=VARCHAR} and  applicationid = #{pk.applicationid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete
+    from sev_application
+    where  eventid = #{pk.eventid,jdbcType=VARCHAR} and  applicationid = #{pk.applicationid,jdbcType=VARCHAR}
+  </delete>  
+  <select id="select" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <if test="filter != null &amp;&amp; filter.distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sev_application
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+    <if test="filter != null &amp;&amp; filter.orderByClause != null" >
+      order by ${filter.orderByClause}
+    </if>
+    <if test="filter != null &amp;&amp; filter.limitFetch > 0" >
+      limit ${filter.limitFetch}
+    </if>
+  </select>
+  <select id="count" parameterType="map" resultType="java.lang.Integer" >
+    select count(*) from sev_application
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </select>  
+  <delete id="delete" parameterType="map" >
+    delete from sev_application
+    <!-- _parameter: dato che e' una map lo sostituisco con il nome del parametro in quanto non è l'unico -->
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="map" >
+    insert into sev_application (
+ eventid, applicationid, userid, dmsfolderurl, annotation, completionstatus, verificationstatus, adminchecks, adminracegroup,
+ adminraceclass, plate, yachtname, yachtclub, yachttype, mooringloc, yachtbsf, yachtgph, sailnumber,
+ racegroup, raceclass, apptype, ownerid, helmsmanid, boatimageid, boatimageurl, boatimageheight, boatimagewidth,
+ boaticonurl, boaticonwidth, boaticonheight, addtohomeentrylist, createtimestamp, committimestamp, rectimestamp      )
+    values (
+ 
+ #{record.eventid,jdbcType=VARCHAR}, 
+ #{record.applicationid,jdbcType=VARCHAR}, 
+ #{record.userid,jdbcType=VARCHAR}, 
+ #{record.dmsfolderurl,jdbcType=VARCHAR},
+ 
+ #{record.annotation,jdbcType=VARCHAR}, 
+ #{record.completionstatus,jdbcType=VARCHAR}, 
+ #{record.verificationstatus,jdbcType=VARCHAR}, 
+ #{record.adminchecks,jdbcType=VARCHAR},
+ 
+ #{record.adminracegroup,jdbcType=VARCHAR}, 
+ #{record.adminraceclass,jdbcType=VARCHAR}, 
+ #{record.plate,jdbcType=VARCHAR}, 
+ #{record.yachtname,jdbcType=VARCHAR},
+ 
+ #{record.yachtclub,jdbcType=VARCHAR}, 
+ #{record.yachttype,jdbcType=VARCHAR}, 
+ #{record.mooringloc,jdbcType=VARCHAR}, 
+ #{record.yachtbsf,jdbcType=REAL},
+ 
+ #{record.yachtgph,jdbcType=REAL}, 
+ #{record.sailnumber,jdbcType=VARCHAR}, 
+ #{record.racegroup,jdbcType=VARCHAR}, 
+ #{record.raceclass,jdbcType=VARCHAR},
+ 
+ #{record.apptype,jdbcType=VARCHAR}, 
+ #{record.ownerid,jdbcType=VARCHAR}, 
+ #{record.helmsmanid,jdbcType=VARCHAR}, 
+ #{record.boatimageid,jdbcType=VARCHAR},
+ 
+ #{record.boatimageurl,jdbcType=VARCHAR}, 
+ #{record.boatimageheight,jdbcType=INTEGER}, 
+ #{record.boatimagewidth,jdbcType=INTEGER}, 
+ #{record.boaticonurl,jdbcType=VARCHAR},
+ 
+ #{record.boaticonwidth,jdbcType=INTEGER}, 
+ #{record.boaticonheight,jdbcType=INTEGER}, 
+ #{record.addtohomeentrylist,jdbcType=VARCHAR}, 
+ #{record.createtimestamp,jdbcType=TIMESTAMP},
+ 
+ #{record.committimestamp,jdbcType=TIMESTAMP}, 
+ #{record.rectimestamp,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="update" parameterType="map" >
+    update sev_application
+    <set >
+      <if test="record.useridDirty" >
+        userid = #{record.userid,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.dmsfolderurlDirty" >
+        dmsfolderurl = #{record.dmsfolderurl,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.annotationDirty" >
+        annotation = #{record.annotation,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.completionstatusDirty" >
+        completionstatus = #{record.completionstatus,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.verificationstatusDirty" >
+        verificationstatus = #{record.verificationstatus,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.adminchecksDirty" >
+        adminchecks = #{record.adminchecks,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.adminracegroupDirty" >
+        adminracegroup = #{record.adminracegroup,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.adminraceclassDirty" >
+        adminraceclass = #{record.adminraceclass,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.plateDirty" >
+        plate = #{record.plate,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.yachtnameDirty" >
+        yachtname = #{record.yachtname,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.yachtclubDirty" >
+        yachtclub = #{record.yachtclub,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.yachttypeDirty" >
+        yachttype = #{record.yachttype,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.mooringlocDirty" >
+        mooringloc = #{record.mooringloc,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.yachtbsfDirty" >
+        yachtbsf = #{record.yachtbsf,jdbcType=REAL},
+      </if>      
+      <if test="record.yachtgphDirty" >
+        yachtgph = #{record.yachtgph,jdbcType=REAL},
+      </if>      
+      <if test="record.sailnumberDirty" >
+        sailnumber = #{record.sailnumber,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.racegroupDirty" >
+        racegroup = #{record.racegroup,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.raceclassDirty" >
+        raceclass = #{record.raceclass,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.apptypeDirty" >
+        apptype = #{record.apptype,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.owneridDirty" >
+        ownerid = #{record.ownerid,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.helmsmanidDirty" >
+        helmsmanid = #{record.helmsmanid,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.boatimageidDirty" >
+        boatimageid = #{record.boatimageid,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.boatimageurlDirty" >
+        boatimageurl = #{record.boatimageurl,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.boatimageheightDirty" >
+        boatimageheight = #{record.boatimageheight,jdbcType=INTEGER},
+      </if>      
+      <if test="record.boatimagewidthDirty" >
+        boatimagewidth = #{record.boatimagewidth,jdbcType=INTEGER},
+      </if>      
+      <if test="record.boaticonurlDirty" >
+        boaticonurl = #{record.boaticonurl,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.boaticonwidthDirty" >
+        boaticonwidth = #{record.boaticonwidth,jdbcType=INTEGER},
+      </if>      
+      <if test="record.boaticonheightDirty" >
+        boaticonheight = #{record.boaticonheight,jdbcType=INTEGER},
+      </if>      
+      <if test="record.addtohomeentrylistDirty" >
+        addtohomeentrylist = #{record.addtohomeentrylist,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.createtimestampDirty" >
+        createtimestamp = #{record.createtimestamp,jdbcType=TIMESTAMP},
+      </if>      
+      <if test="record.committimestampDirty" >
+        committimestamp = #{record.committimestamp,jdbcType=TIMESTAMP},
+      </if>      
+      <if test="record.rectimestampDirty" >
+        rectimestamp = #{record.rectimestamp,jdbcType=TIMESTAMP},
+      </if>      
+    </set>
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+      <!-- Non dovrebbe servire in quanto il filter e' sempre named. -->
+      <!-- <include refid="Filter_Where_Clause_4_Update" /> -->
+    </if>
+  </update>
+  <update id="updateByPrimaryKey" parameterType="map" >
+    update sev_application
+    <set >
+      <if test="record.useridDirty" >
+        userid = #{record.userid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dmsfolderurlDirty" >
+        dmsfolderurl = #{record.dmsfolderurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.annotationDirty" >
+        annotation = #{record.annotation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.completionstatusDirty" >
+        completionstatus = #{record.completionstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.verificationstatusDirty" >
+        verificationstatus = #{record.verificationstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.adminchecksDirty" >
+        adminchecks = #{record.adminchecks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.adminracegroupDirty" >
+        adminracegroup = #{record.adminracegroup,jdbcType=VARCHAR},
+      </if>
+      <if test="record.adminraceclassDirty" >
+        adminraceclass = #{record.adminraceclass,jdbcType=VARCHAR},
+      </if>
+      <if test="record.plateDirty" >
+        plate = #{record.plate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yachtnameDirty" >
+        yachtname = #{record.yachtname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yachtclubDirty" >
+        yachtclub = #{record.yachtclub,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yachttypeDirty" >
+        yachttype = #{record.yachttype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mooringlocDirty" >
+        mooringloc = #{record.mooringloc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yachtbsfDirty" >
+        yachtbsf = #{record.yachtbsf,jdbcType=REAL},
+      </if>
+      <if test="record.yachtgphDirty" >
+        yachtgph = #{record.yachtgph,jdbcType=REAL},
+      </if>
+      <if test="record.sailnumberDirty" >
+        sailnumber = #{record.sailnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.racegroupDirty" >
+        racegroup = #{record.racegroup,jdbcType=VARCHAR},
+      </if>
+      <if test="record.raceclassDirty" >
+        raceclass = #{record.raceclass,jdbcType=VARCHAR},
+      </if>
+      <if test="record.apptypeDirty" >
+        apptype = #{record.apptype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.owneridDirty" >
+        ownerid = #{record.ownerid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.helmsmanidDirty" >
+        helmsmanid = #{record.helmsmanid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.boatimageidDirty" >
+        boatimageid = #{record.boatimageid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.boatimageurlDirty" >
+        boatimageurl = #{record.boatimageurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.boatimageheightDirty" >
+        boatimageheight = #{record.boatimageheight,jdbcType=INTEGER},
+      </if>
+      <if test="record.boatimagewidthDirty" >
+        boatimagewidth = #{record.boatimagewidth,jdbcType=INTEGER},
+      </if>
+      <if test="record.boaticonurlDirty" >
+        boaticonurl = #{record.boaticonurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.boaticonwidthDirty" >
+        boaticonwidth = #{record.boaticonwidth,jdbcType=INTEGER},
+      </if>
+      <if test="record.boaticonheightDirty" >
+        boaticonheight = #{record.boaticonheight,jdbcType=INTEGER},
+      </if>
+      <if test="record.addtohomeentrylistDirty" >
+        addtohomeentrylist = #{record.addtohomeentrylist,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createtimestampDirty" >
+        createtimestamp = #{record.createtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.committimestampDirty" >
+        committimestamp = #{record.committimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.rectimestampDirty" >
+        rectimestamp = #{record.rectimestamp,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where  eventid = #{record.eventid,jdbcType=VARCHAR} and  applicationid = #{record.applicationid,jdbcType=VARCHAR}
+  </update>
+
+</mapper>

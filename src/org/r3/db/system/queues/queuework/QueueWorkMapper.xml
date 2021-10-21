@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--
+  TODO: xmlCopyRight.txt
+   
+  -->
+<!--
+  TODO: xmlReadme.txt
+   
+  -->
+
+<!-- <mapper resource="org/r3/db/system/queues/queuework/QueueWorkMapper.xml"/> -->
+<mapper namespace="org.r3.db.system.queues.queuework.QueueWorkMapper" >
+    <resultMap id="BaseResultMap" type="org.r3.db.system.queues.queuework.QueueWorkDTO" >
+         <id column="queueworkid" property="queueworkid" jdbcType="VARCHAR" />
+           <result column="queueid" property="queueid" jdbcType="VARCHAR" />
+           <result column="refambitid" property="refambitid" jdbcType="VARCHAR" />
+           <result column="refentityid" property="refentityid" jdbcType="VARCHAR" />
+           <result column="refdate" property="refdate" jdbcType="DATE" />
+           <result column="triggerdatetime" property="triggerdatetime" jdbcType="TIMESTAMP" />
+           <result column="correlationid" property="correlationid" jdbcType="VARCHAR" />
+           <result column="messagestatus" property="messagestatus" jdbcType="VARCHAR" />
+           <result column="messagetype" property="messagetype" jdbcType="VARCHAR" />
+           <result column="rectimestamp" property="rectimestamp" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+  <sql id="Filter_Where_Clause" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+                <when test="criterion.subSelectCriterion" >
+                  and ${criterion.prefixCondition} #{criterion.value} ${criterion.suffixCondition}
+                </when>                                
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <!--
+  <sql id="Filter_Where_Clause_4_Update" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  -->  
+  <sql id="Base_Column_List" >
+    queueworkid,  queueid,  refambitid,  refentityid,  refdate,  triggerdatetime,  correlationid,  messagestatus,  messagetype,
+  rectimestamp  </sql>
+  <select id="selectByQueueworkid" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from r3_queueworkdefault
+    where queueworkid = #{queueworkid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByQueueworkid" parameterType="map" >
+    delete
+    from r3_queueworkdefault
+    where queueworkid = #{queueworkid,jdbcType=VARCHAR}
+  </delete>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from r3_queueworkdefault    
+    where  queueworkid = #{pk.queueworkid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete
+    from r3_queueworkdefault
+    where  queueworkid = #{pk.queueworkid,jdbcType=VARCHAR}
+  </delete>  
+  <select id="select" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <if test="filter != null &amp;&amp; filter.distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from r3_queueworkdefault
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+    <if test="filter != null &amp;&amp; filter.orderByClause != null" >
+      order by ${filter.orderByClause}
+    </if>
+    <if test="filter != null &amp;&amp; filter.limitFetch > 0" >
+      limit ${filter.limitFetch}
+    </if>
+  </select>
+  <select id="count" parameterType="map" resultType="java.lang.Integer" >
+    select count(*) from r3_queueworkdefault
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </select>  
+  <delete id="delete" parameterType="map" >
+    delete from r3_queueworkdefault
+    <!-- _parameter: dato che e' una map lo sostituisco con il nome del parametro in quanto non è l'unico -->
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="map" >
+    insert into r3_queueworkdefault (
+ queueworkid, queueid, refambitid, refentityid, refdate, triggerdatetime, correlationid, messagestatus, messagetype,
+ rectimestamp      )
+    values (
+ 
+ #{record.queueworkid,jdbcType=VARCHAR}, 
+ #{record.queueid,jdbcType=VARCHAR}, 
+ #{record.refambitid,jdbcType=VARCHAR}, 
+ #{record.refentityid,jdbcType=VARCHAR},
+ 
+ #{record.refdate,jdbcType=DATE}, 
+ #{record.triggerdatetime,jdbcType=TIMESTAMP}, 
+ #{record.correlationid,jdbcType=VARCHAR}, 
+ #{record.messagestatus,jdbcType=VARCHAR},
+ 
+ #{record.messagetype,jdbcType=VARCHAR}, 
+ #{record.rectimestamp,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="update" parameterType="map" >
+    update r3_queueworkdefault
+    <set >
+      <if test="record.queueidDirty" >
+        queueid = #{record.queueid,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.refambitidDirty" >
+        refambitid = #{record.refambitid,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.refentityidDirty" >
+        refentityid = #{record.refentityid,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.refdateDirty" >
+        refdate = #{record.refdate,jdbcType=DATE},
+      </if>      
+      <if test="record.triggerdatetimeDirty" >
+        triggerdatetime = #{record.triggerdatetime,jdbcType=TIMESTAMP},
+      </if>      
+      <if test="record.correlationidDirty" >
+        correlationid = #{record.correlationid,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.messagestatusDirty" >
+        messagestatus = #{record.messagestatus,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.messagetypeDirty" >
+        messagetype = #{record.messagetype,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.rectimestampDirty" >
+        rectimestamp = #{record.rectimestamp,jdbcType=TIMESTAMP},
+      </if>      
+    </set>
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+      <!-- Non dovrebbe servire in quanto il filter e' sempre named. -->
+      <!-- <include refid="Filter_Where_Clause_4_Update" /> -->
+    </if>
+  </update>
+  <update id="updateByPrimaryKey" parameterType="map" >
+    update r3_queueworkdefault
+    <set >
+      <if test="record.queueidDirty" >
+        queueid = #{record.queueid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.refambitidDirty" >
+        refambitid = #{record.refambitid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.refentityidDirty" >
+        refentityid = #{record.refentityid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.refdateDirty" >
+        refdate = #{record.refdate,jdbcType=DATE},
+      </if>
+      <if test="record.triggerdatetimeDirty" >
+        triggerdatetime = #{record.triggerdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.correlationidDirty" >
+        correlationid = #{record.correlationid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.messagestatusDirty" >
+        messagestatus = #{record.messagestatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.messagetypeDirty" >
+        messagetype = #{record.messagetype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rectimestampDirty" >
+        rectimestamp = #{record.rectimestamp,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where  queueworkid = #{record.queueworkid,jdbcType=VARCHAR}
+  </update>
+
+    <resultMap id="CountByRefEntityIdResultMap" type="org.r3.db.CountByDTO" >
+           <result column="refentityid"   property="dtokey"  jdbcType="VARCHAR" />
+           <result column="countval"      property="count"   jdbcType="INTEGER" />
+           <result column="minval"        property="minvalue"     jdbcType="VARCHAR" />
+           <result column="maxval"        property="maxvalue"     jdbcType="VARCHAR" />
+    </resultMap>
+
+    <resultMap id="CountByRefAmbitIdResultMap" type="org.r3.db.CountByDTO" >
+           <result column="refambitid"   property="dtokey" jdbcType="VARCHAR" />
+           <result column="countval"      property="count"  jdbcType="INTEGER" />
+           <result column="minval"        property="minvalue"     jdbcType="VARCHAR" />
+           <result column="maxval"        property="maxvalue"     jdbcType="VARCHAR" />
+    </resultMap>
+
+  <select id="countByRefEntityId" parameterType="map" resultMap="CountByRefEntityIdResultMap" >
+    select refentityid, count(*) as countval, min(queueworkid) as minval, max(queueworkid) as maxval from r3_queueworkdefault
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+    group by refentityid
+  </select>    
+    
+  <select id="countByRefAmbitId" parameterType="map" resultMap="CountByRefAmbitIdResultMap" >
+    select refambitid, count(*) as countval, min(queueworkid) as minval, max(queueworkid) as maxval from r3_queueworkdefault
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+    group by refambitid
+  </select>  
+
+
+</mapper>

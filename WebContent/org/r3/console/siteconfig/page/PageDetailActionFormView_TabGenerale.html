@@ -1,0 +1,165 @@
+<div class="panel tabbed-panel">
+  <div class="panel-heading" >  
+    <h3 class="panel-title" >{%=org.r3.db.cms.page.message.detailactionformview_legend%} <span id='pagedetailactionform_pageid_label'></span></h3>
+  </div>
+  
+  <div class="panel-body">
+  <div id="pagedetailactionform_fieldset_message"></div>
+  
+  <form id="pagedetailactionform_form" class='form-horizontal'>
+  
+  <div class='row'>
+  <div class='col-md-6'>
+  
+    <div class="form-group">
+    <label class="col-md-2  control-label">{%=org.r3.db.cms.page.message.pageid%}</label>
+    <div class='col-md-10 '>
+    <input name="pageid" class='form-control'  id="pagedetailactionform_pageid" type="text" maxlength="25" />
+    </div>
+    </div>
+    
+    <div class="form-group">
+    <label class="col-md-2  control-label fieldRequired">{%=org.r3.db.cms.page.message.pagetitle%}</label>
+    <div class='col-md-10 '>
+    <input name="pagetitle" class='form-control' id="pagedetailactionform_pagetitle" type="text" maxlength="80" />
+    </div>
+    </div>
+
+    <div class="form-group">
+    <label class="col-md-2  control-label fieldRequired">{%=org.r3.db.cms.page.message.pagelink%}</label>
+    <div class='col-md-10 '>
+    <input name="pagelink" class='form-control' id="pagedetailactionform_pagelink" type="text" maxlength="255" />
+    </div>
+    </div>
+    
+    <div class="form-group">
+    <label class="col-md-2  control-label">{%=org.r3.db.cms.page.message.pageicon1%}</label>
+    <div class='col-md-10 '>
+     <input name="pageicon1" class='form-control' id="pagedetailactionform_pageicon1" type="text" maxlength="80" />
+    </div>
+    </div>
+
+    <div class="form-group">
+    <label class="col-md-2  control-label">{%=org.r3.db.cms.page.message.pageicon2%}</label>
+    <div class='col-md-10 '>
+     <input name="pageicon2" class='form-control'  id="pagedetailactionform_pageicon2" type="text" maxlength="80" />
+    </div>
+    </div>
+
+    <div class="form-group">
+    <label class="col-md-2  control-label">{%=org.r3.db.cms.page.message.pagestyle%}</label>
+    <div class='col-md-10 '>
+              <select name="pagestyle" class='form-control' id="pagedetailactionform_pagestyle" >
+              <option value="grade1">Grade 1</option>
+              <option value="grade2">Grade 2</option>
+              <option value="grade3">Grade 3</option>
+              <option value="grade4">Grade 4</option>
+              <option value="grade5">Grade 5</option>
+              <option value="grade6">Grade 6</option>
+              </select>
+    </div>
+    </div>
+
+    <div class="form-group">
+    <label class="col-md-2  control-label">{%=org.r3.db.cms.page.message.forwardview%}</label>
+    <div class='col-md-10 '>
+      <select name="forwardview" class='form-control' id="pagedetailactionform_forwardview" >
+               <option value="Success"          >Success</option>               
+               <option value="grouppage1">Pagina Gruppo Schede</option>                              
+               <option value="wbses"  >(S100) WBSes</option> 
+               
+               <!--  Temporaneamente Inserito -->
+               <option value="tracker">SEV Tracker</option>    
+			   <option value="comunicati">SEV Comunicati</option>  
+			   <option value="meteo">SEV Meteo</option>       
+               <option value="pressroom">SEV PressRoom</option>   
+               <option value="miscellanea">SEV Miscellanea</option> 
+               
+                                                         
+      </select>
+    </div>
+    </div>                          
+  
+  </div>
+  <div class='col-md-6'>
+
+    <div class="form-group">
+    <label class="col-md-2  control-label">{%=org.r3.db.cms.page.message.pagetype%}</label>
+    <div class='col-md-10 columns radio-medium'>
+      <label class='radio-inline'> <input name="pagetype" id="pagedetailactionform_pagetype_page"    value="page" type="radio" checked />{%=org.r3.db.cms.page.message.pagetype_page%}</label> 
+      <label class='radio-inline'> <input name="pagetype" id="pagedetailactionform_pagetype_cmspage" value="cmspage" type="radio" />{%=org.r3.db.cms.page.message.pagetype_cmspage%}</label> 
+      <label class='radio-inline'> <input name="pagetype" id="pagedetailactionform_pagetype_group"   value="group" type="radio" /> {%=org.r3.db.cms.page.message.pagetype_group%}</label> 
+      <label class='radio-inline'> <input name="pagetype" id="pagedetailactionform_pagetype_media"   value="media" type="radio" /> {%=org.r3.db.cms.page.message.pagetype_media%}</label>           
+    </div>
+    </div>
+
+    <div class="form-group">
+    <label class="col-md-2  control-label">{%=org.r3.db.cms.page.message.visibility%}</label>
+    <div class='col-md-10 columns checkbox-medium'>
+           <label class='checkbox-inline'> 
+             <input id="pagedetailactionform_visibility_cmspg_txtmenu" type="checkbox" value="cmspg_txtmenu" name="visibility"  >{%=org.r3.db.cms.page.message.visibility_cmspg_txtmenu%}</label>
+           <label class='checkbox-inline'>                 
+             <input id="pagedetailactionform_visibility_cmspg_iconmenu" type="checkbox" value="cmspg_iconmenu" name="visibility" > {%=org.r3.db.cms.page.message.visibility_cmspg_iconmenu%}</label>
+           <label class='checkbox-inline'>                 
+             <input id="pagedetailactionform_visibility_cmspg_homemenu" type="checkbox" value="cmspg_homemenu" name="visibility" > {%=org.r3.db.cms.page.message.visibility_cmspg_homemenu%}</label>
+           <label class='checkbox-inline'>                 
+             <input id="pagedetailactionform_visibility_cmspg_consolemenu" type="checkbox" value="cmspg_consolemenu" name="visibility" > {%=org.r3.db.cms.page.message.visibility_cmspg_consolemenu%}</label>                 
+    </div>
+    </div>
+
+    <div class="form-group">
+    <label class="col-md-2  control-label">{%=org.r3.db.cms.page.message.onuserstatus%}</label>
+    <div class='col-md-10 columns radio-medium'>
+        <label class='radio-inline'> <input name="onuserstatus" id="pagedetailactionform_onuserstatus_always"    value="always" type="radio" checked />{%=org.r3.db.cms.page.message.onuserstatus_always%}</label> 
+        <label class='radio-inline'> <input name="onuserstatus" id="pagedetailactionform_onuserstatus_userlogged"    value="userlogged" type="radio" />{%=org.r3.db.cms.page.message.onuserstatus_userlogged%}</label> 
+        <label class='radio-inline'> <input name="onuserstatus" id="pagedetailactionform_onuserstatus_usernotlogged" value="usernotlogged" type="radio" />{%=org.r3.db.cms.page.message.onuserstatus_usernotlogged%}</label> 
+    </div>
+    </div>
+
+    <div class="form-group">
+    <label class="col-md-2  control-label">{%=org.r3.db.cms.page.message.permissions%}</label>
+    <div class='col-md-10 '>
+     <input name="permissions" class='form-control' id="pagedetailactionform_permissions" type="text" maxlength="25" />
+    </div>
+    </div>
+    
+    <div class="form-group">
+    <label class="col-md-2  control-label">{%=org.r3.db.cms.page.message.pageorder%}</label>
+    <div class='col-md-10 '>
+     <input name="pageorder" class='form-control' id="pagedetailactionform_pageorder" type="text" maxlength="5" />
+    </div>
+    </div>
+         
+  </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-1  control-label">{%=org.r3.db.cms.page.message.viewoptions%}</label>
+    <div class='col-md-11 '>
+     <textarea  name="viewoptions" class='form-control' id="pagedetailactionform_viewoptions" rows="5" ></textarea>
+    </div>
+  </div>
+        
+  </form>
+ 
+   <div class="form-action-bar">
+
+      <button type="button" class="btn  btn-default" id="pagedetailactionform_action_saveitem" >
+        <span>{%=org.r3.message.action_save%}</span>
+      </button>
+      <button type="button" class="btn  btn-default" id="pagedetailactionform_action_cancel" >
+        <span>{%=org.r3.message.action_cancel%}</span>
+      </button>
+      <button type="button" id="pagedetailactionform_action_delete" class="btn btn-danger" >
+        <span>{%=org.r3.message.action_delete%}</span>
+      </button>
+    </div>
+  
+  </div>
+</div>
+
+
+
+ 
+      
+

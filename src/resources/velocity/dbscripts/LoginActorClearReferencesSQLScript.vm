@@ -1,0 +1,8 @@
+##
+##
+## $actorDTO: DTO actor in cancellazione
+##
+##
+
+## update r3_wbsnode set assignedto = NULL 
+##   where site = '$actorDTO.eventid' and assignedto = '$actorDTO.userid';

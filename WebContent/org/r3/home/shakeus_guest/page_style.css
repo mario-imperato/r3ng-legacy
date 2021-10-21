@@ -1,0 +1,97 @@
+
+.shakehome-footer
+{
+	background: url('home_top.jpg') repeat-x scroll left bottom #050505;
+	background-size: auto 100%; 
+	width: 100%;
+	min-height: 20vh; /* Non viene onorata sull'S3. I 50px successivi servono in questo caso. Negli altri vince il 20vh in generale... */
+	height : 50px;
+}
+
+.shakehome-header
+{
+	background-color: #444;
+    width: 100%; 	
+	padding: 10px;	
+	min-height: 15vh;
+}
+
+
+
+.shakehome-logo
+{
+	background: url('logo_gray.png') no-repeat scroll left bottom #444444;
+	height: 50px;
+	background-size: auto 100%;
+    margin-bottom: 10px;
+}
+
+.shakehome-splash
+{
+	min-height: 500px; 
+	background: url('/r3ng/org/r3/home/shakeus_guest/foto-sfondo-homepage.jpg'); background-size: cover;
+	color: #fff;
+    text-shadow: 1px 1px 1px #111;
+    padding: 20px;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.shakehome-canvas
+{
+	min-height: 35vh;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+@media (min-width: 768px)
+{
+	.shakehome-splash iframe
+	{
+   		width: 300px;
+   		height: 168px;
+	}	
+
+	.shakehome-canvas
+	{
+		min-height: 65vh;
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}	
+}
+
+@media (min-width: 992px)
+{
+	.shakehome-splash iframe
+	{
+   		width: 360px;
+   		height: 200px;
+	}
+}
+
+@media (max-width: 768px)
+{
+  #loginform_form input[type='text']
+  {
+  	width: 100%;
+  }
+  
+  #loginform_form #loginform_optionsection
+  {
+  	margin-top: 20px;
+  }
+}
+
+@media (min-width: 769px)
+{
+#loginform_form #loginform_user
+{
+	width: 180px;
+}
+
+#loginform_form #loginform_optionsection
+{
+  	margin-top: 5px;
+}
+}
+

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!DOCTYPE xhtml
+  PUBLIC "XHTML1.0"
+  "../../../assets/xhtml1-strict.dtd">
+
+<dictionary namespace='org.r3.registration'>
+
+        <string id='windowLayout_pageTitle'>Registrazione</string>
+        <string id='windowLayout_failedPageTitle'>Registrazione - Attivazione Fallita</string>
+        <string id='windowLayout_successPageTitle'>Registrazione - Attivazione Positiva</string>
+
+        
+</dictionary>

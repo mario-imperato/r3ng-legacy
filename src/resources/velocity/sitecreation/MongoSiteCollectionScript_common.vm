@@ -1,0 +1,15 @@
+##
+##
+## $siteDTO: DTO site regata in fase di registrazione
+
+[insert:r3_sitecollection];(EOS)
+
+{ "_id": "${siteDTO.site}", "domain" : "${siteDTO.sitedomain}", "sitetype" : "${siteDTO.sitetype}", "description": ${jsonHelper.toJSONQuotedString($siteDTO.sitedescr)} };(EOS)
+
+[insert:r3_timelinecollection];(EOS)
+
+{ "site": "${siteDTO.site}", "timelinetype" : "system", "title": "Conversazioni", "description": "Timeline di Conversazioni", "allowedcontent": [ "shkmessage" ] };(EOS)
+
+[update:r3_usercollection];(EOS)
+
+{ _id: '${userDTO.userid}' };(EOH) { $addToSet : { "favsites" : "${siteDTO.site}" } };(EOS)

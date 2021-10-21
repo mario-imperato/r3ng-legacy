@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd"  [
+
+<!ENTITY struts-config_global_forwards        SYSTEM "struts-config_global_forwards.xml">
+<!ENTITY struts-config_data_sources           SYSTEM "struts-config_data_sources.xml">
+<!ENTITY struts-config_form_beans             SYSTEM "struts-config_form_beans.xml">
+<!ENTITY struts-config_global_exceptions      SYSTEM "struts-config_global_exceptions.xml">
+<!ENTITY struts-config_controller             SYSTEM "struts-config_controller.xml">
+<!ENTITY struts-config_plugin                 SYSTEM "struts-config_plugin.xml">
+<!ENTITY struts-config_message_resources      SYSTEM "struts-config_message_resources.xml">
+
+<!ENTITY cfg_action_home                               SYSTEM "cfg_action_home.xml">
+<!ENTITY cfg_action_home_ts                            SYSTEM "cfg_action_home_ts.xml">
+<!ENTITY cfg_action_console                            SYSTEM "cfg_action_console.xml">
+<!ENTITY cfg_action_test                               SYSTEM "cfg_action_test.xml">
+<!ENTITY cfg_action_sev                                SYSTEM "cfg_action_sev.xml">
+<!ENTITY cfg_action_cms                                SYSTEM "cfg_action_cms.xml">
+<!ENTITY cfg_action_shakeus                            SYSTEM "cfg_action_shakeus.xml">
+<!ENTITY cfg_action_shkadmin                           SYSTEM "cfg_action_shkadmin.xml">
+]>
+
+<struts-config>
+
+    &struts-config_data_sources;
+    &struts-config_form_beans;
+    &struts-config_global_exceptions;
+
+    <!-- Global Forward Definitions -->
+    &struts-config_global_forwards;
+
+    <!-- Action Mapping Definitions -->
+    <action-mappings>
+
+        <!-- Contiene i metodi per la verifica del routing -->
+        &cfg_action_test;
+        
+        <!-- Contiene anche i punti di ingresso vuoti alle varie aree funzionali: es. admin/welcome.do .... -->
+        &cfg_action_home;
+        &cfg_action_console;
+        &cfg_action_sev;
+        &cfg_action_cms;
+        &cfg_action_shakeus;
+        &cfg_action_shkadmin;
+                
+        &cfg_action_home_ts;
+    </action-mappings>
+    
+    &struts-config_controller;
+    &struts-config_message_resources;
+    &struts-config_plugin;
+  
+</struts-config>
+

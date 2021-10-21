@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+
+<templates>
+     
+     <!-- BOF DB Scripts -->     
+     <template name="CardDeletionSQLScript">
+        <filename>resources/velocity/dbscripts/CardDeletionSQLScript.vm</filename>
+     </template>
+     
+     <template name="ActorDeletionSQLScript">
+        <filename>resources/velocity/dbscripts/ActorDeletionSQLScript.vm</filename>
+     </template>
+
+     <template name="LoginActorClearReferencesSQLScript">
+        <filename>resources/velocity/dbscripts/LoginActorClearReferencesSQLScript.vm</filename>
+     </template>
+
+     <template name="RankingDeletionSQLScript">
+        <filename>resources/velocity/dbscripts/RankingDeletionSQLScript.vm</filename>
+     </template>     
+     
+     <template name="SiteRegattaUpdateSQLScript">
+        <filename>resources/velocity/dbscripts/SiteRegattaUpdateSQLScript.vm</filename>
+     </template>
+
+     <template name="SiteDeleteSQLScript">
+        <filename>resources/velocity/dbscripts/SiteDeleteSQLScript.vm</filename>
+     </template>
+
+     <template name="SiteCollectionDeleteMongoScript">
+        <filename>resources/velocity/dbscripts/SiteCollectionDeleteMongoScript.vm</filename>
+     </template>
+
+
+     <template name="RetryQueueSQLScript">
+        <filename>resources/velocity/dbscripts/RetryQueueSQLScript.vm</filename>
+     </template>
+
+     <template name="SailApplicationDeletionSQLScript">
+        <filename>resources/velocity/dbscripts/SailApplicationDeletionSQLScript.vm</filename>
+     </template>     
+
+     <template name="SailApplicationCloneSQLScript">
+        <filename>resources/velocity/dbscripts/SailApplicationCloneSQLScript.vm</filename>
+     </template>          
+
+     <template name="UserRegistrationSQLScript">
+        <filename>resources/velocity/dbscripts/UserRegistrationSQLScript.vm</filename>
+     </template>
+
+     <template name="CardCreationSQLScript">
+        <filename>resources/velocity/dbscripts/CardCreationSQLScript.vm</filename>
+     </template>
+
+	 <template name="delete_prj_resource">
+        <filename>resources/velocity/dbscripts/delete_prj_resource.vm</filename>
+     </template>
+
+     <template name="delete_prj_team">
+        <filename>resources/velocity/dbscripts/delete_prj_team.vm</filename>
+     </template>         
+     
+     <template name="delete_prj_teamresource">
+        <filename>resources/velocity/dbscripts/delete_prj_teamresource.vm</filename>
+     </template>         
+     <!-- EOF DB Scripts -->
+                                    
+</templates>

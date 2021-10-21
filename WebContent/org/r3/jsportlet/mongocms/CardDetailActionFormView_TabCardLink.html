@@ -1,0 +1,90 @@
+<div class="panel tabbed-panel">
+ <div class="panel-heading" >  
+    <h3 class="panel-title" >    
+	<img class="img-circle" id='postlinkactionform_authoricon' style='margin-right: 10px; width: 35px; height: 35px' src="/r3ng/org/r3/home/shakeus/icon-squared.png" alt="User Image" /> 
+    <span class="username" id='postlinkactionform_authorname'>- Nome Autore - </span>
+    <div style='display: block; font-size: 13px; margin-left: 45px; color: #aaa;'>
+    <span id='postlinkactionform_refdate' ></span>&nbsp;<span id='postlinkactionform_cardid_label'></span>	
+    </div>
+	</h3>
+  </div> 
+  
+  
+  <div class="panel-body">
+  <div id="postlinkactionform_fieldset_message"></div>
+  
+  <div >
+  <div >
+  <form id="postlinkactionform_form" class='form-horizontal'>
+  <input  type="hidden" name="linkid" id="postlinkactionform_linkid" />
+ 
+    <div class="form-group">
+    <label class="col-md-2  control-label fieldRequired">{%=org.r3.db.cms.cardproperty.message.propertyname%}</label>
+    <div class='col-md-10 '>
+    <input name="name" class="form-control" id="postlinkactionform_name" type="text" maxlength="40" />
+    </div>
+    </div>
+    
+    <div class="form-group">
+    <label class="col-md-2  control-label fieldRequired">{%=org.r3.db.cms.cardproperty.message.propertyvalue_link%}</label>
+    <div class='col-md-10 '>
+    <input name="href" class="form-control" id="postlinkactionform_href" type="text" maxlength="250" />
+    </div>
+    </div>
+    
+    <div class="form-group">
+    <label class="col-md-2  control-label ">{%=org.r3.db.cms.cardproperty.message.refpropertyid_image%}</label>
+    <div class='col-md-10 '>
+    <select name="refattachmentid" class="form-control" id="postlinkactionform_refattachmentid" ></select>
+    </div>
+    </div>            
+          
+  </form>
+  
+  <div class="form-action-bar">
+        <button type="button" id="postlinkactionform_action_additem" class="btn btn-default" >
+          <span>{%=org.r3.message.action_insert%}</span>
+        </button>
+
+        <button type="button" id="postlinkactionform_action_updateitem" class="btn btn-default" >
+          <span>{%=org.r3.message.action_refresh%}</span>
+        </button>
+
+        <button type="button" id="postlinkactionform_action_cancel_updateitem" class="btn btn-default" >
+          <span>{%=org.r3.message.action_cancel_refresh%}</span>
+        </button>
+        
+      <button type="button" id="postlinkactionform_action_cancel" class="btn btn-danger" >
+        <span>{%=org.r3.message.action_back%}</span>
+      </button>                
+   </div> 
+     
+   
+   
+
+   </div>
+   </div>
+   
+   <div class='row'>
+<div class='col-md-12' style='text-align: right'>
+    
+    {% for(var i = 0; i < o.buttons.length; i++) { %}
+    <button type="button" class="btn btn-primary start " id="{%=o.buttons[i].id%}"{% if (o.buttons[i].disabled) { %} disabled {% } %} >
+      <span>{%=o.buttons[i].label%}</span>
+    </button>
+    {% } %}
+    
+</div>
+
+<div class='col-md-12'>
+    <table id="MongoLinkQueryActionFormView" style='width: 100%' class="table table-striped table-bordered table-hover {%=o.gradeLevel%}" >
+    </table>
+</div>
+
+</div>
+</div>
+</div>
+
+
+
+    

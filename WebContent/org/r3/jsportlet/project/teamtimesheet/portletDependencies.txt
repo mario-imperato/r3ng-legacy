@@ -1,0 +1,32 @@
+  <!-- Canvas dependencies -->
+  <div id="teamtmesheetQueryActionForm"  class="actionForm"></div>
+  
+   
+  <!-- JS dependencies -->
+  <r3_lang:script path2resolve="/org/r3/jsportlet/project/teamtimesheet/messages.js" />    
+  <r3_lang:script path2resolve="/org/r3/jsportlet/project/teamtimesheet/TeamTimesheetActionForm.js" />
+  <r3_lang:script path2resolve="/org/r3/jsportlet/project/teamtimesheet/TeamTimesheetActionFormView_validation.js" />
+  
+  <r3_lang:script path2resolve="/org/r3/db/project/resourcetimesheetview/ResourceTimesheetViewQueryActionFormView.js" />
+  <r3_lang:script path2resolve="/org/r3/db/project/resourcetimesheetview/ResourceTimesheetViewDTOAdapter.js" />
+  <r3_lang:script path2resolve="/org/r3/db/project/resourcetimesheetview/ResourceTimesheetViewDTO.js" />
+  <r3_lang:script path2resolve="/org/r3/db/project/resourcetimesheetview/ResourceTimesheetViewDictionary.js" /> 
+
+    
+  <!-- PageManager dependency -->
+  this.teamtimesheetQueryActionForm = new org.r3.jsportlet.project.teamtimesheet.TeamTimesheetActionForm(this, "#teamtmesheetQueryActionForm");		 
+ 		
+    openTeamTimesheetQueryActionFormPanel: function()
+	 {		 
+		 org.r3.PageManager.pushBreadCrumb(
+		{
+			"title" : "Consuntivazione",
+			"actionForm" : this.teamtimesheetQueryActionForm
+		});
+		 
+		 this.teamtimesheetQueryActionForm.open();
+		 $('#gsidebar-navanchor').gsidebar('select', 'act_teamtimesheet');		 
+	 },
+	 
+	
+    	

@@ -1,0 +1,289 @@
+.fa.top3
+{
+   margin-top: 3px;
+}
+   
+.tab-pane-framed
+{
+  border: 1px solid #ddd; border-bottom-left-radius: 4px; border-bottom-right-radius: 4px; border-top: none;
+}
+
+.page-break-before
+{
+   page-break-before: always;
+}
+
+.default-layout-cssprofile .console-canvas-content
+{
+   margin: 40px;
+}
+
+.gsidebar-layout-cssprofile .console-canvas-content
+{
+   min-height: 400px
+}
+
+  
+
+
+/* Definizione della barra laterale per le immagini decorative */
+.image-decorated-sidebar
+{
+   text-align: center;
+}
+
+.image-decorated-sidebar img
+{
+   margin-bottom: 5px;
+   width: 100%;
+}
+
+/* Utilizzato nel caso di pannelli stacked con list-group */
+li.list-group-item h4
+{
+   border-bottom: 1px solid #ddd;
+   padding-bottom: 0.5em;
+}
+
+ol + p,
+ul + p 
+{
+  margin-top: (@line-height-computed / 2);
+}
+
+/* 20160120
+body.r3
+{
+   background-color: #ffffff;
+   color: #333333
+}
+*/
+
+body.skinned
+{
+    background-position: top center;
+    background-color: #ffffff;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+navbar .nav.pull-right {
+     float: right;
+    margin-right: 98px; /*set margin this way in your custom styesheet*/
+  }
+	
+	
+
+// Portlet wall of links
+.walloflinks_canvas div {
+  border: 1px solid #cccccc;
+  display: block;
+  float: left;
+  /* margin: 4px; */
+  padding: 5px;
+  text-align: center;
+}
+
+
+// home_portlet styling
+/* 20160120
+.home_portlet div.title
+{
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 5px;
+    color: #ffffff;
+}
+
+.home_portlet div.title.actionable 
+{    
+    background-color: #367ECE;
+    border: 1px solid #367ECE;
+    color: #ffffff
+}
+
+.home_portlet div.title.squared 
+{
+    background-color: #999999;
+    border: 1px solid #999999;
+    color: #ffffff
+}
+
+.home_portlet div.title.grade1 
+{
+    background-color: #AA0D0D;
+    border: 1px solid #AA0D0D;
+}
+
+.home_portlet div.title.grade2 
+{
+    background-color: #FF9601;
+    border: 1px solid #FF9601;    
+
+}
+
+.home_portlet div.title.grade3 
+{
+    background-color: #367ECE;
+    border: 1px solid #367ECE;
+    
+
+}
+
+.home_portlet div.title.grade4 
+{
+    background-color: #004000;
+    border: 1px solid #004000;
+
+
+}
+
+.home_portlet div.title.grade5 
+{
+    background-color: #8CC63F;
+    border: 1px solid #8CC63F;
+
+}
+
+
+.home_portlet div.title.grade6 
+{
+    background-color: #aaaaaa;
+    border: 1px solid #aaaaaa;
+
+}
+
+
+.home_portlet div.title.actionable a:link, .home_portlet div.title.actionable a:visited, .home_portlet div.title.actionable a:active {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.home_portlet div.title.actionable:hover 
+{
+    background-color: #142A38;    
+}
+
+.home_portlet table 
+{
+    border-top: 1px solid #E6EAF3;
+}
+
+.home_portlet tr {
+    height: 2em;
+}
+
+.home_portlet td {
+    border-bottom: 1px solid #E6EAF3;
+    padding: 5px;
+}
+
+.home_portlet td.boatIcon-cell {
+    border-bottom: 1px solid #E6EAF3;
+    padding-right: 10px;
+}
+*/
+
+.panel.tabbed-panel .panel-heading
+{
+   border-bottom: 1px solid #E0E0E0;
+}
+
+.tab-pane .panel,
+.panel.tabbed-panel 
+{
+   margin-bottom: 0;
+}
+
+div.homeentrylist_boatwall .boatIcon
+{
+    margin: 5px;
+    float: left;	
+}
+
+div.boatIcon {
+    width: 135px; 
+    height: 135px; 
+    border: 1px solid #AAAAAA;    
+    min-height: 80px;    
+    padding: 5px;
+    background-color: white;
+}
+
+div.boatIcon img {
+	/* display:table-cell; vertical-align:middle; text-align:center; */
+	display: block; margin: 0 auto;	
+}
+
+.action-bar {
+    border-top: 1px solid #0099cc;
+    margin-top: 20px;
+    min-height: 20px;
+    padding: 5px 0 10px;
+    text-align: right;
+}
+
+.action-bar button
+{
+   margin-top: 10px;
+}
+
+.action-bar.position-top
+{
+    border-top: 0px solid #0099CC;
+    border-bottom: 1px solid #0099CC;
+    
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.action-bar.position-top button
+{
+    margin-top: 0px;
+}
+
+
+
+#canvas_report {
+  display: none;
+  margin: 0px;
+  /* border-bottom: 1px solid #CCCCCC; */
+  padding: 5px;
+  background-color: #ffffff;
+}
+
+
+
+@media print 
+{
+	#mainCanvas { padding: 0   }
+	
+	#canvas_report,
+	#canvas_report_content.panel-body
+	{
+	   padding: 0;
+	}
+	
+	#canvas_report .panel-default
+	{
+	   border-color: transparent;
+	}
+	
+	
+	#layout_root_container
+    {
+       margin-top: 0px;
+    }	
+    
+    .unprintable
+	{
+	    display: none; 	
+	}
+}
+
+
+.table>tbody>tr>td.sevapp-accepted-label {
+   padding-right: 0;
+   padding-left: 0;
+}

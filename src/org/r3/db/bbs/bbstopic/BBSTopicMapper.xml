@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--
+  TODO: xmlCopyRight.txt
+   
+  -->
+<!--
+  TODO: xmlReadme.txt
+   
+  -->
+
+<!-- <mapper resource="org/r3/db/bbs/bbstopic/BBSTopicMapper.xml"/> -->
+<mapper namespace="org.r3.db.bbs.bbstopic.BBSTopicMapper" >
+    <resultMap id="BaseResultMap" type="org.r3.db.bbs.bbstopic.BBSTopicDTO" >
+         <id column="site" property="site" jdbcType="VARCHAR" />
+           <id column="topicid" property="topicid" jdbcType="VARCHAR" />
+           <result column="topictitle" property="topictitle" jdbcType="VARCHAR" />
+           <result column="cardid" property="cardid" jdbcType="VARCHAR" />
+           <result column="moderatorid" property="moderatorid" jdbcType="VARCHAR" />
+           <result column="moderatormode" property="moderatormode" jdbcType="VARCHAR" />
+           <result column="options" property="options" jdbcType="VARCHAR" />
+           <result column="recstatus" property="recstatus" jdbcType="VARCHAR" />
+           <result column="rectimestamp" property="rectimestamp" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+  <sql id="Filter_Where_Clause" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+                <when test="criterion.subSelectCriterion" >
+                  and ${criterion.prefixCondition} #{criterion.value} ${criterion.suffixCondition}
+                </when>                                
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <!--
+  <sql id="Filter_Where_Clause_4_Update" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  -->  
+  <sql id="Base_Column_List" >
+    site,  topicid,  topictitle,  cardid,  moderatorid,  moderatormode,  options,  recstatus,  rectimestamp  </sql>
+  <select id="selectBySiteTopicid" resultMap="BaseResultMap" parameterType="HashMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from r3_bbstopic
+    where  site = #{site,jdbcType=VARCHAR} and  topicid = #{topicid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteBySiteTopicid" parameterType="HashMap" >
+    delete
+    from r3_bbstopic
+    where  site = #{site,jdbcType=VARCHAR} and  topicid = #{topicid,jdbcType=VARCHAR}
+  </delete>  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from r3_bbstopic    
+    where  site = #{pk.site,jdbcType=VARCHAR} and  topicid = #{pk.topicid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete
+    from r3_bbstopic
+    where  site = #{pk.site,jdbcType=VARCHAR} and  topicid = #{pk.topicid,jdbcType=VARCHAR}
+  </delete>  
+  <select id="select" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <if test="filter != null &amp;&amp; filter.distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from r3_bbstopic
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+    <if test="filter != null &amp;&amp; filter.orderByClause != null" >
+      order by ${filter.orderByClause}
+    </if>
+    <if test="filter != null &amp;&amp; filter.limitFetch > 0" >
+      limit ${filter.limitFetch}
+    </if>
+  </select>
+  <select id="count" parameterType="map" resultType="java.lang.Integer" >
+    select count(*) from r3_bbstopic
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </select>  
+  <delete id="delete" parameterType="map" >
+    delete from r3_bbstopic
+    <!-- _parameter: dato che e' una map lo sostituisco con il nome del parametro in quanto non è l'unico -->
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="map" >
+    insert into r3_bbstopic (
+ site, topicid, topictitle, cardid, moderatorid, moderatormode, options, recstatus, rectimestamp      )
+    values (
+ 
+ #{record.site,jdbcType=VARCHAR}, 
+ #{record.topicid,jdbcType=VARCHAR}, 
+ #{record.topictitle,jdbcType=VARCHAR}, 
+ #{record.cardid,jdbcType=VARCHAR},
+ 
+ #{record.moderatorid,jdbcType=VARCHAR}, 
+ #{record.moderatormode,jdbcType=VARCHAR}, 
+ #{record.options,jdbcType=VARCHAR}, 
+ #{record.recstatus,jdbcType=VARCHAR},
+ 
+ #{record.rectimestamp,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="update" parameterType="map" >
+    update r3_bbstopic
+    <set >
+      <if test="record.topictitleDirty" >
+        topictitle = #{record.topictitle,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.cardidDirty" >
+        cardid = #{record.cardid,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.moderatoridDirty" >
+        moderatorid = #{record.moderatorid,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.moderatormodeDirty" >
+        moderatormode = #{record.moderatormode,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.optionsDirty" >
+        options = #{record.options,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.recstatusDirty" >
+        recstatus = #{record.recstatus,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.rectimestampDirty" >
+        rectimestamp = #{record.rectimestamp,jdbcType=TIMESTAMP},
+      </if>      
+    </set>
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+      <!-- Non dovrebbe servire in quanto il filter e' sempre named. -->
+      <!-- <include refid="Filter_Where_Clause_4_Update" /> -->
+    </if>
+  </update>
+  <update id="updateByPrimaryKey" parameterType="map" >
+    update r3_bbstopic
+    <set >
+      <if test="record.topictitleDirty" >
+        topictitle = #{record.topictitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cardidDirty" >
+        cardid = #{record.cardid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.moderatoridDirty" >
+        moderatorid = #{record.moderatorid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.moderatormodeDirty" >
+        moderatormode = #{record.moderatormode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.optionsDirty" >
+        options = #{record.options,jdbcType=VARCHAR},
+      </if>
+      <if test="record.recstatusDirty" >
+        recstatus = #{record.recstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rectimestampDirty" >
+        rectimestamp = #{record.rectimestamp,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where  site = #{record.site,jdbcType=VARCHAR} and  topicid = #{record.topicid,jdbcType=VARCHAR}
+  </update>
+
+</mapper>

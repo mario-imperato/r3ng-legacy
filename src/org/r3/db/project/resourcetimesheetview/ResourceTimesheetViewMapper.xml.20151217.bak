@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--
+  TODO: xmlCopyRight.txt
+   
+  -->
+<!--
+  TODO: xmlReadme.txt
+   
+  -->
+
+<!-- <mapper resource="org/r3/db/project/resourcetimesheetview/ResourceTimesheetViewMapper.xml"/> -->
+<mapper namespace="org.r3.db.project.resourcetimesheetview.ResourceTimesheetViewMapper" >
+    <resultMap id="BaseResultMap" type="org.r3.db.project.resourcetimesheetview.ResourceTimesheetViewDTO" >
+         <result column="site" property="site" jdbcType="VARCHAR" />
+           <result column="tsentryid" property="tsentryid" jdbcType="VARCHAR" />
+           <result column="sitedomain" property="sitedomain" jdbcType="VARCHAR" />
+           <result column="resourceid" property="resourceid" jdbcType="VARCHAR" />
+           <result column="resourcedescr" property="resourcedescr" jdbcType="VARCHAR" />
+           <result column="teamid" property="teamid" jdbcType="VARCHAR" />
+           <result column="teamperiod" property="teamperiod" jdbcType="INTEGER" />
+           <result column="profileid" property="profileid" jdbcType="VARCHAR" />
+           <result column="companyid" property="companyid" jdbcType="VARCHAR" />
+           <result column="costcenter1" property="costcenter1" jdbcType="VARCHAR" />
+           <result column="costcenter2" property="costcenter2" jdbcType="VARCHAR" />
+           <result column="costcenter3" property="costcenter3" jdbcType="VARCHAR" />
+           <result column="uniteffort" property="uniteffort" jdbcType="VARCHAR" />
+           <result column="ordeffort" property="ordeffort" jdbcType="INTEGER" />
+           <result column="exteffort" property="exteffort" jdbcType="INTEGER" />
+           <result column="oncalleffort" property="oncalleffort" jdbcType="INTEGER" />
+           <result column="price" property="price" jdbcType="REAL" />
+           <result column="cost" property="cost" jdbcType="REAL" />
+           <result column="evalueunit" property="evalueunit" jdbcType="VARCHAR" />
+           <result column="caldate" property="caldate" jdbcType="DATE" />
+           <result column="caleveday" property="caleveday" jdbcType="INTEGER" />
+           <result column="calevemonth" property="calevemonth" jdbcType="INTEGER" />
+           <result column="caleveweek" property="caleveweek" jdbcType="INTEGER" />
+           <result column="calevequarter" property="calevequarter" jdbcType="INTEGER" />
+           <result column="caleveyear" property="caleveyear" jdbcType="INTEGER" />
+           <result column="tseuserid" property="tseuserid" jdbcType="VARCHAR" />
+    </resultMap>
+
+  <sql id="Filter_Where_Clause" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+                <when test="criterion.subSelectCriterion" >
+                  and ${criterion.prefixCondition} #{criterion.value} ${criterion.suffixCondition}
+                </when>                                
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    site,  tsentryid,  sitedomain,  resourceid,  resourcedescr,  teamid,  teamperiod,  profileid,  companyid,
+  costcenter1,  costcenter2,  costcenter3,  uniteffort,  ordeffort,  exteffort,  oncalleffort,  price,  cost,
+  evalueunit,  caldate,  caleveday,  calevemonth,  caleveweek,  calevequarter,  caleveyear,  tseuserid  </sql>
+  <select id="select" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <if test="filter != null &amp;&amp; filter.distinct" >
+      distinct
+    </if>
+    <choose >
+       <when test="filter != null &amp;&amp; filter.groupByClause != null" >
+           <include refid="GroupBy_Column_List" />
+       </when>
+       <otherwise>
+           <include refid="Base_Column_List" />
+       </otherwise>
+    </choose>
+    
+    from prj_view_resourcets
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+
+    <if test="filter != null &amp;&amp; filter.groupByClause != null" >
+      group by ${filter.groupByClause}
+    </if>
+        
+    <if test="filter != null &amp;&amp; filter.orderByClause != null" >
+      order by ${filter.orderByClause}
+    </if>
+    <if test="filter != null &amp;&amp; filter.limitFetch > 0" >
+      limit ${filter.limitFetch}
+    </if>
+  </select>
+  <select id="count" parameterType="map" resultType="java.lang.Integer" >
+    select count(*) from prj_view_resourcets
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </select>  
+  
+  <sql id='GroupBy_Column_List'>
+  
+    <trim suffixOverrides=",">
+    
+     null as tsentryid,  null as caleveday,  null as site,  
+    
+     <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('teamid')" >
+           teamid,
+       </when>
+       <otherwise>
+           null as teamid,
+       </otherwise>         
+     </choose>
+     
+     <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('resourceid')" >
+           resourceid,
+       </when>
+       <otherwise>
+           null as resourceid,
+       </otherwise>         
+     </choose>
+          
+     max(uniteffort) as uniteffort,  sum(ordeffort) as ordeffort, sum(exteffort) as exteffort,  sum(oncalleffort) as oncalleffort,
+     
+     <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('tseuserid')" >
+           tseuserid,
+       </when>
+       <otherwise>
+           null as tseuserid,
+       </otherwise>         
+     </choose>
+     
+     null as recstatus,  null as rectimestamp,  
+  
+     <choose >
+       <when test="filter != null &amp;&amp;  filter.isGroupBy('resourcedescr')" >
+           resourcedescr,
+       </when>
+       <otherwise>
+           null as resourcedescr,
+       </otherwise>         
+     </choose>
+  
+     null as profiledescr,  
+     
+     <choose >
+       <when test="filter != null &amp;&amp;  filter.isGroupBy('profileid')" >
+           profileid,
+       </when>
+       <otherwise>
+           null as profileid,
+       </otherwise>         
+     </choose>
+     
+    </trim>
+       
+  </sql>
+  
+</mapper>

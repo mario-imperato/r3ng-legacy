@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!-- ========================================= Global Exception Definitions -->
+
+    <global-exceptions>
+        <!-- sample exception handler
+        <exception
+            key="expired.password"
+            type="app.ExpiredPasswordException"
+            path="/changePassword.jsp"/>
+        end sample -->
+        
+	    <exception
+	      key="error.global.mesage"
+	      type="java.lang.Exception"
+	      handler="org.r3.system.struts.R3StrutsExceptionHandler"
+	      path="/org/r3/exceptions/Exception.jsp" />
+	              
+    </global-exceptions>

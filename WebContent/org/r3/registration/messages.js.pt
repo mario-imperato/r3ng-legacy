@@ -1,0 +1,12 @@
+
+$.r3Utils.namespace("org.r3.registration", window, function(aNamespace) 
+{
+  aNamespace.message = {
+    waiting:"Aguarde...",
+    initializationerror: "Atenção: ocorreu um erro durante a inicialização da página. O processamento não pode ser continuado",
+    success_activation_title: "Ativação bem-sucedida",
+    failed_activation_title: "Falha de ativação",
+    registration_breadcrumb_caption: "Cadastramento",
+    outcome_breadcrumb_caption:	"Resultado de ativação"
+  };
+});

@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--
+  TODO: xmlCopyRight.txt
+   
+  -->
+<!--
+  TODO: xmlReadme.txt
+   
+  -->
+
+<!-- <mapper resource="org/r3/db/sailevent/rankinginstance/RankingInstanceMapper.xml"/> -->
+<mapper namespace="org.r3.db.sailevent.rankinginstance.RankingInstanceMapper" >
+    <resultMap id="BaseResultMap" type="org.r3.db.sailevent.rankinginstance.RankingInstanceDTO" >
+         <id column="eventid" property="eventid" jdbcType="VARCHAR" />
+           <id column="instanceid" property="instanceid" jdbcType="VARCHAR" />
+           <result column="rankid" property="rankid" jdbcType="VARCHAR" />
+           <result column="instancetype" property="instancetype" jdbcType="VARCHAR" />
+           <result column="racenumber" property="racenumber" jdbcType="INTEGER" />
+           <result column="racedate" property="racedate" jdbcType="DATE" />
+           <result column="racetime" property="racetime" jdbcType="VARCHAR" />
+           <result column="racedistance" property="racedistance" jdbcType="DECIMAL" />
+           <result column="racecoefficient" property="racecoefficient" jdbcType="VARCHAR" />
+           <result column="racerating" property="racerating" jdbcType="VARCHAR" />
+           <result column="minrealtime" property="minrealtime" jdbcType="INTEGER" />
+           <result column="softwareversion" property="softwareversion" jdbcType="VARCHAR" />
+           <result column="softwarecode" property="softwarecode" jdbcType="VARCHAR" />
+           <result column="racefiledmsurl" property="racefiledmsurl" jdbcType="VARCHAR" />
+           <result column="rectimestamp" property="rectimestamp" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+  <sql id="Filter_Where_Clause" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+                <when test="criterion.subSelectCriterion" >
+                  and ${criterion.prefixCondition} #{criterion.value} ${criterion.suffixCondition}
+                </when>                                
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <!--
+  <sql id="Filter_Where_Clause_4_Update" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  -->  
+  <sql id="Base_Column_List" >
+    eventid,  instanceid,  rankid,  instancetype,  racenumber,  racedate,  racetime,  racedistance,  racecoefficient,
+  racerating,  minrealtime,  softwareversion,  softwarecode,  racefiledmsurl,  rectimestamp  </sql>
+  <select id="selectByEventidInstanceid" resultMap="BaseResultMap" parameterType="HashMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from sev_rankinginstance
+    where  eventid = #{eventid,jdbcType=VARCHAR} and  instanceid = #{instanceid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByEventidInstanceid" parameterType="HashMap" >
+    delete
+    from sev_rankinginstance
+    where  eventid = #{eventid,jdbcType=VARCHAR} and  instanceid = #{instanceid,jdbcType=VARCHAR}
+  </delete>  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from sev_rankinginstance    
+    where  eventid = #{pk.eventid,jdbcType=VARCHAR} and  instanceid = #{pk.instanceid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete
+    from sev_rankinginstance
+    where  eventid = #{pk.eventid,jdbcType=VARCHAR} and  instanceid = #{pk.instanceid,jdbcType=VARCHAR}
+  </delete>  
+  <select id="select" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <if test="filter != null &amp;&amp; filter.distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sev_rankinginstance
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+    <if test="filter != null &amp;&amp; filter.orderByClause != null" >
+      order by ${filter.orderByClause}
+    </if>
+    <if test="filter != null &amp;&amp; filter.limitFetch > 0" >
+      limit ${filter.limitFetch}
+    </if>
+  </select>
+  <select id="count" parameterType="map" resultType="java.lang.Integer" >
+    select count(*) from sev_rankinginstance
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </select>  
+  <delete id="delete" parameterType="map" >
+    delete from sev_rankinginstance
+    <!-- _parameter: dato che e' una map lo sostituisco con il nome del parametro in quanto non è l'unico -->
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="map" >
+    insert into sev_rankinginstance (
+ eventid, instanceid, rankid, instancetype, racenumber, racedate, racetime, racedistance, racecoefficient,
+ racerating, minrealtime, softwareversion, softwarecode, racefiledmsurl, rectimestamp      )
+    values (
+ 
+ #{record.eventid,jdbcType=VARCHAR}, 
+ #{record.instanceid,jdbcType=VARCHAR}, 
+ #{record.rankid,jdbcType=VARCHAR}, 
+ #{record.instancetype,jdbcType=VARCHAR},
+ 
+ #{record.racenumber,jdbcType=INTEGER}, 
+ #{record.racedate,jdbcType=DATE}, 
+ #{record.racetime,jdbcType=VARCHAR}, 
+ #{record.racedistance,jdbcType=DECIMAL},
+ 
+ #{record.racecoefficient,jdbcType=VARCHAR}, 
+ #{record.racerating,jdbcType=VARCHAR}, 
+ #{record.minrealtime,jdbcType=INTEGER}, 
+ #{record.softwareversion,jdbcType=VARCHAR},
+ 
+ #{record.softwarecode,jdbcType=VARCHAR}, 
+ #{record.racefiledmsurl,jdbcType=VARCHAR}, 
+ #{record.rectimestamp,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="update" parameterType="map" >
+    update sev_rankinginstance
+    <set >
+      <if test="record.rankidDirty" >
+        rankid = #{record.rankid,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.instancetypeDirty" >
+        instancetype = #{record.instancetype,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.racenumberDirty" >
+        racenumber = #{record.racenumber,jdbcType=INTEGER},
+      </if>      
+      <if test="record.racedateDirty" >
+        racedate = #{record.racedate,jdbcType=DATE},
+      </if>      
+      <if test="record.racetimeDirty" >
+        racetime = #{record.racetime,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.racedistanceDirty" >
+        racedistance = #{record.racedistance,jdbcType=DECIMAL},
+      </if>      
+      <if test="record.racecoefficientDirty" >
+        racecoefficient = #{record.racecoefficient,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.raceratingDirty" >
+        racerating = #{record.racerating,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.minrealtimeDirty" >
+        minrealtime = #{record.minrealtime,jdbcType=INTEGER},
+      </if>      
+      <if test="record.softwareversionDirty" >
+        softwareversion = #{record.softwareversion,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.softwarecodeDirty" >
+        softwarecode = #{record.softwarecode,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.racefiledmsurlDirty" >
+        racefiledmsurl = #{record.racefiledmsurl,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.rectimestampDirty" >
+        rectimestamp = #{record.rectimestamp,jdbcType=TIMESTAMP},
+      </if>      
+    </set>
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+      <!-- Non dovrebbe servire in quanto il filter e' sempre named. -->
+      <!-- <include refid="Filter_Where_Clause_4_Update" /> -->
+    </if>
+  </update>
+  <update id="updateByPrimaryKey" parameterType="map" >
+    update sev_rankinginstance
+    <set >
+      <if test="record.rankidDirty" >
+        rankid = #{record.rankid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.instancetypeDirty" >
+        instancetype = #{record.instancetype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.racenumberDirty" >
+        racenumber = #{record.racenumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.racedateDirty" >
+        racedate = #{record.racedate,jdbcType=DATE},
+      </if>
+      <if test="record.racetimeDirty" >
+        racetime = #{record.racetime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.racedistanceDirty" >
+        racedistance = #{record.racedistance,jdbcType=DECIMAL},
+      </if>
+      <if test="record.racecoefficientDirty" >
+        racecoefficient = #{record.racecoefficient,jdbcType=VARCHAR},
+      </if>
+      <if test="record.raceratingDirty" >
+        racerating = #{record.racerating,jdbcType=VARCHAR},
+      </if>
+      <if test="record.minrealtimeDirty" >
+        minrealtime = #{record.minrealtime,jdbcType=INTEGER},
+      </if>
+      <if test="record.softwareversionDirty" >
+        softwareversion = #{record.softwareversion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.softwarecodeDirty" >
+        softwarecode = #{record.softwarecode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.racefiledmsurlDirty" >
+        racefiledmsurl = #{record.racefiledmsurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rectimestampDirty" >
+        rectimestamp = #{record.rectimestamp,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where  eventid = #{record.eventid,jdbcType=VARCHAR} and  instanceid = #{record.instanceid,jdbcType=VARCHAR}
+  </update>
+
+</mapper>

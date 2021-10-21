@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--
+  TODO: xmlCopyRight.txt
+   
+  -->
+<!--
+  TODO: xmlReadme.txt
+   
+  -->
+
+<!-- <mapper resource="org/r3/db/wbs/wbs/WBSMapper.xml"/> -->
+<!-- Modifica per caricare sempre anche gli attori della WBS. E' modificato il ResultMap e la tabella di provenienza delle
+     select (rimane r3_wbs la tabella di provenienza delle count
+  -->
+<mapper namespace="org.r3.db.wbs.wbs.WBSMapper" >
+    <resultMap id="BaseResultMap" type="org.r3.db.wbs.wbs.WBSDTO" >
+         <id column="site" property="site" jdbcType="VARCHAR" />
+           <id column="wbsid" property="wbsid" jdbcType="VARCHAR" />
+           <result column="wbstitle" property="wbstitle" jdbcType="VARCHAR" />
+           <result column="wbstext" property="wbstext" jdbcType="VARCHAR" />
+           <result column="bbstopicid" property="bbstopicid" jdbcType="VARCHAR" />
+           <result column="options" property="options" jdbcType="VARCHAR" />
+           <result column="recstatus" property="recstatus" jdbcType="VARCHAR" />
+           <result column="rectimestamp" property="rectimestamp" jdbcType="TIMESTAMP" />
+           
+           <collection property="actors" column="wbsactorid" ofType="org.r3.db.wbs.wbsactor.WBSActorDTO">
+              <id column="wbsactorid" property="wbsactorid" jdbcType="VARCHAR" />
+              <result column="site" property="site" jdbcType="VARCHAR" />
+              <result column="actorid" property="actorid" jdbcType="VARCHAR" />
+              <result column="actorrole" property="actorrole" jdbcType="VARCHAR" />
+              <result column="wbawbsid" property="wbsid" jdbcType="VARCHAR" />
+              <result column="wbsnodeid" property="wbsnodeid" jdbcType="VARCHAR" />
+           </collection>
+    </resultMap>
+
+  <sql id="Filter_Where_Clause" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+                <when test="criterion.subSelectCriterion" >
+                  and ${criterion.prefixCondition} #{criterion.value} ${criterion.suffixCondition}
+                </when>                                
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <!--
+  <sql id="Filter_Where_Clause_4_Update" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  -->  
+    
+  <sql id="Base_Column_List" >
+    site,  wbsid,  wbstitle,  wbstext,  bbstopicid,  options,  recstatus,  rectimestamp, wbsactorid, actorid, actorrole, wbsid, wbawbsid, wbsnodeid  </sql>
+    
+  <select id="selectBySiteWbsid" resultMap="BaseResultMap" parameterType="HashMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from r3_view_wbs
+    where  site = #{site,jdbcType=VARCHAR} and  wbsid = #{wbsid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteBySiteWbsid" parameterType="HashMap" >
+    delete
+    from r3_wbs
+    where  site = #{site,jdbcType=VARCHAR} and  wbsid = #{wbsid,jdbcType=VARCHAR}
+  </delete>  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from r3_wbs    
+    where  site = #{pk.site,jdbcType=VARCHAR} and  wbsid = #{pk.wbsid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete
+    from r3_wbs
+    where  site = #{pk.site,jdbcType=VARCHAR} and  wbsid = #{pk.wbsid,jdbcType=VARCHAR}
+  </delete>  
+  <select id="select" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <if test="filter != null &amp;&amp; filter.distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from r3_view_wbs
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+    <if test="filter != null &amp;&amp; filter.orderByClause != null" >
+      order by ${filter.orderByClause}
+    </if>
+    <if test="filter != null &amp;&amp; filter.limitFetch > 0" >
+      limit ${filter.limitFetch}
+    </if>
+  </select>
+  <select id="count" parameterType="map" resultType="java.lang.Integer" >
+    select count(*) from r3_wbs
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </select>  
+  <delete id="delete" parameterType="map" >
+    delete from r3_wbs
+    <!-- _parameter: dato che e' una map lo sostituisco con il nome del parametro in quanto non è l'unico -->
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="map" >
+    insert into r3_wbs (
+ site, wbsid, wbstitle, wbstext, bbstopicid, options, recstatus, rectimestamp      )
+    values (
+ 
+ #{record.site,jdbcType=VARCHAR}, 
+ #{record.wbsid,jdbcType=VARCHAR}, 
+ #{record.wbstitle,jdbcType=VARCHAR}, 
+ #{record.wbstext,jdbcType=VARCHAR},
+ 
+ #{record.bbstopicid,jdbcType=VARCHAR}, 
+ #{record.options,jdbcType=VARCHAR}, 
+ #{record.recstatus,jdbcType=VARCHAR}, 
+ #{record.rectimestamp,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="update" parameterType="map" >
+    update r3_wbs
+    <set >
+      <if test="record.wbstitleDirty" >
+        wbstitle = #{record.wbstitle,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.wbstextDirty" >
+        wbstext = #{record.wbstext,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.bbstopicidDirty" >
+        bbstopicid = #{record.bbstopicid,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.optionsDirty" >
+        options = #{record.options,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.recstatusDirty" >
+        recstatus = #{record.recstatus,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.rectimestampDirty" >
+        rectimestamp = #{record.rectimestamp,jdbcType=TIMESTAMP},
+      </if>      
+    </set>
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+      <!-- Non dovrebbe servire in quanto il filter e' sempre named. -->
+      <!-- <include refid="Filter_Where_Clause_4_Update" /> -->
+    </if>
+  </update>
+  <update id="updateByPrimaryKey" parameterType="map" >
+    update r3_wbs
+    <set >
+      <if test="record.wbstitleDirty" >
+        wbstitle = #{record.wbstitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wbstextDirty" >
+        wbstext = #{record.wbstext,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bbstopicidDirty" >
+        bbstopicid = #{record.bbstopicid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.optionsDirty" >
+        options = #{record.options,jdbcType=VARCHAR},
+      </if>
+      <if test="record.recstatusDirty" >
+        recstatus = #{record.recstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rectimestampDirty" >
+        rectimestamp = #{record.rectimestamp,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where  site = #{record.site,jdbcType=VARCHAR} and  wbsid = #{record.wbsid,jdbcType=VARCHAR}
+  </update>
+
+</mapper>

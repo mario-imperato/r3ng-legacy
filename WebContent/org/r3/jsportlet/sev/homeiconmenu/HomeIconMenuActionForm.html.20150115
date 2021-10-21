@@ -1,0 +1,149 @@
+<%@ taglib uri="http://www.r3.org/taglibs/r3/lang-1.00" prefix="r3_lang" %>
+<%@ taglib uri="/tags/struts-tiles" prefix="tiles" %>
+
+<%@ page language="java" session="false" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"
+    import="java.io.*,
+    java.util.*,
+    org.r3.db.system.site.SiteDTO,
+    org.r3.db.system.siteproperty.SitePropertyDTO
+    " %>
+
+<r3_lang:environment id="r3Env">
+
+<%
+  SiteDTO targetSite = r3Env.getRequestSite();
+  SitePropertyDTO spDto = targetSite.getSiteProperties().getPropertyByPropertykey(SitePropertyDTO.UI_CFG_PKG, SitePropertyDTO.UI_CFG_MENUS);
+  SitePropertyDTO spDto_menuitems = targetSite.getSiteProperties().getPropertyByPropertykey(SitePropertyDTO.UI_CFG_PKG, SitePropertyDTO.UI_CFG_MENUSITEMS);
+  
+  org.r3.db.cms.pageview.PageViewLUT pageViewLut = (org.r3.db.cms.pageview.PageViewLUT)
+       org.r3.db.system.lut.LUTManager.getLUTManager().getLUT(org.r3.db.system.lut.LUTManager.LUTName.cms_page, r3Env.getRequestLanguage());
+  
+  org.r3.db.cms.pageview.PageViewLUTDTO sitePages = pageViewLut.getItem(targetSite.getSite(), r3Env.getRequestLanguage());
+  
+  java.util.List<org.r3.db.cms.pageview.PageViewDTO> listOfPages = sitePages.getPages();
+%>
+
+  <r3_lang:ifinclude include='<%=spDto.valueContains("iconmenu", null, null)%>'>
+  <div class="iconic_menu_carousel">
+     <div id="iconic_menu_carousel_canvas" style="width: 800px; height: 210px" >
+
+<%
+  for( org.r3.db.cms.pageview.PageViewDTO pageDTO : listOfPages)
+  {
+	  System.out.println("Reading Page: " + pageDTO.getDtokey());
+	  if (pageDTO.isVisibleInIconMenu())
+	  {
+%>
+        <div class="iconic_menu_carousel_item grade5" >
+          <a href='<%=pageDTO.getPagelink("/org/r3")%>' ><img src="<%=targetSite.getResourceAbslutePath(org.r3.db.system.site.SiteDTO.SiteResourceType.iconicmenu, pageDTO.getPageicon1())%>" alt="<%=pageDTO.getPagetitle()%>"  /></a>
+          <div >
+            <a href='<%=pageDTO.getPagelink("/org/r3")%>' style='padding: 0; margin: 0'><p><%=pageDTO.getPagetitle()%></p></a>
+          </div>          
+        </div>
+<%
+	  }
+  }
+%>
+      </div>
+     
+      <div class="clearfix"></div>     
+      <div class="pagination" id="iconic_menu_carousel_pagination"></div>
+      
+  </div>
+  </r3_lang:ifinclude>
+  <!-- Fine Menu Iconico di Pagina -->
+
+  <r3_lang:ifinclude include='<%=spDto.valueContains("iconmenu", null, null)%>'>
+  <div class="iconic_menu_carousel">
+     <div id="iconic_menu_carousel_canvas" style="width: 800px; height: 210px" >
+
+        <!-- 
+        <div class="iconic_menu_carousel_item">
+          <img src="http://caroufredsel.dev7studios.com/examples/images/small/basketball.jpg" alt="basketball" width="140" height="140" style='float: left;  margin: 0; padding: 0'/>
+          <div>            
+            <p>An excursion in which the final destination is the same as the starting point.</p>
+          </div>          
+        </div>
+
+        <div class="iconic_menu_carousel_item">
+          <img src="http://caroufredsel.dev7studios.com/examples/images/small/basketball.jpg" alt="basketball" width="140" height="140" style='float: left;  margin: 0; padding: 0'/>
+          <div>            
+            <p>An excursion in which the final destination is the same as the starting point.</p>
+          </div>          
+        </div>
+        -->
+  
+        <r3_lang:ifinclude include='<%=spDto_menuitems.valueContains("trackermenu", null, null)%>'>
+        <div class="iconic_menu_carousel_item grade5" >
+          <a href='sev/cmspage.do?pageid=tracker' ><img src="/r3ng/resources/img/sailevent/tacktracker_icon1.png" alt="Tack Tracker Analisi"  /></a>
+          <div >            
+            <a href='sev/cmspage.do?pageid=tracker' style='padding: 0; margin: 0'><p>Tack Tracker Analisi</p></a>
+          </div>          
+        </div>
+        </r3_lang:ifinclude>
+        
+        <r3_lang:ifinclude include='<%=spDto_menuitems.valueContains("entrylistmenu", null, null)%>'>
+        <div class="iconic_menu_carousel_item grade3" >
+          <a href='sev/entrylist.do' ><img src="/r3ng/resources/img/sailevent/boat1_icon.jpg" alt="Lista Iscritti"  /></a>
+          <div >            
+            <a href='sev/entrylist.do' style='padding: 0; margin: 0'><p>Lista Iscritti</p></a>
+          </div>          
+        </div>
+        </r3_lang:ifinclude>
+        
+        <r3_lang:ifinclude include='<%=spDto_menuitems.valueContains("rankingmenu", null, null)%>'>
+        <div class="iconic_menu_carousel_item grade2" >
+          <a href='sev/ranking.do' ><img src="/r3ng/resources/img/sailevent/boat2_icon.jpg" alt="Classifiche"  /></a>
+          <div >            
+            <a href='sev/ranking.do' style='padding: 0; margin: 0'><p>Classifiche</p></a>
+          </div>         
+        </div>
+        </r3_lang:ifinclude>
+        
+        <r3_lang:ifinclude include='<%=spDto_menuitems.valueContains("comunicatimenu", null, null)%>'>
+        <div class="iconic_menu_carousel_item grade1" >
+          <a href='sev/cmspage.do?pageid=comunicati' ><img src="/r3ng/sites/<%=targetSite.getSiteresourcepath()%>/menu/icon_010.jpg" alt="Comunicati"  /></a>
+          <div >            
+            <a href='sev/cmspage.do?pageid=comunicati' style='padding: 0; margin: 0'><p>Comunicati</p></a>
+          </div>         
+        </div>
+        </r3_lang:ifinclude>
+        
+        <r3_lang:ifinclude include='<%=spDto_menuitems.valueContains("meteomenu", null, null)%>'>
+        <div class="iconic_menu_carousel_item grade4" >
+          <a href='sev/cmspage.do?pageid=meteo&cardid=00_METEO' ><img src="/r3ng/sites/<%=targetSite.getSiteresourcepath()%>/menu/icon_meteo.png" alt="Meteo"  /></a>
+          <div >            
+            <a href='sev/cmspage.do?pageid=meteo&cardid=00_METEO' style='padding: 0; margin: 0'><p>Meteo</p></a>
+          </div>         
+        </div>
+        </r3_lang:ifinclude>
+        
+        <r3_lang:ifinclude include='<%=spDto_menuitems.valueContains("pressroommenu", null, null)%>'>        
+        <div class="iconic_menu_carousel_item grade5" >
+          <a href='sev/cmspage.do?pageid=pressroom' ><img src="/r3ng/sites/<%=targetSite.getSiteresourcepath()%>/menu/icon_012.jpg" alt="Rassegna Stampa"  /></a>
+          <div >            
+            <a href='sev/cmspage.do?pageid=pressroom' style='padding: 0; margin: 0'><p>Press Room</p></a>
+          </div>         
+        </div>
+        </r3_lang:ifinclude>
+        
+        <r3_lang:ifinclude include='<%=spDto_menuitems.valueContains("miscellaneamenu", null, null)%>'>        
+        <div class="iconic_menu_carousel_item grade3" >
+          <a href='sev/cmspage.do?pageid=miscellanea' ><img src="/r3ng/sites/<%=targetSite.getSiteresourcepath()%>/menu/icon_003.jpg" alt="Altre Notizie"  /></a>
+          <div >            
+            <a href='sev/cmspage.do?pageid=miscellanea' style='padding: 0; margin: 0'><p>Altre Notizie</p></a>
+          </div>         
+        </div>
+        </r3_lang:ifinclude>
+                                                         
+      </div>
+     
+      <div class="clearfix"></div>     
+      <div class="pagination" id="iconic_menu_carousel_pagination"></div>
+      
+  </div>
+  </r3_lang:ifinclude>
+  <!-- Fine Menu Iconico di Pagina -->
+
+</r3_lang:environment>
+  

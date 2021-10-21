@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+
+<templates>
+     
+     <!-- BOF MAIL Scripts -->
+     <template name="SailApplicationCrewChangeNotificationMailMessage">
+         <filename>resources/velocity/mail/SailApplicationCrewChangeNotificationMailMessage.vm</filename>
+     </template>
+
+
+     <template name="UserRegistration_RequestActivatationMailMessage" >
+        <filename>resources/velocity/mail/UserRegistration_RequestActivatationMailMessage.vm</filename>
+     </template>
+
+
+     
+     <template name="UserActivatedRegistrationMailMessage">
+        <filename>resources/velocity/mail/UserActivatedRegistrationMailMessage.vm</filename>
+     </template>
+
+
+     
+     <template name="UserResetPasswordMailMessage">
+        <filename>resources/velocity/mail/UserResetPasswordMailMessage.vm</filename>
+     </template>
+     <!-- EOF MAIL Scripts -->
+
+                                    
+</templates>

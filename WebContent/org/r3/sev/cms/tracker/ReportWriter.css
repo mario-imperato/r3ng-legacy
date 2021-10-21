@@ -1,0 +1,33 @@
+.tacktracker p {
+	color: rgb(96, 96, 96); font-family: arial, cursive, Serif; font-size: 9pt;
+}
+.tacktracker li {
+	color: rgb(96, 96, 96); font-family: arial, cursive, Serif; font-size: 9pt;
+}
+.tacktracker td {
+	color: rgb(96, 96, 96); font-family: arial, cursive, Serif; font-size: 9pt;
+}
+.tacktracker b {
+	color: rgb(0, 0, 0); font-size: 10pt;
+}
+.tacktracker h2 {
+	color: rgb(47, 79, 79); font-family: arial, cursive, Serif; font-size: 12pt;
+	margin-bottom: 30px;
+}
+.tacktracker h3 {
+	color: rgb(47, 79, 79); font-family: arial, cursive, Serif; font-size: 11pt; font-weight: lighter;
+}
+.tacktracker h4 { 
+	color: rgb(47, 79, 79); font-family: arial, cursive, Serif; font-size: 10pt;
+}
+div#rptmeta {
+	float: right;
+}
+table#rptmeta {
+	margin: 4px; 
+	border: 1px solid rgb(170, 170, 170);	
+}
+
+table#rptmeta td {
+    padding: 5px;
+}

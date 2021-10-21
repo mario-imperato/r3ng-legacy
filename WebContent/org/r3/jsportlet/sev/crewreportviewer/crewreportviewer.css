@@ -1,0 +1,234 @@
+
+.pageCanvas
+{
+	padding: 20px;
+}
+
+.crewreportviewer .crewreportviewer_header
+{
+    margin-bottom: 10px;	
+}
+
+.crewreportviewer .crewreportviewer_header .eventLogo 
+{
+	margin: 0;	
+    float: left;
+}
+
+.crewreportviewer .crewreportviewer_header  .eventTitle 
+{		
+	color: #0099CC;
+	float: left;
+	font-size: 2em;
+	font-weight: bold;
+	letter-spacing: -0.0035em;
+	line-height: 1.5em;
+	padding-top: 0.1em;	
+	padding-left: 1em;
+}
+
+.crewreportviewer .crewreportviewer_header  .eventAppStatus
+{
+   text-align: right;
+   padding-left: 10px;
+   float: right;
+}
+
+.crewreportviewer .crewreportviewer_boatsummary_KO td,
+.crewreportviewer .crewreportviewer_boatdetail_KO h3
+{
+	color: #E30D0D;
+}
+
+.crewreportviewer .crewreportviewer_boatsummary_OK td,
+.crewreportviewer .crewreportviewer_boatdetail_OK h3
+{
+	color: #009944;
+}
+
+@media print
+{
+.crewreportviewer .crewreportviewer_header  .eventAppStatus img
+{
+	display: none;
+}
+
+.crewreportviewer .notPrintable
+{
+	display: none;
+}
+}
+
+.crewreportviewer table.framed-table
+{
+  border-collapse:separate;
+  border-spacing: 5px 2px;
+  margin-top: 5px;
+  width: 100%;
+}
+
+.crewreportviewer table.framed-table tr td 
+{
+	border: 1px solid #cccccc;
+	vertical-align: top;
+}
+
+.crewreportviewer table.framed-table .framed-cell .framed-cell-label 
+{
+	font-size: 0.8em; 
+	padding: 2px;
+}
+
+.crewreportviewer table.framed-table .framed-cell .framed-cell-value 
+{
+	font-weight: bold; 
+	padding: 5px; 
+	font-size: 1.0em; 
+	line-height: 1.3em;
+	color: #000000;
+}
+
+.crewreportviewer .checkbox-group > label
+{
+    display: block; width: 150px; float: left; line-height: 20px; padding-right: 10px; 
+}
+
+.crewreportviewer .checkbox-group 
+{
+	margin: 10px;
+}
+
+.crewreportviewer .checkbox-group .checkbox-group-body
+{
+    float: left;
+    width: 640px;
+}
+
+.crewreportviewer .checkbox-group .checkbox-group-body label
+{
+	display: block; float: left;
+	width: 280px;
+    color: #000000;
+    font-weight: bold;
+}
+
+.crewreportviewer .checkbox-group .checkbox-group-body label img
+{
+	border: 0; margin: 5px; vertical-align: middle;
+}
+
+.crewreportviewer table.framed-list
+{
+  margin-top: 5px;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.crewreportviewer table.framed-list tr td, 
+.crewreportviewer table.framed-list tr th   
+{
+	border: 1px solid #cccccc;
+	vertical-align: top;
+	padding: 5px;
+	text-align: left;
+}
+	
+.crewreportviewer table.framed-list tr th   
+{
+	font-weight: bold;
+}
+
+span.linkDocumentItem
+{
+	padding-left: 25px;
+	padding-bottom: 5px; 
+	cursor: pointer;
+	color: #B41617;
+	font-size: 1.1em;
+}
+
+/*
+.eventAppStatus:after
+{
+	DISPLAY: block; CLEAR: both; CONTENT: " "
+}
+
+
+fieldset 
+{
+    margin-right: 5px; margin-bottom: 5px; margin-top: 5px; padding: 5px; 
+    border: 1px solid #cccccc;
+}
+
+legend 
+{
+	padding: 6px 12px; font-weight: bold; font-size: 1.2em;
+}
+
+*/
+
+/*
+    padding-top: 10px; padding-bottom: 10px; padding-right: 10px;
+    padding-left: 20px;	
+ */
+fieldset div.fieldsetChild
+{
+}
+
+fieldset div.fieldsetChild fieldset
+{
+    margin-left: 20px;	
+}
+
+fieldset div.fieldsetChild fieldset legend
+{	
+    font-size: 1.1em;
+}
+
+table.framedForm
+{
+}
+	
+	
+div.fieldsetChild  span.fieldValue
+{
+	font-weight: bold; 
+	padding: 5px; 
+	font-size: 1.0em; 
+	line-height: 1.3em;
+}
+
+div.fieldsetChild  > label
+{
+	line-height: 1.3em;
+	width: 150px;
+}
+
+table.framedList
+{
+}
+	
+table.framedList tr td, table.framedList tr th   
+{
+	border: 1px solid #cccccc;
+	vertical-align: top;
+	padding: 5px;
+}
+
+table.framedList
+{
+}
+	
+table.framedList tr th 
+{
+	background-color: #aaaaaa;
+	font-weight: bold;
+}
+
+span.application_pdf
+{
+	background: url("/regattacubed/themes/regatta/it/images/icons/pdfIconSmall.gif") no-repeat;
+	padding-left: 20px;
+	padding-bottom: 5px; 
+}
+

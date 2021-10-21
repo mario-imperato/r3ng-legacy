@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--
+  TODO: xmlCopyRight.txt
+   
+  -->
+<!--
+  TODO: xmlReadme.txt
+   
+  -->
+
+<!-- <mapper resource="org/r3/db/system/lut/LUTDictionaryMapper.xml"/> -->
+<mapper namespace="org.r3.db.system.lut.LUTDictionaryMapper" >
+    <resultMap id="BaseResultMap" type="org.r3.db.system.lut.LUTDictionaryDTO" >
+         <id column="lutid" property="lutid" jdbcType="VARCHAR" />
+           <result column="cacheinterval" property="cacheinterval" jdbcType="INTEGER" />
+           <result column="invalidcount" property="invalidcount" jdbcType="INTEGER" />
+           <result column="targetsite" property="targetsite" jdbcType="VARCHAR" />
+           <result column="etag" property="etag" jdbcType="VARCHAR" />
+           <result column="rectimestamp" property="rectimestamp" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+  <sql id="Filter_Where_Clause" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+                <when test="criterion.subSelectCriterion" >
+                  and ${criterion.prefixCondition} #{criterion.value} ${criterion.suffixCondition}
+                </when>                                
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <!--
+  <sql id="Filter_Where_Clause_4_Update" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  -->  
+  <sql id="Base_Column_List" >
+    lutid,  cacheinterval,  invalidcount,  targetsite,  etag,  rectimestamp  </sql>
+  <select id="selectByLutid" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from r3_lutdictionary
+    where lutid = #{lutid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByLutid" parameterType="map" >
+    delete
+    from r3_lutdictionary
+    where lutid = #{lutid,jdbcType=VARCHAR}
+  </delete>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from r3_lutdictionary    
+    where  lutid = #{pk.lutid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete
+    from r3_lutdictionary
+    where  lutid = #{pk.lutid,jdbcType=VARCHAR}
+  </delete>  
+  <select id="select" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <if test="filter != null &amp;&amp; filter.distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from r3_lutdictionary
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+    <if test="filter != null &amp;&amp; filter.orderByClause != null" >
+      order by ${filter.orderByClause}
+    </if>
+    <if test="filter != null &amp;&amp; filter.limitFetch > 0" >
+      limit ${filter.limitFetch}
+    </if>
+  </select>
+  <select id="count" parameterType="map" resultType="java.lang.Integer" >
+    select count(*) from r3_lutdictionary
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </select>  
+  <delete id="delete" parameterType="map" >
+    delete from r3_lutdictionary
+    <!-- _parameter: dato che e' una map lo sostituisco con il nome del parametro in quanto non è l'unico -->
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="map" >
+    insert into r3_lutdictionary (
+ lutid, cacheinterval, invalidcount, targetsite, etag, rectimestamp      )
+    values (
+ 
+ #{record.lutid,jdbcType=VARCHAR}, 
+ #{record.cacheinterval,jdbcType=INTEGER}, 
+ #{record.invalidcount,jdbcType=INTEGER}, 
+ #{record.targetsite,jdbcType=VARCHAR},
+ 
+ #{record.etag,jdbcType=VARCHAR}, 
+ #{record.rectimestamp,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="update" parameterType="map" >
+    update r3_lutdictionary
+    <set >
+      <if test="record.cacheintervalDirty" >
+        cacheinterval = #{record.cacheinterval,jdbcType=INTEGER},
+      </if>      
+      <if test="record.invalidcountDirty" >
+        invalidcount = #{record.invalidcount,jdbcType=INTEGER},
+      </if>      
+      <if test="record.targetsiteDirty" >
+        targetsite = #{record.targetsite,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.etagDirty" >
+        etag = #{record.etag,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.rectimestampDirty" >
+        rectimestamp = #{record.rectimestamp,jdbcType=TIMESTAMP},
+      </if>      
+    </set>
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+      <!-- Non dovrebbe servire in quanto il filter e' sempre named. -->
+      <!-- <include refid="Filter_Where_Clause_4_Update" /> -->
+    </if>
+  </update>
+  <update id="updateByPrimaryKey" parameterType="map" >
+    update r3_lutdictionary
+    <set >
+      <if test="record.cacheintervalDirty" >
+        cacheinterval = #{record.cacheinterval,jdbcType=INTEGER},
+      </if>
+      <if test="record.invalidcountDirty" >
+        invalidcount = #{record.invalidcount,jdbcType=INTEGER},
+      </if>
+      <if test="record.targetsiteDirty" >
+        targetsite = #{record.targetsite,jdbcType=VARCHAR},
+      </if>
+      <if test="record.etagDirty" >
+        etag = #{record.etag,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rectimestampDirty" >
+        rectimestamp = #{record.rectimestamp,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where  lutid = #{record.lutid,jdbcType=VARCHAR}
+  </update>
+
+  <update id="invalidateByLutid" parameterType="map" >
+    update r3_lutdictionary
+        set invalidcount = invalidcount + 1
+    where lutid = #{lutid,jdbcType=VARCHAR}
+  </update>
+
+  <update id="invalidate" parameterType="map" >
+    update r3_lutdictionary
+    set invalidcount = invalidcount + 1
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </update>
+  
+</mapper>

@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--
+  TODO: xmlCopyRight.txt
+   
+  -->
+<!--
+  TODO: xmlReadme.txt
+   
+  -->
+
+<!-- <mapper resource="org/r3/db/wbs/wbsnode/WBSNodeMapper.xml"/> -->
+<mapper namespace="org.r3.db.wbs.wbsnode.WBSNodeMapper" >
+    <resultMap id="BaseResultMap" type="org.r3.db.wbs.wbsnode.WBSNodeDTO" >
+         <id column="wbsnodeid" property="wbsnodeid" jdbcType="VARCHAR" />
+           <result column="site" property="site" jdbcType="VARCHAR" />
+           <result column="wbsid" property="wbsid" jdbcType="VARCHAR" />
+           <result column="nodetype" property="nodetype" jdbcType="VARCHAR" />
+           <result column="nodeorder" property="nodeorder" jdbcType="INTEGER" />
+           <result column="nodesect" property="nodesect" jdbcType="VARCHAR" />
+           <result column="nodename" property="nodename" jdbcType="VARCHAR" />
+           <result column="nodesummary" property="nodesummary" jdbcType="VARCHAR" />
+           <result column="nodetext" property="nodetext" jdbcType="VARCHAR" />
+           <result column="nodeparentid" property="nodeparentid" jdbcType="VARCHAR" />
+           <result column="nodepath" property="nodepath" jdbcType="VARCHAR" />
+           <result column="assignedto" property="assignedto" jdbcType="VARCHAR" />
+           <result column="duration" property="duration" jdbcType="INTEGER" />
+           <result column="startdate" property="startdate" jdbcType="DATE" />
+           <result column="completiontype" property="completiontype" jdbcType="VARCHAR" />
+           <result column="completiondescr" property="completiondescr" jdbcType="VARCHAR" />
+           <result column="completion" property="completion" jdbcType="REAL" />
+           <result column="completionfrom" property="completionfrom" jdbcType="REAL" />
+           <result column="completionto" property="completionto" jdbcType="REAL" />
+           <result column="completiondate" property="completiondate" jdbcType="TIMESTAMP" />
+           <result column="completioneffort" property="completioneffort" jdbcType="INTEGER" />
+           <result column="economicvalue" property="economicvalue" jdbcType="REAL" />
+           <result column="economicvalue2" property="economicvalue2" jdbcType="REAL" />
+           <result column="economicvalue3" property="economicvalue3" jdbcType="REAL" />
+           <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+           <result column="stereotype" property="stereotype" jdbcType="VARCHAR" />
+           <result column="recstatus" property="recstatus" jdbcType="VARCHAR" />
+           <result column="rectimestamp" property="rectimestamp" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+  <sql id="Filter_Where_Clause" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+                <when test="criterion.subSelectCriterion" >
+                  and ${criterion.prefixCondition} #{criterion.value} ${criterion.suffixCondition}
+                </when>                                
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <!--
+  <sql id="Filter_Where_Clause_4_Update" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  -->  
+  <sql id="Base_Column_List" >
+    wbsnodeid,  site,  wbsid,  nodetype,  nodeorder,  nodesect,  nodename,  nodesummary,  nodetext,
+  nodeparentid,  nodepath,  assignedto,  duration,  startdate,  completiontype,  completiondescr,  completion,  completionfrom,
+  completionto,  completiondate,  completioneffort,  economicvalue,  economicvalue2,  economicvalue3,  remarks,  stereotype,  recstatus,
+  rectimestamp  </sql>
+  <select id="selectByWbsnodeid" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from r3_wbsnode
+    where wbsnodeid = #{wbsnodeid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByWbsnodeid" parameterType="map" >
+    delete
+    from r3_wbsnode
+    where wbsnodeid = #{wbsnodeid,jdbcType=VARCHAR}
+  </delete>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from r3_wbsnode    
+    where  wbsnodeid = #{pk.wbsnodeid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete
+    from r3_wbsnode
+    where  wbsnodeid = #{pk.wbsnodeid,jdbcType=VARCHAR}
+  </delete>  
+  <select id="select" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <if test="filter != null &amp;&amp; filter.distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from r3_wbsnode
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+    <if test="filter != null &amp;&amp; filter.orderByClause != null" >
+      order by ${filter.orderByClause}
+    </if>
+    <if test="filter != null &amp;&amp; filter.limitFetch > 0" >
+      limit ${filter.limitFetch}
+    </if>
+  </select>
+  <select id="count" parameterType="map" resultType="java.lang.Integer" >
+    select count(*) from r3_wbsnode
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </select>  
+  <delete id="delete" parameterType="map" >
+    delete from r3_wbsnode
+    <!-- _parameter: dato che e' una map lo sostituisco con il nome del parametro in quanto non è l'unico -->
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="map" >
+    insert into r3_wbsnode (
+ wbsnodeid, site, wbsid, nodetype, nodeorder, nodesect, nodename, nodesummary, nodetext,
+ nodeparentid, nodepath, assignedto, duration, startdate, completiontype, completiondescr, completion, completionfrom,
+ completionto, completiondate, completioneffort, economicvalue, economicvalue2, economicvalue3, remarks, stereotype, recstatus,
+ rectimestamp      )
+    values (
+ 
+ #{record.wbsnodeid,jdbcType=VARCHAR}, 
+ #{record.site,jdbcType=VARCHAR}, 
+ #{record.wbsid,jdbcType=VARCHAR}, 
+ #{record.nodetype,jdbcType=VARCHAR},
+ 
+ #{record.nodeorder,jdbcType=INTEGER}, 
+ #{record.nodesect,jdbcType=VARCHAR}, 
+ #{record.nodename,jdbcType=VARCHAR}, 
+ #{record.nodesummary,jdbcType=VARCHAR},
+ 
+ #{record.nodetext,jdbcType=VARCHAR}, 
+ #{record.nodeparentid,jdbcType=VARCHAR}, 
+ #{record.nodepath,jdbcType=VARCHAR}, 
+ #{record.assignedto,jdbcType=VARCHAR},
+ 
+ #{record.duration,jdbcType=INTEGER}, 
+ #{record.startdate,jdbcType=DATE}, 
+ #{record.completiontype,jdbcType=VARCHAR}, 
+ #{record.completiondescr,jdbcType=VARCHAR},
+ 
+ #{record.completion,jdbcType=REAL}, 
+ #{record.completionfrom,jdbcType=REAL}, 
+ #{record.completionto,jdbcType=REAL}, 
+ #{record.completiondate,jdbcType=TIMESTAMP},
+ 
+ #{record.completioneffort,jdbcType=INTEGER}, 
+ #{record.economicvalue,jdbcType=REAL}, 
+ #{record.economicvalue2,jdbcType=REAL}, 
+ #{record.economicvalue3,jdbcType=REAL},
+ 
+ #{record.remarks,jdbcType=VARCHAR}, 
+ #{record.stereotype,jdbcType=VARCHAR}, 
+ #{record.recstatus,jdbcType=VARCHAR}, 
+ #{record.rectimestamp,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="update" parameterType="map" >
+    update r3_wbsnode
+    <set >
+      <if test="record.siteDirty" >
+        site = #{record.site,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.wbsidDirty" >
+        wbsid = #{record.wbsid,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.nodetypeDirty" >
+        nodetype = #{record.nodetype,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.nodeorderDirty" >
+        nodeorder = #{record.nodeorder,jdbcType=INTEGER},
+      </if>      
+      <if test="record.nodesectDirty" >
+        nodesect = #{record.nodesect,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.nodenameDirty" >
+        nodename = #{record.nodename,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.nodesummaryDirty" >
+        nodesummary = #{record.nodesummary,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.nodetextDirty" >
+        nodetext = #{record.nodetext,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.nodeparentidDirty" >
+        nodeparentid = #{record.nodeparentid,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.nodepathDirty" >
+        nodepath = #{record.nodepath,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.assignedtoDirty" >
+        assignedto = #{record.assignedto,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.durationDirty" >
+        duration = #{record.duration,jdbcType=INTEGER},
+      </if>      
+      <if test="record.startdateDirty" >
+        startdate = #{record.startdate,jdbcType=DATE},
+      </if>      
+      <if test="record.completiontypeDirty" >
+        completiontype = #{record.completiontype,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.completiondescrDirty" >
+        completiondescr = #{record.completiondescr,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.completionDirty" >
+        completion = #{record.completion,jdbcType=REAL},
+      </if>      
+      <if test="record.completionfromDirty" >
+        completionfrom = #{record.completionfrom,jdbcType=REAL},
+      </if>      
+      <if test="record.completiontoDirty" >
+        completionto = #{record.completionto,jdbcType=REAL},
+      </if>      
+      <if test="record.completiondateDirty" >
+        completiondate = #{record.completiondate,jdbcType=TIMESTAMP},
+      </if>      
+      <if test="record.completioneffortDirty" >
+        completioneffort = #{record.completioneffort,jdbcType=INTEGER},
+      </if>      
+      <if test="record.economicvalueDirty" >
+        economicvalue = #{record.economicvalue,jdbcType=REAL},
+      </if>      
+      <if test="record.economicvalue2Dirty" >
+        economicvalue2 = #{record.economicvalue2,jdbcType=REAL},
+      </if>      
+      <if test="record.economicvalue3Dirty" >
+        economicvalue3 = #{record.economicvalue3,jdbcType=REAL},
+      </if>      
+      <if test="record.remarksDirty" >
+        remarks = #{record.remarks,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.stereotypeDirty" >
+        stereotype = #{record.stereotype,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.recstatusDirty" >
+        recstatus = #{record.recstatus,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.rectimestampDirty" >
+        rectimestamp = #{record.rectimestamp,jdbcType=TIMESTAMP},
+      </if>      
+    </set>
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+      <!-- Non dovrebbe servire in quanto il filter e' sempre named. -->
+      <!-- <include refid="Filter_Where_Clause_4_Update" /> -->
+    </if>
+  </update>
+  <update id="updateByPrimaryKey" parameterType="map" >
+    update r3_wbsnode
+    <set >
+      <if test="record.siteDirty" >
+        site = #{record.site,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wbsidDirty" >
+        wbsid = #{record.wbsid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nodetypeDirty" >
+        nodetype = #{record.nodetype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nodeorderDirty" >
+        nodeorder = #{record.nodeorder,jdbcType=INTEGER},
+      </if>
+      <if test="record.nodesectDirty" >
+        nodesect = #{record.nodesect,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nodenameDirty" >
+        nodename = #{record.nodename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nodesummaryDirty" >
+        nodesummary = #{record.nodesummary,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nodetextDirty" >
+        nodetext = #{record.nodetext,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nodeparentidDirty" >
+        nodeparentid = #{record.nodeparentid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nodepathDirty" >
+        nodepath = #{record.nodepath,jdbcType=VARCHAR},
+      </if>
+      <if test="record.assignedtoDirty" >
+        assignedto = #{record.assignedto,jdbcType=VARCHAR},
+      </if>
+      <if test="record.durationDirty" >
+        duration = #{record.duration,jdbcType=INTEGER},
+      </if>
+      <if test="record.startdateDirty" >
+        startdate = #{record.startdate,jdbcType=DATE},
+      </if>
+      <if test="record.completiontypeDirty" >
+        completiontype = #{record.completiontype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.completiondescrDirty" >
+        completiondescr = #{record.completiondescr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.completionDirty" >
+        completion = #{record.completion,jdbcType=REAL},
+      </if>
+      <if test="record.completionfromDirty" >
+        completionfrom = #{record.completionfrom,jdbcType=REAL},
+      </if>
+      <if test="record.completiontoDirty" >
+        completionto = #{record.completionto,jdbcType=REAL},
+      </if>
+      <if test="record.completiondateDirty" >
+        completiondate = #{record.completiondate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.completioneffortDirty" >
+        completioneffort = #{record.completioneffort,jdbcType=INTEGER},
+      </if>
+      <if test="record.economicvalueDirty" >
+        economicvalue = #{record.economicvalue,jdbcType=REAL},
+      </if>
+      <if test="record.economicvalue2Dirty" >
+        economicvalue2 = #{record.economicvalue2,jdbcType=REAL},
+      </if>
+      <if test="record.economicvalue3Dirty" >
+        economicvalue3 = #{record.economicvalue3,jdbcType=REAL},
+      </if>
+      <if test="record.remarksDirty" >
+        remarks = #{record.remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stereotypeDirty" >
+        stereotype = #{record.stereotype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.recstatusDirty" >
+        recstatus = #{record.recstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rectimestampDirty" >
+        rectimestamp = #{record.rectimestamp,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where  wbsnodeid = #{record.wbsnodeid,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="CountChildrenResultMap" type="org.r3.db.CountByDTO" >
+           <result column="countval"      property="count"  jdbcType="INTEGER" />
+           <result column="minval"        property="minintvalue"     jdbcType="INTEGER" />
+           <result column="maxval"        property="maxintvalue"     jdbcType="INTEGER" />
+    </resultMap>
+
+  <select id="countChildren" parameterType="map" resultMap="CountChildrenResultMap" >
+    select count(*) as countval, min(nodeorder) as minval, max(nodeorder) as maxval from r3_wbsnode
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </select>  
+
+  <update id="shiftChildrenNodes" parameterType="map" >
+    update r3_wbsnode
+    <set >      
+        nodeorder = nodeorder + #{shiftAmount,jdbcType=INTEGER}
+    </set>
+    
+     <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+     </if>
+     
+  </update>
+
+  <update id="updateChildrenPath" parameterType="map" >
+    update r3_wbsnode
+    <set >      
+        nodepath = concat(#{toPathPrefix,jdbcType=VARCHAR}, right(nodePath, length(nodePath) - #{fromPathPrefixLength,jdbcType=INTEGER}))
+    </set>
+    
+     <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+     </if>
+     
+  </update>
+  
+</mapper>

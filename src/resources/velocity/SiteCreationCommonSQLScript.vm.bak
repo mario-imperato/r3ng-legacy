@@ -1,0 +1,949 @@
+##
+##
+## $siteDTO: DTO site regata in fase di registrazione
+## $sevEventDTO: DTO sev_event
+## $siteSequence: String
+## $userDTO: Logged User
+
+## insert into sev_event (eventid, eventtitle, eventdescr, eventgroup, eventstatus,applicationstatus) 
+##  values ('${siteDTO.site}',${VTH.makeSQLString($siteDTO.sitedescr)},${VTH.makeSQLString($siteDTO.sitedescr)},'cvfonline','running','open');
+  
+##
+## BOF USERROLE  
+insert into r3_userrole ( site, userId, roleid) values ( '${siteDTO.site}', 'root',  'roleadmin' );(EOS)
+insert into r3_userrole ( site, userId, roleid) values ( '${siteDTO.site}', 'root',  'roleworkshop' );(EOS)
+insert into r3_userrole ( site, userId, roleid) values ( '${siteDTO.site}', 'guest', 'rolebase' );(EOS)
+
+#if ($userDTO && $userDTO.userid != 'root') 
+INSERT INTO r3_userrole (site,userid,roleid) VALUES ('${siteDTO.site}','$userDTO.userid','rlregatta_adm');(EOS)
+INSERT INTO r3_userrole (site,userid,roleid) VALUES ('${siteDTO.site}','$userDTO.userid','rlregatta_usr');(EOS)
+#end
+## EOF USERROLE  
+##
+
+insert into r3_agenda (agendaid, actorid)
+ values('${siteDTO.site}', '${siteDTO.site}');(EOS)
+
+##
+## BOF ACTORGROUP 
+#if ($siteDTO.sitetype == 'workshop')
+insert into r3_actorgroup (eventid, groupid, grouptitle, groupnature, grouptype, businesskey, grouporder)
+ values ('${siteDTO.site}', 'ACGWORKSHOP', 'Partecipanti Workshop', 'user', 'grpt_wsattendee', 'wsattendee', 20);(EOS)
+
+insert into r3_actorgroup (eventid, groupid, grouptitle, groupnature, grouptype, businesskey, grouporder)
+ values ('${siteDTO.site}', 'ACGWSEXECS', 'Workshop Executives', 'user', 'grpt_wsexecs', 'wsexecs', 20);(EOS)
+
+insert into r3_actorgroup (eventid, groupid, grouptitle, groupnature, grouptype, businesskey, grouporder)
+ values ('${siteDTO.site}', 'ACGWSCOACHES', 'Workshop Coaches', 'user', 'grpt_wscoaches', 'wswscoaches', 20);(EOS)
+#end
+
+#if ($siteDTO.sitetype == 'regatta')
+insert into r3_actorgroup (eventid, groupid, grouptitle, groupnature, grouptype, businesskey, grouporder)
+ values ('${siteDTO.site}', 'ACGOWNERS', 'Armatori', 'system', 'sevowner', 'owner', 20);(EOS)
+
+insert into r3_actorgroup (eventid, groupid, grouptitle, groupnature, grouptype, businesskey, grouporder)
+ values ('${siteDTO.site}', 'ACGHELMSMAN', 'Timonieri', 'system', 'sevhelmsman', 'helmsman', 20);(EOS)
+#end
+ 
+insert into r3_actorgroup (eventid, groupid, grouptitle, groupnature, grouptype, businesskey, grouporder)
+ values ('${siteDTO.site}', 'ACGLOGIN', 'Contatto Log-in', 'system', 'grpt_login', 'login', 20);(EOS)
+## EOF ACTORGROUP
+##
+
+##
+## BOF CMSCATEGORY  
+insert into r3_cmscategory (site, categoryid, categorydescr, previewtmpl, fulltmpl, categorymode)
+ values('${siteDTO.site}', 'system', 'Speciale Sistema', 'cms_tpl_simple', 'cms_tpl_simple', 'normal');(EOS)
+
+insert into r3_cmscategory (site, categoryid, categorydescr, previewtmpl, fulltmpl,categorymode)
+ values('${siteDTO.site}', 'miscellanea', 'Generica', 'cms_tpl_simple', 'cms_tpl_simple', 'promoted');(EOS)
+
+insert into r3_cmscategory (site, categoryid, categorydescr, previewtmpl, fulltmpl,categorymode)
+ values('${siteDTO.site}', 'help', 'Help', 'cms_tpl_simple', 'cms_tpl_simple','normal');(EOS)
+
+insert into r3_cmscategory (site, categoryid, categorydescr, previewtmpl, fulltmpl,categorymode)
+ values('${siteDTO.site}', 'bbs', 'Discussione', 'cms_tpl_simple', 'cms_tpl_simple', 'promoted');(EOS)
+
+insert into r3_cmscategory (site, categoryid, categorydescr, previewtmpl, fulltmpl,categorymode)
+ values('${siteDTO.site}', 'mail', 'Template Mail', 'cms_tpl_simple', 'cms_tpl_simple', 'normal');(EOS)
+
+#if ($siteDTO.sitetype == 'workshop')
+insert into r3_cmscategory (site, categoryid, categorydescr, previewtmpl, fulltmpl, categorymode)
+ values('${siteDTO.site}', 'cat_meeting', 'Scheda Meeting', 'cms_tpl_simple', 'cms_tpl_simple', 'promoted');(EOS)
+
+insert into r3_cmscategory (site, categoryid, categorydescr, previewtmpl, fulltmpl, categorymode)
+ values('${siteDTO.site}', 'cat_report', 'Report', 'cms_tpl_simple', 'cms_tpl_simple', 'promoted');(EOS)
+#end
+
+#if ($siteDTO.sitetype == 'regatta')
+insert into r3_cmscategory (site, categoryid, categorydescr, previewtmpl, fulltmpl, categorymode)
+ values('${siteDTO.site}', 'cat_nor', 'Scheda Bando e Istruzioni', 'cms_tpl_simple', 'cms_tpl_simple', 'promoted');(EOS)
+
+insert into r3_cmscategory (site, categoryid, categorydescr, previewtmpl, fulltmpl, categorymode)
+ values('${siteDTO.site}', 'meteo', 'Meteo', 'cms_tpl_simple', 'cms_tpl_simple', 'promoted');(EOS)
+
+insert into r3_cmscategory (site, categoryid, categorydescr, previewtmpl, fulltmpl,categorymode)
+ values('${siteDTO.site}', 'rea_authoriz', 'Scheda Liberatoria', 'cms_tpl_simple', 'cms_tpl_simple', 'promoted');(EOS)
+
+insert into r3_cmscategory (site, categoryid, categorydescr, previewtmpl, fulltmpl,categorymode)
+ values('${siteDTO.site}', 't_tracker', 'Scheda Tack Tracker', 'cms_tpl_simple', 'cms_tpl_simple', 'promoted');(EOS)
+
+insert into r3_cmscategory (site, categoryid, categorydescr, previewtmpl, fulltmpl,categorymode)
+ values('${siteDTO.site}', 'comunicati', 'Scheda Comunicato', 'cms_tpl_simple', 'cms_tpl_simple', 'promoted');(EOS)
+
+insert into r3_cmscategory (site, categoryid, categorydescr, previewtmpl, fulltmpl,categorymode)
+ values('${siteDTO.site}', 'cat_pressinfo', 'Scheda Comunicato Stampa', 'cms_tpl_simple', 'cms_tpl_simple','promoted');(EOS)
+#end
+
+#if ($siteDTO.sitetype == 'yachtclub' || $siteDTO.sitetype == 'mastersite')
+insert into r3_cmscategory (site, categoryid, categorydescr, previewtmpl, fulltmpl,categorymode)
+ values('${siteDTO.site}', 'article', 'Articolo', 'cms_tpl_simple', 'cms_tpl_simple', 'promoted');(EOS)
+
+insert into r3_cmscategory (site, categoryid, categorydescr, previewtmpl, fulltmpl,categorymode)
+ values('${siteDTO.site}', 'c_carousel', 'Scheda Carousel', 'cms_tpl_simple', 'cms_tpl_simple', 'promoted');(EOS)
+#end
+
+## EOF CMSCATEGORY  
+##
+
+##
+## BOF CMSATTACHMENTTYPE  
+insert into  r3_cmsattachmenttype (site, attachtypeid, attachtypedescr, contenttype, imagescaling, iconscaling, propertyrole,attachscope)
+ values ('${siteDTO.site}', 'site_banner', 'Grafica 996x100 Top', 'image/jpeg,image/gif,image/png', '996,100', null, 'site_banner', 'site');(EOS)
+
+insert into  r3_cmsattachmenttype (site, attachtypeid, attachtypedescr, contenttype, imagescaling, iconscaling, propertyrole,attachscope)
+ values ('${siteDTO.site}', 'site_icon', 'Grafica Icona 180x100', 'image/jpeg,image/gif,image/png', '180,100', null, 'site_icon', 'site');(EOS)
+   
+insert into  r3_cmsattachmenttype (site, attachtypeid, attachtypedescr, contenttype, imagescaling, iconscaling, propertyrole, attachscope)
+values ('${siteDTO.site}', 'cms_card_image', 'Immagine Scheda', 'jpg,jpeg,png,gif', '640,480', '180,135', 'cms_card_image', 'default');(EOS)
+
+insert into  r3_cmsattachmenttype (site, attachtypeid, attachtypedescr, contenttype, imagescaling, iconscaling, propertyrole, attachscope)
+values ('${siteDTO.site}', 'cms_card_icon', 'Icona Scheda', 'image/jpeg,image/gif,image/png', '180,135', null, 'cms_card_icon', 'default');(EOS)
+
+insert into  r3_cmsattachmenttype (site, attachtypeid, attachtypedescr, contenttype, imagescaling, iconscaling, propertyrole, attachscope)
+values ('${siteDTO.site}', 'cms_linkicon', 'Immagine Per Link', 'jpg,jpeg,png,gif', '180,80', null, 'cms_linkicon', 'default');(EOS)
+
+insert into  r3_cmsattachmenttype (site, attachtypeid, attachtypedescr, contenttype, imagescaling, iconscaling, propertyrole, attachscope)
+values ('${siteDTO.site}', 'cms_htmlexe', 'Embeddable Html Fragment', 'html,htm', null, null, 'cms_htmlexe', 'default');(EOS)
+
+insert into  r3_cmsattachmenttype (site, attachtypeid, attachtypedescr, contenttype, imagescaling, iconscaling, propertyrole, attachscope)
+values ('${siteDTO.site}', 'cms_img_gallery', 'Immagine Gallery', 'image/jpeg,image/gif,image/png', '640,480', '110,110', 'cms_img_gallery', 'default');(EOS)
+
+#if ($siteDTO.sitetype == 'yachtclub' || $siteDTO.sitetype == 'mastersite')
+insert into  r3_cmsattachmenttype (site, attachtypeid, attachtypedescr, contenttype, imagescaling, iconscaling, propertyrole, attachscope)
+values ('${siteDTO.site}', 'cms_carousel_lg', 'Banner Grande Carousel', 'image/jpeg,image/gif,image/png', null, null, 'cms_carousel_lg', 'default');(EOS)
+
+insert into  r3_cmsattachmenttype (site, attachtypeid, attachtypedescr, contenttype, imagescaling, iconscaling, propertyrole, attachscope)
+values ('${siteDTO.site}', 'cms_carousel_sm', 'Banner Piccolo Carousel', 'image/jpeg,image/gif,image/png', '140,80', null, 'cms_carousel_sm', 'default');(EOS)
+#end
+    
+insert into  r3_cmsattachmenttype (site, attachtypeid, attachtypedescr, contenttype, imagescaling, iconscaling, propertyrole, attachscope)
+values ('${siteDTO.site}', 'mail_attach', 'Mail Attachment', null, null, null, 'mail_attach', 'default');(EOS)
+
+insert into  r3_cmsattachmenttype (site, attachtypeid, attachtypedescr, contenttype, imagescaling, iconscaling, propertyrole, attachscope)
+values ('${siteDTO.site}', 'mail_sysattach', 'Mail System Attachment', null, null, null, 'mail_sysattach', 'default');(EOS)
+     
+#if ($siteDTO.sitetype == 'regatta')   
+insert into  r3_cmsattachmenttype (site, attachtypeid, attachtypedescr, contenttype, imagescaling, iconscaling, propertyrole, attachscope)
+values ('${siteDTO.site}', 'cms_boatimage', 'Immagine Barca', 'jpg,jpeg,png,gif', '640,480', '100,80', 'cms_boatimage', 'default');(EOS)
+
+insert into  r3_cmsattachmenttype (site, attachtypeid, attachtypedescr, contenttype, imagescaling, iconscaling, propertyrole,attachscope)
+values ('${siteDTO.site}', 'reptracker', 'Report Tracker', 'html,htm', null, null, 'reptracker', 'default');(EOS)
+#end
+## EOF CMSATTACHMENTTYPE  
+##
+
+##
+## BOF CMSGROUP  
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'Miscellanea', 'Altre Notizie', 'sys_recact');(EOS)
+
+#if ($siteDTO.sitetype == 'workshop')       
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'grp_meeting', 'Schede Meeting', 'sys_recact');(EOS)
+
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'grp_report', 'Schede Report', 'sys_recact');(EOS)
+#end
+
+#if ($siteDTO.sitetype == 'regatta')   
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 't_tracker', 'Tack Tracker', 'sys_recact');(EOS)
+
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'comunicati', 'Comunicati', 'sys_recact');(EOS)
+
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'grp_nor', 'Bando e Istruzioni', 'sys_recact');(EOS)
+
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'grp_meteo', 'Schede Meteo', 'sys_recact');(EOS)
+#end
+      
+#if ($siteDTO.sitetype == 'yachtclub' || $siteDTO.sitetype == 'mastersite' || $siteDTO.sitetype == 'regatta')
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'grp_pressinfo', 'Comunicati Stampa', 'sys_recact');(EOS)
+#end
+
+#if ($siteDTO.sitetype == 'yachtclub' || $siteDTO.sitetype == 'mastersite')
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'articles', 'Articoli', 'sys_recact');(EOS)
+
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'homearticles', 'Articoli Home Page', 'sys_recact');(EOS)
+
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'c_homecarousel', 'Home Carousel', 'sys_recact');(EOS)
+
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'friendcarousel', 'Friend Carousel', 'sys_recact');(EOS)
+
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'sponsorcarousel', 'Sponsor Carousel', 'sys_recact');(EOS)
+
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'homebriefnews', 'Notizie Brevi Home Page', 'sys_recact');(EOS)
+#end
+  
+#if ($siteDTO.sitetype == 'yachtclub')
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'club', 'Club', 'sys_recact');(EOS)
+      
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'sailevent', 'Regate', 'sys_recact');(EOS)
+
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'homesailevent', 'Regate Home Page', 'sys_recact');(EOS)
+
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'media', 'Media', 'sys_recact');(EOS)
+
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'sailschool', 'Scuola Vela', 'sys_recact');(EOS)
+#end	
+## EOF CMSGROUP  
+##
+
+##
+## BOF CMSPAGE
+##
+## insert into r3_cmspage (site, pageid, pagetitle, forwardview, visibility, pagetype, pageicon1, pagelink, pageorder, pagestyle)
+##   values('${siteDTO.site}', 'console', 'Area Amministrativa', null, 'cmspg_txtmenu', 'page', null, '/org/r3/console/home.do', 45, null);(EOS)
+
+#if ($siteDTO.sitetype == 'workshop')
+insert into r3_cmspage (site, pageid, pagetitle, forwardview, visibility, pagetype, pageicon1, pageicon2, pagelink, pageorder, pagestyle)
+   values('${siteDTO.site}', 'wbses', 'Actions', 'Success', 'cmspg_txtmenu,cmspg_iconmenu', 'page', 'businessplan.jpg', 'business2.jpg', '/org/r3/wbs/wbsfillout.do?pageid=wbses', 15, 'grade3');(EOS)
+     
+insert into r3_cmspage (site, pageid, pagetitle, forwardview, visibility, pagetype, pageicon1, pageicon2, pagelink, pageorder, pagestyle, viewoptions, permissions)
+   values('${siteDTO.site}', 'wsmeeting', 'Meetings Workshop', 'grouppage1', 'cmspg_txtmenu,cmspg_iconmenu', 'cmspage', 'business1.jpg', 'business1.jpg', '/org/r3/cms/cmspage.do?pageid=wsmeeting', 15, 'grade2',
+   '{"cardindexquery": "groupid=grp_meeting", "cardtemplate": "cms_tpl_cardview_type3", "downloadCanvas": true}', 'workshop'
+   );(EOS)
+
+insert into r3_cmspage (site, pageid, pagetitle, forwardview, visibility, pagetype, pageicon1, pageicon2, pagelink, pageorder, pagestyle)
+   values('${siteDTO.site}', 'wsreport', 'Reports Workshop', 'Success', 'cmspg_txtmenu,cmspg_iconmenu', 'cmspage', 'business2.jpg', 'business2.jpg', '/org/r3/wbs/wsreport.do?pageid=wsreport', 15, 'grade4');(EOS)
+
+insert into r3_cmspage ( 
+  site, pageid, pagetype, pagetitle, pagelink, pageorder, visibility, pagestyle, forwardview, onuserstatus, permissions, viewoptions ) 
+  values('${siteDTO.site}', 'manage_wbs', 'page', 'Amministrazione WBS', '/org/r3/console/wbs.do', 60, 'cmspg_consolemenu', 'grade1', 'Success', 'userlogged', null, null) 
+  ;(EOS)
+#end
+ 
+insert into r3_cmspage ( 
+  site, pageid, pagetype, pagetitle, pagelink, pageorder, visibility, pagestyle, forwardview, onuserstatus, permissions, viewoptions ) 
+  values('${siteDTO.site}', 'contacts', 'page', 'Contatti', '/org/r3/console/contacts.do', 20, 'cmspg_consolemenu', 'grade1', 'Success', 'userlogged', null, null) 
+  ;(EOS)
+   
+insert into r3_cmspage ( 
+  site, pageid, pagetype, pagetitle, pagelink, pageorder, visibility, pagestyle, forwardview, onuserstatus, permissions, viewoptions ) 
+  values('${siteDTO.site}', 'manage_cms', 'page', 'Contenuti CMS', '/org/r3/console/cms/cards.do', 40, 'cmspg_consolemenu', 'grade1', 'Success', 'userlogged', null, null) 
+  ;(EOS)
+
+insert into r3_cmspage ( 
+  site, pageid, pagetype, pagetitle, pagelink, pageorder, visibility, pagestyle, forwardview, onuserstatus, permissions, viewoptions ) 
+  values('${siteDTO.site}', 'manage_bbs', 'page', 'Discussioni (BBS)', '/org/r3/console/bbs.do', 50, 'cmspg_consolemenu', 'grade1', 'Success', 'userlogged', null, null) 
+  ;(EOS)
+  
+insert into r3_cmspage ( 
+  site, pageid, pagetype, pagetitle, pagelink, pageorder, visibility, pagestyle, forwardview, onuserstatus, permissions, viewoptions ) 
+  values('${siteDTO.site}', 'siteconfig', 'page', 'Configurazione', '/org/r3/console/siteconfig.do', 70, 'cmspg_consolemenu', 'grade1', 'Success', 'userlogged', null, null) 
+  ;(EOS)
+
+#if ($siteDTO.sitetype == 'regatta')
+insert into r3_cmspage (site, pageid, pagetitle, forwardview, visibility, pagetype, pageicon1, pagelink, pageorder, pagestyle)
+   values('${siteDTO.site}', 'entrylist', 'Lista Iscritti', null, 'cmspg_none', 'page', 'boat1_icon.jpg', '/org/r3/sev/entrylist.do', 15, 'grade3');(EOS)
+
+insert into r3_cmspage (site, pageid, pagetitle, forwardview, visibility, pagetype, pageicon1, pagelink, pageorder, pagestyle)
+   values('${siteDTO.site}', 'ranking', 'Classifiche', null, 'cmspg_none', 'page', 'boat2_icon.jpg', '/org/r3/sev/ranking.do', 20, 'grade2');(EOS)
+
+insert into r3_cmspage (site, pageid, pagetitle, forwardview, visibility, pagetype, pageicon1, pagelink, pageorder, pagestyle)
+   values('${siteDTO.site}', 'tracker', 'Tack Tracker Page', 'tracker', 'cmspg_none', 'cmspage', 'tacktracker_icon1.png', '/org/r3/sev/cmspage.do?pageid=tracker', 10, 'grade5');(EOS)
+     
+insert into r3_cmspage (site, pageid, pagetitle, forwardview, visibility, pagetype, pageicon1, pagelink, pageorder, pagestyle)
+   values('${siteDTO.site}', 'comunicati', 'Comunicati Page', 'comunicati', 'cmspg_none', 'cmspage', 'icon_010.jpg', '/org/r3/sev/cmspage.do?pageid=comunicati', 25, 'grade1');(EOS)
+
+insert into r3_cmspage (site, pageid, pagetitle, forwardview, visibility, pagetype, pageicon1, pagelink, pageorder, pagestyle)
+   values('${siteDTO.site}', 'meteo', 'Pag Meteo', 'meteo', 'cmspg_none', 'cmspage', 'icon_meteo.png', '/org/r3/sev/cmspage.do?pageid=meteo&cardid=00_METEO', 30, 'grade4');(EOS)
+
+insert into r3_cmspage (site, pageid, pagetitle, forwardview, visibility, pagetype, pageicon1, pagelink, pageorder, pagestyle)
+   values('${siteDTO.site}', 'pressroom', 'Pag Sala Stampa', 'pressroom', 'cmspg_none', 'cmspage', 'icon_012.jpg', '/org/r3/sev/cmspage.do?pageid=pressroom', 35, 'grade5');(EOS)
+
+insert into r3_cmspage (site, pageid, pagetitle, forwardview, visibility, pagetype, pageicon1, pagelink, pageorder, pagestyle)
+   values('${siteDTO.site}', 'miscellanea', 'Pag. Altre Notizie', 'miscellanea', 'cmspg_none', 'cmspage', 'icon_003.jpg', '/org/r3/sev/cmspage.do?pageid=miscellanea', 40, 'grade3');(EOS)
+
+insert into r3_cmspage ( 
+  site, pageid, pagetype, pagetitle, pagelink, pageorder, visibility, pagestyle, forwardview, onuserstatus, permissions, viewoptions ) 
+  values('${siteDTO.site}', 'applications', 'page', 'Iscrizioni', '/org/r3/console/sev/applications.do', 99, 'cmspg_consolemenu', 'grade1', 'Success', 'userlogged', null, null )
+  ;(EOS)
+
+insert into r3_cmspage ( 
+  site, pageid, pagetype, pagetitle, pagelink, pageorder, visibility, pagestyle, forwardview, onuserstatus, permissions, viewoptions ) 
+  values('${siteDTO.site}', 'rankings', 'page', 'Classifiche', '/org/r3/console/sev/ranking.do', 99, 'cmspg_consolemenu', 'grade1', 'Success', 'userlogged', null, null )
+  ;(EOS)
+#end     
+
+#if ($siteDTO.sitetype == 'yachtclub' || $siteDTO.sitetype == 'mastersite')
+insert into r3_cmspage (site, pageid, pagetitle, forwardview, visibility, pagetype, pageorder, pagelink, pageicon1, pagestyle)
+   values('${siteDTO.site}', 'articles', 'Articoli', 'articles', 'cmspg_txtmenu,cmspg_iconmenu', 'cmspage', 20, '/org/r3/cms/cmspage.do?pageid=articles', 'icon_002.jpg', 'grade3');(EOS)
+
+insert into r3_cmspage (site, pageid, pagetitle, forwardview, visibility, pagetype, pageorder, pagelink, pageicon1, pagestyle)
+   values('${siteDTO.site}', 'home', 'Home', null, 'cmspg_iconmenu', 'page', 10, '/org/r3/home.do', 'icon_cvf.png', 'grade4');(EOS)
+#end
+
+#if ($siteDTO.sitetype == 'yachtclub')
+insert into r3_cmspage (site, pageid, pagetitle, forwardview, visibility, pagetype, pageorder, pagelink, pageicon1, pagestyle)
+   values('${siteDTO.site}', 'club', 'Club', 'club', 'cmspg_txtmenu,cmspg_iconmenu', 'cmspage', 50, '/org/r3/cms/cmspage.do?pageid=club', 'icon_008.jpg', 'grade3');(EOS)
+
+insert into r3_cmspage (site, pageid, pagetitle, forwardview, visibility, pagetype, pageorder, pagelink, pageicon1, pagestyle)
+   values('${siteDTO.site}', 'meteo', 'Meteo', 'meteo', 'cmspg_txtmenu,cmspg_iconmenu', 'cmspage', 45, '/org/r3/cms/cmspage.do?pageid=meteo&cardid=00_METEO', 'icon_011.jpg', 'grade3');(EOS)
+
+insert into r3_cmspage (site, pageid, pagetitle, forwardview, visibility, pagetype, pageorder, pagelink, pageicon1, pagestyle)
+   values('${siteDTO.site}', 'pressroom', 'Sala Stampa', 'pressroom', 'cmspg_txtmenu,cmspg_iconmenu', 'cmspage', 35, '/org/r3/cms/cmspage.do?pageid=pressroom', 'icon_005.jpg', 'grade3');(EOS)
+
+insert into r3_cmspage (site, pageid, pagetitle, forwardview, visibility, pagetype, pageorder, pagelink, pageicon1, pagestyle)
+   values('${siteDTO.site}', 'regattas', 'Regate', 'regattas', 'cmspg_txtmenu,cmspg_iconmenu', 'cmspage', 25, '/org/r3/cms/cmspage.do?pageid=regattas', 'icon_003.jpg', 'grade3');(EOS)
+
+insert into r3_cmspage (site, pageid, pagetitle, forwardview, visibility, pagetype, pageorder, pagelink, pageicon1, pagestyle)
+   values('${siteDTO.site}', 'school', 'Scuola Vela', 'school', 'cmspg_txtmenu,cmspg_iconmenu', 'cmspage', 30, '/org/r3/cms/cmspage.do?pageid=school', 'icon_004.jpg', 'grade3');(EOS)
+						
+insert into r3_cmspage (site, pageid, pagetitle, forwardview, visibility, pagetype, pageorder, pagelink, pageicon1, pagestyle)
+   values('${siteDTO.site}', 'galleries', 'Photo', 'media', 'cmspg_txtmenu,cmspg_iconmenu', 'cmspage', 40, '/org/r3/cms/cmspage.do?pageid=galleries', 'icon_006.jpg', 'grade3');(EOS)
+
+insert into r3_cmspage (site, pageid, pagetitle, forwardview, visibility, pagetype, pageorder, pagelink, pageicon1, pagestyle)
+   values('${siteDTO.site}', 'news', 'News', 'WIP', 'cmspg_none', 'cmspage', 15, '/org/r3/cms/cmspage.do?pageid=news', 'icon_001.jpg', 'grade3');(EOS)
+
+insert into r3_cmspage (site, pageid, pagetitle, forwardview, visibility, pagetype, pageorder, pagelink, pageicon1, pagestyle)
+   values('${siteDTO.site}', 'media2013', 'Media 2013', 'media', 'cmspg_none', 'cmspage', 0, null, null, 'grade3');(EOS)
+#end
+
+insert into r3_cmspagedescr (site, pageid, languagecode, pagetitle)
+  select site, pageid, 'it', pagetitle from r3_cmspage where site = '${siteDTO.site}';(EOS)
+
+##
+## -------------------------------------------------
+## 
+
+## Traduzione al Portoghese delle pagine
+insert into r3_cmspagedescr (site, pageid, languagecode, pagetitle)
+  values ( '${siteDTO.site}', 'wbses', 'pt', 'Ações');(EOS)
+
+insert into r3_cmspagedescr (site, languagecode, pageid, pagetitle)
+  values ( '${siteDTO.site}', 'pt', 'wsmeeting', 'Reuniões');(EOS)
+
+insert into r3_cmspagedescr (site, languagecode, pageid, pagetitle)
+  values ( '${siteDTO.site}', 'pt', 'wsreport', 'Relatórios');(EOS)
+
+insert into r3_cmspagedescr (site, languagecode, pageid, pagetitle)
+  values ( '${siteDTO.site}', 'pt', 'manage_wbs', 'Administração (PDA)');(EOS)
+
+insert into r3_cmspagedescr (site, languagecode, pageid, pagetitle)
+  values ( '${siteDTO.site}', 'pt', 'contacts', 'Contatos');(EOS)
+
+insert into r3_cmspagedescr (site, languagecode, pageid, pagetitle)
+  values ( '${siteDTO.site}', 'pt', 'manage_cms', 'Conteúdo (CMS)');(EOS)
+
+insert into r3_cmspagedescr (site, languagecode, pageid, pagetitle)
+  values ( '${siteDTO.site}', 'pt', 'manage_bbs', 'Discussão');(EOS)
+  
+insert into r3_cmspagedescr (site, languagecode, pageid, pagetitle)
+  values ( '${siteDTO.site}', 'pt', 'siteconfig', 'Configuração');(EOS)
+  
+##
+## -------------------------------------------------
+## 
+
+## EOF CMSPAGE
+##
+  
+##
+## Site Properties
+##
+insert into r3_siteproperty 
+ (site, propertyscope, propertykey, propertyvalue)
+ select '${siteDTO.site}', propertyscope, propertykey, propertyvalue 
+ from r3_siteproperty 
+ where site = '__tmpl__';(EOS)
+ 
+## INSERT INTO r3_siteproperty (site, propertyscope, propertykey, propertyvalue) VALUES ('${siteDTO.site}','google.analytics','domain','cvfiumicino.org');(EOS)
+## INSERT INTO r3_siteproperty (site, propertyscope, propertykey, propertyvalue) VALUES ('${siteDTO.site}','google.analytics','trackerid','UA-48183016-1');(EOS)
+
+#if ($siteDTO.sitetype == 'regatta')
+INSERT INTO r3_siteproperty (site, propertyscope, propertykey, propertyvalue) VALUES ('${siteDTO.site}','fiv','fivclubid','171');(EOS)
+INSERT INTO r3_siteproperty (site, propertyscope, propertykey, propertyvalue) VALUES ('${siteDTO.site}','fiv','fivpasswd','ia1ia1');(EOS)
+
+INSERT INTO r3_siteproperty (site, propertyscope, propertykey, propertyvalue) VALUES ('${siteDTO.site}','sev.app','boatinfoform_otherinfo','btrue');(EOS)
+INSERT INTO r3_siteproperty (site, propertyscope, propertykey, propertyvalue) VALUES ('${siteDTO.site}','sev.app','boatinfoform_sailcloth','btrue');(EOS)
+INSERT INTO r3_siteproperty (site, propertyscope, propertykey, propertyvalue) VALUES ('${siteDTO.site}','sev.app','classinfoform_apptype','btrue');(EOS)
+INSERT INTO r3_siteproperty (site, propertyscope, propertykey, propertyvalue) VALUES ('${siteDTO.site}','sev.app','classinfoform_grancrocieraorc','bfalse');(EOS)
+INSERT INTO r3_siteproperty (site, propertyscope, propertykey, propertyvalue) VALUES ('${siteDTO.site}','sev.app','classinfoform_racegroupdecl','bfalse');(EOS)
+
+INSERT INTO r3_siteproperty (site, propertyscope, propertykey, propertyvalue) VALUES ('${siteDTO.site}','sev.ranking','maxraces','7');(EOS)
+#end
+
+## INSERT INTO r3_siteproperty (site, propertyscope, propertykey, propertyvalue) VALUES ('${siteDTO.site}','sms','smslogin','sbuser1303');(EOS)
+## INSERT INTO r3_siteproperty (site, propertyscope, propertykey, propertyvalue) VALUES ('${siteDTO.site}','sms','smspasswd','87b5pyd');(EOS)
+## INSERT INTO r3_siteproperty (site, propertyscope, propertykey, propertyvalue) VALUES ('${siteDTO.site}','sms','smssender','cvf2');(EOS)
+INSERT INTO r3_siteproperty (site, propertyscope, propertykey, propertyvalue) VALUES ('${siteDTO.site}','ui.cfg','menus','socialmenu,iconmenu,txtmenu');(EOS)
+INSERT INTO r3_siteproperty (site, propertyscope, propertykey, propertyvalue) VALUES ('${siteDTO.site}','ui.cfg','menusitems','trackermenu,rankingmenu,pressroommenu');(EOS)
+
+## OUTMAIL ---------
+INSERT INTO r3_cmscard (site,cardid,systemtitle,pagelinktype,pagelink,pageid,refdate,options,validityrule,validfrom,validto,recstatus,rectimestamp,categoryid) 
+  VALUES ('${siteDTO.site}','OUTMAIL','Posta in uscita','none',NULL,NULL,'2014-01-24',NULL,'never',NULL,NULL,'sys_recact','2014-01-24 19:58:43','miscellanea');(EOS)
+
+##
+## Help CMS Cards
+##
+## HLP_CHANGEPWDOK ---------
+INSERT INTO r3_cmscard (site,cardid,systemtitle,pagelinktype,pagelink,pageid,refdate,options,validityrule,validfrom,validto,recstatus,rectimestamp,categoryid) 
+ VALUES ('${siteDTO.site}','HLP_CHANGEPWDOK','Help: Cambio Parola Chiave OK','none',NULL,NULL,NULL,NULL,'always',NULL,NULL,'sys_recact',NULL,'help');(EOS)
+ 
+INSERT INTO r3_cmscarddescr (site,cardid,languagecode,title,summary,textbody,recstatus,rectimestamp)
+ VALUES ('${siteDTO.site}','HLP_CHANGEPWDOK','it','Modifica Parola Chiave','Modifica Parola Chiave','<p>Operazione terminata con successo</p>','sys_recact',NULL);(EOS)
+
+INSERT INTO r3_cmscarddescr (site,cardid,languagecode,title,summary,textbody,recstatus,rectimestamp)
+ VALUES ('${siteDTO.site}','HLP_CHANGEPWDOK','pt','Mudar a senha','Mudar a senha','<p>Operação bem sucedida!</p>','sys_recact',NULL);(EOS)
+
+ 
+## HLP_REGISTRATION --------
+INSERT INTO r3_cmscard (site,cardid,systemtitle,pagelinktype,pagelink,pageid,refdate,options,validityrule,validfrom,validto,recstatus,rectimestamp,categoryid) 
+ VALUES ('${siteDTO.site}','HLP_REGISTRATION','HELP: Registrazione','none',NULL,NULL,NULL,NULL,'always',NULL,NULL,'sys_recact',NULL,'help');(EOS)
+
+INSERT INTO r3_cmscarddescr (site,cardid,languagecode,title,summary,textbody,recstatus,rectimestamp)
+ VALUES ('${siteDTO.site}','HLP_REGISTRATION','it','Help Registrazione','Help Registrazione','<h2>Aiuto rapido</h2>
+<p>Per procedere con la registrazione compilare i campi riportati. Nel caso il codice di sicurezza non risulti facilmente leggibile e&#39; possibile aggiornarlo attivando l&#39;icona posta sulla destra del codice stesso.</p>
+<p>A valle della registrazione vi verra&#39; inviato un messaggio di posta elettronica contenente un link da attivare per il corretto completamento della registrazione.</p>','sys_recact',NULL);(EOS)
+
+INSERT INTO r3_cmscarddescr (site,cardid,languagecode,title,summary,textbody,recstatus,rectimestamp)
+ VALUES ('${siteDTO.site}','HLP_REGISTRATION','pt','Precisa de ajuda','Precisa de ajuda','<h2>Ajuda</h2>
+<p>Para prosseguir com o cadastramento preencher os campos indicados. Se o c&oacute;digo de seguran&ccedil;a n&atilde;o &eacute; facilmente acess&iacute;vel vo&ccedil;&egrave; pode atualiz&aacute;-lo, clicando o &iacute;cone &agrave; direita do pr&oacute;prio c&oacute;digo.</p>
+<p>Depois do cadastramento inicial, voc&ecirc; receber&aacute; um e-mail com um link para concluir o cadastramento.</p>','sys_recact',NULL);(EOS)
+
+## HLP_RESETPWD --------
+INSERT INTO r3_cmscard (site,cardid,systemtitle,pagelinktype,pagelink,pageid,refdate,options,validityrule,validfrom,validto,recstatus,rectimestamp,categoryid) 
+ VALUES ('${siteDTO.site}','HLP_RESETPWD','HELP: Reset Parola Chiave','none',NULL,NULL,NULL,NULL,'always',NULL,NULL,'sys_recact',NULL,'help');(EOS)
+
+INSERT INTO r3_cmscarddescr (site,cardid,languagecode,title,summary,textbody,recstatus,rectimestamp)
+ VALUES ('${siteDTO.site}','HLP_RESETPWD','it','Reset Parola Chiave','Reset Parola Chiave','<h2>Aiuto Rapido</h2>
+<p>Nel caso vi siate dimenticati la vostra parola chiave e&#39; possibile chiedere aiuto al sistema. Dopo aver compilato la scheda seguente e indicato il vostro indirizzo di posta elettronica il sistema vi inviera&#39; una mail con la nuova parola chiave necessaria per l&#39;accesso al sito.</p>','sys_recact',NULL);(EOS)
+
+INSERT INTO r3_cmscarddescr (site,cardid,languagecode,title,summary,textbody,recstatus,rectimestamp)
+ VALUES ('${siteDTO.site}','HLP_RESETPWD','pt','Redefinir a senha','Redefinir a senha','<h2>Ajuda</h2>
+<p>Se voc&ecirc; esqueces sua senha voc&ecirc; pode pedir ajuda ao sistema. Depois de preencher o formul&aacute;rio abaixo e indicado o seu endere&ccedil;o de e-mail o sistema envier&aacute; um e-mail com a nova senha para acessar o site.</p>','sys_recact',NULL);(EOS)
+
+
+## HLP_RESETPWDOK --------
+INSERT INTO r3_cmscard (site,cardid,systemtitle,pagelinktype,pagelink,pageid,refdate,options,validityrule,validfrom,validto,recstatus,rectimestamp,categoryid) 
+ VALUES ('${siteDTO.site}','HLP_RESETPWDOK','Help: Reset Password OK','none',NULL,NULL,NULL,NULL,'always',NULL,NULL,'sys_recact',NULL,'help');(EOS)
+
+INSERT INTO r3_cmscarddescr (site,cardid,languagecode,title,summary,textbody,recstatus,rectimestamp)
+ VALUES ('${siteDTO.site}','HLP_RESETPWDOK','it','Reset Parola Chiave OK','Reset Parola Chiave OK','<h2>Reset Parola Chiave</h2>
+<p>L&#39;operazione e&#39; terminata con successo. A breve riceverete una email con la nuova parola chiave necessaria per l&#39;accesso al sito.</p>','sys_recact',NULL);(EOS)
+
+## HLP_USRREG_OK --------
+INSERT INTO r3_cmscard (site,cardid,systemtitle,pagelinktype,pagelink,pageid,refdate,options,validityrule,validfrom,validto,recstatus,rectimestamp,categoryid) 
+ VALUES ('${siteDTO.site}','HLP_USRREG_OK','Help: Registrazione OK','none',NULL,NULL,NULL,NULL,'always',NULL,NULL,'sys_recact',NULL,'help');(EOS)
+
+INSERT INTO r3_cmscarddescr (site,cardid,languagecode,title,summary,textbody,recstatus,rectimestamp)
+ VALUES ('${siteDTO.site}','HLP_USRREG_OK','it','Registrazione Utente OK','Registrazione Utente OK','<p>La registrazione ha avuto esito positivo. A breve riceverai una email contenente un link da attivare che completera&#39; l&#39;iter.</p>
+<p>&nbsp;</p>','sys_recact',NULL);(EOS)
+
+INSERT INTO r3_cmscarddescr (site,cardid,languagecode,title,summary,textbody,recstatus,rectimestamp)
+ VALUES ('${siteDTO.site}','HLP_USRREG_OK','pt','Cadastramento do usuário OK','Cadastramento do usuário OK','<p>O cadastramento &eacute; bem sucedido. Voc&ecirc; receber&aacute; um e-mail com um link para concluir o processo.</p>','sys_recact',NULL);(EOS)
+
+##
+## Application Info Cards
+##
+#if ($siteDTO.sitetype == 'regatta')
+## 00_METEO ---------
+INSERT INTO r3_cmscard (site,cardid,systemtitle,pagelinktype,pagelink,pageid,refdate,options,validityrule,validfrom,validto,recstatus,rectimestamp,categoryid) 
+  VALUES ('${siteDTO.site}','00_METEO','Meteo Località Fiumicino','page',NULL,'meteo','2014-01-24',NULL,'always',NULL,NULL,'sys_recact','2014-01-24 19:58:43','meteo');(EOS)
+
+INSERT INTO r3_cmscardgroup (site,cardid,groupid,validto,validfrom,recstatus,rectimestamp) VALUES ('${siteDTO.site}','00_METEO','GRP_METEO',NULL,NULL,NULL,NULL);(EOS)
+
+## NOR000000000011 ---------
+INSERT INTO r3_cmscard (site,cardid,systemtitle,pagelinktype,pagelink,pageid,refdate,options,validityrule,validfrom,validto,recstatus,rectimestamp,categoryid) 
+  VALUES ('${siteDTO.site}','NOR000000000011','Bando Istruzioni','none',NULL,NULL,'2014-02-12',NULL,'always',NULL,NULL,'sys_recact','2014-02-12 23:09:13','cat_nor');(EOS)
+
+INSERT INTO `r3_cmscarddescr` (`site`,`cardid`,`languagecode`,`title`,`summary`,`textbody`,`recstatus`,`rectimestamp`) 
+  VALUES ('${siteDTO.site}','NOR000000000011','it','Bando Istruzioni',NULL,NULL,'sys_recact',NULL);(EOS)
+
+INSERT INTO r3_cmscardgroup (site,cardid,groupid,validto,validfrom,recstatus,rectimestamp) VALUES ('${siteDTO.site}','NOR000000000011','GRP_NOR',NULL,NULL,NULL,NULL);(EOS)
+
+## HOME_SEVWELCOME ---------
+INSERT INTO r3_cmscard (site,cardid,systemtitle,pagelinktype,pagelink,pageid,refdate,options,validityrule,validfrom,validto,recstatus,rectimestamp,categoryid) 
+ VALUES ('${siteDTO.site}','HOME_SEVWELCOME','Saluto del presidente','none',NULL,NULL,'2014-02-12',NULL,'always',NULL,NULL,'sys_recact','2014-02-12 23:06:12','miscellanea');(EOS)
+
+INSERT INTO r3_cmscarddescr (site,cardid,languagecode,title,summary,textbody,recstatus,rectimestamp)
+ VALUES ('${siteDTO.site}','HOME_SEVWELCOME','it','Saluto del presidente','Diamo il benvenuto a tutti gli armatori e amici del Circolo Velico di Fiumicino e li invitiamo ad unirsi a noi per la 30ma edizione della Coppa Italia 2014','<p>Diamo il benvenuto a tutti gli armatori e amici del Circolo Velico di Fiumicino e li invitiamo ad unirsi a noi per la 30ma edizione della Coppa Italia 2014<br />
+Grazie,</p> <p><strong>Franco Quadrana</strong><br /><strong>Presidente Circolo Velico di Fiumicino</strong></p>','sys_recact',NULL);(EOS)
+
+INSERT INTO r3_cmscard (site,cardid,systemtitle,pagelinktype,pagelink,pageid,refdate,options,validityrule,validfrom,validto,recstatus,rectimestamp,categoryid) 
+ VALUES ('${siteDTO.site}','INFO_REAPAYINFO','Informazioni Pagamento','none',NULL,NULL,NULL,NULL,'always',NULL,NULL,'sys_recact',NULL,'help');(EOS)
+
+INSERT INTO r3_cmscarddescr (site,cardid,languagecode,title,summary,textbody,recstatus,rectimestamp)
+ VALUES ('${siteDTO.site}','INFO_REAPAYINFO','it','Tassa di Iscrizione','Tassa di Iscrizione','<h3>Tassa di Iscrizione</h3>
+
+<p>La tassa di iscrizione al campionato &egrave; cos&igrave; regolata:</p>
+
+<ul>
+  <li>imbarcazioni fino a 10.00 mt. di lunghezza &euro; 180,00</li>
+  <li>imbarcazioni da 10.01  a 12.00 mt. di lunghezza &euro; 230,00</li>
+  <li>imbarcazioni da 12.01  a 14.00 mt. di lunghezza &euro; 280,00</li>
+  <li>imbarcazioni oltre 14.00 mt. di lunghezza &euro; 310,00</li>	
+</ul>
+
+<p>I pagamenti possono essere effettuati o direttamente in Segreteria oppure mediante bonifico bancario alle seguenti coordinate:</p>
+
+<ul>
+	<li>UNICREDIT BANCA AG 793 FIUMICINO</li>
+	<li>IBAN&nbsp; <strong>IT 79K 02008 49633 000010178356&nbsp;</strong></li>
+</ul>','sys_recact',NULL);(EOS)
+
+## INFO_REASUMMARYCOMMIT --------
+INSERT INTO r3_cmscard (site,cardid,systemtitle,pagelinktype,pagelink,pageid,refdate,options,validityrule,validfrom,validto,recstatus,rectimestamp,categoryid) 
+ VALUES ('${siteDTO.site}','INFO_REASUMMARYCOMMIT','Info Sintesi COMMIT','none',NULL,NULL,NULL,NULL,'always',NULL,NULL,'sys_recact',NULL,'help');(EOS)
+
+INSERT INTO r3_cmscarddescr (site,cardid,languagecode,title,summary,textbody,recstatus,rectimestamp)
+ VALUES ('${siteDTO.site}','INFO_REASUMMARYCOMMIT','it','Riepilogo Domanda di Iscrizione','Riepilogo Domanda di Iscrizione','<h3>Riepilogo domanda iscrizione</h3>
+<p>La domanda di iscrizione &#39;chiusa&#39;. E&#39; possibile procedere alla visualizzazione mediante attivazione del tasto &#39;Visualizza&#39;.</p>','sys_recact',NULL);(EOS)
+
+## INFO_REASUMMARYDRAFT --------
+INSERT INTO r3_cmscard (site,cardid,systemtitle,pagelinktype,pagelink,pageid,refdate,options,validityrule,validfrom,validto,recstatus,rectimestamp,categoryid) 
+ VALUES ('${siteDTO.site}','INFO_REASUMMARYDRAFT','Info Sintesi Draft','none',NULL,NULL,NULL,NULL,'always',NULL,NULL,'sys_recact',NULL,'help');(EOS)
+
+INSERT INTO r3_cmscarddescr (site,cardid,languagecode,title,summary,textbody,recstatus,rectimestamp)
+ VALUES ('${siteDTO.site}','INFO_REASUMMARYDRAFT','it','Riepilogo Domanda di Iscrizione','Riepilogo Domanda di Iscrizione','<h3>Riepilogo domanda iscrizione</h3>
+
+<p>In questa sezione puoi procedere alla visualizzazione della domanda compilata attivando il tasto <strong>&#39;Visualizza&#39;</strong> e procedere alla conferma della domanda stessa. Per poter confermare la domanda di iscrizione e&#39; necessario, oltre alla corretta compilazione di tutte le schede, l&#39;inserimento di almeno un numero di tessera FIV nella sezione dedicata e l&#39;inserimento di</p>
+
+<ol>
+	<li>almeno una tessera FIV</li>
+	<li>il documento di assicurazione della barca.</li>
+</ol>
+
+<p>Nel momento in cui avrai confermato la domanda, la Segreteria potra&#39; verificarla e procedere con le attivita&#39; organizzative.</p>
+
+<p>&nbsp;</p>
+<p>Ti raccomandiamo di passare comunque in Segreteria presso il Circolo per il pagamento e consegnare gli eventuali allegati.</p>','sys_recact',NULL);(EOS)
+
+##
+## Schede liberatorie
+##
+## R3EA_AUTHA --------
+INSERT INTO r3_cmscard (site,cardid,systemtitle,pagelinktype,pagelink,pageid,refdate,options,validityrule,validfrom,validto,recstatus,rectimestamp,categoryid) 
+ VALUES ('${siteDTO.site}','R3EA_AUTHA','Punto A - DICHIARAZIONE DI ACCETTAZIONE','none',NULL,NULL,NULL,NULL,'always',NULL,NULL,'sys_recact',NULL,'rea_authoriz');(EOS)
+
+INSERT INTO r3_cmscarddescr (site,cardid,languagecode,title,summary,textbody,recstatus,rectimestamp)
+ VALUES ('${siteDTO.site}','R3EA_AUTHA','it','Punto A - DICHIARAZIONE DI ACCETTAZIONE','Punto A - DICHIARAZIONE DI ACCETTAZIONE','<h3>Punto A - DICHIARAZIONE DI ACCETTAZIONE</h3>
+<p>Accetto di sottopormi al Regolamento di Regata I.SA.F. in vigore, alle Istruzioni e al Bando di Regata.</p>
+<p>Sono a conoscenza della Regola fondamentale I.SA.F.: &quot;ciascun yacht sar&agrave; il solo responsabile</p>
+<p>della propria decisione di partire o di continuare la regata&quot;.</p>
+<p>Dichiaro altres&igrave; che consegner&ograve; la lista generale dei componenti dell&rsquo;equipaggio effettivo (e delle eventuali riserve) comprensivi di nomi, dati anagrafici e numero tessere F.I.V. entro e non oltre la prima regata, se partecipante all&rsquo; intero campionato, entro il giorno antecedente la data di regata prescelta per la/e partecipazione/i giornaliera/e.</p>
+<p>Mi impegno altres&igrave; in proprio e per conto del rappresentato di comunicare le variazioni nei tempi e con le modalit&agrave; stabilite dalle norme emergenti dai regolamenti previsti nel Bando di Regata che accetto incondizionatamente.</p>','sys_recact',NULL);(EOS)
+
+## R3EA_AUTHB --------
+INSERT INTO r3_cmscard (site,cardid,systemtitle,pagelinktype,pagelink,pageid,refdate,options,validityrule,validfrom,validto,recstatus,rectimestamp,categoryid) 
+ VALUES ('${siteDTO.site}','R3EA_AUTHB','Punto B - DICHIARAZIONE DI ASSUNZIONE DI RESPONSABILITA''','none',NULL,NULL,NULL,NULL,'always',NULL,NULL,'sys_recact',NULL,'rea_authoriz');(EOS)
+
+INSERT INTO r3_cmscarddescr (site,cardid,languagecode,title,summary,textbody,recstatus,rectimestamp)
+ VALUES ('${siteDTO.site}','R3EA_AUTHB','it','Punto B - DICHIARAZIONE DI ASSUNZIONE DI','Punto B - DICHIARAZIONE DI ASSUNZIONE DI RESPONSABILITA''','<h3>Punto B - DICHIARAZIONE DI ASSUNZIONE DI RESPONSABILITA&#39;</h3>
+<p>A seguito della domanda di iscrizione alla regata io sottoscritto Dichiaro esplicitamente di assumere qualsiasi responsabilit&agrave; per danni causati a persone o a cose di terzi, a me stesso o alle mie cose, sia in terra che in acqua in conseguenza della partecipazione al campionato, sollevando da ogni responsabilit&agrave; il Circolo Organizzatore e tutti coloro che concorrono nell&#39;organizzazione sotto qualsiasi titolo.</p>
+<p>Dichiaro altres&igrave; di rispondere personalmente di tutti gli eventuali incidenti che potrebbero accadere alla barca iscritta ed ai componenti dell&rsquo;equipaggio, del cui comportamento ne sono pienamente responsabile, e che &egrave; mia competenza decidere se uscire o non uscire in mare, in base alle capacit&agrave; dell&rsquo;equipaggio, alla forza del vento, allo stato del mare ed alle previsioni meteorologiche.</p>
+<p>Premesso che i controlli di stazza riguardano unicamente il controllo di determinate misure e non possono estendersi al controllo della robustezza dello yacht (con le specifiche di cui sopra), il sottoscritto dichiara di assumere ogni responsabilit&agrave; delle qualit&agrave; marine di tale yacht, del suo armamento, del suo motore, del suo apparato radio, dell&rsquo;efficienza e sistemazione delle dotazioni di sicurezza che sono di tipo, qualit&agrave; e quantit&agrave; conformi alle disposizioni di Legge, delle Ordinanze e dei Regolamenti che regolano le regate per le quali lo yacht &egrave; iscritto.</p>
+<p>Prendo atto e do atto, ad ogni effetto che nelle regate del presente campionato (su boe e costiere) non pu&ograve; essere predisposta alcuna organizzazione di soccorso, ragione per cui il sottoscritto, come ogni concorrente, &egrave; conscio di dover contare unicamente sui propri mezzi di sicurezza, oltre che ai mezzi di soccorso che le Autorit&agrave; governative tengono a disposizione di qualsiasi navigante.</p>
+<p>Sollevo pertanto i Dirigenti del Circolo, gli Sponsor, gli Enti Patrocinanti, la F.I.V., il Comitato di Regata, la Giuria e tutti coloro che concorrono a qualsiasi titolo nell&rsquo;organizzazione della manifestazione, assumendo a mio carico ogni danno a persone e/o cose e rischi, ivi compresi quelli verso terzi. che possa essere provocato dalla partecipazione dello yacht alle regate stesse. Io sottoscritto dichiaro espressamente di aver letto la dichiarazione di responsabilit&agrave;, di esserne ben conscio e di accettarne specificatamente tutte le disposizioni ai sensi dell&rsquo;art. 1341 del C.C..</p>','sys_recact',NULL);(EOS)
+
+## R3EA_AUTHC --------
+INSERT INTO r3_cmscard (site,cardid,systemtitle,pagelinktype,pagelink,pageid,refdate,options,validityrule,validfrom,validto,recstatus,rectimestamp,categoryid) 
+ VALUES ('${siteDTO.site}','R3EA_AUTHC','Punto C - INFORMATIVA E CONSENSO AL TRATTAMENTO DI DATI PERSONALI','none',NULL,NULL,NULL,NULL,'always',NULL,NULL,'sys_recact',NULL,'rea_authoriz');(EOS)
+
+INSERT INTO r3_cmscarddescr (site,cardid,languagecode,title,summary,textbody,recstatus,rectimestamp)
+ VALUES ('${siteDTO.site}','R3EA_AUTHC','it','Punto C - TRATTAMENTO DI DATI PERSONALI','Punto C - INFORMATIVA E CONSENSO AL TRATTAMENTO DI DATI PERSONALI','<h3>Punto C - INFORMATIVA E CONSENSO AL TRATTAMENTO DI DATI PERSONALI</h3>
+<ol>
+	<li>Prima di fornirci i suoi dati personali La preghiamo di leggere la presente informativa. Inoltre per dati personali si intendono ai sensi della presente informativa
+	<ol>
+		<li>Quelli che Le richiediamo col presente modulo e che potremo richiederle in futuro;</li>
+		<li>Quelli spontaneamente da Lei forniti tenendo presente che non vi &egrave; obbligo da parte Sua di fornirli.</li>
+	</ol>
+	</li>
+	<li>I dati vengono da noi raccolti al fine di svolgere le nostre attivit&agrave; istituzionali nei Suoi confronti, compresa la gestione contabile del rapporto. In particolare, con quei dati provvederemo a tenere le registrazioni obbligatorie per legge, sia contabili che quelle imposte dalla FIV.</li>
+	<li>I dati verranno registrati su supporti informatici protetti ed i moduli cartacei verranno da noi correttamente mantenuti e protetti.</li>
+	<li>I dati potranno inoltre essere utilizzati per:
+	<ul>
+		<li>Trasmetterli ai partner pubblicitari e sponsor del CVF;</li>
+		<li>Renderli noti ai soci del CVF, ai comitati di regata, ed ai consulenti del CVF per gli aspetti che possono riguardarli e secondo le modalit&agrave; previste dalla legge;</li>
+	</ul>
+	</li>
+	<li>Ai sensi dell&rsquo;art. 7 della legge 196/03 i Suoi diritti in ordine al trattamento dei dati sono:
+	<ol>
+		<li>Ottenere a cura del titolare senza ritardo:
+		<ul>
+			<li>La conferma o meno dell&rsquo;esistenza di dati personali che La riguardano;</li>
+			<li>La cancellazione, la trasformazione in forma anonima o il blocco dei dati trattati in violazione della legge, compresi quelli di cui non &egrave; necessaria la conservazione in relazione agli scopi per i quali sono stati raccolti o successivamente trattati;</li>
+			<li>L&rsquo;aggiornamento, la rettificazione, ovvero qualora ne abbia interesse, l&rsquo;integrazione dei dati; L&rsquo;attestazione che le operazioni di cui ai precedenti n&deg; 2 e 3 sono state portate a conoscenza, anche per quanto riguarda il loro contenuto, di coloro ai quali sono stati comunicati, eccettuato i casi in cui tale adempimento si riveli impossibile o comporti un impiego di mezzi manifestamente sproporzionato al diritto tutelato;</li>
+		</ul>
+		</li>
+		<li>Opporsi in tutto o in parte per motivi legittimi al trattamento dei dati personali che La riguardano, ancorch&eacute; pertinenti allo scopo della raccolta, nel qual caso non sar&agrave; possibile procedere alla sua iscrizione alle attivit&agrave; organizzate da questo Circolo Velico. I diritti di cui all&rsquo;articolo 7 sono esercitati con richiesta rivolta senza formalit&agrave; al titolare o al responsabile, anche per il tramite di un incaricato, alla quale &egrave; fornito idoneo riscontro senza ritardo.</li>
+	</ol>
+	</li>
+</ol>
+
+<p style="margin-left:18.0pt">6.&nbsp;&nbsp;&nbsp; Le segnaliamo che il Titolare del Trattamento &egrave; la sig.ra Roberta Petrara: Viale Traiano 180 Email <a href="mailto:segreteria@cvfiumicino.it">segreteria@cvfiumicino.it</a>&nbsp; Fax 0665024492</p>
+<p>Consenso al trattamento di dati personali ai sensi dell&rsquo;art. 23 della legge 196/03</p>
+<p>Apponendo la firma in calce al presente modulo, manifesto il mio consenso al trattamento dei dati, nell&rsquo;ambito delle finalit&agrave; e modalit&agrave; di cui sopra, e nei limiti in cui il mio consenso fosse richiesto ai fini della legge e confermo i dati anagrafici riportati. In particolare manifesto il mio consenso espresso per:</p>
+
+<ul>
+	<li>L&rsquo;acquisizione dei dati di cui al punto 1;</li>
+	<li>La comunicazione dei dati a terzi ai sensi del punto 4;</li>
+</ul>
+
+<p>Per accettazione e per la certificazione di veridicit&agrave; dei dati dei componenti dell&rsquo;equipaggio</p>','sys_recact',NULL);(EOS)
+
+## R3EA_AUTHD --------
+INSERT INTO r3_cmscard (site,cardid,systemtitle,pagelinktype,pagelink,pageid,refdate,options,validityrule,validfrom,validto,recstatus,rectimestamp,categoryid) 
+ VALUES ('${siteDTO.site}','R3EA_AUTHD','Punto D - "NULLA OSTA" PER L''UTILIZZAZIONE DELLE IMMAGINI','none',NULL,NULL,NULL,NULL,'always',NULL,NULL,'sys_recact',NULL,'rea_authoriz');(EOS)
+
+INSERT INTO r3_cmscarddescr (site,cardid,languagecode,title,summary,textbody,recstatus,rectimestamp)
+ VALUES ('${siteDTO.site}','R3EA_AUTHD','it','Punto D - UTILIZZAZIONE DELLE IMMAGINI','Punto D - "NULLA OSTA" PER L''UTILIZZAZZIONE DELLE IMMAGINI','<h3>Punto D - &quot;NULLA OSTA&quot; PER L&#39;UTILIZZAZZIONE DELLE IMMAGINI</h3>
+<p>Io sottoscritto in qualit&agrave; di armatore/rappresentante dell&rsquo;armatore del suddetto yacht rilascio il &ldquo;nulla osta&rdquo; per l&rsquo;utilizzazione, sia attuata dal Circolo Velico Fiumicino, sia dagli Sponsor, delle immagini personali, di quella dei componenti dell&rsquo;equipaggio e della barca che eventualmente fossero riprese, con qualsiasi mezzo tecnico, in occasione delle regate oggetto del presente modulo di iscrizione. Lo scrivente quindi dichiara per s&eacute; e per gli aventi causa che n&eacute; ora, n&eacute; in futuro pretender&agrave; compensi o risarcimenti di qualsiasi genere per l&rsquo;uso di tali immagini.</p>
+<p>Ai sensi dell&rsquo;art. 1341 del C.C. dichiaro di aver letto con molta attenzione quanto sopra e confermo la mia autorizzazione all&rsquo;uso delle immagini di cui si parla.</p>','sys_recact',NULL);(EOS)
+
+## R3EA_AUTHE --------
+INSERT INTO r3_cmscard (site,cardid,systemtitle,pagelinktype,pagelink,pageid,refdate,options,validityrule,validfrom,validto,recstatus,rectimestamp,categoryid) 
+ VALUES ('${siteDTO.site}','R3EA_AUTHE','Punto E � INVIO SMS','none',NULL,NULL,NULL,NULL,'always',NULL,NULL,'sys_recact',NULL,'rea_authoriz');(EOS)
+
+INSERT INTO r3_cmscarddescr (site,cardid,languagecode,title,summary,textbody,recstatus,rectimestamp)
+ VALUES ('${siteDTO.site}','R3EA_AUTHE','it','Punto E � INVIO SMS','Punto E � INVIO SMS','<h3>Punto E &ndash; INVIO SMS</h3>
+<p>Autorizzo il CVF all&rsquo;invio di SMS, sul su indicato numero di cellulare, relativi alle comunicazioni riguardanti il campionato ed alle iniziative ad esso collegate. Gli SMS comunque non dovranno avere carattere commerciale. Per esercitare il diritto di recesso dalla ricezione baster&agrave; comunicarlo al Titolare del trattamento dei dati</p>','sys_recact',NULL);(EOS)
+
+## R3EA_AUTHF --------
+INSERT INTO r3_cmscard (site,cardid,systemtitle,pagelinktype,pagelink,pageid,refdate,options,validityrule,validfrom,validto,recstatus,rectimestamp,categoryid) 
+ VALUES ('${siteDTO.site}','R3EA_AUTHF','Punto F � ISCRIZIONE GRATUITA ALLA MAILING LIST DEL CIRCOLO','none',NULL,NULL,NULL,NULL,'always',NULL,NULL,'sys_recact',NULL,'rea_authoriz');(EOS)
+
+INSERT INTO r3_cmscarddescr (site,cardid,languagecode,title,summary,textbody,recstatus,rectimestamp)
+ VALUES ('${siteDTO.site}','R3EA_AUTHF','it','Punto F � MAILING LIST DEL CIRCOLO','Punto F � ISCRIZIONE GRATUITA ALLA MAILING LIST DEL CIRCOLO','<h3>Punto F &ndash; ISCRIZIONE GRATUITA ALLA MAILING LIST DEL CIRCOLO</h3>
+<p>Autorizzo il CVF ad iscrivermi a titolo gratuito alla mailing list del sito <a href="http://www.cvfiumicino.it">www.cvfiumicino.it</a> con l&rsquo;indirizzo indicato nel presente modulo ed all&rsquo;invio di messaggi di posta elettronica provenienti dallo stesso inerenti le attivit&agrave; del circolo ed iniziative di particolare interesse. E&rsquo; possibile richiede la cancellazione al Titolare del trattamento dei dati.</p>','sys_recact',NULL);(EOS)
+#end
+
+##
+## Schede Registrazione OK - KO
+##
+## REGACT_KO --------
+INSERT INTO r3_cmscard (site,cardid,systemtitle,pagelinktype,pagelink,pageid,refdate,options,validityrule,validfrom,validto,recstatus,rectimestamp,categoryid) 
+ VALUES ('${siteDTO.site}','REGACT_KO','Attivazione KO','none',NULL,NULL,NULL,NULL,'always',NULL,NULL,'sys_recact',NULL,'help');(EOS)
+
+INSERT INTO r3_cmscarddescr (site,cardid,languagecode,title,summary,textbody,recstatus,rectimestamp)
+ VALUES ('${siteDTO.site}','REGACT_KO','it','Attivazione Fallita','Attivazione Fallita','<h2>Errore nell&#39;attivazione dell&#39;utenza</h2>
+<p>Si e&#39; verificata un&#39;anomalia nella procedura di attivazione della tua utenza. E&#39; possibile che il link utilizzato per l&#39;attivazione non risulti piu&#39; valido. Ti preghiamo di contattare la segreteria per le verifiche del caso.</p>
+<p>Grazie</p>','sys_recact',NULL);(EOS)
+
+INSERT INTO r3_cmscarddescr (site,cardid,languagecode,title,summary,textbody,recstatus,rectimestamp)
+ VALUES ('${siteDTO.site}','REGACT_KO','pt','Falha de ativação','Falha de ativação','<h2>Falha de ativa&ccedil;&atilde;o do usu&aacute;rio</h2>
+<p>H&aacute; um problema no processo de ativa&ccedil;&atilde;o de seu usu&aacute;rio. &Eacute; poss&iacute;vel que o link usado para a ativa&ccedil;&atilde;o n&atilde;o &eacute; mais v&aacute;lido. Entre em contato com o administrador do sistema para as verifica&ccedil;&otilde;es necess&aacute;rias.</p>','sys_recact',NULL);(EOS)
+
+## REGACT_OK --------
+INSERT INTO r3_cmscard (site,cardid,systemtitle,pagelinktype,pagelink,pageid,refdate,options,validityrule,validfrom,validto,recstatus,rectimestamp,categoryid) 
+ VALUES ('${siteDTO.site}','REGACT_OK','Attivazione OK','none',NULL,NULL,NULL,NULL,'always',NULL,NULL,'sys_recact',NULL,'help');(EOS)
+ 
+INSERT INTO r3_cmscarddescr (site,cardid,languagecode,title,summary,textbody,recstatus,rectimestamp)
+ VALUES ('${siteDTO.site}','REGACT_OK','it','Attivazione Utenza OK','Attivazione Utenza OK','<p>Utenza attivata con successo.</p>
+<p>Grazie per esserti registrato.</p>','sys_recact',NULL);(EOS)
+ 
+INSERT INTO r3_cmscarddescr (site,cardid,languagecode,title,summary,textbody,recstatus,rectimestamp)
+ VALUES ('${siteDTO.site}','REGACT_OK','pt','Ativação bem sucedida','Ativação bem sucedida','<p>Usu&aacute;rio ativado.<br />
+Obrigado por se registrar.</p>','sys_recact',NULL);(EOS)
+ 
+ 
+##
+## BOF CLASSIFIERS 
+#if ($siteDTO.sitetype == 'regatta')
+
+## r3ea_admincks R3EA Verifiche Amministrative
+INSERT INTO r3_classifier (site,clsid,clsdescr,clstypecode,clsambitcode,cacheinterval,etag,rectimestamp) 
+VALUES ('${siteDTO.site}','r3ea_admincks','R3EA Verifiche Amministrative','linear','system',60,NULL,'2013-09-18 01:11:34');(EOS)
+
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr) 
+VALUES ('chk1${siteSequence}','${siteDTO.site}','r3ea_admincks','chk1${siteSequence}',NULL,'Modulo d''iscrizione',NULL,0,1,NULL,'MI');(EOS)
+
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr) 
+VALUES ('chk2${siteSequence}','${siteDTO.site}','r3ea_admincks','chk2${siteSequence}',NULL,'Fotocopia tessere FIV',NULL,0,2,NULL,'FIV');(EOS)
+
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr) 
+VALUES ('chk3${siteSequence}','${siteDTO.site}','r3ea_admincks','chk3${siteSequence}',NULL,'Fotocopia certificato di stazza',NULL,0,3,NULL,'RAT');(EOS)
+
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr) 
+VALUES ('chk4${siteSequence}','${siteDTO.site}','r3ea_admincks','chk4${siteSequence}',NULL,'Fotocopia certificato di assicurazione',NULL,0,4,NULL,'AS');(EOS)
+
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr) 
+VALUES ('chk5${siteSequence}','${siteDTO.site}','r3ea_admincks','chk5${siteSequence}',NULL,'Attestazione del pagamento',NULL,0,5,NULL,'PAG');(EOS)
+
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr) 
+VALUES ('chk6${siteSequence}','${siteDTO.site}','r3ea_admincks','chk6${siteSequence}',NULL,'Modulo di richiesta rating',NULL,0,6,NULL,'MR');(EOS)
+
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr) 
+VALUES ('chk7${siteSequence}','${siteDTO.site}','r3ea_admincks','chk7${siteSequence}',NULL,'Fotocopia licenza pubblicita''',NULL,0,7,NULL,'PB');(EOS)
+
+## r3ea_apptype R3EA Tipo di Iscrizione
+INSERT INTO r3_classifier (site,clsid,clsdescr,clstypecode,clsambitcode,cacheinterval,etag,rectimestamp) 
+VALUES ('${siteDTO.site}','r3ea_apptype','R3EA Tipo di Iscrizione','linear','system',60,NULL,'2013-09-18 01:11:34');(EOS)
+
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr) 
+VALUES ('apt1${siteSequence}','${siteDTO.site}','r3ea_apptype','apt1${siteSequence}',NULL,'Iscrizione Manifestazione',NULL,0,1,NULL,NULL);(EOS)
+
+## r3ea_authoriz R3EA Liberatorie
+INSERT INTO r3_classifier (site,clsid,clsdescr,clstypecode,clsambitcode,cacheinterval,etag,rectimestamp) 
+ VALUES ('${siteDTO.site}','r3ea_authoriz','R3EA Liberatorie','linear','system',60,NULL,'2013-09-18 01:11:34');(EOS)
+
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr) 
+ VALUES ('auta${siteSequence}','${siteDTO.site}','r3ea_authoriz','auta${siteSequence}',NULL,'A - Dichiarazione di accettazione',NULL,0,1,NULL,'R3EA_AUTHA');(EOS)
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr) 
+ VALUES ('autb${siteSequence}','${siteDTO.site}','r3ea_authoriz','autb${siteSequence}',NULL,'B -  Dichiarazione di assunzione di responsabilita''',NULL,0,2,NULL,'R3EA_AUTHB');(EOS)
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr) 
+ VALUES ('autc${siteSequence}','${siteDTO.site}','r3ea_authoriz','autc${siteSequence}',NULL,'C - Informativa e consenso al trattamento di dati personali',NULL,0,3,NULL,'R3EA_AUTHC');(EOS)
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr) 
+ VALUES ('autd${siteSequence}','${siteDTO.site}','r3ea_authoriz','autd${siteSequence}',NULL,'D - "Nulla Osta" per l''utilizzazione delle immagini',NULL,0,4,NULL,'R3EA_AUTHD');(EOS)
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr) 
+ VALUES ('aute${siteSequence}','${siteDTO.site}','r3ea_authoriz','aute${siteSequence}',NULL,'E - Invio SMS',NULL,0,5,NULL,'R3EA_AUTHE');(EOS)
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr) 
+ VALUES ('autf${siteSequence}','${siteDTO.site}','r3ea_authoriz','autf${siteSequence}',NULL,'F - Iscrizione gratuita alla mailing list del circolo',NULL,0,6,NULL,'R3EA_AUTHF');(EOS)
+
+## r3ea_boatgroup R3EA Raggruppamento
+INSERT INTO r3_classifier (site,clsid,clsdescr,clstypecode,clsambitcode,cacheinterval,etag,rectimestamp) 
+VALUES ('${siteDTO.site}','r3ea_boatgroup','R3EA Raggruppamento','hierarchical','system',60,NULL,'2013-09-18 01:11:34');(EOS)
+
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr) 
+VALUES ('rgr1${siteSequence}','${siteDTO.site}','r3ea_boatgroup','rgr1${siteSequence}',NULL,'Raggruppamenti a seconda del numero degli iscritti',NULL,0,1,NULL,NULL);(EOS)
+
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr) 
+VALUES ('rgr2${siteSequence}','${siteDTO.site}','r3ea_boatgroup','rgr2${siteSequence}',NULL,'ORC - GPH da 450 sec/mi',NULL,0,1,NULL,NULL);(EOS)
+
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr) 
+VALUES ('rgr3${siteSequence}','${siteDTO.site}','r3ea_boatgroup','rgr3${siteSequence}',NULL,'Gruppo "D" - Crociera Classica',NULL,0,2,NULL,NULL);(EOS)
+
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr) 
+VALUES ('rgr4${siteSequence}','${siteDTO.site}','r3ea_boatgroup','rgr4${siteSequence}',NULL,'Gruppo Half Tonner',NULL,0,3,NULL,NULL);(EOS)
+
+insert into r3_classifieritem(site, clsitemid, clsitembusid, parentitemid, clsid, classifieritemdescr, classifieritempath, classifieritemorder, classifieritemdepth)
+  values('${siteDTO.site}', 'rgr5${siteSequence}', 'rgr5${siteSequence}', null, 'r3ea_boatgroup', 'Regata', null, 1, 0);(EOS)
+
+insert into r3_classifieritem(site, clsitemid, clsitembusid, parentitemid, clsid, classifieritemdescr, classifieritempath, classifieritemorder, classifieritemdepth)
+  values('${siteDTO.site}', 'rgrc${siteSequence}', 'rgrc${siteSequence}', 'rgr5${siteSequence}', 'r3ea_boatgroup', 'Classe R1', null, 1, 1);(EOS)
+
+insert into r3_classifieritem(site, clsitemid, clsitembusid, parentitemid, clsid, classifieritemdescr, classifieritempath, classifieritemorder, classifieritemdepth)
+  values('${siteDTO.site}', 'rgrd${siteSequence}', 'rgrd${siteSequence}', 'rgr5${siteSequence}', 'r3ea_boatgroup', 'Classe R2', null, 2, 1);(EOS)
+
+insert into r3_classifieritem(site, clsitemid, clsitembusid, parentitemid, clsid, classifieritemdescr, classifieritempath, classifieritemorder, classifieritemdepth)
+  values('${siteDTO.site}', 'rgre${siteSequence}', 'rgre${siteSequence}', 'rgr5${siteSequence}', 'r3ea_boatgroup', 'Classe R3', null, 3, 1);(EOS)
+
+insert into r3_classifieritem(site, clsitemid, clsitembusid, parentitemid, clsid, classifieritemdescr, classifieritempath, classifieritemorder, classifieritemdepth)
+  values('${siteDTO.site}', 'rgr6${siteSequence}', 'rgr6${siteSequence}', null, 'r3ea_boatgroup', 'Crociera Veloce', null, 2, 0);(EOS)
+
+insert into r3_classifieritem(site, clsitemid, clsitembusid, parentitemid, clsid, classifieritemdescr, classifieritempath, classifieritemorder, classifieritemdepth)
+  values('${siteDTO.site}', 'rgrf${siteSequence}', 'rgrf${siteSequence}', 'rgr6${siteSequence}', 'r3ea_boatgroup', 'Classe C1', null, 1, 1);(EOS)
+
+insert into r3_classifieritem(site, clsitemid, clsitembusid, parentitemid, clsid, classifieritemdescr, classifieritempath, classifieritemorder, classifieritemdepth)
+  values('${siteDTO.site}', 'rgrg${siteSequence}', 'rgrg${siteSequence}', 'rgr6${siteSequence}', 'r3ea_boatgroup', 'Classe C2', null, 2, 1);(EOS)
+
+insert into r3_classifieritem(site, clsitemid, clsitembusid, parentitemid, clsid, classifieritemdescr, classifieritempath, classifieritemorder, classifieritemdepth)
+  values('${siteDTO.site}', 'rgrh${siteSequence}', 'rgrh${siteSequence}', 'rgr6${siteSequence}', 'r3ea_boatgroup', 'Classe C3', null, 3, 1);(EOS)
+
+insert into r3_classifieritem(site, clsitemid, clsitembusid, parentitemid, clsid, classifieritemdescr, classifieritempath, classifieritemorder, classifieritemdepth)
+  values('${siteDTO.site}', 'rgr7${siteSequence}', 'rgr7${siteSequence}', null, 'r3ea_boatgroup', 'Crociera Tecno', null, 3, 0);(EOS)
+
+insert into r3_classifieritem(site, clsitemid, clsitembusid, parentitemid, clsid, classifieritemdescr, classifieritempath, classifieritemorder, classifieritemdepth)
+  values('${siteDTO.site}', 'rgri${siteSequence}', 'rgri${siteSequence}', 'rgr7${siteSequence}', 'r3ea_boatgroup', 'Classe T1', null, 1, 1);(EOS)
+
+insert into r3_classifieritem(site, clsitemid, clsitembusid, parentitemid, clsid, classifieritemdescr, classifieritempath, classifieritemorder, classifieritemdepth)
+  values('${siteDTO.site}', 'rgrl${siteSequence}', 'rgrl${siteSequence}', 'rgr7${siteSequence}', 'r3ea_boatgroup', 'Classe T2', null, 2, 1);(EOS)
+
+insert into r3_classifieritem(site, clsitemid, clsitembusid, parentitemid, clsid, classifieritemdescr, classifieritempath, classifieritemorder, classifieritemdepth)
+  values('${siteDTO.site}', 'rgrm${siteSequence}', 'rgrm${siteSequence}', 'rgr7${siteSequence}', 'r3ea_boatgroup', 'Classe T3', null, 3, 1);(EOS)
+
+insert into r3_classifieritem(site, clsitemid, clsitembusid, parentitemid, clsid, classifieritemdescr, classifieritempath, classifieritemorder, classifieritemdepth)
+  values('${siteDTO.site}', 'rgr8${siteSequence}', 'rgr8${siteSequence}', null, 'r3ea_boatgroup', 'Crociera Classica', null, 4, 0);(EOS)
+
+insert into r3_classifieritem(site, clsitemid, clsitembusid, parentitemid, clsid, classifieritemdescr, classifieritempath, classifieritemorder, classifieritemdepth)
+  values('${siteDTO.site}', 'rgrn${siteSequence}', 'rgrn${siteSequence}', 'rgr8${siteSequence}', 'r3ea_boatgroup', 'Classe C1', null, 1, 1);(EOS)
+
+insert into r3_classifieritem(site, clsitemid, clsitembusid, parentitemid, clsid, classifieritemdescr, classifieritempath, classifieritemorder, classifieritemdepth)
+  values('${siteDTO.site}', 'rgro${siteSequence}', 'rgro${siteSequence}', 'rgr8${siteSequence}', 'r3ea_boatgroup', 'Classe C2', null, 2, 1);(EOS)
+
+insert into r3_classifieritem(site, clsitemid, clsitembusid, parentitemid, clsid, classifieritemdescr, classifieritempath, classifieritemorder, classifieritemdepth)
+  values('${siteDTO.site}', 'rgrp${siteSequence}', 'rgrp${siteSequence}', 'rgr8${siteSequence}', 'r3ea_boatgroup', 'Classe C3', null, 3, 1);(EOS)
+
+insert into r3_classifieritem(site, clsitemid, clsitembusid, parentitemid, clsid, classifieritemdescr, classifieritempath, classifieritemorder, classifieritemdepth)
+  values('${siteDTO.site}', 'rgr9${siteSequence}', 'rgr9${siteSequence}', null, 'r3ea_boatgroup', 'IOR', null, 5, 0);(EOS)
+
+insert into r3_classifieritem(site, clsitemid, clsitembusid, parentitemid, clsid, classifieritemdescr, classifieritempath, classifieritemorder, classifieritemdepth)
+  values('${siteDTO.site}', 'rgrq${siteSequence}', 'rgrq${siteSequence}', 'rgr9${siteSequence}', 'r3ea_boatgroup', 'Classe I1', null, 1, 1);(EOS)
+
+insert into r3_classifieritem(site, clsitemid, clsitembusid, parentitemid, clsid, classifieritemdescr, classifieritempath, classifieritemorder, classifieritemdepth)
+  values('${siteDTO.site}', 'rgrr${siteSequence}', 'rgrr${siteSequence}', 'rgr9${siteSequence}', 'r3ea_boatgroup', 'Classe I2', null, 2, 1);(EOS)
+
+insert into r3_classifieritem(site, clsitemid, clsitembusid, parentitemid, clsid, classifieritemdescr, classifieritempath, classifieritemorder, classifieritemdepth)
+  values('${siteDTO.site}', 'rgru${siteSequence}', 'rgru${siteSequence}', 'rgr9${siteSequence}', 'r3ea_boatgroup', 'Classe I3', null, 3, 1);(EOS)
+
+insert into r3_classifieritem(site, clsitemid, clsitembusid, parentitemid, clsid, classifieritemdescr, classifieritempath, classifieritemorder, classifieritemdepth)
+  values('${siteDTO.site}', 'rgra${siteSequence}', 'rgra${siteSequence}', null, 'r3ea_boatgroup', 'MINIALTURA (E24 - B25 - J24 ...', null, 6, 0);(EOS)
+
+insert into r3_classifieritem(site, clsitemid, clsitembusid, parentitemid, clsid, classifieritemdescr, classifieritempath, classifieritemorder, classifieritemdepth)
+  values('${siteDTO.site}', 'rgrv${siteSequence}', 'rgrv${siteSequence}', 'rgra${siteSequence}', 'r3ea_boatgroup', 'Classe M1', null, 1, 1);(EOS)
+
+insert into r3_classifieritem(site, clsitemid, clsitembusid, parentitemid, clsid, classifieritemdescr, classifieritempath, classifieritemorder, classifieritemdepth)
+  values('${siteDTO.site}', 'rgrz${siteSequence}', 'rgrz${siteSequence}', 'rgra${siteSequence}', 'r3ea_boatgroup', 'Classe M2', null, 2, 1);(EOS)
+
+insert into r3_classifieritem(site, clsitemid, clsitembusid, parentitemid, clsid, classifieritemdescr, classifieritempath, classifieritemorder, classifieritemdepth)
+  values('${siteDTO.site}', 'rgrw${siteSequence}', 'rgrw${siteSequence}', 'rgra${siteSequence}', 'r3ea_boatgroup', 'Classe M3', null, 3, 1);(EOS)
+
+insert into r3_classifieritem(site, clsitemid, clsitembusid, parentitemid, clsid, classifieritemdescr, classifieritempath, classifieritemorder, classifieritemdepth)
+  values('${siteDTO.site}', 'rgrb${siteSequence}', 'rgrb${siteSequence}', null, 'r3ea_boatgroup', 'Vele Bianche', null, 7, 0);(EOS)
+
+insert into r3_classifieritem(site, clsitemid, clsitembusid, parentitemid, clsid, classifieritemdescr, classifieritempath, classifieritemorder, classifieritemdepth)
+  values('${siteDTO.site}', 'rgrk${siteSequence}', 'rgrk${siteSequence}', 'rgrb${siteSequence}', 'r3ea_boatgroup', 'Classe B1', null, 1, 1);(EOS)
+
+insert into r3_classifieritem(site, clsitemid, clsitembusid, parentitemid, clsid, classifieritemdescr, classifieritempath, classifieritemorder, classifieritemdepth)
+  values('${siteDTO.site}', 'rgrj${siteSequence}', 'rgrj${siteSequence}', 'rgrb${siteSequence}', 'r3ea_boatgroup', 'Classe B2', null, 2, 1);(EOS)
+
+insert into r3_classifieritem(site, clsitemid, clsitembusid, parentitemid, clsid, classifieritemdescr, classifieritempath, classifieritemorder, classifieritemdepth)
+  values('${siteDTO.site}', 'rgrx${siteSequence}', 'rgrx${siteSequence}', 'rgrb${siteSequence}', 'r3ea_boatgroup', 'Classe B3', null, 3, 1);(EOS)
+
+## r3ea_mooringloc R3EA Localita'
+INSERT INTO r3_classifier (site,clsid,clsdescr,clstypecode,clsambitcode,cacheinterval,etag,rectimestamp) 
+VALUES ('${siteDTO.site}','r3ea_mooringloc','R3EA Localita'' ormneggio','linear','system',60,NULL,'2013-09-18 01:11:34');(EOS)
+
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr)
+ VALUES ('mr1${siteSequence}','${siteDTO.site}','r3ea_mooringloc','mr1${siteSequence}',NULL,'Darsena Fiumicino',NULL,0,1,NULL,NULL);(EOS)
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr)
+ VALUES ('mr2${siteSequence}','${siteDTO.site}','r3ea_mooringloc','mr2${siteSequence}',NULL,'Porto di Roma',NULL,0,2,NULL,'required');(EOS)
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr)
+ VALUES ('mr3${siteSequence}','${siteDTO.site}','r3ea_mooringloc','mr3${siteSequence}',NULL,'Altro',NULL,0,20,NULL,'required');(EOS)
+ 
+## r3ea_ranktype R3EA Tipo Classifica
+INSERT INTO r3_classifier (site,clsid,clsdescr,clstypecode,clsambitcode,cacheinterval,etag,rectimestamp) 
+VALUES ('${siteDTO.site}','r3ea_ranktype','R3EA Tipo Classifica','linear','system',60,NULL,'2013-09-18 01:11:34');(EOS)
+
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr)
+ VALUES ('rnk1${siteSequence}','${siteDTO.site}','r3ea_ranktype','rnk1${siteSequence}',NULL,'Classifica ORC',NULL,0,1,NULL,NULL);(EOS)
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr)
+ VALUES ('rnk2${siteSequence}','${siteDTO.site}','r3ea_ranktype','rnk2${siteSequence}',NULL,'Classifica IRC',NULL,0,1,NULL,NULL);(EOS)
+
+## r3ea_ratings R3EA Certificati
+INSERT INTO r3_classifier (site,clsid,clsdescr,clstypecode,clsambitcode,cacheinterval,etag,rectimestamp) 
+VALUES ('${siteDTO.site}','r3ea_ratings','R3EA Certificati','linear','system',60,NULL,'2013-09-18 01:11:34');(EOS)
+
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr)
+ VALUES ('rat1${siteSequence}','${siteDTO.site}','r3ea_ratings','rat1${siteSequence}',NULL,'Certificato ORC International',NULL,0,1,NULL,NULL);(EOS)
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr)
+ VALUES ('rat2${siteSequence}','${siteDTO.site}','r3ea_ratings','rat2${siteSequence}',NULL,'Certificato ORC Club',NULL,0,2,NULL,NULL);(EOS)
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr)
+ VALUES ('rat3${siteSequence}','${siteDTO.site}','r3ea_ratings','rat3${siteSequence}',NULL,'Certificato IRC Standard',NULL,0,3,NULL,NULL);(EOS)
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr)
+ VALUES ('rat4${siteSequence}','${siteDTO.site}','r3ea_ratings','rat4${siteSequence}',NULL,'Certificato IRC Semplificato',NULL,0,4,NULL,NULL);(EOS)
+
+## r3ea_ratings R3EA r3ea_sinott
+insert into r3_classifier (site, clsid, clsdescr, clstypecode, clsambitcode, cacheinterval) 
+  values('${siteDTO.site}',  'r3ea_sinott', 'Raggruppamenti Classifiche', 'linear', 'system', 60);(EOS)
+
+## r3ea_sailmat R3EA Sail Material
+INSERT INTO r3_classifier (site,clsid,clsdescr,clstypecode,clsambitcode,cacheinterval,etag,rectimestamp) 
+VALUES ('${siteDTO.site}','r3ea_sailmat','R3EA Sail Material','linear','system',60,NULL,'2013-09-18 01:11:34');(EOS)
+
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr)
+ VALUES ('smt1${siteSequence}','${siteDTO.site}','r3ea_sailmat','r3ea_carbon',NULL,'Carbonio',NULL,0,5,NULL,NULL);(EOS) 
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr)
+ VALUES ('smt2${siteSequence}','${siteDTO.site}','r3ea_sailmat','r3ea_dacron',NULL,'Dacron',NULL,0,1,NULL,NULL);(EOS)
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr)
+ VALUES ('smt3${siteSequence}','${siteDTO.site}','r3ea_sailmat','r3ea_kevlar',NULL,'Pentex, Kevlar, Spectra',NULL,0,4,NULL,NULL);(EOS)
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr)
+ VALUES ('smt4${siteSequence}','${siteDTO.site}','r3ea_sailmat','r3ea_matelse',NULL,'Altro',NULL,0,6,NULL,NULL);(EOS)
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr)
+ VALUES ('smt5${siteSequence}','${siteDTO.site}','r3ea_sailmat','r3ea_mylar',NULL,'Mylar, Pentex',NULL,0,3,NULL,NULL);(EOS)
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr)
+ VALUES ('smt6${siteSequence}','${siteDTO.site}','r3ea_sailmat','r3ea_poliest',NULL,'Sandwich Poliestere',NULL,0,2,NULL,NULL);(EOS)
+
+## r3ea_crociera R3EA Caratteristiche Crociera
+ INSERT INTO r3_classifier (site,clsid,clsdescr,clstypecode,clsambitcode,cacheinterval,etag,rectimestamp) 
+ VALUES ('${siteDTO.site}','r3ea_crociera','R3EA Caratteristiche Crociera','linear','system',60,NULL,'2013-09-18 01:11:34');(EOS)
+ 
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr)
+ VALUES ('crc1${siteSequence}','${siteDTO.site}','r3ea_crociera','crc1${siteSequence}',NULL,'Essere conformi all''originale configurazione da diporto; senza modifiche a scafo e appendici; con interni completi e idonei per lunghe navigazioni; in regola con le Norme per la Navigazione.',NULL,0,1,NULL,NULL);(EOS)
+ 
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr)
+ VALUES ('crc2${siteSequence}','${siteDTO.site}','r3ea_crociera','crc2${siteSequence}',NULL,'Avere almeno quattro dei parametri previsti dalla Normativa Vela D''Altura 2014 o cinque se tra questi ci sono le vele a bassa tecnologia',NULL,0,1,NULL,NULL);(EOS)
+
+## Dichiarazione raggruppamento
+INSERT INTO r3_classifier (site,clsid,clsdescr,clstypecode,clsambitcode,cacheinterval,etag,rectimestamp) 
+VALUES ('${siteDTO.site}','r3ea_boatgroup2','R3EA Dichiarazioni per Raggruppamento','linear','system',60,NULL,'2013-09-18 01:11:34');(EOS)
+
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr) 
+  VALUES ('bg21${siteSequence}','${siteDTO.site}','r3ea_boatgroup2','bg21${siteSequence}',NULL,'Intendo partecipare alla classifica  Gran Crociera dichiarando di avere le caratteristiche richieste dalla normativa Altura 2014',NULL,0,1,NULL,NULL);(EOS)
+
+## Caratteristiche Gran Crociera
+INSERT INTO r3_classifier (site,clsid,clsdescr,clstypecode,clsambitcode,cacheinterval,etag,rectimestamp) 
+VALUES ('${siteDTO.site}','r3ea_orcgranc','R3EA ORC Gran Crociera','linear','system',60,NULL,'2013-09-18 01:11:34');(EOS)
+
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr) 
+  VALUES ('gcr1${siteSequence}','${siteDTO.site}','r3ea_orcgranc','gcr1${siteSequence}',NULL,'1 - Rollafiocco o Garrocci',NULL,0,1,NULL,NULL);(EOS)
+
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr) 
+  VALUES ('gcr2${siteSequence}','${siteDTO.site}','r3ea_orcgranc','gcr2${siteSequence}',NULL,'2 - Rollaranda',NULL,0,2,NULL,NULL);(EOS)
+
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr) 
+  VALUES ('gcr3${siteSequence}','${siteDTO.site}','r3ea_orcgranc','gcr3${siteSequence}',NULL,'3 - Ponte in teak completo',NULL,0,3,NULL,NULL);(EOS)
+
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr) 
+  VALUES ('gcr4${siteSequence}','${siteDTO.site}','r3ea_orcgranc','gcr4${siteSequence}',NULL,'4 - Elica a Pale Fisse',NULL,0,4,NULL,NULL);(EOS)
+
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr) 
+  VALUES ('gcr5${siteSequence}','${siteDTO.site}','r3ea_orcgranc','gcr5${siteSequence}',NULL,'5 - Alberatura Senza Rastremature',NULL,0,5,NULL,NULL);(EOS)
+
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr) 
+  VALUES ('gcr6${siteSequence}','${siteDTO.site}','r3ea_orcgranc','gcr6${siteSequence}',NULL,'6 - Salpancore in coperta',NULL,0,6,NULL,NULL);(EOS)
+
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr) 
+  VALUES ('gcr7${siteSequence}','${siteDTO.site}','r3ea_orcgranc','gcr7${siteSequence}',NULL,'6 - Salpancore nel gavone di prua con catenza (Obblig. con LOA > 11,40)',NULL,0,7,NULL,NULL);(EOS)
+
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr) 
+  VALUES ('gcr8${siteSequence}','${siteDTO.site}','r3ea_orcgranc','gcr8${siteSequence}',NULL,'7 - Desalinizzatore',NULL,0,8,NULL,NULL);(EOS)
+
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr) 
+  VALUES ('gcr9${siteSequence}','${siteDTO.site}','r3ea_orcgranc','gcr9${siteSequence}',NULL,'8 - Bulbo in ghisa (Se la serie monta il nbulbo in piombo)',NULL,0,9,NULL,NULL);(EOS)
+
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr) 
+  VALUES ('gcra${siteSequence}','${siteDTO.site}','r3ea_orcgranc','gcra${siteSequence}',NULL,'9 - Bowthruster a vista',NULL,0,10,NULL,NULL);(EOS)
+
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr) 
+  VALUES ('gcrb${siteSequence}','${siteDTO.site}','r3ea_orcgranc','gcrb${siteSequence}',NULL,'10 - Impianto di condizionamento',NULL,0,11,NULL,NULL);(EOS)
+
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr) 
+  VALUES ('gcrc${siteSequence}','${siteDTO.site}','r3ea_orcgranc','gcrc${siteSequence}',NULL,'11 - Vele di tessuto a bassa tecnologia (Dacron e altre fibre poliesteri)',NULL,0,12,NULL,NULL);(EOS)
+
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr) 
+  VALUES ('gcrd${siteSequence}','${siteDTO.site}','r3ea_orcgranc','gcrd${siteSequence}',NULL,'12 - Vele di tessuto a bassa tecnologia (Dacron e altre fibre poliesteri, poliammide, cotone con filati a bassa elasticit� e senza laminature)',NULL,0,13,NULL,NULL);(EOS)
+
+INSERT INTO r3_classifieritem (clsitemid,site,clsid,clsitembusid,parentitemid,classifieritemdescr,classifieritempath,classifieritemdepth,classifieritemorder,classifieritemiattr,classifieritemsattr) 
+  VALUES ('gcre${siteSequence}','${siteDTO.site}','r3ea_orcgranc','gcre${siteSequence}',NULL,'13 - Anno di costruzione ante 1992',NULL,0,14,NULL,NULL);(EOS)
+#end
+ 
+## EOF CLASSIFIERS 
+##
+ 

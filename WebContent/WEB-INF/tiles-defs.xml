@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+       "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+
+<tiles-definitions>
+
+    <!-- ##################################################################################### -->
+    <definition name="blanklayout"                    path="/resources/tileslayouts/blankWindowLayout.jsp" >
+        <put name="windowLayout_pageTitle"            value="Regatta3" />
+        <put name="layout_templates_001"              value="/resources/tileslayouts/site_page_templates.jsp" />  
+        <put name="layout_templates_002"              value="/resources/tileslayouts/shakeus_page_templates.jsp" />              
+        <put name="layout_templates_003"              value="/resources/tileslayouts/wbs_page_templates.jsp" />         
+    </definition>
+
+    <definition name="speedsails_blankHomeWindowLayout"  path="/resources/tileslayouts/blankWindowLayout.jsp" >
+         <put name="windowLayout_pageTitle"           value="Veleria SpeedSails" />
+         <put name="layout_templates_001"                 value="/resources/tileslayouts/ss_site_page_templates.jsp" />
+    </definition>
+
+    <definition name="speedsails_windowLayout"       path="/resources/tileslayouts/yachtclub_layout.jsp" >
+        <put name="windowLayout_pageTitle"           value="Veleria SpeedSails" />
+        <put name="windowLayout_footer"              value="/resources/tileslayouts/ss_page_footer.jsp" />
+        <put name="windowLayout_header"              value="/resources/tileslayouts/ss_page_header.jsp" />
+        <put name="layout_templates"                 value="/resources/tileslayouts/ss_site_page_templates.jsp" />
+    </definition>
+    
+    <definition name="speedsails_homeWindowLayout"    path="/resources/tileslayouts/yachtclub_layout.jsp" >
+        <put name="windowLayout_pageTitle"           value="Veleria SpeedSails" />
+        <put name="windowLayout_footer"              value="/resources/tileslayouts/ss_page_footer.jsp" />
+        <put name="windowLayout_header"              value="/resources/tileslayouts/yachtclub_homepage_header.jsp" />
+        <put name="layout_templates"                 value="/resources/tileslayouts/ss_site_page_templates.jsp" />
+    </definition>
+    
+    <definition name="yachtclublayout_home"    path="/resources/tileslayouts/yachtclub_layout.jsp" >
+        <put name="windowLayout_pageTitle"           value="Regatta3" />
+        <put name="windowLayout_footer"              value="/resources/tileslayouts/yachtclub_page_footer.jsp" />
+        <put name="windowLayout_header"              value="/resources/tileslayouts/empty.tile.jsp" />
+        <put name="layout_templates"                 value="/resources/tileslayouts/site_page_templates.jsp" />
+    </definition>
+
+    <definition name="yachtclublayout"        path="/resources/tileslayouts/yachtclub_layout.jsp" >
+        <put name="windowLayout_pageTitle"           value="Regatta3" />
+        <put name="windowLayout_footer"              value="/resources/tileslayouts/yachtclub_page_footer.jsp" />
+        <put name="windowLayout_header"              value="/resources/tileslayouts/yachtclub_page_header.jsp" />
+        <put name="layout_templates"                 value="/resources/tileslayouts/site_page_templates.jsp" />
+    </definition>
+    
+    <!-- #####################################################################################  -->
+    <definition name="regattalayout2"    path="/resources/tileslayouts/site_layout_skinned.jsp" >
+        <put name="windowLayout_pageTitle"         value="Regatta3" />                
+        <put name="layout_templates"               value="/resources/tileslayouts/site_page_templates.jsp" />
+        <put name="wbs_layout_templates"           value="/resources/tileslayouts/wbs_page_templates.jsp" />        
+    </definition>
+
+    <!-- ##################################################################################### -->
+    <definition name="regattalayout"    path="/resources/tileslayouts/shakeus_layout.jsp" >
+        <put name="windowLayout_pageTitle"            value="ShakeUs" />
+        <put name="windowLayout_header"               value="/resources/tileslayouts/regatta_layout_header.jsp" />         
+        <put name="windowLayout_footer"               value="/resources/tileslayouts/shakeus_layout_footer.jsp" />
+                
+        <!-- Il Profile mi permette di inserire una personalizzazione in termini di classe CSS all'interno della gerarchia 
+             Possibili valori: gsidebar-layout-cssprofile, default-layout-cssprofile
+             <put name="windowLayout_cssprofile"           value="gsidebar-layout-cssprofile" />
+        -->
+        
+        
+        <put name="windowLayout_gsidebar"             value="/resources/tileslayouts/empty.tile.jsp" />         
+        <put name="layout_templates_001"              value="/resources/tileslayouts/site_page_templates.jsp" />  
+        <put name="layout_templates_002"              value="/resources/tileslayouts/shakeus_page_templates.jsp" />
+        <put name="layout_templates_003"              value="/resources/tileslayouts/wbs_page_templates.jsp" />                      
+    </definition>
+         
+             
+    <!-- ##################################################################################### 
+         Layout con la sola barra in alto. Utilizzato nella mappa di esplorazione.
+    -->
+    <definition name="shakeusblanklayout"             path="/resources/tileslayouts/shakeus_blank_layout.jsp" >
+        <put name="windowLayout_pageTitle"            value="ShakeUs" />
+        <put name="windowLayout_header"               value="/resources/tileslayouts/shakeus_layout_header.jsp" />         
+        <put name="windowLayout_footer"               value="/resources/tileslayouts/shakeus_layout_footer.jsp" />
+                
+        <!-- Il Profile mi permette di inserire una personalizzazione in termini di classe CSS all'interno della gerarchia 
+             Possibili valori: gsidebar-layout-cssprofile, default-layout-cssprofile
+             <put name="windowLayout_cssprofile"           value="gsidebar-layout-cssprofile" />
+        -->
+        
+        
+        <put name="windowLayout_gsidebar"             value="/resources/tileslayouts/empty.tile.jsp" />         
+        <put name="layout_templates_001"              value="/resources/tileslayouts/site_page_templates.jsp" />  
+        <put name="layout_templates_002"              value="/resources/tileslayouts/shakeus_page_templates.jsp" />              
+        <put name="layout_templates_003"              value="/resources/tileslayouts/wbs_page_templates.jsp" />  
+
+    </definition>
+    
+    <definition name="shakeuslayout"    path="/resources/tileslayouts/shakeus_layout.jsp" >
+        <put name="windowLayout_pageTitle"            value="ShakeUs" />
+        <put name="windowLayout_header"               value="/resources/tileslayouts/shakeus_layout_header.jsp" />         
+        <put name="windowLayout_footer"               value="/resources/tileslayouts/shakeus_layout_footer.jsp" />
+                
+        <!-- Il Profile mi permette di inserire una personalizzazione in termini di classe CSS all'interno della gerarchia 
+             Possibili valori: gsidebar-layout-cssprofile, default-layout-cssprofile
+             <put name="windowLayout_cssprofile"           value="gsidebar-layout-cssprofile" />
+        -->
+        
+        
+        <put name="windowLayout_gsidebar"             value="/resources/tileslayouts/empty.tile.jsp" />         
+        <put name="layout_templates_001"              value="/resources/tileslayouts/site_page_templates.jsp" />  
+        <put name="layout_templates_002"              value="/resources/tileslayouts/shakeus_page_templates.jsp" />              
+        <put name="layout_templates_003"              value="/resources/tileslayouts/wbs_page_templates.jsp" />  
+
+    </definition>
+
+	<!-- ##################################################################################### -->
+    <definition name="shkadminlayout"    			  path="/resources/tileslayouts/shkadmin_lte_layout.jsp" >
+        <put name="windowLayout_pageTitle"            value="ShakeUs" />
+        <put name="windowLayout_header"               value="/resources/tileslayouts/shkadmin_layout_header.jsp" />         
+        <put name="windowLayout_footer"               value="/resources/tileslayouts/shakeus_layout_footer.jsp" />
+                
+        <!-- Il Profile mi permette di inserire una personalizzazione in termini di classe CSS all'interno della gerarchia 
+             Possibili valori: gsidebar-layout-cssprofile, default-layout-cssprofile
+             <put name="windowLayout_cssprofile"           value="gsidebar-layout-cssprofile" />
+        -->
+        <put name="windowLayout_cssprofile"           value="gsidebar-layout-cssprofile" />
+        
+        <put name="windowLayout_gsidebar"             value="/resources/tileslayouts/empty.tile.jsp" />         
+        <put name="layout_templates_001"              value="/resources/tileslayouts/site_page_templates.jsp" />  
+        <put name="layout_templates_002"              value="/resources/tileslayouts/shakeus_page_templates.jsp" />              
+        <put name="layout_templates_003"              value="/resources/tileslayouts/wbs_page_templates.jsp" />  
+    </definition>
+    
+    <!-- ##################################################################################### 
+    <definition name="freewalllayout"   path="/resources/tileslayouts/blankWindowLayout.jsp" >
+        <put name="windowLayout_pageTitle"            value="Regatta3" />
+        <put name="layout_templates_001"              value="/resources/tileslayouts/site_page_templates.jsp" />
+        <put name="layout_templates_002"              value="/resources/tileslayouts/shakeus_page_templates.jsp" />        
+    </definition>
+    -->
+    
+    <!-- ##################################################################################### -->
+    <definition name="defaultlayout_console"    path="/resources/tileslayouts/shkadmin_lte_layout.jsp" >
+        <put name="windowLayout_pageTitle"            value="Regatta3" />
+        <put name="windowLayout_header"               value="/resources/tileslayouts/console_lte_layout_header.jsp" /> 
+        <put name="windowLayout_footer"               value="/resources/tileslayouts/shakeus_layout_footer.jsp" />
+                
+        <!-- Il Profile mi permette di inserire una personalizzazione in termini di classe CSS all'interno della gerarchia 
+             Possibili valori: gsidebar-layout-cssprofile, default-layout-cssprofile
+        -->
+        <put name="windowLayout_cssprofile"           value="gsidebar-layout-cssprofile" />
+        
+        <put name="windowLayout_gsidebar"             value="/resources/tileslayouts/empty.tile.jsp" />         
+        <put name="layout_templates_001"              value="/resources/tileslayouts/site_page_templates.jsp" />  
+        <put name="layout_templates_002"              value="/resources/tileslayouts/shakeus_page_templates.jsp" />              
+        <put name="layout_templates_003"              value="/resources/tileslayouts/wbs_page_templates.jsp" />             
+    </definition>
+        
+    <!-- ##################################################################################### -->
+    <definition name="defaultlayout_console_ts"    path="/resources/tileslayouts/shkadmin_lte_layout_ts.jsp" >
+        <put name="windowLayout_pageTitle"            value="Regatta3" />
+        <put name="windowLayout_header"               value="/resources/tileslayouts/console_lte_layout_header.jsp" /> 
+        <put name="windowLayout_footer"               value="/resources/tileslayouts/shakeus_layout_footer.jsp" />
+                
+        <!-- Il Profile mi permette di inserire una personalizzazione in termini di classe CSS all'interno della gerarchia 
+             Possibili valori: gsidebar-layout-cssprofile, default-layout-cssprofile
+        -->
+        <put name="windowLayout_cssprofile"           value="gsidebar-layout-cssprofile" />
+        
+        <put name="windowLayout_gsidebar"             value="/resources/tileslayouts/empty.tile.jsp" />         
+        <put name="layout_templates_001"              value="/resources/tileslayouts/site_page_templates.jsp" />  
+        <put name="layout_templates_002"              value="/resources/tileslayouts/shakeus_page_templates.jsp" />              
+        <put name="layout_templates_003"              value="/resources/tileslayouts/wbs_page_templates.jsp" />             
+    </definition>
+            
+</tiles-definitions>

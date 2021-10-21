@@ -1,0 +1,16 @@
+
+$.r3Utils.namespace("org.r3.wbs.wbsfillout", window, function(aNamespace) 
+{
+  aNamespace.message = {
+    waiting:"Aguarde...",
+    wbstextEmptyConfirmation: "Atenção, não pode deixar a atividade em branco! Indicar um breve comentário",
+    initializationerror: "Occorreu um erro inesperado. O processamento não pode ser continuado",
+    
+    wbs_detail_breadcrumb: "lista de atividades",
+    wbs_node_detail_breadcrumb: "Nó",
+    
+    wbsnodeactionform_nodename : "Detalhe do nó",
+    wbsnodeactionform_completioneffort_greaterThan_validation : "Indicare un valore in aggiornamento dell'effort impiegato"
+    
+  };
+});

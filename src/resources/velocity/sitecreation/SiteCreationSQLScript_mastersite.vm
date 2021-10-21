@@ -1,0 +1,88 @@
+##
+##
+## $siteDTO: DTO site regata in fase di registrazione
+## $sevEventDTO: DTO sev_event
+## $siteSequence: String
+## $userDTO: Logged User
+
+
+##
+## BOF CMSCATEGORY  
+
+insert into r3_cmscategory (site, categoryid, categorydescr, previewtmpl, fulltmpl,categorymode)
+ values('${siteDTO.site}', 'article', 'Articolo', 'cms_tpl_simple', 'cms_tpl_simple', 'promoted');(EOS)
+
+insert into r3_cmscategory (site, categoryid, categorydescr, previewtmpl, fulltmpl,categorymode)
+ values('${siteDTO.site}', 'c_carousel', 'Scheda Carousel', 'cms_tpl_simple', 'cms_tpl_simple', 'promoted');(EOS)
+
+## EOF CMSCATEGORY  
+##
+
+##
+## BOF CMSATTACHMENTTYPE  
+insert into  r3_cmsattachmenttype (site, attachtypeid, attachtypedescr, contenttype, imagescaling, iconscaling, propertyrole, attachscope)
+values ('${siteDTO.site}', 'cms_carousel_lg', 'Banner Grande Carousel', 'image/jpeg,image/gif,image/png', null, null, 'cms_carousel_lg', 'card_scope');(EOS)
+
+insert into  r3_cmsattachmenttype (site, attachtypeid, attachtypedescr, contenttype, imagescaling, iconscaling, propertyrole, attachscope)
+values ('${siteDTO.site}', 'cms_carousel_sm', 'Banner Piccolo Carousel', 'image/jpeg,image/gif,image/png', '140,80', null, 'cms_carousel_sm', 'card_scope');(EOS)
+
+## EOF CMSATTACHMENTTYPE  
+##
+
+##
+## BOF CMSGROUP        
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'grp_pressinfo', 'Comunicati Stampa', 'sys_recact');(EOS)
+
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'articles', 'Articoli', 'sys_recact');(EOS)
+
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'homearticles', 'Articoli Home Page', 'sys_recact');(EOS)
+
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'c_homecarousel', 'Home Carousel', 'sys_recact');(EOS)
+
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'friendcarousel', 'Friend Carousel', 'sys_recact');(EOS)
+
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'sponsorcarousel', 'Sponsor Carousel', 'sys_recact');(EOS)
+
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'homebriefnews', 'Notizie Brevi Home Page', 'sys_recact');(EOS)
+## EOF CMSGROUP  
+##
+
+##
+## BOF CMSPAGE
+##
+## insert into r3_cmspage (site, pageid, pagetitle, forwardview, visibility, pagetype, pageicon1, pagelink, pageorder, pagestyle)
+##   values('${siteDTO.site}', 'console', 'Area Amministrativa', null, 'cmspg_txtmenu', 'page', null, '/org/r3/console/home.do', 45, null);(EOS) 
+insert into r3_cmspage (site, pageid, pagetitle, forwardview, visibility, pagetype, pageorder, pagelink, pageicon1, pagestyle)
+   values('${siteDTO.site}', 'articles', 'Articoli', 'articles', 'cmspg_txtmenu,cmspg_iconmenu', 'cmspage', 20, '/org/r3/cms/cmspage.do?pageid=articles', 'icon_002.jpg', 'grade3');(EOS)
+
+insert into r3_cmspage (site, pageid, pagetitle, forwardview, visibility, pagetype, pageorder, pagelink, pageicon1, pagestyle)
+   values('${siteDTO.site}', 'home', 'Home', null, 'cmspg_iconmenu', 'page', 10, '/org/r3/home.do', 'icon_cvf.png', 'grade4');(EOS)
+
+insert into r3_cmspagedescr (site, pageid, languagecode, pagetitle)
+  select site, pageid, 'it', pagetitle from r3_cmspage where site = '${siteDTO.site}';(EOS)
+
+##
+## -------------------------------------------------
+## 
+
+## Traduzione al Portoghese delle pagine
+  
+##
+## -------------------------------------------------
+## 
+
+## EOF CMSPAGE
+##
+  
+##
+## Site Properties
+##
+
+ 

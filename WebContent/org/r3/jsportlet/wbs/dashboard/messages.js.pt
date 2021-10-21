@@ -1,0 +1,14 @@
+
+$.r3Utils.namespace("org.r3.jsportlet.wbs.dashboard", window, function(aNamespace) 
+{
+  aNamespace.message = {
+	   numberOfCompleted: "N. ações concluídas",
+	   numberOfStarted: "N. ações NÃO concluídas",
+	   numberOfNotStarted: "N. ações NÃO começadas",
+
+	   numberOfOnTimeCompleted: "N. ações concluídas regularmente",
+	   numberOfLateCompleted: "N. ações concluídas tarde",
+	   numberOfLateIncomplete: "N. ações NÃO concluídas e atrasadas",
+	   numberOfOnTimeIncomplete: "N. ações NÃO concluídas mas não atrasadas"	   
+  };
+});

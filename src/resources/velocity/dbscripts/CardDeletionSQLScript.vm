@@ -1,0 +1,17 @@
+##
+##
+## $cardDTO: DTO card in cancellazione
+##
+##
+
+
+delete from r3_cmscardchannel where site = '$cardDTO.site' and cardid = '$cardDTO.cardid';
+
+delete from r3_cmscardcategory where site = '$cardDTO.site' and cardid = '$cardDTO.cardid';
+delete from r3_cmscarddescr where site = '$cardDTO.site' and cardid = '$cardDTO.cardid';
+delete from r3_cmscardgroup where site = '$cardDTO.site' and cardid = '$cardDTO.cardid';
+
+update r3_cmscardproperty set refpropertyid = null where site = '$cardDTO.site' and cardid = '$cardDTO.cardid';
+delete from r3_cmscardproperty where site = '$cardDTO.site' and cardid = '$cardDTO.cardid';
+
+delete from r3_cmscard where site = '$cardDTO.site' and cardid = '$cardDTO.cardid';

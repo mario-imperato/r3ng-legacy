@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--
+  TODO: xmlCopyRight.txt
+   
+  -->
+<!--
+  TODO: xmlReadme.txt
+   
+  -->
+
+<!-- <mapper resource="org/r3/db/system/fileimport/fileimportdata/FileImportDataMapper.xml"/> -->
+<mapper namespace="org.r3.db.system.fileimport.fileimportdata.FileImportDataMapper" >
+    <resultMap id="BaseResultMap" type="org.r3.db.system.fileimport.fileimportdata.FileImportDataDTO" >
+         <id column="importdataid" property="importdataid" jdbcType="INTEGER" />
+           <result column="site" property="site" jdbcType="VARCHAR" />
+           <result column="importid" property="importid" jdbcType="VARCHAR" />
+           <result column="recordtype" property="recordtype" jdbcType="VARCHAR" />
+           <result column="recordnumber" property="recordnumber" jdbcType="INTEGER" />
+           <result column="col1" property="col1" jdbcType="VARCHAR" />
+           <result column="col2" property="col2" jdbcType="VARCHAR" />
+           <result column="col3" property="col3" jdbcType="VARCHAR" />
+           <result column="col4" property="col4" jdbcType="VARCHAR" />
+           <result column="col5" property="col5" jdbcType="VARCHAR" />
+           <result column="col6" property="col6" jdbcType="VARCHAR" />
+           <result column="col7" property="col7" jdbcType="VARCHAR" />
+           <result column="col8" property="col8" jdbcType="VARCHAR" />
+           <result column="col9" property="col9" jdbcType="VARCHAR" />
+           <result column="cola" property="cola" jdbcType="VARCHAR" />
+           <result column="colb" property="colb" jdbcType="VARCHAR" />
+           <result column="colc" property="colc" jdbcType="VARCHAR" />
+           <result column="cold" property="cold" jdbcType="VARCHAR" />
+           <result column="cole" property="cole" jdbcType="VARCHAR" />
+           <result column="colf" property="colf" jdbcType="VARCHAR" />
+           <result column="recstatus" property="recstatus" jdbcType="VARCHAR" />
+           <result column="rectimestamp" property="rectimestamp" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+  <sql id="Filter_Where_Clause" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+                <when test="criterion.subSelectCriterion" >
+                  and ${criterion.prefixCondition} #{criterion.value} ${criterion.suffixCondition}
+                </when>                                
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <!--
+  <sql id="Filter_Where_Clause_4_Update" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  -->  
+  <sql id="Base_Column_List" >
+    importdataid,  site,  importid,  recordtype,  recordnumber,  col1,  col2,  col3,  col4,
+  col5,  col6,  col7,  col8,  col9,  cola,  colb,  colc,  cold,
+  cole,  colf,  recstatus,  rectimestamp  </sql>
+  <select id="selectByImportdataid" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from r3_fileimportdata
+    where importdataid = #{importdataid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByImportdataid" parameterType="map" >
+    delete
+    from r3_fileimportdata
+    where importdataid = #{importdataid,jdbcType=INTEGER}
+  </delete>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from r3_fileimportdata    
+    where  importdataid = #{pk.importdataid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete
+    from r3_fileimportdata
+    where  importdataid = #{pk.importdataid,jdbcType=INTEGER}
+  </delete>  
+  <select id="select" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <if test="filter != null &amp;&amp; filter.distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from r3_fileimportdata
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+    <if test="filter != null &amp;&amp; filter.orderByClause != null" >
+      order by ${filter.orderByClause}
+    </if>
+    <if test="filter != null &amp;&amp; filter.limitFetch > 0" >
+      limit ${filter.limitFetch}
+    </if>
+  </select>
+  <select id="count" parameterType="map" resultType="java.lang.Integer" >
+    select count(*) from r3_fileimportdata
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </select>  
+  <delete id="delete" parameterType="map" >
+    delete from r3_fileimportdata
+    <!-- _parameter: dato che e' una map lo sostituisco con il nome del parametro in quanto non è l'unico -->
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="map" >
+    insert into r3_fileimportdata (
+ importdataid, site, importid, recordtype, recordnumber, col1, col2, col3, col4,
+ col5, col6, col7, col8, col9, cola, colb, colc, cold,
+ cole, colf, recstatus, rectimestamp      )
+    values (
+ 
+ #{record.importdataid,jdbcType=INTEGER}, 
+ #{record.site,jdbcType=VARCHAR}, 
+ #{record.importid,jdbcType=VARCHAR}, 
+ #{record.recordtype,jdbcType=VARCHAR},
+ 
+ #{record.recordnumber,jdbcType=INTEGER}, 
+ #{record.col1,jdbcType=VARCHAR}, 
+ #{record.col2,jdbcType=VARCHAR}, 
+ #{record.col3,jdbcType=VARCHAR},
+ 
+ #{record.col4,jdbcType=VARCHAR}, 
+ #{record.col5,jdbcType=VARCHAR}, 
+ #{record.col6,jdbcType=VARCHAR}, 
+ #{record.col7,jdbcType=VARCHAR},
+ 
+ #{record.col8,jdbcType=VARCHAR}, 
+ #{record.col9,jdbcType=VARCHAR}, 
+ #{record.cola,jdbcType=VARCHAR}, 
+ #{record.colb,jdbcType=VARCHAR},
+ 
+ #{record.colc,jdbcType=VARCHAR}, 
+ #{record.cold,jdbcType=VARCHAR}, 
+ #{record.cole,jdbcType=VARCHAR}, 
+ #{record.colf,jdbcType=VARCHAR},
+ 
+ #{record.recstatus,jdbcType=VARCHAR}, 
+ #{record.rectimestamp,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="update" parameterType="map" >
+    update r3_fileimportdata
+    <set >
+      <if test="record.siteDirty" >
+        site = #{record.site,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.importidDirty" >
+        importid = #{record.importid,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.recordtypeDirty" >
+        recordtype = #{record.recordtype,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.recordnumberDirty" >
+        recordnumber = #{record.recordnumber,jdbcType=INTEGER},
+      </if>      
+      <if test="record.col1Dirty" >
+        col1 = #{record.col1,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.col2Dirty" >
+        col2 = #{record.col2,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.col3Dirty" >
+        col3 = #{record.col3,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.col4Dirty" >
+        col4 = #{record.col4,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.col5Dirty" >
+        col5 = #{record.col5,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.col6Dirty" >
+        col6 = #{record.col6,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.col7Dirty" >
+        col7 = #{record.col7,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.col8Dirty" >
+        col8 = #{record.col8,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.col9Dirty" >
+        col9 = #{record.col9,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.colaDirty" >
+        cola = #{record.cola,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.colbDirty" >
+        colb = #{record.colb,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.colcDirty" >
+        colc = #{record.colc,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.coldDirty" >
+        cold = #{record.cold,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.coleDirty" >
+        cole = #{record.cole,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.colfDirty" >
+        colf = #{record.colf,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.recstatusDirty" >
+        recstatus = #{record.recstatus,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.rectimestampDirty" >
+        rectimestamp = #{record.rectimestamp,jdbcType=TIMESTAMP},
+      </if>      
+    </set>
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+      <!-- Non dovrebbe servire in quanto il filter e' sempre named. -->
+      <!-- <include refid="Filter_Where_Clause_4_Update" /> -->
+    </if>
+  </update>
+  <update id="updateByPrimaryKey" parameterType="map" >
+    update r3_fileimportdata
+    <set >
+      <if test="record.siteDirty" >
+        site = #{record.site,jdbcType=VARCHAR},
+      </if>
+      <if test="record.importidDirty" >
+        importid = #{record.importid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.recordtypeDirty" >
+        recordtype = #{record.recordtype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.recordnumberDirty" >
+        recordnumber = #{record.recordnumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.col1Dirty" >
+        col1 = #{record.col1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.col2Dirty" >
+        col2 = #{record.col2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.col3Dirty" >
+        col3 = #{record.col3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.col4Dirty" >
+        col4 = #{record.col4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.col5Dirty" >
+        col5 = #{record.col5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.col6Dirty" >
+        col6 = #{record.col6,jdbcType=VARCHAR},
+      </if>
+      <if test="record.col7Dirty" >
+        col7 = #{record.col7,jdbcType=VARCHAR},
+      </if>
+      <if test="record.col8Dirty" >
+        col8 = #{record.col8,jdbcType=VARCHAR},
+      </if>
+      <if test="record.col9Dirty" >
+        col9 = #{record.col9,jdbcType=VARCHAR},
+      </if>
+      <if test="record.colaDirty" >
+        cola = #{record.cola,jdbcType=VARCHAR},
+      </if>
+      <if test="record.colbDirty" >
+        colb = #{record.colb,jdbcType=VARCHAR},
+      </if>
+      <if test="record.colcDirty" >
+        colc = #{record.colc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.coldDirty" >
+        cold = #{record.cold,jdbcType=VARCHAR},
+      </if>
+      <if test="record.coleDirty" >
+        cole = #{record.cole,jdbcType=VARCHAR},
+      </if>
+      <if test="record.colfDirty" >
+        colf = #{record.colf,jdbcType=VARCHAR},
+      </if>
+      <if test="record.recstatusDirty" >
+        recstatus = #{record.recstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rectimestampDirty" >
+        rectimestamp = #{record.rectimestamp,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where  importdataid = #{record.importdataid,jdbcType=INTEGER}
+  </update>
+
+</mapper>

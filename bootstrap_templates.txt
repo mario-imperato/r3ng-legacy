@@ -1,0 +1,63 @@
+<!-- Nav tabs -->
+ <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#sitePropertiesActionForm_tab_pkg_google" role="tab" data-toggle="tab"></a></li>
+   
+    <li role="presentation"><a href="#sitePropertiesActionForm_tab_pkg_sms" role="tab" data-toggle="tab"></a></li>
+    <li role="presentation"><a href="#sitePropertiesActionForm_tab_pkg_mail" role="tab" data-toggle="tab"></a></li>
+   
+  </ul>
+
+  <div class="tab-content" >
+  <div id="sitePropertiesActionForm_tab_pkg_google"     class='tab-pane active tab-pane-framed' ></div>
+  <div id="sitePropertiesActionForm_tab_pkg_sms" class='tab-pane tab-pane-framed' ></div>
+  <div id="sitePropertiesActionForm_tab_pkg_mail" class='tab-pane tab-pane-framed' ></div>
+  </div>
+ 
+ <!-- Campo singolo --> 
+ <div class="form-group">
+     <label class="col-md-2 control-label fieldRequired"  ></label>
+     <div class="col-md-10" >
+        
+     </div>
+ </div>
+
+<!-- Range Data --> 
+<div class="form-group">
+<label class="col-md-4  control-label  fieldRequired">{%=org.r3.db.cms.card.message.validfrom%}</label>
+<div class="col-md-8">
+   <div class="input-daterange input-group r3_datepicker validation-error-anchor">    
+   <input type="text" class="input-sm form-control" name="validfrom" id="carddetailactionform_form_validfrom"  />
+   <span class="input-group-addon">{%=org.r3.db.cms.card.message.validto%}</span>
+   <input type="text" class="input-sm form-control" name="validto" id="carddetailactionform_form_validto" />
+   </div>
+</div>
+</div>
+    
+ <!-- Range -->
+ <div class="form-group">
+     <label class="col-md-4 control-label fieldRequired"  >{%#org.r3.db.wbs.wbsnode.message.completionfrom%}</label>
+     <div class="col-md-8" >
+       <div class="input-group validation-error-anchor">    
+       <input type="text" class='input-sm form-control' name="completionfrom" id="wbsnodeactionform_completionfrom" maxlength="5"  />   
+       <span class="input-group-addon">{%#org.r3.db.wbs.wbsnode.message.completionto%}</span>
+       <input type="text" class='input-sm form-control' name="completionto" id="wbsnodeactionform_completionto" maxlength="5"  />
+       </div>                         
+     </div>
+ </div>
+ 
+<!-- Campo checkbox/radio --> 
+<div class="form-group">
+     <label class="col-md-2 control-label fieldRequired"  ></label>
+     <div class="col-md-10 columns" >
+     </div>
+</div>
+   
+<!-- Pannello singolo --> 
+<div class="panel panel-default">
+  <div class="panel-heading" >  
+    <h3 class="panel-title" >{%=org.r3.console.contacts.message.actordetailactionform_form_legend%}</h3>
+  </div>
+  
+  <div class="panel-body">
+  </div>
+</div>

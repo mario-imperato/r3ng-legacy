@@ -1,0 +1,88 @@
+  <!-- Canvas dependencies -->
+  <div id="cardQueryActionForm"  class="actionForm" style="display:none"></div>
+  <div id="cardDetailActionForm" class="actionForm" style="display:none"></div>
+  <div id="uploadFileActionForm" class="actionForm" style="display:none"></div>
+  <div id="cardQueryAdvancedSearchActionForm" class="advancedSearchActionForm"></div>
+  
+  <!-- cmsconsole js dependencies -->
+  <r3_lang:script path2resolve="/org/r3/db/cms/card/CardDTO.js" />
+  <r3_lang:script path2resolve="/org/r3/db/cms/card/CardDTOAdapter.js" />
+  <r3_lang:script path2resolve="/org/r3/db/cms/card/CardQueryActionFormView.js" />
+  <r3_lang:script path2resolve="/org/r3/db/cms/card/CardDictionary.js" />
+  <r3_lang:script path2resolve="/org/r3/db/cms/card/CardDictionary_pt.json" ifLanguage='pt' />
+
+  <r3_lang:script path2resolve="/org/r3/db/cms/group/GroupDTO.js" />
+  <r3_lang:script path2resolve="/org/r3/db/cms/group/GroupDTOAdapter.js" />
+  <r3_lang:script path2resolve="/org/r3/db/cms/group/GroupQueryActionFormView.js" />
+
+  <r3_lang:script path2resolve="/org/r3/db/cms/channel/ChannelDTO.js" />
+  <r3_lang:script path2resolve="/org/r3/db/cms/channel/ChannelDTOAdapter.js" />
+  <r3_lang:script path2resolve="/org/r3/db/cms/channel/ChannelQueryActionFormView.js" />
+
+  <r3_lang:script path2resolve="/org/r3/db/cms/carddescr/CardDescrDTO.js" />
+  <r3_lang:script path2resolve="/org/r3/db/cms/carddescr/CardDescrDTOAdapter.js" />
+  <r3_lang:script path2resolve="/org/r3/db/cms/carddescr/CardDescrQueryActionFormView.js" />
+  <r3_lang:script path2resolve="/org/r3/db/cms/carddescr/CardDescrDictionary.js" />
+  <r3_lang:script path2resolve="/org/r3/db/cms/carddescr/CardDescrDictionary_pt.json" ifLanguage='pt' />
+
+  <r3_lang:script path2resolve="/org/r3/db/cms/cardproperty/CardPropertyDTO.js" />
+  <r3_lang:script path2resolve="/org/r3/db/cms/cardproperty/CardPropertyDTOAdapter.js" />
+  <r3_lang:script path2resolve="/org/r3/db/cms/cardproperty/CardPropertyQueryActionFormView.js" />
+  <r3_lang:script path2resolve="/org/r3/db/cms/cardproperty/CardPropertyDictionary.js" />
+  <r3_lang:script path2resolve="/org/r3/db/cms/cardproperty/CardPropertyDictionary_pt.json" ifLanguage='pt' />
+       
+  <r3_lang:script path2resolve="/org/r3/jsportlet/cmsconsole/CardQueryActionForm.js" />
+  <r3_lang:script path2resolve="/org/r3/jsportlet/cmsconsole/CardPickerActionForm.js" />
+  <r3_lang:script path2resolve="/org/r3/jsportlet/cmsconsole/CardQueryActionForm_validation.js" />
+  <r3_lang:script path2resolve="/org/r3/jsportlet/cmsconsole/CardQueryAdvancedSearchActionForm.js" />
+  <r3_lang:script path2resolve="/org/r3/jsportlet/cmsconsole/CardQueryAdvancedSearchActionForm_validation.js" />
+  <r3_lang:script path2resolve="/org/r3/jsportlet/cmsconsole/messages.js" />
+  <r3_lang:script path2resolve="/org/r3/jsportlet/cmsconsole/messages_pt.json" ifLanguage="pt" />
+  <r3_lang:script path2resolve="/org/r3/jsportlet/cmsconsole/CardDetailActionForm.js" />
+  <r3_lang:script path2resolve="/org/r3/jsportlet/cmsconsole/CardDetailActionFormView.js" />
+  <r3_lang:script path2resolve="/org/r3/jsportlet/cmsconsole/CardDetailActionFormView_TabGenerale.js" />
+  <r3_lang:script path2resolve="/org/r3/jsportlet/cmsconsole/CardDetailActionFormView_TabGenerale_validation.js" />
+  <r3_lang:script path2resolve="/org/r3/jsportlet/cmsconsole/CardDetailActionFormView_TabCardText.js" />
+  <r3_lang:script path2resolve="/org/r3/jsportlet/cmsconsole/CardDetailActionFormView_TabCardText_validation.js" />  
+  <r3_lang:script path2resolve="/org/r3/jsportlet/cmsconsole/CardDetailActionFormView_TabCardFile_validation.js" />
+  <r3_lang:script path2resolve="/org/r3/jsportlet/cmsconsole/CardDetailActionFormView_TabCardFile.js" />
+  <r3_lang:script path2resolve="/org/r3/jsportlet/cmsconsole/CardDetailActionFormView_TabCardLink_validation.js" />
+  <r3_lang:script path2resolve="/org/r3/jsportlet/cmsconsole/CardDetailActionFormView_TabCardLink.js" />  
+  <r3_lang:script path2resolve="/org/r3/jsportlet/cmsconsole/UploadFileActionForm.js" />
+  <r3_lang:script path2resolve="/org/r3/jsportlet/cmsconsole/UploadFileActionFormView.js" />
+
+  <!-- PageManager dependency -->
+  	this.cardQueryActionForm = new org.r3.jsportlet.cmsconsole.CardQueryActionForm(this, '#cardQueryActionForm', '#cardQueryAdvancedSearchActionForm');
+	this.cardDetailActionForm = new org.r3.jsportlet.cmsconsole.CardDetailActionForm(this, '#cardDetailActionForm');
+	this.uploadFileActionForm = new org.r3.jsportlet.cmsconsole.UploadFileActionForm(this, '#uploadFileActionForm');
+	this.cardPickerActionForm = new org.r3.jsportlet.cmsconsole.CardPickerActionForm(this, '#cardQueryActionForm', '#cardQueryAdvancedSearchActionForm');	
+	
+	Vedere il PageManager in console/cms/cards per i metodi necessari...
+	
+	detailCard : function(cardDataBean)
+	{
+		org.r3.PageManager.pushBreadCrumb(
+		{
+			"title" : org.r3.console.cms.cards.message.breadcrumb_carddetail,
+			"actionForm" : this.cardDetailActionForm
+		});
+
+		var dataBeanInfo =
+		{
+			"cardDataBean" : cardDataBean
+		};
+
+		this.cardDetailActionForm.open(cardDataBean);
+	},
+
+	uploadFile : function(cardDTOAdapter)
+	{
+		org.r3.PageManager.pushBreadCrumb(
+		{
+			"title" : org.r3.console.cms.cards.message.breadcrumb_fileupload,
+			"actionForm" : this.uploadFileActionForm
+		});
+
+		this.uploadFileActionForm.open(cardDTOAdapter);
+	}
+		

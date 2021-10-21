@@ -1,0 +1,12 @@
+
+$.r3Utils.namespace("org.r3.jsportlet.resetuserpwd", window, function(aNamespace) 
+{
+  aNamespace.message = {
+  
+  	panel_title : 'Recuperar a senha',
+	panel_info : "Se você esqueceu sua senha, pode pedir uma nova. A nova senha será enviada para o endereço de e-mail especificado.",
+	securecode : 'Código de segurança',
+	email: 'E-mail'
+	
+  };
+});

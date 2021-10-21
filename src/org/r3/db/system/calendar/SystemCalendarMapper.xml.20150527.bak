@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--
+  TODO: xmlCopyRight.txt
+   
+  -->
+<!--
+  TODO: xmlReadme.txt
+   
+  -->
+
+<!-- <mapper resource="org/r3/db/system/calendar/SystemCalendarMapper.xml"/> -->
+<mapper namespace="org.r3.db.system.calendar.SystemCalendarMapper" >
+    <resultMap id="BaseResultMap" type="org.r3.db.system.calendar.SystemCalendarDTO" >
+         <id column="caldate" property="caldate" jdbcType="DATE" />
+           <result column="caleveday" property="caleveday" jdbcType="INTEGER" />
+           <result column="calevewday" property="calevewday" jdbcType="INTEGER" />
+           <result column="calday" property="calday" jdbcType="INTEGER" />
+           <result column="calmonth" property="calmonth" jdbcType="INTEGER" />
+           <result column="calyear" property="calyear" jdbcType="INTEGER" />
+           <result column="calweek" property="calweek" jdbcType="INTEGER" />
+           <result column="calquarter" property="calquarter" jdbcType="INTEGER" />
+           <result column="calyday" property="calyday" jdbcType="INTEGER" />
+           <result column="calwday" property="calwday" jdbcType="INTEGER" />
+           <result column="calevemonth" property="calevemonth" jdbcType="INTEGER" />
+           <result column="caleveweek" property="caleveweek" jdbcType="INTEGER" />
+           <result column="calevequarter" property="calevequarter" jdbcType="INTEGER" />
+           <result column="caleveyear" property="caleveyear" jdbcType="INTEGER" />
+           <result column="calentrytype" property="calentrytype" jdbcType="VARCHAR" />
+           <result column="calendarid" property="calendarid" jdbcType="VARCHAR" />
+    </resultMap>
+
+  <sql id="Filter_Where_Clause" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+                <when test="criterion.subSelectCriterion" >
+                  and ${criterion.prefixCondition} #{criterion.value} ${criterion.suffixCondition}
+                </when>                                
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <!--
+  <sql id="Filter_Where_Clause_4_Update" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  -->  
+  <sql id="Base_Column_List" >
+    caldate,  caleveday,  calevewday,  calday,  calmonth,  calyear,  calweek,  calquarter,  calyday,
+  calwday,  calevemonth,  caleveweek,  calevequarter,  caleveyear,  calentrytype,  calendarid  </sql>
+  <select id="selectByCaldate" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from r3_calendar
+    where caldate = #{caldate,jdbcType=DATE}
+  </select>
+  <delete id="deleteByCaldate" parameterType="map" >
+    delete
+    from r3_calendar
+    where caldate = #{caldate,jdbcType=DATE}
+  </delete>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from r3_calendar    
+    where  caldate = #{pk.caldate,jdbcType=DATE}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete
+    from r3_calendar
+    where  caldate = #{pk.caldate,jdbcType=DATE}
+  </delete>  
+  <select id="select" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <if test="filter != null &amp;&amp; filter.distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from r3_calendar
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+    <if test="filter != null &amp;&amp; filter.orderByClause != null" >
+      order by ${filter.orderByClause}
+    </if>
+    <if test="filter != null &amp;&amp; filter.limitFetch > 0" >
+      limit ${filter.limitFetch}
+    </if>
+  </select>
+  <select id="count" parameterType="map" resultType="java.lang.Integer" >
+    select count(*) from r3_calendar
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </select>  
+  <delete id="delete" parameterType="map" >
+    delete from r3_calendar
+    <!-- _parameter: dato che e' una map lo sostituisco con il nome del parametro in quanto non è l'unico -->
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="map" >
+    insert into r3_calendar (
+ caldate, caleveday, calevewday, calday, calmonth, calyear, calweek, calquarter, calyday,
+ calwday, calevemonth, caleveweek, calevequarter, caleveyear, calentrytype, calendarid      )
+    values (
+ 
+ #{record.caldate,jdbcType=DATE}, 
+ #{record.caleveday,jdbcType=INTEGER}, 
+ #{record.calevewday,jdbcType=INTEGER}, 
+ #{record.calday,jdbcType=INTEGER},
+ 
+ #{record.calmonth,jdbcType=INTEGER}, 
+ #{record.calyear,jdbcType=INTEGER}, 
+ #{record.calweek,jdbcType=INTEGER}, 
+ #{record.calquarter,jdbcType=INTEGER},
+ 
+ #{record.calyday,jdbcType=INTEGER}, 
+ #{record.calwday,jdbcType=INTEGER}, 
+ #{record.calevemonth,jdbcType=INTEGER}, 
+ #{record.caleveweek,jdbcType=INTEGER},
+ 
+ #{record.calevequarter,jdbcType=INTEGER}, 
+ #{record.caleveyear,jdbcType=INTEGER}, 
+ #{record.calentrytype,jdbcType=VARCHAR}, 
+ #{record.calendarid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="update" parameterType="map" >
+    update r3_calendar
+    <set >
+      <if test="record.calevedayDirty" >
+        caleveday = #{record.caleveday,jdbcType=INTEGER},
+      </if>      
+      <if test="record.calevewdayDirty" >
+        calevewday = #{record.calevewday,jdbcType=INTEGER},
+      </if>      
+      <if test="record.caldayDirty" >
+        calday = #{record.calday,jdbcType=INTEGER},
+      </if>      
+      <if test="record.calmonthDirty" >
+        calmonth = #{record.calmonth,jdbcType=INTEGER},
+      </if>      
+      <if test="record.calyearDirty" >
+        calyear = #{record.calyear,jdbcType=INTEGER},
+      </if>      
+      <if test="record.calweekDirty" >
+        calweek = #{record.calweek,jdbcType=INTEGER},
+      </if>      
+      <if test="record.calquarterDirty" >
+        calquarter = #{record.calquarter,jdbcType=INTEGER},
+      </if>      
+      <if test="record.calydayDirty" >
+        calyday = #{record.calyday,jdbcType=INTEGER},
+      </if>      
+      <if test="record.calwdayDirty" >
+        calwday = #{record.calwday,jdbcType=INTEGER},
+      </if>      
+      <if test="record.calevemonthDirty" >
+        calevemonth = #{record.calevemonth,jdbcType=INTEGER},
+      </if>      
+      <if test="record.caleveweekDirty" >
+        caleveweek = #{record.caleveweek,jdbcType=INTEGER},
+      </if>      
+      <if test="record.calevequarterDirty" >
+        calevequarter = #{record.calevequarter,jdbcType=INTEGER},
+      </if>      
+      <if test="record.caleveyearDirty" >
+        caleveyear = #{record.caleveyear,jdbcType=INTEGER},
+      </if>      
+      <if test="record.calentrytypeDirty" >
+        calentrytype = #{record.calentrytype,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.calendaridDirty" >
+        calendarid = #{record.calendarid,jdbcType=VARCHAR},
+      </if>      
+    </set>
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+      <!-- Non dovrebbe servire in quanto il filter e' sempre named. -->
+      <!-- <include refid="Filter_Where_Clause_4_Update" /> -->
+    </if>
+  </update>
+  <update id="updateByPrimaryKey" parameterType="map" >
+    update r3_calendar
+    <set >
+      <if test="record.calevedayDirty" >
+        caleveday = #{record.caleveday,jdbcType=INTEGER},
+      </if>
+      <if test="record.calevewdayDirty" >
+        calevewday = #{record.calevewday,jdbcType=INTEGER},
+      </if>
+      <if test="record.caldayDirty" >
+        calday = #{record.calday,jdbcType=INTEGER},
+      </if>
+      <if test="record.calmonthDirty" >
+        calmonth = #{record.calmonth,jdbcType=INTEGER},
+      </if>
+      <if test="record.calyearDirty" >
+        calyear = #{record.calyear,jdbcType=INTEGER},
+      </if>
+      <if test="record.calweekDirty" >
+        calweek = #{record.calweek,jdbcType=INTEGER},
+      </if>
+      <if test="record.calquarterDirty" >
+        calquarter = #{record.calquarter,jdbcType=INTEGER},
+      </if>
+      <if test="record.calydayDirty" >
+        calyday = #{record.calyday,jdbcType=INTEGER},
+      </if>
+      <if test="record.calwdayDirty" >
+        calwday = #{record.calwday,jdbcType=INTEGER},
+      </if>
+      <if test="record.calevemonthDirty" >
+        calevemonth = #{record.calevemonth,jdbcType=INTEGER},
+      </if>
+      <if test="record.caleveweekDirty" >
+        caleveweek = #{record.caleveweek,jdbcType=INTEGER},
+      </if>
+      <if test="record.calevequarterDirty" >
+        calevequarter = #{record.calevequarter,jdbcType=INTEGER},
+      </if>
+      <if test="record.caleveyearDirty" >
+        caleveyear = #{record.caleveyear,jdbcType=INTEGER},
+      </if>
+      <if test="record.calentrytypeDirty" >
+        calentrytype = #{record.calentrytype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.calendaridDirty" >
+        calendarid = #{record.calendarid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where  caldate = #{record.caldate,jdbcType=DATE}
+  </update>
+
+  <select id="countWorkingDays" parameterType="map" resultType="java.lang.Integer" >
+    select sum(case when calentrytype in ('work', 'saturday' ) then 1 else 0 end) as countval
+    from unep_calendar
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>    
+  </select>   
+  
+</mapper>

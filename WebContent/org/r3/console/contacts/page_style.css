@@ -1,0 +1,27 @@
+.contact-icon
+{
+   background: url("/r3ng/resources/css/images/ui-icons_222222_256x240.png") no-repeat scroll;
+   display: inline-block;  
+   width: 16px;
+   height: 16px;
+}
+
+.contact-locked
+{
+   background-position: -192px -96px;
+}
+
+.contact-unlocked
+{
+   background-position: -208px -96px;
+}
+
+.smscredits_viewport
+{
+	border: 1px solid #CCCCCC;
+    font-size: 4em;
+    height: 70px;
+    text-align: center;    
+    margin: 10px;
+    display: none;
+}

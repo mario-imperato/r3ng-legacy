@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--
+  TODO: xmlCopyRight.txt
+   
+  -->
+<!--
+  TODO: xmlReadme.txt
+   
+  -->
+
+<!-- <mapper resource="org/r3/db/system/address/AddressMapper.xml"/> -->
+<mapper namespace="org.r3.db.system.address.AddressMapper" >
+    <resultMap id="BaseResultMap" type="org.r3.db.system.address.AddressDTO" >
+         <id column="addressid" property="addressid" jdbcType="VARCHAR" />
+           <result column="entityid" property="entityid" jdbcType="VARCHAR" />
+           <result column="countryid" property="countryid" jdbcType="VARCHAR" />
+           <result column="ownerid" property="ownerid" jdbcType="VARCHAR" />
+           <result column="addresstypeid" property="addresstypeid" jdbcType="VARCHAR" />
+           <result column="state" property="state" jdbcType="VARCHAR" />
+           <result column="city" property="city" jdbcType="VARCHAR" />
+           <result column="zipcode" property="zipcode" jdbcType="VARCHAR" />
+           <result column="address" property="address" jdbcType="VARCHAR" />
+           <result column="phonecode1" property="phonecode1" jdbcType="VARCHAR" />
+           <result column="phonecode2" property="phonecode2" jdbcType="VARCHAR" />
+           <result column="phone1" property="phone1" jdbcType="VARCHAR" />
+           <result column="phone2" property="phone2" jdbcType="VARCHAR" />
+           <result column="website" property="website" jdbcType="VARCHAR" />
+    </resultMap>
+
+  <sql id="Filter_Where_Clause" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+                <when test="criterion.subSelectCriterion" >
+                  and ${criterion.prefixCondition} #{criterion.value} ${criterion.suffixCondition}
+                </when>                                
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <!--
+  <sql id="Filter_Where_Clause_4_Update" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  -->  
+  <sql id="Base_Column_List" >
+    addressid,  entityid,  countryid,  ownerid,  addresstypeid,  state,  city,  zipcode,  address,
+  phonecode1,  phonecode2,  phone1,  phone2,  website  </sql>
+  <select id="selectByAddressid" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from r3_address
+    where addressid = #{addressid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByAddressid" parameterType="map" >
+    delete
+    from r3_address
+    where addressid = #{addressid,jdbcType=VARCHAR}
+  </delete>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from r3_address    
+    where  addressid = #{pk.addressid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete
+    from r3_address
+    where  addressid = #{pk.addressid,jdbcType=VARCHAR}
+  </delete>  
+  <select id="select" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <if test="filter != null &amp;&amp; filter.distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from r3_address
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+    <if test="filter != null &amp;&amp; filter.orderByClause != null" >
+      order by ${filter.orderByClause}
+    </if>
+    <if test="filter != null &amp;&amp; filter.limitFetch > 0" >
+      limit ${filter.limitFetch}
+    </if>
+  </select>
+  <select id="count" parameterType="map" resultType="java.lang.Integer" >
+    select count(*) from r3_address
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </select>  
+  <delete id="delete" parameterType="map" >
+    delete from r3_address
+    <!-- _parameter: dato che e' una map lo sostituisco con il nome del parametro in quanto non è l'unico -->
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="map" >
+    insert into r3_address (
+ addressid, entityid, countryid, ownerid, addresstypeid, state, city, zipcode, address,
+ phonecode1, phonecode2, phone1, phone2, website      )
+    values (
+ 
+ #{record.addressid,jdbcType=VARCHAR}, 
+ #{record.entityid,jdbcType=VARCHAR}, 
+ #{record.countryid,jdbcType=VARCHAR}, 
+ #{record.ownerid,jdbcType=VARCHAR},
+ 
+ #{record.addresstypeid,jdbcType=VARCHAR}, 
+ #{record.state,jdbcType=VARCHAR}, 
+ #{record.city,jdbcType=VARCHAR}, 
+ #{record.zipcode,jdbcType=VARCHAR},
+ 
+ #{record.address,jdbcType=VARCHAR}, 
+ #{record.phonecode1,jdbcType=VARCHAR}, 
+ #{record.phonecode2,jdbcType=VARCHAR}, 
+ #{record.phone1,jdbcType=VARCHAR},
+ 
+ #{record.phone2,jdbcType=VARCHAR}, 
+ #{record.website,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="update" parameterType="map" >
+    update r3_address
+    <set >
+      <if test="record.entityidDirty" >
+        entityid = #{record.entityid,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.countryidDirty" >
+        countryid = #{record.countryid,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.owneridDirty" >
+        ownerid = #{record.ownerid,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.addresstypeidDirty" >
+        addresstypeid = #{record.addresstypeid,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.stateDirty" >
+        state = #{record.state,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.cityDirty" >
+        city = #{record.city,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.zipcodeDirty" >
+        zipcode = #{record.zipcode,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.addressDirty" >
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.phonecode1Dirty" >
+        phonecode1 = #{record.phonecode1,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.phonecode2Dirty" >
+        phonecode2 = #{record.phonecode2,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.phone1Dirty" >
+        phone1 = #{record.phone1,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.phone2Dirty" >
+        phone2 = #{record.phone2,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.websiteDirty" >
+        website = #{record.website,jdbcType=VARCHAR},
+      </if>      
+    </set>
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+      <!-- Non dovrebbe servire in quanto il filter e' sempre named. -->
+      <!-- <include refid="Filter_Where_Clause_4_Update" /> -->
+    </if>
+  </update>
+  <update id="updateByPrimaryKey" parameterType="map" >
+    update r3_address
+    <set >
+      <if test="record.entityidDirty" >
+        entityid = #{record.entityid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.countryidDirty" >
+        countryid = #{record.countryid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.owneridDirty" >
+        ownerid = #{record.ownerid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addresstypeidDirty" >
+        addresstypeid = #{record.addresstypeid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stateDirty" >
+        state = #{record.state,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cityDirty" >
+        city = #{record.city,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zipcodeDirty" >
+        zipcode = #{record.zipcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addressDirty" >
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phonecode1Dirty" >
+        phonecode1 = #{record.phonecode1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phonecode2Dirty" >
+        phonecode2 = #{record.phonecode2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phone1Dirty" >
+        phone1 = #{record.phone1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phone2Dirty" >
+        phone2 = #{record.phone2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.websiteDirty" >
+        website = #{record.website,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where  addressid = #{record.addressid,jdbcType=VARCHAR}
+  </update>
+
+</mapper>

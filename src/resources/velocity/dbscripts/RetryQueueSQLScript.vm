@@ -1,0 +1,9 @@
+##
+##
+## 
+##
+##
+
+update r3_queuemessagedefault  set  queueid = 'fivcardqueue' WHERE  queueid = 'fivcardqueuer';
+update r3_queuemessagedefault set queueid = 'eventqueue' where queueid = 'eventqueuer';
+

@@ -1,0 +1,4 @@
+<< BOF Deleting rows at: 54
+  int countWorkingDays(
+		    @Param("filter") org.r3.db.system.calendar.SystemCalendarFilter aFilterCondition,
+          @Param("pcfg")   org.r3.db.PersistenceConfigInfo pcfg);

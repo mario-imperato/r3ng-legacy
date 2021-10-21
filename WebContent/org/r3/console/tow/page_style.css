@@ -1,0 +1,35 @@
+.gmiller li.wbsnode span
+{
+    display: inline-block; 
+    margin: 0 10px 0 0; 
+    opacity: .45; 
+    height: 26px; 
+    width: 25px; 
+    vertical-align: middle;
+    background: no-repeat url("/r3ng/resources/img/wbs.png") no-repeat;	
+}
+
+.gmiller li.wbsnode > div 
+{
+    color: #777777; display: inline-block; font-size: 13px; text-decoration: none!important; 
+    vertical-align: middle;
+    padding: 5px;
+}
+
+.gmiller li.wbsnode.wbs_action > div 
+{
+    color: #DF7227;
+}
+
+
+ul.gmiller_container  li.selected {
+	/* border: 1px solid #4297d7; */
+	background-color: #DF7227;
+}
+
+
+.gmiller li.wbsnode.selected > div,
+.gmiller li.wbsnode.wbs_action.selected > div  
+{
+    color: #ffffff;
+}

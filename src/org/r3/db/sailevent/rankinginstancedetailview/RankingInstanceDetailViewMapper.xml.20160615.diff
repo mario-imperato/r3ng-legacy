@@ -1,0 +1,22 @@
+<< BOF Inserting rows at: 28
+           <result column="timoniere" property="timoniere" jdbcType="VARCHAR" />
+<< BOF Changing rows at: 104
+  model,  racegroup,  division,  arrivaldate,  realtime,  drealtime,  correctedtime,  annotation,  score,
+  maxraces,  scorer01,  scorer02,  scorer03,  scorer04,  scorer05,  scorer06,  scorer07,  scorer08,
+  scorer09,  scorer10,  scorer11,  scorer12,  scorer13,  scorer14,  scorer15,  scorern01,  scorern02,
+  scorern03,  scorern04,  scorern05,  scorern06,  scorern07,  scorern08,  scorern09,  scorern10,  scorern11,
+  scorern12,  scorern13,  scorern14,  scorern15,  rectimestamp,  yachtbsf,  yachtgph  </sql>
+  model,  racegroup,  division,  timoniere,  arrivaldate,  realtime,  drealtime,  correctedtime,  annotation,
+  score,  maxraces,  scorer01,  scorer02,  scorer03,  scorer04,  scorer05,  scorer06,  scorer07,
+  scorer08,  scorer09,  scorer10,  scorer11,  scorer12,  scorer13,  scorer14,  scorer15,  scorern01,
+  scorern02,  scorern03,  scorern04,  scorern05,  scorern06,  scorern07,  scorern08,  scorern09,  scorern10,
+  scorern11,  scorern12,  scorern13,  scorern14,  scorern15,  rectimestamp,  yachtbsf,  yachtgph  </sql>
+<< BOF Inserting rows at: 209
+       <when test="filter != null &amp;&amp; filter.isGroupBy('timoniere')" >
+           timoniere,
+       </when>
+       <otherwise>
+           null as timoniere,
+       </otherwise>         
+     </choose> 
+	       <choose>

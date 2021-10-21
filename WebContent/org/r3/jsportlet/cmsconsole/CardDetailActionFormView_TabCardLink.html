@@ -1,0 +1,83 @@
+<div class="panel tabbed-panel">
+  <div class="panel-heading" style='background: white'>  
+    <h3 class="panel-title" >{%=org.r3.jsportlet.cmsconsole.message.cardlinkactionform_form_legend%}  <span id='cardlinkactionform_form_cardid_label'></span></h3>
+  </div>
+  
+  <div class="panel-body">
+  <div id="cardlinkactionform_fieldset_message"></div>
+  
+  <div class="panel ">
+  <div class="panel-body ">
+  <form id="cardlinkactionform_form" class='form-horizontal'>
+  <input  type="hidden" name="propertyid" id="cardlinkactionform_form_propertyid" />
+ 
+    <div class="form-group">
+    <label class="col-md-2  control-label fieldRequired">{%=org.r3.db.cms.cardproperty.message.propertyname%}</label>
+    <div class='col-md-10 '>
+    <input name="propertyname" class="form-control" id="cardlinkactionform_form_propertyname" type="text" maxlength="40" />
+    </div>
+    </div>
+    
+    <div class="form-group">
+    <label class="col-md-2  control-label fieldRequired">{%=org.r3.db.cms.cardproperty.message.propertyvalue_link%}</label>
+    <div class='col-md-10 '>
+    <input name="propertyvalue" class="form-control" id="cardlinkactionform_form_propertyvalue" type="text" maxlength="250" />
+    </div>
+    </div>
+    
+    <div class="form-group">
+    <label class="col-md-2  control-label ">{%=org.r3.db.cms.cardproperty.message.refpropertyid_image%}</label>
+    <div class='col-md-10 '>
+    <select name="refpropertyid" class="form-control" id="cardlinkactionform_form_refpropertyid" ></select>
+    </div>
+    </div>            
+          
+  </form>
+  
+  <div class="form-action-bar">
+        <button type="button" id="cardlinkactionform_action_additem" class="btn btn-default" >
+          <span>{%=org.r3.message.action_insert%}</span>
+        </button>
+
+        <button type="button" id="cardlinkactionform_action_updateitem" class="btn btn-default" >
+          <span>{%=org.r3.message.action_refresh%}</span>
+        </button>
+
+        <button type="button" id="cardlinkactionform_action_cancel_updateitem" class="btn btn-default" >
+          <span>{%=org.r3.message.action_cancel_refresh%}</span>
+        </button>
+        
+      <button type="button" id="cardlinkactionform_action_cancel" class="btn btn-danger" >
+        <span>{%=org.r3.message.action_back%}</span>
+      </button>                
+   </div> 
+     
+   </div>
+   </div>
+   
+
+<div class='row'>
+<div class='col-md-10'>
+    <table id="CardLinkQueryActionFormView" style='width: 100%' class="table table-striped table-bordered table-hover {%=o.gradeLevel%}" >
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+<div class='col-md-2'>
+    
+    {% for(var i = 0; i < o.buttons.length; i++) { %}
+    <button type="button" class="btn btn-primary start btn-block" id="{%=o.buttons[i].id%}"{% if (o.buttons[i].disabled) { %} disabled {% } %} >
+      <span>{%=o.buttons[i].label%}</span>
+    </button>
+    {% } %}
+    
+</div>
+</div>
+
+</div>
+</div>
+
+
+
+    

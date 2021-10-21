@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--
+  TODO: xmlCopyRight.txt
+   
+  -->
+<!--
+  TODO: xmlReadme.txt
+   
+  -->
+
+
+<!-- Mapper Target DBMS: [SERVER_MYSQL] -->
+<!-- <mapper resource="org/r3/db/sailevent/appdocument/SailApplicationDocumentMapper.xml"/> -->
+<mapper namespace="org.r3.db.sailevent.appdocument.SailApplicationDocumentMapper" >
+    <resultMap id="BaseResultMap" type="org.r3.db.sailevent.appdocument.SailApplicationDocumentDTO" >
+         <id column="documentid" property="documentid" jdbcType="VARCHAR" />
+           <result column="eventid" property="eventid" jdbcType="VARCHAR" />
+           <result column="applicationid" property="applicationid" jdbcType="VARCHAR" />
+           <result column="documenttypecode" property="documenttypecode" jdbcType="VARCHAR" />
+           <result column="documentname" property="documentname" jdbcType="VARCHAR" />
+           <result column="documenturl" property="documenturl" jdbcType="VARCHAR" />
+           <result column="filesize" property="filesize" jdbcType="BIGINT" />
+           <result column="contenttype" property="contenttype" jdbcType="VARCHAR" />
+           <result column="annotation" property="annotation" jdbcType="VARCHAR" />
+           <result column="imageurl" property="imageurl" jdbcType="VARCHAR" />
+           <result column="imageheight" property="imageheight" jdbcType="INTEGER" />
+           <result column="imagewidth" property="imagewidth" jdbcType="INTEGER" />
+           <result column="iconurl" property="iconurl" jdbcType="VARCHAR" />
+           <result column="iconwidth" property="iconwidth" jdbcType="INTEGER" />
+           <result column="iconheight" property="iconheight" jdbcType="INTEGER" />
+           <result column="uploadtimestamp" property="uploadtimestamp" jdbcType="TIMESTAMP" />
+           <result column="crewmemberid" property="crewmemberid" jdbcType="VARCHAR" />
+    </resultMap>
+
+  <sql id="Filter_Where_Clause" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+                <when test="criterion.subSelectCriterion" >
+                  and ${criterion.prefixCondition} #{criterion.value} ${criterion.suffixCondition}
+                </when>                                
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <!--
+  <sql id="Filter_Where_Clause_4_Update" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  -->  
+  <sql id="Base_Column_List" >
+    documentid,  eventid,  applicationid,  documenttypecode,  documentname,  documenturl,  filesize,  contenttype,  annotation,
+  imageurl,  imageheight,  imagewidth,  iconurl,  iconwidth,  iconheight,  uploadtimestamp,  crewmemberid  </sql>
+  
+  <sql id='GroupBy_Column_List'>
+    <trim suffixOverrides=",">
+        <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('documentid')" >
+           documentid,
+       </when>
+       <otherwise>
+           null as documentid,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('eventid')" >
+           eventid,
+       </when>
+       <otherwise>
+           null as eventid,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('applicationid')" >
+           applicationid,
+       </when>
+       <otherwise>
+           null as applicationid,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('documenttypecode')" >
+           documenttypecode,
+       </when>
+       <otherwise>
+           null as documenttypecode,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('documentname')" >
+           documentname,
+       </when>
+       <otherwise>
+           null as documentname,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('documenturl')" >
+           documenturl,
+       </when>
+       <otherwise>
+           null as documenturl,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('filesize')" >
+           filesize,
+       </when>
+       <otherwise>
+           null as filesize,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('contenttype')" >
+           contenttype,
+       </when>
+       <otherwise>
+           null as contenttype,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('annotation')" >
+           annotation,
+       </when>
+       <otherwise>
+           null as annotation,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('imageurl')" >
+           imageurl,
+       </when>
+       <otherwise>
+           null as imageurl,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('imageheight')" >
+           imageheight,
+       </when>
+       <otherwise>
+           null as imageheight,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('imagewidth')" >
+           imagewidth,
+       </when>
+       <otherwise>
+           null as imagewidth,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('iconurl')" >
+           iconurl,
+       </when>
+       <otherwise>
+           null as iconurl,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('iconwidth')" >
+           iconwidth,
+       </when>
+       <otherwise>
+           null as iconwidth,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('iconheight')" >
+           iconheight,
+       </when>
+       <otherwise>
+           null as iconheight,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('uploadtimestamp')" >
+           uploadtimestamp,
+       </when>
+       <otherwise>
+           null as uploadtimestamp,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('crewmemberid')" >
+           crewmemberid,
+       </when>
+       <otherwise>
+           null as crewmemberid,
+       </otherwise>         
+     </choose> 
+	       </trim>       
+  </sql>
+  
+  <select id="selectByDocumentid" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from sev_appdocument
+    where documentid = #{documentid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByDocumentid" parameterType="map" >
+    delete
+    from sev_appdocument
+    where documentid = #{documentid,jdbcType=VARCHAR}
+  </delete>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from sev_appdocument    
+    where  documentid = #{pk.documentid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete
+    from sev_appdocument
+    where  documentid = #{pk.documentid,jdbcType=VARCHAR}
+  </delete>  
+  <select id="select" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <if test="filter != null &amp;&amp; filter.distinct" >
+      distinct
+    </if>
+    
+    <choose>
+       <when test="filter != null &amp;&amp; filter.groupByClause != null" >
+           <include refid="GroupBy_Column_List" />
+       </when>
+       <otherwise>
+           <include refid="Base_Column_List" />
+       </otherwise>
+    </choose>
+        
+    from sev_appdocument
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+    <if test="filter != null &amp;&amp; filter.groupByClause != null" >
+      group by ${filter.groupByClause}
+    </if>
+    <if test="filter != null &amp;&amp; filter.orderByClause != null" >
+      order by ${filter.orderByClause}
+    </if>
+    <if test="filter != null &amp;&amp; filter.limitFetch > 0" >
+      limit ${filter.limitFetch}
+    </if>
+  </select>
+  <select id="count" parameterType="map" resultType="java.lang.Integer" >
+    select count(*) from sev_appdocument
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </select>  
+  <delete id="delete" parameterType="map" >
+    delete from sev_appdocument
+    <!-- _parameter: dato che e' una map lo sostituisco con il nome del parametro in quanto non è l'unico -->
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="map" >
+    insert into sev_appdocument (
+ documentid, eventid, applicationid, documenttypecode, documentname, documenturl, filesize, contenttype, annotation,
+ imageurl, imageheight, imagewidth, iconurl, iconwidth, iconheight, uploadtimestamp, crewmemberid      )
+    values (
+ 
+ #{record.documentid,jdbcType=VARCHAR}, 
+ #{record.eventid,jdbcType=VARCHAR}, 
+ #{record.applicationid,jdbcType=VARCHAR}, 
+ #{record.documenttypecode,jdbcType=VARCHAR},
+ 
+ #{record.documentname,jdbcType=VARCHAR}, 
+ #{record.documenturl,jdbcType=VARCHAR}, 
+ #{record.filesize,jdbcType=BIGINT}, 
+ #{record.contenttype,jdbcType=VARCHAR},
+ 
+ #{record.annotation,jdbcType=VARCHAR}, 
+ #{record.imageurl,jdbcType=VARCHAR}, 
+ #{record.imageheight,jdbcType=INTEGER}, 
+ #{record.imagewidth,jdbcType=INTEGER},
+ 
+ #{record.iconurl,jdbcType=VARCHAR}, 
+ #{record.iconwidth,jdbcType=INTEGER}, 
+ #{record.iconheight,jdbcType=INTEGER}, 
+ #{record.uploadtimestamp,jdbcType=TIMESTAMP},
+ 
+ #{record.crewmemberid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="update" parameterType="map" >
+    update sev_appdocument
+    <set >
+      <if test="record.eventidDirty" >
+        eventid = #{record.eventid,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.applicationidDirty" >
+        applicationid = #{record.applicationid,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.documenttypecodeDirty" >
+        documenttypecode = #{record.documenttypecode,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.documentnameDirty" >
+        documentname = #{record.documentname,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.documenturlDirty" >
+        documenturl = #{record.documenturl,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.filesizeDirty" >
+        filesize = #{record.filesize,jdbcType=BIGINT},
+      </if>      
+      <if test="record.contenttypeDirty" >
+        contenttype = #{record.contenttype,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.annotationDirty" >
+        annotation = #{record.annotation,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.imageurlDirty" >
+        imageurl = #{record.imageurl,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.imageheightDirty" >
+        imageheight = #{record.imageheight,jdbcType=INTEGER},
+      </if>      
+      <if test="record.imagewidthDirty" >
+        imagewidth = #{record.imagewidth,jdbcType=INTEGER},
+      </if>      
+      <if test="record.iconurlDirty" >
+        iconurl = #{record.iconurl,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.iconwidthDirty" >
+        iconwidth = #{record.iconwidth,jdbcType=INTEGER},
+      </if>      
+      <if test="record.iconheightDirty" >
+        iconheight = #{record.iconheight,jdbcType=INTEGER},
+      </if>      
+      <if test="record.uploadtimestampDirty" >
+        uploadtimestamp = #{record.uploadtimestamp,jdbcType=TIMESTAMP},
+      </if>      
+      <if test="record.crewmemberidDirty" >
+        crewmemberid = #{record.crewmemberid,jdbcType=VARCHAR},
+      </if>      
+    </set>
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+      <!-- Non dovrebbe servire in quanto il filter e' sempre named. -->
+      <!-- <include refid="Filter_Where_Clause_4_Update" /> -->
+    </if>
+  </update>
+  <update id="updateByPrimaryKey" parameterType="map" >
+    update sev_appdocument
+    <set >
+      <if test="record.eventidDirty" >
+        eventid = #{record.eventid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.applicationidDirty" >
+        applicationid = #{record.applicationid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.documenttypecodeDirty" >
+        documenttypecode = #{record.documenttypecode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.documentnameDirty" >
+        documentname = #{record.documentname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.documenturlDirty" >
+        documenturl = #{record.documenturl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.filesizeDirty" >
+        filesize = #{record.filesize,jdbcType=BIGINT},
+      </if>
+      <if test="record.contenttypeDirty" >
+        contenttype = #{record.contenttype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.annotationDirty" >
+        annotation = #{record.annotation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imageurlDirty" >
+        imageurl = #{record.imageurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imageheightDirty" >
+        imageheight = #{record.imageheight,jdbcType=INTEGER},
+      </if>
+      <if test="record.imagewidthDirty" >
+        imagewidth = #{record.imagewidth,jdbcType=INTEGER},
+      </if>
+      <if test="record.iconurlDirty" >
+        iconurl = #{record.iconurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.iconwidthDirty" >
+        iconwidth = #{record.iconwidth,jdbcType=INTEGER},
+      </if>
+      <if test="record.iconheightDirty" >
+        iconheight = #{record.iconheight,jdbcType=INTEGER},
+      </if>
+      <if test="record.uploadtimestampDirty" >
+        uploadtimestamp = #{record.uploadtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.crewmemberidDirty" >
+        crewmemberid = #{record.crewmemberid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where  documentid = #{record.documentid,jdbcType=VARCHAR}
+  </update>
+
+</mapper>

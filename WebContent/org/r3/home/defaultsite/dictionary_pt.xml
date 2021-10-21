@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!DOCTYPE xhtml
+  PUBLIC "XHTML1.0"
+  "../../../../assets/xhtml1-strict.dtd">
+
+<dictionary namespace='org.r3.home.defaultsite'>
+
+             <string id='windowLayout_pageTitle'>Página inicial</string>
+             <string id='welcome_s100'>Bem-vindos no S100</string>
+</dictionary>

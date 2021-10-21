@@ -1,0 +1,29 @@
+##
+##
+## $applicationDTO: DTO applicazione in cancellazione
+##
+##
+
+delete from r3_relactorgroup  
+ where 
+   actorId in (select ownerid from sev_application  where applicationid = '$applicationDTO.applicationid') 
+   and groupid in (select groupid from r3_actorgroup where grouptype in ('sevowner', 'sevhelmsman', 'sevracegroup'));
+
+update r3_actor set recstatus = 'sys_recact', contactgroup = null 
+ where 
+   actorId in (select ownerid from sev_application  where applicationid = '$applicationDTO.applicationid') 
+   and recstatus = 'sys_recblock';
+
+update r3_actor set recstatus = 'sys_recact', contactgroup = null
+ where 
+   actorId in (select paramvalue from sev_appdata  where applicationid = '$applicationDTO.applicationid' and sectionid = 'r3ea_ownerinfo' and paramname = 'helmsmanid') 
+   and recstatus = 'sys_recblock';
+
+delete from sev_appcrewmember where applicationid = '$applicationDTO.applicationid';
+delete from sev_appdocument  where applicationid = '$applicationDTO.applicationid';
+delete from sev_appdata  where applicationid = '$applicationDTO.applicationid';
+delete from sev_application  where applicationid = '$applicationDTO.applicationid';
+
+delete from r3_eventlog where usecaseambit = 'sev_application' and refentityid1 = '$applicationDTO.applicationid';
+
+ 

@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--
+  TODO: xmlCopyRight.txt
+   
+  -->
+<!--
+  TODO: xmlReadme.txt
+   
+  -->
+
+<!-- <mapper resource="org/r3/db/cms/cardfullview/CardFullViewMapper.xml"/> -->
+<mapper namespace="org.r3.db.cms.cardfullview.CardFullViewMapper" >
+    <resultMap id="BaseResultMap" type="org.r3.db.cms.cardfullview.CardFullViewDTO" >
+         <result column="site" property="site" jdbcType="VARCHAR" />
+           <result column="cardid" property="cardid" jdbcType="VARCHAR" />
+           <result column="languagecode" property="languagecode" jdbcType="VARCHAR" />
+           <result column="categoryid" property="categoryid" jdbcType="VARCHAR" />
+           <result column="pagelinktype" property="pagelinktype" jdbcType="VARCHAR" />
+           <result column="pagelink" property="pagelink" jdbcType="VARCHAR" />
+           <result column="pageid" property="pageid" jdbcType="VARCHAR" />
+           <result column="refdate" property="refdate" jdbcType="DATE" />
+           <result column="options" property="options" jdbcType="VARCHAR" />
+           <result column="title" property="title" jdbcType="VARCHAR" />
+           <result column="summary" property="summary" jdbcType="VARCHAR" />
+           <result column="textbody" property="textbody" jdbcType="VARCHAR" />
+           <result column="rectimestamp" property="rectimestamp" jdbcType="TIMESTAMP" />
+           
+           <collection property="properties" column="propertyid" ofType="org.r3.db.cms.cardproperty.CardPropertyDTO">
+           <result column="propertyid" property="propertyid" jdbcType="VARCHAR" />
+           <result column="propertyrole" property="propertyrole" jdbcType="VARCHAR" />
+           <result column="propertytypecode" property="propertytypecode" jdbcType="VARCHAR" />
+           <result column="propertyname" property="propertyname" jdbcType="VARCHAR" />
+           <result column="propertyvalue" property="propertyvalue" jdbcType="VARCHAR" />
+           <result column="propertysize" property="propertysize" jdbcType="INTEGER" />
+           <result column="refpropertyid" property="refpropertyid" jdbcType="VARCHAR" />
+           <result column="contenttype" property="contenttype" jdbcType="VARCHAR" />
+           <result column="imageurl" property="imageurl" jdbcType="VARCHAR" />
+           <result column="imageheight" property="imageheight" jdbcType="INTEGER" />
+           <result column="imagewidth" property="imagewidth" jdbcType="INTEGER" />
+           <result column="iconurl" property="iconurl" jdbcType="VARCHAR" />
+           <result column="iconheight" property="iconheight" jdbcType="INTEGER" />
+           <result column="iconwidth" property="iconwidth" jdbcType="INTEGER" />
+           <result column="proprectimestamp" property="proprectimestamp" jdbcType="TIMESTAMP" />
+           </collection>
+           
+    </resultMap>
+
+  <sql id="Filter_Where_Clause" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+                <when test="criterion.subSelectCriterion" >
+                  and ${criterion.prefixCondition} #{criterion.value} ${criterion.suffixCondition}
+                </when>                                
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    site,  cardid,  languagecode,  categoryid,  pagelinktype,  pagelink,  pageid,  refdate,  options,
+  title,  summary,  textbody,  rectimestamp,  propertyid,  propertyrole,  propertytypecode,  propertyname,  propertyvalue,
+  propertysize,  refpropertyid,  contenttype,  imageurl,  imageheight,  imagewidth,  iconurl,  iconheight,  iconwidth,
+  proprectimestamp  </sql>
+  <select id="select" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <if test="filter != null &amp;&amp; filter.distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from r3_view_cmscardfull
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+    <if test="filter != null &amp;&amp; filter.orderByClause != null" >
+      order by ${filter.orderByClause}
+    </if>
+    <if test="filter != null &amp;&amp; filter.limitFetch > 0" >
+      limit ${filter.limitFetch}
+    </if>
+  </select>
+  <select id="count" parameterType="map" resultType="java.lang.Integer" >
+    select count(*) from r3_view_cmscardfull
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </select>  
+
+  <!-- Cambio la vista sulla quale faccio l'operazione di selezione. Questa vista ritorna solo la proprietà dell'icona della scheda. Mi serve quando faccio query di viste e non mi servono
+       tutti i record di properties che potenzialmente possono essere tantissimi (i.e. Card di tipo gallery)
+    -->
+  <select id="selectPartial" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <if test="filter != null &amp;&amp; filter.distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from r3_view_cmscardpartial
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+    <if test="filter != null &amp;&amp; filter.orderByClause != null" >
+      order by ${filter.orderByClause}
+    </if>
+    <if test="filter != null &amp;&amp; filter.limitFetch > 0" >
+      limit ${filter.limitFetch}
+    </if>
+  </select>
+  <select id="countPartial" parameterType="map" resultType="java.lang.Integer" >
+    select count(*) from r3_view_cmscardpartial
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </select>  
+
+  <!-- Inserimento Statement Channel -->
+    <resultMap id="ChannelBaseResultMap" type="org.r3.db.cms.cardfullview.CardFullViewDTO" >
+         <result column="site" property="site" jdbcType="VARCHAR" />
+           <result column="cardid" property="cardid" jdbcType="VARCHAR" />
+           <result column="languagecode" property="languagecode" jdbcType="VARCHAR" />
+           <result column="categoryid" property="categoryid" jdbcType="VARCHAR" />
+           <result column="pagelinktype" property="pagelinktype" jdbcType="VARCHAR" />
+           <result column="pagelink" property="pagelink" jdbcType="VARCHAR" />
+           <result column="pageid" property="pageid" jdbcType="VARCHAR" />
+           <result column="refdate" property="refdate" jdbcType="DATE" />
+           <result column="options" property="options" jdbcType="VARCHAR" />
+           <result column="title" property="title" jdbcType="VARCHAR" />
+           <result column="summary" property="summary" jdbcType="VARCHAR" />
+           <result column="textbody" property="textbody" jdbcType="VARCHAR" />
+           <result column="rectimestamp" property="rectimestamp" jdbcType="TIMESTAMP" />                      
+    </resultMap>
+
+ <sql id="Channel_Base_Column_List" >
+    site,  cardid,  languagecode,  categoryid,  pagelinktype,  pagelink,  pageid,  refdate,  options,
+  title,  summary,  textbody,  rectimestamp</sql>
+  
+  <select id="selectChannel" resultMap="ChannelBaseResultMap" parameterType="map" >
+    select
+    <if test="filter != null &amp;&amp; filter.distinct" >
+      distinct
+    </if>
+    <include refid="Channel_Base_Column_List" />
+    from r3_view_cmscardchannel
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+    <if test="filter != null &amp;&amp; filter.orderByClause != null" >
+      order by ${filter.orderByClause}
+    </if>
+    <if test="filter != null &amp;&amp; filter.limitFetch > 0" >
+      limit ${filter.limitFetch}
+    </if>
+  </select>
+  
+  <select id="countChannel" parameterType="map" resultType="java.lang.Integer" >
+    select count(*) from r3_view_cmscardchannel
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </select>  
+
+</mapper>

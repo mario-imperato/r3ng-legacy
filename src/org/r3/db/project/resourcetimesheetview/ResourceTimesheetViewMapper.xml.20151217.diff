@@ -1,0 +1,284 @@
+<< BOF Inserting rows at: 78
+  
+  <sql id='GroupBy_Column_List'>
+    <trim suffixOverrides=",">
+        <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('site')" >
+           site,
+       </when>
+       <otherwise>
+           null as site,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('tsentryid')" >
+           tsentryid,
+       </when>
+       <otherwise>
+           null as tsentryid,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('sitedomain')" >
+           sitedomain,
+       </when>
+       <otherwise>
+           null as sitedomain,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('resourceid')" >
+           resourceid,
+       </when>
+       <otherwise>
+           null as resourceid,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('resourcedescr')" >
+           resourcedescr,
+       </when>
+       <otherwise>
+           null as resourcedescr,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('teamid')" >
+           teamid,
+       </when>
+       <otherwise>
+           null as teamid,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('teamperiod')" >
+           teamperiod,
+       </when>
+       <otherwise>
+           null as teamperiod,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('profileid')" >
+           profileid,
+       </when>
+       <otherwise>
+           null as profileid,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('companyid')" >
+           companyid,
+       </when>
+       <otherwise>
+           null as companyid,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('costcenter1')" >
+           costcenter1,
+       </when>
+       <otherwise>
+           null as costcenter1,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('costcenter2')" >
+           costcenter2,
+       </when>
+       <otherwise>
+           null as costcenter2,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('costcenter3')" >
+           costcenter3,
+       </when>
+       <otherwise>
+           null as costcenter3,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('uniteffort')" >
+           uniteffort,
+       </when>
+       <otherwise>
+           null as uniteffort,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('ordeffort')" >
+           ordeffort,
+       </when>
+       <otherwise>
+           null as ordeffort,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('exteffort')" >
+           exteffort,
+       </when>
+       <otherwise>
+           null as exteffort,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('oncalleffort')" >
+           oncalleffort,
+       </when>
+       <otherwise>
+           null as oncalleffort,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('price')" >
+           price,
+       </when>
+       <otherwise>
+           null as price,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('cost')" >
+           cost,
+       </when>
+       <otherwise>
+           null as cost,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('evalueunit')" >
+           evalueunit,
+       </when>
+       <otherwise>
+           null as evalueunit,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('caldate')" >
+           caldate,
+       </when>
+       <otherwise>
+           null as caldate,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('caleveday')" >
+           caleveday,
+       </when>
+       <otherwise>
+           null as caleveday,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('calevemonth')" >
+           calevemonth,
+       </when>
+       <otherwise>
+           null as calevemonth,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('caleveweek')" >
+           caleveweek,
+       </when>
+       <otherwise>
+           null as caleveweek,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('calevequarter')" >
+           calevequarter,
+       </when>
+       <otherwise>
+           null as calevequarter,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('caleveyear')" >
+           caleveyear,
+       </when>
+       <otherwise>
+           null as caleveyear,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('tseuserid')" >
+           tseuserid,
+       </when>
+       <otherwise>
+           null as tseuserid,
+       </otherwise>         
+     </choose> 
+	      </trim>       
+  </sql>
+  
+<< BOF Deleting rows at: 96
+
+<< BOF Changing rows at: 99
+    </if>
+        
+    </if>    
+<< BOF Deleting rows at: 114
+  
+  <sql id='GroupBy_Column_List'>
+  
+    <trim suffixOverrides=",">
+    
+     null as tsentryid,  null as caleveday,  null as site,  
+    
+     <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('teamid')" >
+           teamid,
+       </when>
+       <otherwise>
+           null as teamid,
+       </otherwise>         
+     </choose>
+     
+     <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('resourceid')" >
+           resourceid,
+       </when>
+       <otherwise>
+           null as resourceid,
+       </otherwise>         
+     </choose>
+          
+     max(uniteffort) as uniteffort,  sum(ordeffort) as ordeffort, sum(exteffort) as exteffort,  sum(oncalleffort) as oncalleffort,
+     
+     <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('tseuserid')" >
+           tseuserid,
+       </when>
+       <otherwise>
+           null as tseuserid,
+       </otherwise>         
+     </choose>
+     
+     null as recstatus,  null as rectimestamp,  
+  
+     <choose >
+       <when test="filter != null &amp;&amp;  filter.isGroupBy('resourcedescr')" >
+           resourcedescr,
+       </when>
+       <otherwise>
+           null as resourcedescr,
+       </otherwise>         
+     </choose>
+  
+     null as profiledescr,  
+     
+     <choose >
+       <when test="filter != null &amp;&amp;  filter.isGroupBy('profileid')" >
+           profileid,
+       </when>
+       <otherwise>
+           null as profileid,
+       </otherwise>         
+     </choose>
+     
+    </trim>
+       
+  </sql>
+  

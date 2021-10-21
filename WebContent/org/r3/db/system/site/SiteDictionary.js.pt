@@ -1,0 +1,67 @@
+//
+// GPA Gruppo Progetti Avanzati s.r.l. - 
+// Progetto UNEP 2012 per PosteItaliane S.p.a.
+//
+//
+// TODO: Readme Section.
+//
+
+jQuery.r3Utils.namespace("org.r3.db.system.site", window, function(aNamespace) 
+{
+ aNamespace.message = {
+
+ site :  "Codígo",
+ sitedescr :  "Titulo",
+ sitelanguages :  "sitelanguages",
+ sitesummary :  "Descrição",
+ sitedomain :  "Dominio (pt)",
+ calendarid :  "calendarid (pt)",
+ sitetype :  "Tipo de Site",
+ sitelayout :  "sitelayout",
+ siteresourcepath :  "Tema",
+ siteresourcepath_default :  "Standard",
+ siteresourcepath_workshop :  "workshop",
+ 
+ sitecss :  "sitecss",
+ siteconsolecss :  "siteconsolecss",
+ sitetheme :  "Colorazione",
+ sitetheme_none :  "-- Selezionare una colorazione per l'amministrazione --",
+ sitetheme_skin_blue :  "Azzurro",
+ sitetheme_skin_yellow :  "Arancione",
+ sitetheme_skin_red :  "Rosso",
+ sitetheme_skin_green :  "Verde",
+ sitetheme_skin_purple :  "Porpora",
+ sitetheme_skin_black :  "Nero",
+ 
+ refsitetype :  "Tipo do Site Pai",
+ refsitetype_site_none: 'Ninguém',
+ refsitetype_site_internal: 'Interno',
+ refsitetype_site_external: 'Exterior',
+ 
+ refsite :  "URL do Site Pai",
+ refsitevisible :  "Site Pai visível",
+ 
+ refsitedescr :  "Etiqueta Site Pai",
+ admrefsitetype :  "Tipo do Site Pai de Admin. ",
+ admrefsitetype_site_none: 'Ninguém',
+ admrefsitetype_site_internal: 'Interno',
+ admrefsitetype_site_external: 'Exterior',
+
+ admrefsite :  "URL do Site Pai de Admin.",
+ admrefsitevisible :  "Site Pai de Admin. Visível",
+ admrefsitedescr :  "Etiqueta do Site Pai de Admin.",
+ cardid :  "cardid",
+
+ options :  "Opzioni",
+ options_gsidebar :  "Accesso Rapido",
+ options_profile1 :  "Profilo Esteso (10gen)",
+  
+ queryactionformview_legend: 'Lista dos Sites',
+ detailactionformview_legend: 'Detalhe do Site',
+ 
+ eventdescr: "Descrição pequena"
+  
+  };
+});
+
+

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+
+<templates>
+     
+     <template name="UserRegistration_RequestActivatationMailMessage" domain="shakeus">
+        <filename>resources/velocity/mail/UserRegistration_RequestActivatationMailMessage_shakeus.vm</filename>
+     </template>
+
+     <template name="NewNeighborhoodRequest_NotificationMailMessage" domain="shakeus">
+        <filename>resources/velocity/mail/NewNeighborhoodRequest_NotificationMailMessage_shakeus.vm</filename>
+     </template>
+
+     <template name="NewOELRequest_NotificationMailMessage" domain="shakeus">
+        <filename>resources/velocity/mail/NewOELRequest_NotificationMailMessage_shakeus.vm</filename>
+     </template>                            
+                                    
+</templates>

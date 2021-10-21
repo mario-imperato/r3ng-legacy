@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--
+  TODO: xmlCopyRight.txt
+   
+  -->
+<!--
+  TODO: xmlReadme.txt
+   
+  -->
+
+<!-- <mapper resource="org/r3/db/system/smsqueue/SMSQueueMapper.xml"/> -->
+<mapper namespace="org.r3.db.system.smsqueue.SMSQueueMapper" >
+    <resultMap id="BaseResultMap" type="org.r3.db.system.smsqueue.SMSQueueDTO" >
+         <id column="site" property="site" jdbcType="VARCHAR" />
+           <id column="smsid" property="smsid" jdbcType="VARCHAR" />
+           <result column="smstext" property="smstext" jdbcType="VARCHAR" />
+           <result column="smssender" property="smssender" jdbcType="VARCHAR" />
+           <result column="smsopts" property="smsopts" jdbcType="VARCHAR" />
+           <result column="smssendat" property="smssendat" jdbcType="TIMESTAMP" />
+           <result column="numberofretries" property="numberofretries" jdbcType="INTEGER" />
+           <result column="numberoftargets" property="numberoftargets" jdbcType="INTEGER" />
+           <result column="numberofsentitems" property="numberofsentitems" jdbcType="INTEGER" />
+           <result column="gtwayresponsecode" property="gtwayresponsecode" jdbcType="VARCHAR" />
+           <result column="gtwayresponsereason" property="gtwayresponsereason" jdbcType="VARCHAR" />
+           <result column="recstatus" property="recstatus" jdbcType="VARCHAR" />
+           <result column="rectimestamp" property="rectimestamp" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+  <sql id="Filter_Where_Clause" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+                <when test="criterion.subSelectCriterion" >
+                  and ${criterion.prefixCondition} #{criterion.value} ${criterion.suffixCondition}
+                </when>                                
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <!--
+  <sql id="Filter_Where_Clause_4_Update" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  -->  
+  <sql id="Base_Column_List" >
+    site,  smsid,  smstext,  smssender,  smsopts,  smssendat,  numberofretries,  numberoftargets,  numberofsentitems,
+  gtwayresponsecode,  gtwayresponsereason,  recstatus,  rectimestamp  </sql>
+  <select id="selectBySiteSmsid" resultMap="BaseResultMap" parameterType="HashMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from r3_smsqueue
+    where  site = #{site,jdbcType=VARCHAR} and  smsid = #{smsid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteBySiteSmsid" parameterType="HashMap" >
+    delete
+    from r3_smsqueue
+    where  site = #{site,jdbcType=VARCHAR} and  smsid = #{smsid,jdbcType=VARCHAR}
+  </delete>  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from r3_smsqueue    
+    where  site = #{pk.site,jdbcType=VARCHAR} and  smsid = #{pk.smsid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete
+    from r3_smsqueue
+    where  site = #{pk.site,jdbcType=VARCHAR} and  smsid = #{pk.smsid,jdbcType=VARCHAR}
+  </delete>  
+  <select id="select" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <if test="filter != null &amp;&amp; filter.distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from r3_smsqueue
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+    <if test="filter != null &amp;&amp; filter.orderByClause != null" >
+      order by ${filter.orderByClause}
+    </if>
+    <if test="filter != null &amp;&amp; filter.limitFetch > 0" >
+      limit ${filter.limitFetch}
+    </if>
+  </select>
+  <select id="count" parameterType="map" resultType="java.lang.Integer" >
+    select count(*) from r3_smsqueue
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </select>  
+  <delete id="delete" parameterType="map" >
+    delete from r3_smsqueue
+    <!-- _parameter: dato che e' una map lo sostituisco con il nome del parametro in quanto non è l'unico -->
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="map" >
+    insert into r3_smsqueue (
+ site, smsid, smstext, smssender, smsopts, smssendat, numberofretries, numberoftargets, numberofsentitems,
+ gtwayresponsecode, gtwayresponsereason, recstatus, rectimestamp      )
+    values (
+ 
+ #{record.site,jdbcType=VARCHAR}, 
+ #{record.smsid,jdbcType=VARCHAR}, 
+ #{record.smstext,jdbcType=VARCHAR}, 
+ #{record.smssender,jdbcType=VARCHAR},
+ 
+ #{record.smsopts,jdbcType=VARCHAR}, 
+ #{record.smssendat,jdbcType=TIMESTAMP}, 
+ #{record.numberofretries,jdbcType=INTEGER}, 
+ #{record.numberoftargets,jdbcType=INTEGER},
+ 
+ #{record.numberofsentitems,jdbcType=INTEGER}, 
+ #{record.gtwayresponsecode,jdbcType=VARCHAR}, 
+ #{record.gtwayresponsereason,jdbcType=VARCHAR}, 
+ #{record.recstatus,jdbcType=VARCHAR},
+ 
+ #{record.rectimestamp,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="update" parameterType="map" >
+    update r3_smsqueue
+    <set >
+      <if test="record.smstextDirty" >
+        smstext = #{record.smstext,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.smssenderDirty" >
+        smssender = #{record.smssender,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.smsoptsDirty" >
+        smsopts = #{record.smsopts,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.smssendatDirty" >
+        smssendat = #{record.smssendat,jdbcType=TIMESTAMP},
+      </if>      
+      <if test="record.numberofretriesDirty" >
+        numberofretries = #{record.numberofretries,jdbcType=INTEGER},
+      </if>      
+      <if test="record.numberoftargetsDirty" >
+        numberoftargets = #{record.numberoftargets,jdbcType=INTEGER},
+      </if>      
+      <if test="record.numberofsentitemsDirty" >
+        numberofsentitems = #{record.numberofsentitems,jdbcType=INTEGER},
+      </if>      
+      <if test="record.gtwayresponsecodeDirty" >
+        gtwayresponsecode = #{record.gtwayresponsecode,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.gtwayresponsereasonDirty" >
+        gtwayresponsereason = #{record.gtwayresponsereason,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.recstatusDirty" >
+        recstatus = #{record.recstatus,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.rectimestampDirty" >
+        rectimestamp = #{record.rectimestamp,jdbcType=TIMESTAMP},
+      </if>      
+    </set>
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+      <!-- Non dovrebbe servire in quanto il filter e' sempre named. -->
+      <!-- <include refid="Filter_Where_Clause_4_Update" /> -->
+    </if>
+  </update>
+  <update id="updateByPrimaryKey" parameterType="map" >
+    update r3_smsqueue
+    <set >
+      <if test="record.smstextDirty" >
+        smstext = #{record.smstext,jdbcType=VARCHAR},
+      </if>
+      <if test="record.smssenderDirty" >
+        smssender = #{record.smssender,jdbcType=VARCHAR},
+      </if>
+      <if test="record.smsoptsDirty" >
+        smsopts = #{record.smsopts,jdbcType=VARCHAR},
+      </if>
+      <if test="record.smssendatDirty" >
+        smssendat = #{record.smssendat,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.numberofretriesDirty" >
+        numberofretries = #{record.numberofretries,jdbcType=INTEGER},
+      </if>
+      <if test="record.numberoftargetsDirty" >
+        numberoftargets = #{record.numberoftargets,jdbcType=INTEGER},
+      </if>
+      <if test="record.numberofsentitemsDirty" >
+        numberofsentitems = #{record.numberofsentitems,jdbcType=INTEGER},
+      </if>
+      <if test="record.gtwayresponsecodeDirty" >
+        gtwayresponsecode = #{record.gtwayresponsecode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gtwayresponsereasonDirty" >
+        gtwayresponsereason = #{record.gtwayresponsereason,jdbcType=VARCHAR},
+      </if>
+      <if test="record.recstatusDirty" >
+        recstatus = #{record.recstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rectimestampDirty" >
+        rectimestamp = #{record.rectimestamp,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where  site = #{record.site,jdbcType=VARCHAR} and  smsid = #{record.smsid,jdbcType=VARCHAR}
+  </update>
+
+</mapper>

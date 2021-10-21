@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--
+  TODO: xmlCopyRight.txt
+   
+  -->
+<!--
+  TODO: xmlReadme.txt
+   
+  -->
+
+<!-- <mapper resource="org/r3/db/system/siteproperty/SitePropertyMapper.xml"/> -->
+<mapper namespace="org.r3.db.system.siteproperty.SitePropertyMapper" >
+    <resultMap id="BaseResultMap" type="org.r3.db.system.siteproperty.SitePropertyDTO" >
+         <id column="site" property="site" jdbcType="VARCHAR" />
+           <id column="propertyscope" property="propertyscope" jdbcType="VARCHAR" />
+           <id column="propertykey" property="propertykey" jdbcType="VARCHAR" />
+           <result column="propertyvalue" property="propertyvalue" jdbcType="VARCHAR" />
+    </resultMap>
+
+  <sql id="Filter_Where_Clause" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+                <when test="criterion.subSelectCriterion" >
+                  and ${criterion.prefixCondition} #{criterion.value} ${criterion.suffixCondition}
+                </when>                                
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <!--
+  <sql id="Filter_Where_Clause_4_Update" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  -->  
+  <sql id="Base_Column_List" >
+    site,  propertyscope,  propertykey,  propertyvalue  </sql>
+  <select id="selectBySitePropertyscopePropertykey" resultMap="BaseResultMap" parameterType="HashMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from r3_siteproperty
+    where  site = #{site,jdbcType=VARCHAR} and  propertyscope = #{propertyscope,jdbcType=VARCHAR} and  propertykey = #{propertykey,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteBySitePropertyscopePropertykey" parameterType="HashMap" >
+    delete
+    from r3_siteproperty
+    where  site = #{site,jdbcType=VARCHAR} and  propertyscope = #{propertyscope,jdbcType=VARCHAR} and  propertykey = #{propertykey,jdbcType=VARCHAR}
+  </delete>  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from r3_siteproperty    
+    where  site = #{pk.site,jdbcType=VARCHAR} and  propertyscope = #{pk.propertyscope,jdbcType=VARCHAR} and  propertykey = #{pk.propertykey,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete
+    from r3_siteproperty
+    where  site = #{pk.site,jdbcType=VARCHAR} and  propertyscope = #{pk.propertyscope,jdbcType=VARCHAR} and  propertykey = #{pk.propertykey,jdbcType=VARCHAR}
+  </delete>  
+  <select id="select" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <if test="filter != null &amp;&amp; filter.distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from r3_siteproperty
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+    <if test="filter != null &amp;&amp; filter.orderByClause != null" >
+      order by ${filter.orderByClause}
+    </if>
+    <if test="filter != null &amp;&amp; filter.limitFetch > 0" >
+      limit ${filter.limitFetch}
+    </if>
+  </select>
+  <select id="count" parameterType="map" resultType="java.lang.Integer" >
+    select count(*) from r3_siteproperty
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </select>  
+  <delete id="delete" parameterType="map" >
+    delete from r3_siteproperty
+    <!-- _parameter: dato che e' una map lo sostituisco con il nome del parametro in quanto non è l'unico -->
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="map" >
+    insert into r3_siteproperty (
+ site, propertyscope, propertykey, propertyvalue      )
+    values (
+ 
+ #{record.site,jdbcType=VARCHAR}, 
+ #{record.propertyscope,jdbcType=VARCHAR}, 
+ #{record.propertykey,jdbcType=VARCHAR}, 
+ #{record.propertyvalue,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="update" parameterType="map" >
+    update r3_siteproperty
+    <set >
+      <if test="record.propertyvalueDirty" >
+        propertyvalue = #{record.propertyvalue,jdbcType=VARCHAR},
+      </if>      
+    </set>
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+      <!-- Non dovrebbe servire in quanto il filter e' sempre named. -->
+      <!-- <include refid="Filter_Where_Clause_4_Update" /> -->
+    </if>
+  </update>
+  <update id="updateByPrimaryKey" parameterType="map" >
+    update r3_siteproperty
+    <set >
+      <if test="record.propertyvalueDirty" >
+        propertyvalue = #{record.propertyvalue,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where  site = #{record.site,jdbcType=VARCHAR} and  propertyscope = #{record.propertyscope,jdbcType=VARCHAR} and  propertykey = #{record.propertykey,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectCascade" resultMap="BaseResultMap" parameterType="map" >
+  select 
+  r3_siteproperty.site, propertyscope, propertykey, propertyvalue 
+  from r3_siteproperty 
+  left join r3_site on r3_siteproperty.site = r3_site.site   
+  where r3_siteproperty.site = #{site,jdbcType=VARCHAR} or r3_siteproperty.site = #{siteDomain,jdbcType=VARCHAR} 
+  order by 
+    case 
+    when r3_siteproperty.site = '__any__' then 0
+    when r3_site.site = r3_site.sitedomain then 1
+    else 2
+    end desc, site, propertyscope, propertykey;    
+  </select>
+  
+</mapper>

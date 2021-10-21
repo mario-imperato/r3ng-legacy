@@ -1,0 +1,8 @@
+<< BOF Changing rows at: 35
+        // Modificata l'assegnazione per considerare lo zero..
+        this.drealtime = aDataBean.drealtime;
+        this.correctedtime = aDataBean.correctedtime;
+        this.drealtime = aDataBean.drealtime || null;
+        this.correctedtime = aDataBean.correctedtime || null;
+<< BOF Inserting rows at: 39
+        this.perctempen = aDataBean.perctempen || null;

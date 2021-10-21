@@ -1,0 +1,17 @@
+
+$.r3Utils.namespace("org.r3.console.siteconfig.page", window, function(aNamespace) 
+{
+  aNamespace.message = {
+    waiting:"Aguarde...",
+    
+    any: "Todos",
+    search_category: "Por categoria",
+    	
+    search_username: "Busca por codígo",
+    search_advanced: "Busca avançada",
+    initializationerror: "Aviso: ocorreu um erro durante a inicialização da página. O processamento não pode continuar",
+    
+    pageDetailActionForm_tab_generale: 'Geral',
+    pageDetailActionForm_tab_pagetext: 'Descrição'
+  };
+});

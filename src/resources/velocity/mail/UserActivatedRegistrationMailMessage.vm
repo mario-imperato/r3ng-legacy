@@ -1,0 +1,32 @@
+##
+## Variabili in ingresso:
+##     String                     as $schemehostport
+##     String                     as $targetSite
+##     String                     as $targetLanguage
+##     String                     as $targetSiteDomain 
+##     UserDTO                    as $userObj
+##     OTPDTO                     as $otpObj
+##
+## The variable userDataBean is supposed to hold the GWFUserDataBean
+## The variable password contains the imposed user password.
+
+
+<p>
+Gentile $userObj.lastname,<br />
+per la registrazione, per accedere al sito puoi utilizzare il seguente link<br /> 
+<a href="${schemehostport}/r3ng/${targetSite}/it/org/r3/home.do">Home Page</a>
+</p>
+
+<p>
+Qualora non fosse cliccabile, puoi copiare e incollare nella barra del tuo browser il seguente indirizzo:<br />
+${schemehostport}/r3ng/${targetSite}/it/org/r3/home.do
+</p>
+
+<p>
+Buona navigazione.
+</p>
+ 
+<p>
+Distinti Saluti,<br />
+Team R3
+</p>

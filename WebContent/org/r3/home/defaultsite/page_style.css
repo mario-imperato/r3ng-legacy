@@ -1,0 +1,179 @@
+html,body {
+	margin: 0;
+	height: 100%;
+	background: #FFFFFF url('/r3ng/resources/sites/default/righino.gif') repeat-x scroll center top;
+	font-family: AvenirLTStd55Roman,Arial,Helvetica,sans-serif;
+	font-size: 12px;
+}
+
+#canvas_body {
+	width: 960px;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	height: 100%;
+}
+
+#left_canvas {
+	float: left;
+	width: 448px;
+	height: 100%;
+	background-color: #142A38;
+}
+
+img {
+	border: 0;
+}
+
+#left_innercanvas {
+	background-color: #142A38;
+	height: auto;
+	min-height: 652px;
+}
+
+#r3_welcome_canvas {
+	color: #ffffff;
+	margin-top: -10px;
+	padding-left: 12px;
+	padding-right: 20px;
+	
+	text-align: justify;
+	font-weight: normal;
+	letter-spacing: -0.0035em;
+	line-height: 1.5em;
+}
+
+#right_canvas {
+	float: left;
+	width: 512px;
+}
+
+#right_top_canvas {
+	height: 110px;
+	position: relative;
+}
+
+.featured_events_canvas {
+	padding-left: 12px;
+	padding-right: 20px;
+}
+
+.footer_actions_canvas span {
+	position: absolute;
+	right: 0px;
+	margin: 0px;
+}
+
+.footer_actions_canvas ul {
+	-moz-padding-start: 0;
+	position: absolute;
+	right: 0px;
+	margin: 0px;
+}
+
+.footer_actions_canvas ul li {
+	display: inline;
+	list-style-image: none;
+	list-style-position: outside;
+	list-style-type: none;
+}
+
+.footer_actions_canvas ul li a:link,.footer_actions_canvas ul li a:visited,.footer_actions_canvas ul li a:hover,.footer_actions_canvas ul li a:active
+	{
+	color: #013470;
+}
+
+.bottomActions ul li a:hover {
+	color: #013470;
+}
+
+.footer_actions_canvas ul li a,.bottomActions ul li span {
+	color: #013470;
+	display: block;
+	float: left;
+	font-weight: normal;
+	padding-top: 0.5em;
+	padding-left: 0.5em;
+	padding-left: 0.5em;
+	font-size: 0.9em;
+	text-decoration: none;
+}
+
+.featured_events_canvas {
+	
+}
+
+.featured_events_canvas ul {
+	-moz-padding-start: 0;
+	list-style-position: outside;
+	list-style-type: disc;
+	padding: 0;
+	margin: 0;
+}
+
+.featured_events_canvas ul li {
+	display: inline;
+	list-style-image: none;
+	list-style-position: outside;
+	list-style-type: none;
+}
+
+.featured_events_canvas ul li a {
+	color: #FFFFFF;
+	display: block;
+	font-weight: normal;
+	padding-top: 0.5em;
+	padding-left: 0;
+	font-size: 0.9em;
+	text-decoration: none;
+}
+
+.featured_events_canvas ul li a:link,.featured_events_canvas ul li a:visited,.featured_events_canvas ul li a:hover,.featured_events_canvas ul li a:active
+	{
+	color: #FF9C01;
+}
+
+.featured_events_canvas ul li a:hover {
+	color: #FFFFFF;
+}
+
+.featured_events_canvas ul li span {
+	color: #FFFFFF;
+	display: block;
+	font-weight: normal;
+	padding-top: 0.5em;
+	padding-left: 0;
+	font-size: 0.9em;
+	text-decoration: none;
+}
+
+.featured_events_canvas .eventName {
+	margin-bottom: 0px;
+	font-weight: bold;
+}
+
+.featured_events_canvas .eventYachtClub {
+	
+}
+
+.featured_events_canvas .eventDescr {
+	
+}
+
+.language_selection_canvas ul {
+	-moz-padding-start: 0;
+	list-style-position: outside;
+	list-style-type: disc;
+	padding: 0;
+	margin: 0;
+	position: absolute;
+	bottom: 2px;
+	right: 2px;
+}
+
+.language_selection_canvas ul li {
+	display: inline;
+	list-style-image: none;
+	list-style-position: outside;
+	list-style-type: none;
+}

@@ -1,0 +1,127 @@
+##
+## Variabili in ingresso:
+##
+##     String                     as $schemehostport
+##     String                     as $targetSite
+##     String                     as $targetLanguage
+##     String                     as $targetSiteDomain 
+ 
+##     List<SailApplicationCrewMemberDTO>  	as $crewList
+##     SailApplicationDTO         			as $appObj
+##     String                               as $crewMemberId
+##
+
+<p>Modificata la composizione dell'equipaggio</p>
+
+<table style='width: 40%'>
+<tr>
+  <td style='width: 50%; border: 1px solid #cccccc; padding: 4px'>Id</td>
+  <td style='width: 50%; border: 1px solid #cccccc; padding: 4px'>$appObj.applicationid</td>
+</tr>
+
+<tr>
+  <td style='width: 50%; border: 1px solid #cccccc; padding: 4px'>Yacht</td>
+  <td style='width: 50%; border: 1px solid #cccccc; padding: 4px'>$appObj.sailnumber - $appObj.yachtname</td>
+</tr>
+</table>
+
+
+#if (${crewList.size()} > 0)
+<p>Composizione dell'equipaggio dopo la modifica. In Rosso chiaro l'elemento variato. In grigio gli elementi in stato 'Cancellato'</p>
+
+<table style='width: 100%'>
+   <table class="framed-list" >
+   <thead>
+   <tr>
+      <th  style="vertical-align: middle; width: 5%; border: 1px solid #cccccc; padding: 4px">
+      &nbsp;
+      </th>
+      <th  style="vertical-align: middle; width: 5%; border: 1px solid #cccccc; padding: 4px">
+      Stato Tessera
+      </th>
+      <th  style="vertical-align: middle; width: 10%; border: 1px solid #cccccc; padding: 4px">
+      No. Tessera FIV
+      </th>
+      <th  style="vertical-align: middle; width: 15%; border: 1px solid #cccccc; padding: 4px">
+      Nominativo
+      </th>
+      <th  style="vertical-align: middle; width: 15%; border: 1px solid #cccccc; padding: 4px">
+      Circolo di appartenenza
+      </th>
+      <th  style="vertical-align: middle; width: 10%; border: 1px solid #cccccc; padding: 4px">
+      Data rinnovo
+      </th>
+      <th  style="vertical-align: middle; width: 10%; border: 1px solid #cccccc; padding: 4px">
+      Scad. Cert. Med.
+      </th>
+      <th style="vertical-align: middle; width: 10%; border: 1px solid #cccccc; padding: 4px">
+      Ruolo                      
+      </th>
+      <th style="vertical-align: middle; width: 5%; border: 1px solid #cccccc; padding: 4px">
+      Peso                      
+      </th>
+      <th style="vertical-align: middle; width: 5%; border: 1px solid #cccccc; padding: 4px">
+      Tit/Ris                      
+      </th>
+      <th style="vertical-align: middle; width: 10%; border: 1px solid #cccccc; padding: 4px">
+      Data Verifica                      
+      </th>
+
+   </tr>
+</thead>
+<tbody>
+
+#foreach ( $dto in $crewList)
+#if ($crewMemberId && $crewMemberId.equalsIgnoreCase($dto.crewmemberid))
+<tr style='background-color: #f2dede'> 
+#elseif ($dto.recstatus.equalsIgnoreCase('sys_recdeleted'))
+<tr style='background-color: #dddddd'>
+#else
+<tr> 
+#end     
+      <td  style="vertical-align: middle; width: 5%; border: 1px solid #cccccc; padding: 4px">
+#if ($dto.recstatus.equalsIgnoreCase('sys_recdeleted'))
+      <b>Cancellato</b>
+#end
+#if ($dto.recstatus.equalsIgnoreCase('sys_recact'))
+      <b>Attivo</b>
+#end
+      </td>
+      <td  style="vertical-align: middle; width: 5%; border: 1px solid #cccccc; padding: 4px">
+       $dto.cardnumberstatuscode     
+      </td>
+      <td  style="vertical-align: middle; width: 10%; border: 1px solid #cccccc; padding: 4px">
+      $dto.cardnumber
+      </td>
+      <td  style="vertical-align: middle; width: 15%; border: 1px solid #cccccc; padding: 4px">
+      $dto.crewmembername
+      </td>
+      <td  style="vertical-align: middle; width: 15%; border: 1px solid #cccccc; padding: 4px">
+      $!dto.yachtclub      
+      </td>
+      <td  style="vertical-align: middle; width: 10%; border: 1px solid #cccccc; padding: 4px">
+      $!dto.renewaldateAsPrintDateFormat
+      </td>
+      <td  style="vertical-align: middle; width: 10%; border: 1px solid #cccccc; padding: 4px">
+      $!dto.medexamexpirationdateAsPrintDateFormat      
+      </td>
+      <td style="vertical-align: middle; width: 10%; border: 1px solid #cccccc; padding: 4px">
+      $dto.crewmemberrolecode                                
+      </td>
+      <td style="vertical-align: middle; width: 5%; border: 1px solid #cccccc; padding: 4px">
+      $dto.weight                      
+      </td>
+      <td style="vertical-align: middle; width: 5%; border: 1px solid #cccccc; padding: 4px">
+      $dto.memberstatuscode                      
+      </td>      
+      <td style="vertical-align: middle; width: 10%; border: 1px solid #cccccc; padding: 4px">
+      $!dto.systemcheckdate                                
+      </td>
+   </tr>
+#end
+</tbody>
+</table>
+#else
+<p>La lista equipaggio è vuota</p>
+#end
+

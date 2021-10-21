@@ -1,0 +1,297 @@
+<< BOF Deleting rows at: 212
+ 	var columnId = 'boatinfo';
+	if (!includeOnlyFieldList || includeOnlyFieldList.indexOf(columnId) >= 0)
+	{
+    	defaultColumnDefinitions[columnId] =
+    	{
+    	  	"aTargets": [ -1 ],
+       		"sClass": "text-left",
+       		"sTitle": org.r3.db.sailevent.rankinginstancedetailview.message.boatinfo,
+       		"render": function ( data, type, row, meta )
+       		{
+          		var item = data;
+          		var s = '<b>' + (item.dataBean.sailnumber || '') + '</b> ' +
+          		        '<b>' + (item.dataBean.yachtname || '') + '</b> - ' +
+          		        (item.dataBean.model || '') + '<br />' +
+          		        '<small class="text-muted">' + 
+          		        (item.dataBean.owner || '') + ' - ' + 
+          		        (item.dataBean.club || '') + 
+          		        '</small>'
+          		;
+          		return s;
+       		}
+    	};
+    }	
+<< BOF Changing rows at: 354
+    }	
+    }
+<< BOF Changing rows at: 366
+          		return item.getArrivaldate() || '';
+          		return item.dataBean.arrivaldate || '';
+<< BOF Changing rows at: 381
+          		return item.getRealtime() || '';
+          		return item.dataBean.realtime || '';
+<< BOF Changing rows at: 396
+          		return item.getDrealtime() || '';
+          		return item.dataBean.drealtime || '';
+<< BOF Changing rows at: 411
+          		return item.getCorrectedtime() || '';
+          		return item.dataBean.correctedtime || '';
+<< BOF Inserting rows at: 430
+ 	var columnId = 'perctempen';
+	if (!includeOnlyFieldList || includeOnlyFieldList.indexOf(columnId) >= 0)
+	{
+    	defaultColumnDefinitions[columnId] =
+    	{
+    	  	"aTargets": [ -1 ],
+       		"sClass": "text-left",
+       		"sTitle": org.r3.db.sailevent.rankinginstancedetailview.message.perctempen,
+       		"render": function ( data, type, row, meta )
+       		{
+          		var item = data;
+          		return item.dataBean.perctempen || '';
+       		}
+    	};
+    }
+<< BOF Deleting rows at: 925
+    
+    var columnId = 'scoreoverall1';
+	if (!includeOnlyFieldList || includeOnlyFieldList.indexOf(columnId) >= 0)
+	{
+    	defaultColumnDefinitions[columnId] =
+    	{
+    	  	"aTargets": [ -1 ],
+       		"sClass": "text-center",
+       		"sTitle": org.r3.db.sailevent.rankinginstancedetailview.message.scorer01,
+       		"render": function ( data, type, row, meta )
+       		{
+          		var item = data;
+          		return item.dataBean.scorer01 || '';
+       		}
+    	};
+    }
+    
+    var columnId = 'scoreoverall2';
+	if (!includeOnlyFieldList || includeOnlyFieldList.indexOf(columnId) >= 0)
+	{
+    	defaultColumnDefinitions[columnId] =
+    	{
+    	  	"aTargets": [ -1 ],
+       		"sClass": "text-center",
+       		"sTitle": org.r3.db.sailevent.rankinginstancedetailview.message.scorer02,
+       		"render": function ( data, type, row, meta )
+       		{
+          		var item = data;
+          		return item.dataBean.scorer02 || '';
+       		}
+    	};
+    }
+
+    var columnId = 'scoreoverall3';
+	if (!includeOnlyFieldList || includeOnlyFieldList.indexOf(columnId) >= 0)
+	{
+    	defaultColumnDefinitions[columnId] =
+    	{
+    	  	"aTargets": [ -1 ],
+       		"sClass": "text-center",
+       		"sTitle": org.r3.db.sailevent.rankinginstancedetailview.message.scorer03,
+       		"render": function ( data, type, row, meta )
+       		{
+          		var item = data;
+          		return item.dataBean.scorer03 || '';
+       		}
+    	};
+    }
+
+    var columnId = 'scoreoverall4';
+	if (!includeOnlyFieldList || includeOnlyFieldList.indexOf(columnId) >= 0)
+	{
+    	defaultColumnDefinitions[columnId] =
+    	{
+    	  	"aTargets": [ -1 ],
+       		"sClass": "text-center",
+       		"sTitle": org.r3.db.sailevent.rankinginstancedetailview.message.scorer04,
+       		"render": function ( data, type, row, meta )
+       		{
+          		var item = data;
+          		return item.dataBean.scorer04 || '';
+       		}
+    	};
+    }
+
+    var columnId = 'scoreoverall5';
+	if (!includeOnlyFieldList || includeOnlyFieldList.indexOf(columnId) >= 0)
+	{
+    	defaultColumnDefinitions[columnId] =
+    	{
+    	  	"aTargets": [ -1 ],
+       		"sClass": "text-center",
+       		"sTitle": org.r3.db.sailevent.rankinginstancedetailview.message.scorer05,
+       		"render": function ( data, type, row, meta )
+       		{
+          		var item = data;
+          		return item.dataBean.scorer05 || '';
+       		}
+    	};
+    }
+
+    var columnId = 'scoreoverall6';
+	if (!includeOnlyFieldList || includeOnlyFieldList.indexOf(columnId) >= 0)
+	{
+    	defaultColumnDefinitions[columnId] =
+    	{
+    	  	"aTargets": [ -1 ],
+       		"sClass": "text-center",
+       		"sTitle": org.r3.db.sailevent.rankinginstancedetailview.message.scorer06,
+       		"render": function ( data, type, row, meta )
+       		{
+          		var item = data;
+          		return item.dataBean.scorer06 || '';
+       		}
+    	};
+    }
+
+    var columnId = 'scoreoverall7';
+	if (!includeOnlyFieldList || includeOnlyFieldList.indexOf(columnId) >= 0)
+	{
+    	defaultColumnDefinitions[columnId] =
+    	{
+    	  	"aTargets": [ -1 ],
+       		"sClass": "text-center",
+       		"sTitle": org.r3.db.sailevent.rankinginstancedetailview.message.scorer07,
+       		"render": function ( data, type, row, meta )
+       		{
+          		var item = data;
+          		return item.dataBean.scorer07 || '';
+       		}
+    	};
+    }
+
+    var columnId = 'scoreoverall8';
+	if (!includeOnlyFieldList || includeOnlyFieldList.indexOf(columnId) >= 0)
+	{
+    	defaultColumnDefinitions[columnId] =
+    	{
+    	  	"aTargets": [ -1 ],
+       		"sClass": "text-center",
+       		"sTitle": org.r3.db.sailevent.rankinginstancedetailview.message.scorer08,
+       		"render": function ( data, type, row, meta )
+       		{
+          		var item = data;
+          		return item.dataBean.scorer08 || '';
+       		}
+    	};
+    }
+
+    var columnId = 'scoreoverall9';
+	if (!includeOnlyFieldList || includeOnlyFieldList.indexOf(columnId) >= 0)
+	{
+    	defaultColumnDefinitions[columnId] =
+    	{
+    	  	"aTargets": [ -1 ],
+       		"sClass": "text-center",
+       		"sTitle": org.r3.db.sailevent.rankinginstancedetailview.message.scorer09,
+       		"render": function ( data, type, row, meta )
+       		{
+          		var item = data;
+          		return item.dataBean.scorer09 || '';
+       		}
+    	};
+    }
+
+    var columnId = 'scoreoverall10';
+	if (!includeOnlyFieldList || includeOnlyFieldList.indexOf(columnId) >= 0)
+	{
+    	defaultColumnDefinitions[columnId] =
+    	{
+    	  	"aTargets": [ -1 ],
+       		"sClass": "text-center",
+       		"sTitle": org.r3.db.sailevent.rankinginstancedetailview.message.scorer10,
+       		"render": function ( data, type, row, meta )
+       		{
+          		var item = data;
+          		return item.dataBean.scorer10 || '';
+       		}
+    	};
+    }
+
+    var columnId = 'scoreoverall11';
+	if (!includeOnlyFieldList || includeOnlyFieldList.indexOf(columnId) >= 0)
+	{
+    	defaultColumnDefinitions[columnId] =
+    	{
+    	  	"aTargets": [ -1 ],
+       		"sClass": "text-center",
+       		"sTitle": org.r3.db.sailevent.rankinginstancedetailview.message.scorer11,
+       		"render": function ( data, type, row, meta )
+       		{
+          		var item = data;
+          		return item.dataBean.scorer11 || '';
+       		}
+    	};
+    }
+    
+    var columnId = 'scoreoverall12';
+	if (!includeOnlyFieldList || includeOnlyFieldList.indexOf(columnId) >= 0)
+	{
+    	defaultColumnDefinitions[columnId] =
+    	{
+    	  	"aTargets": [ -1 ],
+       		"sClass": "text-center",
+       		"sTitle": org.r3.db.sailevent.rankinginstancedetailview.message.scorer12,
+       		"render": function ( data, type, row, meta )
+       		{
+          		var item = data;
+          		return item.dataBean.scorer12 || '';
+       		}
+    	};
+    }
+
+    var columnId = 'scoreoverall13';
+	if (!includeOnlyFieldList || includeOnlyFieldList.indexOf(columnId) >= 0)
+	{
+    	defaultColumnDefinitions[columnId] =
+    	{
+    	  	"aTargets": [ -1 ],
+       		"sClass": "text-center",
+       		"sTitle": org.r3.db.sailevent.rankinginstancedetailview.message.scorer13,
+       		"render": function ( data, type, row, meta )
+       		{
+          		var item = data;
+          		return item.dataBean.scorer13 || '';
+       		}
+    	};
+    }
+
+    var columnId = 'scoreoverall14';
+	if (!includeOnlyFieldList || includeOnlyFieldList.indexOf(columnId) >= 0)
+	{
+    	defaultColumnDefinitions[columnId] =
+    	{
+    	  	"aTargets": [ -1 ],
+       		"sClass": "text-center",
+       		"sTitle": org.r3.db.sailevent.rankinginstancedetailview.message.scorer14,
+       		"render": function ( data, type, row, meta )
+       		{
+          		var item = data;
+          		return item.dataBean.scorer14 || '';
+       		}
+    	};
+    }
+
+    var columnId = 'scoreoverall15';
+	if (!includeOnlyFieldList || includeOnlyFieldList.indexOf(columnId) >= 0)
+	{
+    	defaultColumnDefinitions[columnId] =
+    	{
+    	  	"aTargets": [ -1 ],
+       		"sClass": "text-center",
+       		"sTitle": org.r3.db.sailevent.rankinginstancedetailview.message.scorer15,
+       		"render": function ( data, type, row, meta )
+       		{
+          		var item = data;
+          		return item.dataBean.scorer15 || '';
+       		}
+    	};
+    }
+    

@@ -1,0 +1,22 @@
+
+$.r3Utils.namespace("org.r3.console.bbs", window, function(aNamespace) 
+{
+  aNamespace.message = {
+    waiting:"Attendi...",
+    initializationerror: "Aviso: ocorreu um erro durante a inicialização da página. O processamento não pode continuar",
+    
+    action_newthread: 'Nova conversa',
+    action_deleteselectedthreads: 'Excluir conversas selecionadas',
+    
+    action_newpost: 'Novo Post',
+    action_deleteselectedposts: 'Excluir os Post Selecionados',
+    
+    gmenubar_act_newbbstopic: "Novo Topico",
+    gmenubar_act_query_bbstopic: "Lista de Topicos",
+    
+    breadcrumb_bbstopic: "Topico de BBS",
+    breadcrumb_querybbstopic: "Lista dos topicos da BBS",
+    breadcrumb_bbsthread: "Conversa de BBS",
+    breadcrumb_bbspost: "Post de BBS"
+  };
+});

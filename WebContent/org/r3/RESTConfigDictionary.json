@@ -1,0 +1,492 @@
+{   
+   "GET_QuizInfo" 						    : "/quiz/{0}",
+   "POST_QuizEnter" 						: "/quiz/{0}/enter",
+   "GET_QuizUserBlocks" 					: "/quiz/{0}/sessions",
+   "POST_QuizStartSession" 				    : "/quiz/{0}/sessions/{1}/start",
+   "POST_QuizAnswerQuestion" 	            : "/quiz/{0}/sessions/{1}/questions/{2}/answers/{3}",
+   "QUIZ_QuizSessionInfo" 				    : "/quiz/{0}/sessions/{1}/info",
+   
+   "POST_EventLOG"							: "/system/eventlog/events/{0}/{1}/{2}",
+   "GET_StatsEventLOG"						: "/system/eventlog/stats",
+   
+   "GET_OpenRegattas"                       : "/openregattas",
+   "GET_RegattaDetail"                      : "/openregattas/{0}",
+   
+   "GET_Sites"                              : "/sites",
+   "GET_Sites_Of_Type"                      : "/sites;sitetype={0}",
+   "GET_Sites_Of_Type_Regatta"              : "/sites;sitetype=regatta",
+   "POST_Site"                              : "/sites",
+
+   "POST_ShakeUs_NewSite"					: "/sites/shakeus",
+
+   "GET_SiteDetail"                         : "/sites/{0}",
+   "PUT_Site"                               : "/sites/{0}",
+   "DELETE_Site"                            : "/sites/{0}",
+   
+   "GET_SiteCollection_Detail"              : "/sitecollection/{0}",
+   "PUT_SiteCollection_Address"             : "/sitecollection/{0}/address",
+   "PUT_SiteCollection_Info"                : "/sitecollection/{0}/info",
+   "GET_SiteCollections"                    : "/sitecollection",
+   "GET_MapExplorerNeighborhoods"           : "/sitecollection?addressrequired=btrue&iDisplayLength={0}",
+   "GET_SiteCollection_Graphic"             : "/sitecollection/{0}/graphics/{1};imagerole={2}",
+   "PUT_SiteCollection_Graphic"             : "/sitecollection/{0}/graphics",
+   
+   "GET_Timelines"                          : "abspath:/{0}/{1}/cms/timelines",
+   "POST_Timelines"							: "abspath:/{0}/{1}/cms/timelines",
+   
+   "GET_TimelineCollection_Detail"			: "abspath:/{0}/{1}/cms/timelines/{2}",
+   "PUT_TimelineCollectionDetail"			: "abspath:/{0}/{1}/cms/timelines/{2}",
+   "DELETE_TimelineCollectionDetail"		: "abspath:/{0}/{1}/cms/timelines/{2}",
+   
+   "GET_Posts"                              : "abspath:/{0}/{1}/cms/posts",
+   "POST_AddPost"							: "abspath:/{0}/{1}/cms/posts",
+   "POST_AddPostInTimeline"					: "abspath:/{0}/{1}/cms/posts;timeline=btrue",
+   
+   "GET_TimelineOfPosts"                    : "abspath:/{0}/{1}/cms/posts?status=published&includecomments=btrue&iDisplayLength={2}&iDisplayStart={3}&iSortingCols=1&iSortCol_0=0&sColumns=postid&sSortDir_0=DESC",
+   
+   "CMSCardPlugin_GETPosts"                 : "abspath:/{0}/{1}/cms/posts;mode={2}?{3}",
+   "CMSCardPlugin_GETPostById"              : "abspath:/{0}/{1}/cms/posts/{2};mode={3}",
+   
+   "GET_PostsByContentClass"                : "abspath:/{0}/{1}/cms/posts?contentclass={2}",   
+   "GET_Post_Detail"                        : "abspath:/{0}/{1}/cms/posts/{2}",
+   "DELETE_Post"                            : "abspath:/{0}/{1}/cms/posts/{2}",
+   "PUT_UpdatePostInTimeline"               : "abspath:/{0}/{1}/cms/posts/{2};timeline=btrue",
+      
+   "PUT_PostGeneralInfo_Detail"             : "abspath:/{0}/{1}/cms/posts/{2}/generalinfo",
+   "PUT_PostContent_Detail"                 : "abspath:/{0}/{1}/cms/posts/{2}/content",
+   "PUT_PostTextBody_Detail" 				: "abspath:/{0}/{1}/cms/posts/{2}/textbody/{3}",   
+   "PUT_PostPublish"                        : "abspath:/{0}/{1}/cms/posts/{2}/publish",
+
+   "GET_PostLinks"							: "abspath:/{0}/{1}/cms/posts/{2}/links",
+   "POST_PostLink" 							: "abspath:/{0}/{1}/cms/posts/{2}/links",
+   "DELETE_PostLink"						: "abspath:/{0}/{1}/cms/posts/{2}/links/{3}",   
+   "PUT_PostLink"							: "abspath:/{0}/{1}/cms/posts/{2}/links/{3}",   
+   "POST_PostPhoto"							: "abspath:/{0}/{1}/cms/posts/{2}/photo",
+   "GET_PostFileImageAttachments"			: "abspath:/{0}/{1}/cms/posts/{2}/fileattachments",
+   "GET_PostFileAttachments"				: "abspath:/{0}/{1}/cms/posts/{2}/fileattachments",
+   "POST_PostFileAttachment"				: "abspath:/{0}/{1}/cms/posts/{2}/fileattachments",
+   "POST_PostCKEditorImageAttachment"	    : "abspath:/{0}/{1}/cms/posts/{2}/fileattachments;filepartname={3};attachmenttype={4};responsetype=ckeditor?",
+   "DELETE_PostFileAttachment"				: "abspath:/{0}/{1}/cms/posts/{2}/fileattachments/{3}",
+   "PUT_PostFileAttachment"					: "abspath:/{0}/{1}/cms/posts/{2}/fileattachments/{3}",
+   
+   "POST_PostTemporaryFileInTimeline"		: "abspath:/{0}/{1}/cms/files;filestatus=pending;responsetype=mongoimage_fileattachment",
+   
+   "POST_GetPostComments"		            : "abspath:/{0}/{1}/cms/posts/{2}/comments?iDisplayLength={3}&iDisplayStart={4}&iSortingCols=1&iSortCol_0=0&sColumns=commentid&sSortDir_0=DESC",
+   "POST_AddPostComment"		            : "abspath:/{0}/{1}/cms/posts/{2}/comments",
+   "DELETE_CommentFromPost"     			: "abspath:/{0}/{1}/cms/posts/{2}/comments/{3}",
+   "PUT_ModifyPostComment"					: "abspath:/{0}/{1}/cms/posts/{2}/comments/{3}",
+   
+   "SHAKE_PostComment"    			        : "abspath:/{0}/{1}/cms/posts/{2}/comments/{3};verb=shake",
+   "UNSHAKE_PostComment"          			: "abspath:/{0}/{1}/cms/posts/{2}/comments/{3};verb=unshake",
+         
+   "ORC_PostRMSFile"				        : "/orc/sailorservices/certificates/rms",
+   
+   "LUT_Timelines"							: "/cms/lut/timelines",
+      
+   "GET_Timeline"                           : "/timelines/{0}/posts?iDisplayLength={1}&iDisplayStart={2}",
+   "POST_AddPost2Timeline"                  : "/timelines/{0}/posts",
+   "PUT_ModifyPostInTimeline"               : "/timelines/{0}/posts/{1}",
+   "DELETE_PostInTimeline"                  : "/timelines/{0}/posts/{1}",
+   "PUT_ModifyPostCommentInTimeline"        : "/timelines/{0}/posts/{1}/comments/{2}", 
+   "SHAKE_PostCommentInTimeline"            : "/timelines/{0}/posts/{1}/comments/{2};verb=shake",
+   "UNSHAKE_PostCommentInTimeline"          : "/timelines/{0}/posts/{1}/comments/{2};verb=unshake",
+         
+   "POST_AddPostComment2Timeline"           : "/timelines/{0}/posts/{1}/comments",
+   "DELETE_CommentFromPostInTimeline"       : "/timelines/{0}/posts/{1}/comments/{2}",
+   "PUT_TimelineCollection_Photo"           : "/timelines/{0}/images",
+
+   
+   "GET_SailEventDetail"                    : "/sailevents/{0}",
+   
+   "GET_Site_PortletConfig"                 : "/siteconfig/portlets/{0}/positions",
+   "PUT_Site_PortletConfig"                 : "/siteconfig/portlets/{0}/positions/{1}",
+   
+   "GET_CMSCardChannels"                    : "/cms/channels/cards",
+   "DELETE_Selected_CardChannel"            : "/cms/channels/cards",
+   
+   "GET_Cards"                              : "/cms/cards",
+   "GET_CardsByCategory"                    : "/cms/cards?categoryid={0}",
+   "POST_Card"                              : "/cms/cards",
+   "PUT_Card"                               : "/cms/cards/{0}",
+   "GET_Card_Detail"                        : "/cms/cards/{0}",
+   "DELETE_Card"                            : "/cms/cards/{0}",   
+   
+   "GET_CardDescr_Detail"                   : "/cms/cards/{0}/{1}/text",
+   "PUT_CardDescr_Detail"                   : "/cms/cards/{0}/{1}/text",
+
+   "DELETE_CardProperty"                    : "/cms/cards/{0}/properties/{1}",
+   "PUT_CardProperty_File"                  : "/cms/cards/{0}/files/{1}",
+   
+   "GET_CardFiles"                          : "/cms/cards/{0}/files",
+   "GET_CardImages"                         : "/cms/cards/{0}/images",
+   
+   "POST_Card_File"                         : "/cms/cards/{0}/files",
+   "POST_Card_File_IE"                      : "/cms/cards/{0}/ie_files", 
+        
+   "GET_CardPropertyLinks"                  : "/cms/cards/{0}/links",
+   "POST_CardProperty_Link"                 : "/cms/cards/{0}/links",
+   "PUT_CardProperty_Link"                  : "/cms/cards/{0}/links/{1}",
+               
+   "GET_CardView_Query_Info"                : "abspath:/{0}/{1}/cms/cardviews;mode={2}?{3}",
+   "GET_CardView_Detail_Info"               : "abspath:/{0}/{1}/cms/cardviews/{2};mode={3}",
+   
+   "GET_CardView_Detail_Properties"         : "abspath:/{0}/{1}/cms/cards/{2}/view;mode=full",
+                      
+   "GET_Users"                              : "/users",
+   "GET_Users_InRole"						: "/users?hasrole={0}",
+   "GET_Users_WithoutLoginContact"          : "/users?logincontact=missing",
+   "GET_Users_ByEMail"                      : "/users?email={0}",
+   
+   "GET_User_Detail"                        : "/users/{0}",
+   "GET_User_SiteRoles"                     : "/users/{0}/roles?limit2CurrentSite=btrue",
+   "GET_User_Roles"                         : "/users/{0}/roles",
+   "DELETE_Role_From_Users_4_Site"			: "/roles/{0}/users",
+   
+   "POST_User"                              : "/users",
+   "PUT_User"                               : "/users/{0}",
+   "PUT_User_Photo"                         : "/users/{0}/profilephoto",
+   "PUT_User_Consent"                       : "/users/{0}/consent",    
+   "PUT_User_Passwd"                        : "/users/{0}/password", 
+   "PUT_User_Roles"                         : "/users/{0}/roles",
+   "PUT_User_Add_Role"                      : "/users/{0}/roles/{1}",
+   "POST_User_Login"                        : "/users/{0}/login",
+   "POST_User_Logout"                       : "/users/{0}/logout",
+   "POST_FBLogin"							: "/users/{0}/fblogin",
+   "POST_ApplyMembershipId"                 : "/users/{0}/applymembershipid",
+
+   "POST_User_Registration"                 : "/users/registration",
+   "POST_User_ChangeMyPassword"             : "/users/changemypassword",
+   "POST_User_ResetPassword"                : "/users/resetpassword",
+   
+   "GET_UserCollection_Detail"              : "/userscollection/{0}",
+   "PUT_UserCollection_LikeSite"            : "/userscollection/{0}/likesite",
+   "PUT_UserCollection_DisLikeSite"         : "/userscollection/{0}/dislikesite",
+   
+   "PUT_UserCollection_Photo"               : "/userscollection/{0}/photo",
+   "PUT_UserCollection_Address"             : "/userscollection/{0}/address",
+   "PUT_UserCollection_BusinessCard"        : "/userscollection/{0}/businesscard",
+   "GET_UserCollection_Photo"               : "/userscollection/{0}/photo;photorole={1}",
+   "GET_UserCollection_SiteMembers"         : "/userscollection?iDisplayLength={0}&iDisplayStart={1}",
+   
+   "GET_SEV_MyApplications"                 : "/sev/my_applications",
+   "POST_SEV_MyApplications"                : "/sev/my_applications",
+   "GET_SEV_MyApplication_Detail"           : "/sev/my_applications/{0}",
+   
+   "GET_SEV_HomeEntryList"                  :  "/sev/entrylist/home",
+   "GET_SEV_EntryList"                      :  "/sev/entrylist",
+   
+   "GET_SEV_ConsoleApplicationView"         : "/sev/console/applications",
+   "GET_SEV_ConsoleApplicationEventLogView" : "/sev/console/applications/eventlog",
+   "POST_SEV_ConsoleApplication_CrewCheck"  : "/sev/console/applications/{0}/checkcrew",
+   "POST_SEV_ConsoleApplication_CloneApplication" : "/sev/console/applications/{0}/clone",
+   
+   "GET_SEV_ConsoleApplication_CrewReport"  : "/sev/console/applications/{0}/crewreport",
+   "POST_SEV_ConsoleFleet_CrewCheck"        : "/sev/console/applications/checkcrew",
+   "GET_SEV_ConsoleCrewReport"              : "/sev/console/applications/crewreport",
+   "GET_SEV_ConsoleAthletesReport"          : "/sev/console/applications/athletesreport.slk",
+   
+   "GET_SEV_Applications"                   : "/sev/applications",
+   "GET_SEV_Application_Detail"             : "/sev/applications/{0}",
+   "DELETE_SEV_Application"                 : "/sev/applications/{0}",
+   "GET_SEV_Application_Crew"               : "/sev/applications/{0}/crew",
+   "POST_SEV_Application_Crew"              : "/sev/applications/{0}/crew",
+   "PUT_SEV_Application_Crew"               : "/sev/applications/{0}/crew/{1}",
+   "DELETE_SEV_Application_Crew"            : "/sev/applications/{0}/crew/{1}",
+   "GET_SEV_Application_Crew_Documents"     : "/sev/applications/{0}/crew/{1}/documents",
+   "GET_SEV_Application_Documents"          : "/sev/applications/{0}/documents",
+   "POST_SEV_Application"                   : "/sev/applications",
+   "POST_SEV_Application_File"              : "/sev/applications/{0}/files",
+   "POST_SEV_Application_File_IE"           : "/sev/applications/{0}/ie_files",
+   "DELETE_SEV_Application_File"            : "/sev/applications/{0}/files/{1}",
+   "POST_SEV_Application_Commit"            : "/sev/applications/{0}/commit",
+   
+   "PUT_SEV_Application_AdminRaceInfo"      : "/sev/applications/{0}/adminraceinfo",
+   "PUT_SEV_Application_AdminChecksInfo"    : "/sev/applications/{0}/adminchecks",
+   "PUT_SEV_Application_BoatInfo"           : "/sev/applications/{0}/boatinfo",
+   "PUT_SEV_Application_ClassInfo"          : "/sev/applications/{0}/classinfo",
+   "PUT_SEV_Application_OwnerInfo"          : "/sev/applications/{0}/ownerinfo",
+   "PUT_SEV_Application_AuthorInfo"         : "/sev/applications/{0}/authorinfo",
+
+   "GET_FileImports"                        : "/fileimports",
+   "GET_FileImportData"                     : "/fileimports/{0}/data",
+   "DELETE_FileImport"                      : "/fileimports/{0}",
+   "PUT_ProcessFileImport"                  : "/fileimports/{0}",
+         
+   "GET_Timesheets"						    : "/timesheets",
+         
+   "GET_Teams"                              : "/teams",
+   "GET_Teams_In_team_building"             : "/teams?teamstatus=team_building,team_empty",
+   "GET_Team_ByDate"                        : "/teams?perioddate={0}",
+   "POST_Team"                              : "/teams",
+   "PUT_Team"                               : "/teams/{0}",
+   "PUT_TeamWorkflowOnComplete"             : "/teams/{0}/wf/{1}",
+   "GET_Team_Detail"                        : "/teams/{0}",
+   "DELETE_Team"	                        : "/teams/{0}",
+   "GET_Team_Resources"                     : "/teams/{0}/resources",
+   "DELETE_ResourceFromTeam"                : "/teams/{0}/resources/{1}",
+   
+   "GET_TeamMemberProfiles"                 : "/teamprofile",
+   "POST_TeamMemberProfile"                 : "/teamprofile",
+   "PUT_TeamMemberProfile"                  : "/teamprofile/{0}",
+   "DELETE_TeamMemberProfile"               : "/teamprofile/{0}",
+   "GET_TeamMemberProfile_Detail"           : "/teamprofile/{0}",
+    
+   "GET_ResourceBySSN"                      : "/resources;limit2site=false?ssn={0}&sEcho=1",
+    
+   "GET_Resources"                          : "/resources",
+   "POST_Resource"                          : "/resources",
+   "GET_Resource_Detail"                    : "/resources/{0}",
+   "PUT_Resource"                           : "/resources/{0}",
+   "DELETE_Resource"                        : "/resources/{0}",
+   "GET_Resource_Teams"                     : "/resources/{0}/teams",
+   
+   "POST_AddResource2Team"                  : "/resources/{0}/teams/{1}",
+   "PUT_UpdateResourceInTeam"               : "/resources/{0}/teams/{1}",
+   "DELETE_TeamFromResource"                : "/resources/{0}/teams/{1}",
+   
+   "PUT_ResourceTimesheet"					: "/resources/{0}/timesheet/{1}",
+   "DELETE_ResourceTimesheet"				: "/resources/{0}/timesheet/{1}",
+   
+   "GET_Actors"                             : "/actors",
+   "GET_ActorsAsCSV"                        : "/actors.csv",   
+   "POST_Actor"                             : "/actors",
+
+   "POST_Upload_Actor_Files"                : "/actors/files",
+   "POST_Upload_Actor_Files_IE"             : "/actors/files_ie",
+   "PUT_ProcessUploadedActorFile"           : "/actors/files/{0}",
+   "POST_ImportActorsFromChildSite"         : "/actors/fromsite",
+      
+   "GET_ActorDetail"                        : "/actors/{0}",
+   "GET_ActorResourceDetail_TODELETE"                : "/actors/{0}/resource",
+   "GET_ActorWbsNodes"                      : "/actors/{0}/wbsnodes",
+   "PUT_ActorResourceDetail_TODELETE"                : "/actors/{0}/resource",
+   "PUT_Actor"                              : "/actors/{0}",
+   "DELETE_Actor"                           : "/actors/{0}",
+   "GET_Actors_InGroup"                     : "/actors?groupid={0}",
+   "GET_LoginActorsInGroup"                 : "/actors?groupid={0}&logincontact=btrue",
+   "GET_Actors_NotInGroup"                  : "/actors?notingroupid={0}",
+   "GET_User_ActorGroups"                   : "/actorgroups?groupnature=user",
+   "GET_App_ActorGroups"                    : "/actorgroups?groupnature=app",
+   "GET_UserAndApp_ActorGroups"             : "/actorgroups?groupnature=user,app",   
+   "GET_System_ActorGroups"                 : "/actorgroups?groupnature=system",
+   "GET_ActorGroups"                        : "/actorgroups",
+   "GET_ActorGroups_4Site"                  : "abspath:/{1}/{0}/actorgroups",
+   "POST_ActorGroup"                        : "/actorgroups",
+   "PUT_ActorGroup"                         : "/actorgroups/{0}",
+   "GET_ActorGroupDetail"                   : "/actorgroups/{0}",
+   "DELETE_ActorGroup"                      : "/actorgroups/{0};deleteActors={1}",
+   "PUT_RemoveContactsFromActorGroup"       : "/actorgroups/{0}/removeactors;deleteActors={1}",
+   "PUT_AddContactsIntoActorGroup"          : "/actorgroups/{0}/addactors",
+  
+      
+   "POST_NewsLetter_Registration"           : "/actors/newsletter", 
+   
+   "GET_RankingSynoptic"                    : "/sev/rankings/synoptic",
+   
+   "GET_Rankings"                           : "/sev/rankings",
+   "GET_Ranking_Detail"                     : "/sev/rankings/{0}",
+   "POST_Ranking"                           : "/sev/rankings",
+   "PUT_Ranking"                            : "/sev/rankings/{0}",
+   "DELETE_Ranking"                         : "/sev/rankings/{0}",
+   
+   "POST_Upload_CyberAltura_Files"          : "/sev/rankings/cyberaltura_files",
+   "POST_Upload_CyberAltura_Files_IE"       : "/sev/rankings/cyberaltura_files_ie",
+   
+   "DELETE_Ranking_Instances"               : "/sev/rankings/{0}/instances",
+   "GET_Ranking_Instances"                  : "/sev/rankings/{0}/instances",
+
+   "GET_Ranking_Instance_Detail"            : "/sev/rankings/{0}/instances/{1}",
+   "GET_Ranking_Instance_Entries"           : "/sev/rankings/{0}/instances/{1}/entries",  
+   
+   "GET_AgendaEntries"                       : "/agenda/{0}",
+   "GET_AgendaEntries_AsCalendarEvents"      : "/agenda/{0}/asCalendarEvents",
+   "POST_AgendaEntry"                        : "/agenda/{0}",
+   "PUT_Move_AgendaEntry"                    : "/agenda/{0}/{1};action=move",
+   "PUT_Resize_AgendaEntry"                  : "/agenda/{0}/{1};action=resize",                 
+   "GET_AgendaEntry"                         : "/agenda/{0}/{1}",
+   "PUT_AgendaEntry"                         : "/agenda/{0}/{1}",
+   "DELETE_AgendaEntry"                      : "/agenda/{0}/{1}",
+   
+   "POST_SMS"                               : "/sms",
+   "POST_GETSMSCredits"                     : "/sms/credits",
+   "GET_SMSes"                              : "/sms",
+
+   "GET_Pages"                              : "/pages",
+   "POST_Page"                              : "/pages",
+   "GET_Page_Detail"                        : "/pages/{0}",
+   "PUT_Page"                               : "/pages/{0}",
+   "DELETE_Page"                            : "/pages/{0}",
+   "GET_PageDescr_Detail"                   : "/pages/{0}/{1}/text",
+   "PUT_PageDescr_Detail"                   : "/pages/{0}/{1}/text",
+   
+   "GET_BBSTopics"                          : "/bbs/topics",
+   "GET_BBSTopics_WithNodes"                : "/bbs/topics;fetchthreads=true",
+   "POST_BBSTopics"                         : "/bbs/topics",
+   "DELETE_BBSTopics"                       : "/bbs/topics/{0}",
+   "PUT_BBSTopic"                           : "/bbs/topics/{0}",
+   "GET_BBSTopicDetail"                     : "/bbs/topics/{0}",
+   
+   "GET_BBSThreads_InTopic"                 : "/bbs/topics/{0}/threads",
+   "PUT_Selected_BBSThreads"                : "/bbs/topics/{0}/threads",
+   "POST_BBSThread"                         : "/bbs/topics/{0}/threads",
+   "DELETE_BBSThread"                       : "/bbs/topics/{0}/threads/{1}",
+   "PUT_BBSThread"                          : "/bbs/topics/{0}/threads/{1}",
+   "GET_BBSThreadDetail"                    : "/bbs/topics/{0}/threads/{1}",
+   
+   "GET_ThreadTimeline"                     : "/bbs/topics/{0}/threads/{1}/posts;mode=timeline?iDisplayLength={2}&upperthreadnodeid={3}", 
+   "GET_BBSThreadNodes_InThread"            : "/bbs/topics/{0}/threads/{1}/posts",   
+   "DELETE_Selected_BBSThreadNodes"         : "/bbs/topics/{0}/threads/{1}/posts",
+   "POST_BBSThreadNode"                     : "/bbs/topics/{0}/threads/{1}/posts",
+   
+   "PUT_BBSThreadNode"                      : "/bbs/topics/{0}/threads/{1}/posts/{2}",
+   "GET_BBSThreadNodeDetail"                : "/bbs/topics/{0}/threads/{1}/posts/{2}",
+   "DELETE_BBSThreadNode"                   : "/bbs/topics/{0}/threads/{1}/posts/{2}",
+   
+   "GET_WBSes"                              : "/wbs",
+   "GET_WBSes_WithNodes"                    : "/wbs;includetree=true",
+   "POST_WBS"                               : "/wbs",
+   "PUT_WBS"                                : "/wbs/{0}",
+   "GET_WBS"                                : "/wbs/{0}",
+   "GET_WBS_TeamProfile"                    : "/wbs/{0}/teamprofile",   
+
+   "GET_WBSActors"                          : "/wbs/{0}/wbsactors",
+   "GET_WBSTree"                            : "/wbs/{0};includetree=true",
+   
+   "PUT_WBSNodes_OutlineNumbering"          : "/wbs/{0}/nodes",
+   
+   "GET_WBSNodeChildren"                    : "/wbs/{0}/nodes/{1}/children",
+   "POST_WBSNode"                           : "/wbs/{0}/nodes/{1}/children",
+   "GET_WBSNode"                            : "/wbs/{0}/nodes/{1}",
+   "PUT_WBSNode"                            : "/wbs/{0}/nodes/{1}",
+   "FILL_PUT_WBSNode"                       : "/wbs/{0}/nodes/{1};mode=fill",
+   "DELETE_WBSNode"                         : "/wbs/{0}/nodes/{1}",
+   "SORT_WBSNode"                           : "/wbs/{0}/nodes/{1}/children/{2};position={3};prevnodeid={4}",
+   "GET_WBSNode_BBS_Thread"                 : "/wbs/{0}/nodes/{1}/thread",
+   "GET_WBSNode_TeamProfile"                : "/wbs/{0}/nodes/{1}/teamprofile",   
+   
+   "GET_OUTMAIL"                            : "/outmail",
+   "GET_OUTMAIL_Recipients"                 : "/outmail/{0}/recipients",
+   "POST_OUTMAIL"                           : "/outmail",
+   "POST_OUTMAIL_CreateAttachmentGroup"     : "/outmail/attachmentgroup",
+   "POST_Mail_Attachment_File"              : "/outmail/attachmentgroup/{0}/files",
+   "POST_Mail_Attachment_File_IE"           : "/outmail/attachmentgroup/{0}/ie_files",
+   "DELETE_Mail_Attachment_File"            : "/outmail/attachmentgroup/{0}/files/{1}",
+   
+   "POST_SiteProperties_Invalidate"         : "/properties/{0};invalidatesite=true",
+   "POST_SiteProperties_NoInvalidate"       : "/properties/{0};invalidatesite=false",
+   "GET_UiCfg_SiteProperties"               : "/properties?propertyscope=ui.cfg",
+   "GET_SMS_SiteProperties"                 : "/properties?propertyscope=sms",
+   "GET_GoogleAnalytics_SiteProperties"     : "/properties?propertyscope=google.analytics",
+   "GET_SevApp_SiteProperties"              : "/properties?propertyscope=sev.app",
+   "GET_SevRanking_SiteProperties"          : "/properties?propertyscope=sev.ranking",
+   "GET_FIV_SiteProperties"                 : "/properties?propertyscope=fiv",
+   "GET_FacebookConfig_SiteProperties"      : "/properties?propertyscope=facebook&propertyscopeexact=bfalse",
+   "POST_SiteProperties_AcquireFacebookPageToken" : "/properties/{0}/acquirefbpagetoken",
+   
+   "GET_MAIL_SiteProperties"                : "/properties?propertyscope=mail",
+   
+   "GETCaptchaToken"                          : "/system/captcha",      
+   "POST_InitializeSystemCalendar"            : "/system/calendar/initialize?calendarid={0}&startdate={1}&startday={2}&length={3}",
+   "POST_DefaultInitializationSystemCalendar" : "/system/calendar/initialize;calendarid=default;startdate=20150101;startday=1;length=6575",
+   
+   "LUT_SailEvent"          : "/lut/sailevent",
+   "LUT_SiblingSailEvent"   : "/lut/sailevent;eventgroup={0}",
+   
+   "LUT_SailEventRaceGroups": "/lut/sailevent/racegroups",
+   "LUT_Agenda"             : "/lut/agenda/{0}",
+   
+   "LUT_AuthRole"       : "/lut/authroles",
+   "LUT_Site"           : "/lut/sites",
+   "LUT_Site_OfType"    : "/lut/sites;sitetype={0}",
+   "LUT_Site_Children"  : "/lut/sites/this/children",
+   "LUT_Site_GSideBarChildren"  : "/lut/sites/this/children;opt=gsidebar",
+   
+   "LUT_Country"   : "/lut/countries",   
+ 
+   "LUT_CMS_Category"    : "/cms/lut/category",
+   "LUT_CMS_Group"       : "/cms/lut/group",
+   "LUT_CMS_Attachtype"  : "/cms/lut/attachtype",
+   "LUT_CMS_Attachtype_system"  : "/cms/lut/attachtype;scope=system_scope",
+   "LUT_CMS_Attachtype_default" : "/cms/lut/attachtype/card_scope",
+   "LUT_CMS_Attachtype_site"    : "/cms/lut/attachtype/site_scope",
+   
+   "LUT_CMS_Attachtype_post_fileattach"    : "/cms/lut/attachtype;scope=post_fileattach",
+   
+   "LUT_CMS_Page"        : "/lut/pages",
+   "LUT_CMS_MediaPage"   : "/cms/lut/page;pagetype=media",
+   "LUT_CMS_ConsolePages": "/lut/pages;pagevisibility=cmspg_consolemenu",
+   "LUT_CMS_Channels"    : "/cms/lut/channels",
+   
+   "LUT_CalendarMonthlyPeriod"         : "/system/calendar/periods/monthly;lutsize={0};offset={1}",
+   "LUT_DefaultCalendarMonthlyPeriod"  : "/system/calendar/periods/monthly;lutsize=80;offset=-40",
+   "LUT_DefaultCalendarYearlyPeriod"   : "/system/calendar/periods/yearly;lutsize=80;offset=-40",
+   "LUT_DefaultCalendarQuarterlyPeriod": "/system/calendar/periods/quarterly;lutsize=80;offset=-40",
+   
+   "GET_classifierdetail"                    : "/system/classifiers/{0}",
+   "PUT_classifier"                          : "/system/classifiers/{0}",
+   "GET_classifieritems"                     : "/system/classifiers/{0}/clsitems",
+   "GET_classifieritemdetail"                : "/system/classifiers/{0}/clsitems/{1}",
+   "PUT_classifieritems"                     : "/system/classifiers/{0}/clsitems/{1}",
+   "POST_classifieritems"                    : "/system/classifiers/{0}/clsitems",
+   "DELETE_classifieritems"                  : "/system/classifiers/{0}/clsitems/{1}",
+         
+   "GET_classifier_r3ea_boatelse"            : "/lut/classifiers/r3ea_boatelse/items",
+   "GET_classifier_actor_expformat"          : "/lut/classifiers/actor_expformat/items",
+   
+   "LUT_classifiers"                         : "/lut/classifiers",
+   
+   "GET_classifier_graphcontentdef" 			 : "/lut/mclassifiers/graphcontentdef/items",
+   "GET_classifier_contentclassdef" 			 : "/lut/mclassifiers/contentclassdef/items",      
+   "GET_classifier_contentclassgrp" 			 : "/lut/mclassifiers/contentclassgrp/items",      
+   "GET_classifier_contentclasscategory" 	     : "/lut/mclassifiers/contentclasscategory/items", 
+      
+   "GET_classifier_m_contentclass"                 : "/lut/classifiers/m_contentclass/items;depth=1",      
+   "GET_classifier_m_contentclass_category"        : "/lut/classifiers/m_contentclass/items",
+   "GET_classifier_m_contentclass_contentclassdef" : "/lut/classifiers/m_contentclass/items/{0}/children",
+   
+   "GET_classifier_ita_regione"                    : "/lut/classifiers/ita/items",
+   "GET_classifier_ita_regione_provincia"          : "/lut/classifiers/ita/items/{0}/children",
+   "GET_classifier_ita_regione_provincia_localita" : "/lut/classifiers/ita/items/{1}/children",
+         
+   "GET_classifier_skillambit"               : "/lut/classifiers/skillambit/items",
+   "GET_classifier_skillprofile"             : "/lut/classifiers/skillprofile/items",
+   
+   "GET_classifier_fileimport"               : "/lut/classifiers/fileimport/items",
+   "GET_classifier_fileimport_actor"         : "/lut/classifiers/fileimport/items;sattr=actor",
+   "GET_classifier_childrensite"             : "/lut/classifiers/childrensite/items;sattr={0}",
+   "GET_classifier_r3ea_crewstatus"          : "/lut/classifiers/r3ea_crewstatus/items",
+   "GET_classifier_sys_recstatus"            : "/lut/classifiers/sys_recstatus/items",
+   "GET_classifier_locale"                   : "/lut/classifiers/locale/items",
+   "GET_classifier_unitofmeasure"            : "/lut/classifiers/unitofmeasure/items",
+   "GET_classifier_currency"                 : "/lut/classifiers/currency/items",
+   "GET_classifier_smsoptions"               : "/lut/classifiers/smsoptions/items",
+   "GET_classifier_portlets"                 : "/lut/classifiers/portlets/items",
+   "GET_classifier_uicfgmenus"               : "/lut/classifiers/uicfgmenus/items",
+   "GET_classifier_uicfgmenusi"              : "/lut/classifiers/uicfgmenusi/items",
+      
+   "GET_classifier_r3ea_completion"          : "/lut/classifiers/r3ea_completion/items",
+   "GET_classifier_r3ea_verificat"           : "/lut/classifiers/r3ea_verificat/items",
+   "GET_classifier_r3ea_sailmat"             : "/lut/classifiers/r3ea_sailmat/items",
+   "GET_classifier_r3ea_crociera"            : "/lut/classifiers/r3ea_crociera/items",
+
+   "GET_classifier_r3ea_boatgroup2"          : "/lut/classifiers/r3ea_boatgroup2/items",
+   "GET_classifier_r3ea_orcgranc"            : "/lut/classifiers/r3ea_orcgranc/items",
+
+   "GET_classifier_r3ea_sinott"           	 : "/lut/classifiers/r3ea_sinott/items",
+   
+   "GET_classifier_r3ea_boatgroup"           : "/lut/classifiers/r3ea_boatgroup/items",
+   "GET_classifier_r3ea_racegroup_raceclass" : "/lut/classifiers/r3ea_boatgroup/items/{0}/children",
+   "GET_classifier_r3ea_raceclass"           : "/lut/classifiers/r3ea_boatgroup/items;depth=1",
+   "GET_classifier_rank_rating"              : "/lut/classifiers/rank_rating/items",
+   
+   "GET_classifier_r3ea_apptype"             : "/lut/classifiers/r3ea_apptype/items",
+   "GET_classifier_r3ea_ratings"             : "/lut/classifiers/r3ea_ratings/items",
+   "GET_classifier_r3ea_crewrole"            : "/lut/classifiers/r3ea_crewrole/items",
+   "GET_classifier_r3ea_authoriz"            : "/lut/classifiers/r3ea_authoriz/items",
+   "GET_classifier_r3ea_doctype"             : "/lut/classifiers/r3ea_doctype/items",         
+   "GET_classifier_r3ea_ranktype"            : "/lut/classifiers/r3ea_ranktype/items",
+   "GET_classifier_r3ea_mooringloc"          : "/lut/classifiers/r3ea_mooringloc/items",
+   "GET_classifier_r3ea_admincks"            : "/lut/classifiers/r3ea_admincks/items",
+   "GET_classifier_fivcardstatus"            : "/lut/classifiers/fivcardstatus/items"
+
+}

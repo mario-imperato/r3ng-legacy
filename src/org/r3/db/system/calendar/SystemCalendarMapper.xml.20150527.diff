@@ -1,0 +1,31 @@
+<< BOF Changing rows at: 16
+           <result column="calevewday" property="calevewday" jdbcType="INTEGER" />
+           <result column="caleveworkday" property="caleveworkday" jdbcType="INTEGER" />
+<< BOF Changing rows at: 96
+    caldate,  caleveday,  calevewday,  calday,  calmonth,  calyear,  calweek,  calquarter,  calyday,
+    caldate,  caleveday,  caleveworkday,  calday,  calmonth,  calyear,  calweek,  calquarter,  calyday,
+<< BOF Changing rows at: 152
+ caldate, caleveday, calevewday, calday, calmonth, calyear, calweek, calquarter, calyday,
+ caldate, caleveday, caleveworkday, calday, calmonth, calyear, calweek, calquarter, calyday,
+<< BOF Changing rows at: 158
+ #{record.calevewday,jdbcType=INTEGER}, 
+ #{record.caleveworkday,jdbcType=INTEGER}, 
+<< BOF Changing rows at: 183
+      <if test="record.calevewdayDirty" >
+        calevewday = #{record.calevewday,jdbcType=INTEGER},
+      <if test="record.caleveworkdayDirty" >
+        caleveworkday = #{record.caleveworkday,jdbcType=INTEGER},
+<< BOF Changing rows at: 238
+      <if test="record.calevewdayDirty" >
+        calevewday = #{record.calevewday,jdbcType=INTEGER},
+      <if test="record.caleveworkdayDirty" >
+        caleveworkday = #{record.caleveworkday,jdbcType=INTEGER},
+<< BOF Deleting rows at: 284
+  <select id="countWorkingDays" parameterType="map" resultType="java.lang.Integer" >
+    select sum(case when calentrytype in ('work', 'saturday' ) then 1 else 0 end) as countval
+    from unep_calendar
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>    
+  </select>   
+  

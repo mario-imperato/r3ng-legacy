@@ -1,0 +1,306 @@
+<!--
+Targets esterni: jsmin
+Properties file: build.properties
+Properties:
+
+	Locale				Nel file properties			Funzione
+
+	jsmm.bDir"	 		property.baseDirectory		Directory di base rispetto alla quale sono costruite le path relative
+	jsmm.dirToMM" 		property.dirToMM			Directory da trattare
+	jsmm.priorityFile	property.priorityFile1		Primo file da trattare
+	jsmm.priorityFile	property.priorityFile2		Secondo file da trattare
+	jsmm.priorityFile	property.priorityFile3		Terzo file da trattare
+	jsmm.priorityFile	property.priorityFile4		Quarto file da trattare
+	jsmm.priorityFile	property.priorityFile5		Quinto file da trattare
+	jsmm.destFile		property.destFile			Nome del file risultato dell'operazione
+-->
+<project name="jsmm" default="all" basedir=".">
+
+	<!--Load external target-->
+	<taskdef name="jsmin" classname="net.matthaynes.jsmin.JSMin_Task" classpath="."/>
+
+	<!--Load file properties-->
+	<property file="build.properties" />
+
+	<!-- Definizione Parte JavaScript Plugin Terzi -->
+	<property name="jsmm.js_dir"         	  value="WebContent/resources/js"/>
+	<property name="jsmm.js_destfile"    	  value="WebContent/resources/js/jquery_r3ng_js.js"/>
+	<property name="jsmm.js_tempfile"    	  value="_mergingFiles_js.tmp"/>
+	<property name="jsmm.js_tempfile.min"   value="_mergingFiles_js.min.tmp"/>
+
+	<property name="filelist.jsmm.js_dir.destfile" 	value="WebContent/resources/js/jquery_r3ng_js.txt"/>
+
+	<filelist id='filelist.jsmm.js_dir' dir="${jsmm.js_dir}" >
+
+		<file name="Class.js" />
+		<file name="date.js" />
+		<!-- <file name="html5shiv.js" /> -->
+		<file name="I18NMessage.js" />
+		<file name="jquery-tmpl.min.js" />
+
+		<file name="datatables/jquery.dataTables.min.js" />
+		<file name="datatables/dataTables.bootstrap.js" />
+		<file name="datatables/dataTables.responsive.min.js" />
+		
+		<file name="bootstrap-datepicker.min.js" />
+		<file name="bootstrap-multiselect.js" />
+		<file name="bootstrap-slider.js" />
+		<file name="bootstrap-timepicker.js" />
+		<file name="bootstrap3-typeahead.min.js" />		
+		
+		<file name="jquery.form.js" />
+		<file name="jquery.metadata.js" />
+		<file name="jquery.validate.min.js" />
+
+		<file name="jquery.flot.min.js" />
+		<file name="jquery.flot.pie.min.js" />
+
+		<file name="moment-with-langs.min.js" />
+		<file name="fullcalendar/fullcalendar.min.js" />
+
+		<!-- REM Potrebbe Non Servire -->
+		<file name="lang-all.js" />
+		<!-- REM Potrebbe Non Servire -->
+			
+		<file name="underscore.js" />
+				
+		<file name="ui-totop/jquery.ui.totop.js" />
+		<file name="ui-totop/easing.js" />
+		<file name="leaflet/leaflet.js" /> 
+		<file name="leaflet/jquery-sidebar.js" />
+		<file name="leaflet/leaflet-sidebar.js" />
+		<file name="leaflet/leaflet.awesome-markers.js" />
+
+		<file name="jquery-img/canvas-to-blob.min.js" />
+		<file name="jquery-img/draggable_background.js" />
+		<file name="jquery-img/jquery.color.js" />
+		<file name="jquery-img/jquery.Jcrop.min.js" />
+		<file name="jquery-img/load-image.all.min.js" />
+		
+		<file name="bootstrap-fileinput/fileinput.js" />
+		<file name="bootstrap-fileinput/fileinput_locale_it.js"  />		  		
+		<file name="bootstrap-toggle/bootstrap-toggle.min.js" />
+		<file name="timer-jquery/timer.jquery.min.js" />
+		
+		<file name="jquery.iframe-transport.js" />
+		<file name="jquery.fileupload.js" />
+		<file name="jquery.fileupload-process.js" />
+		<file name="jquery.fileupload-image.js" />
+		<file name="jquery.fileupload-validate.js" />
+		<file name="jquery.fileupload-ui.js" />
+		<file name="jquery.fileupload-locale.js" />
+
+		<file name="jquery.slimscroll.js" />
+		<file name="img-gallery/blueimp-gallery.min.js" />
+		<file name="img-gallery/bootstrap-image-gallery.min.js" />
+		
+		<!-- REM Potrebbe Non Servire 
+		<file name="jquery.jstree.js" /> -->
+		<!-- REM Potrebbe Non Servire -->
+			
+		<file name="slimbox2.js" />
+
+		<file name="jquery.carouFredSel-6.2.1-packed.js" />
+		<file name="modernizr.custom-2.7.1.js" />
+		
+		<!-- REM Potrebbe Non Servire 
+		<file name="xbbcode.js" /> -->
+		<!-- REM Potrebbe Non Servire -->
+			
+		<!-- REM Potrebbe Non Servire 
+		<file name="jquery.fn.gantt.js" /> -->
+		<!-- REM Potrebbe Non Servire -->
+		
+		<file name="jquery.knob.js" />
+		
+		<!--
+		    <file name="underscore_ext.js" /> .... Problemi...
+		    <file name="i18next-1.7.7.min.js" />
+			<file name="jasny-bootstrap.min.js" />
+			
+			<file name="social_scripts.js" />-->
+
+	</filelist>
+
+	<!-- Definizione Parte JavaScript Plugin R3 -->
+	<property name="jsmm.jsr3_dir"       	  value="WebContent/resources/jsr3"/>
+	<property name="jsmm.jsr3_destfile" 	  value="WebContent/resources/jsr3/jquery_r3ng_jsr3.js"/>
+	<property name="jsmm.jsr3_tempfile"		  value="_mergingFiles_jsr3.tmp"/>
+	<property name="jsmm.jsr3_tempfile.min"	value="_mergingFiles_jsr3.min.tmp"/>
+
+	<property name="filelist.jsmm.jsr3_dir.destfile" 	value="WebContent/resources/jsr3/jquery_r3ng_jsr3.txt"/>
+
+	<filelist id='filelist.jsmm.jsr3_dir' dir="${jsmm.jsr3_dir}" >
+		<file name="r3_utils.js" />
+		<file name="r3_cascade.js" />
+		
+		<!--
+		<file name="r3_datepicker_checker.js" />
+		-->
+		<file name="r3_formmessage.js" />
+		<file name="r3_infoline.js" />	
+		<file name="r3_notifier.js" />	
+	    <file name="r3_wizardnavigator.js" />		
+	    <file name="r3_cmscard.js" />
+	    <file name="r3_gmenubar.js" />
+	    <file name="r3_gsidebar.js" />
+	    <file name="r3_gmultiselect.js" />
+		<file name="r3_gdatetime.js" />
+		<file name="r3_picker.js" />
+		<file name="r3_loadimage.js" />
+		<file name="r3_gmiller.js" />			
+
+	</filelist>
+
+	<!-- Definizione Parte JavaScript Codice Applicativo -->
+	<property name="jsmm.jsapp_dir"       				    value="WebContent/org"/>
+	<property name="jsmm.jsapp_destfile"  				    value="WebContent/org/r3/jquery_r3ng_jsapp.js"/>
+	<property name="jsmm.jsapp_tempfile"				      value="_mergingFiles_jsapp.tmp"/>
+	<property name="jsmm.jsapp_tempfile.min"         	value="_mergingFiles_jsapp.min.tmp"/>
+	<property name="fileset.jsmm.jsapp_dir.destfile" 	value="WebContent/org/r3/jquery_r3ng_jsapp.txt"/>
+
+	<fileset id='fileset.jsmm.jsapp_dir' dir="${jsmm.jsapp_dir}">
+		<include name="**/*.js"/>
+		<exclude name="**/messages.js"/>
+		<exclude name="**/Messages.js"/>
+		<exclude name="**/*Dictionary*"/>
+		<exclude name="WebContent/typescript/*"/>
+		<exclude name="WebContent/org/r3ts/*"/>
+	</fileset>
+
+	<!-- Definizione Parte JavaScript Messaggi e Dizionari DB -->
+	<property name="jsmm.jsappmsg_dir"       		         value="WebContent/org"/>
+	<property name="jsmm.jsappmsg_destfile"  			       value="WebContent/org/r3/jquery_r3ng_jsappmsg.js"/>
+	<property name="jsmm.jsappmsg_tempfile"				       value="_mergingFiles_jsappmsg.tmp"/>
+	<property name="jsmm.jsappmsg_tempfile.min"          value="_mergingFiles_jsappmsg.min.tmp"/>
+	<property name="fileset.jsmm.jsappmsg_dir.destfile"  value="WebContent/org/r3/jquery_r3ng_jsappmsg.txt"/>
+
+	<fileset id='fileset.jsmm.jsappmsg_dir' dir="${jsmm.jsappmsg_dir}">
+			<include name="**/messages.js"/>
+			<include name="**/Messages.js"/>
+			<include name="**/*Dictionary.js"/>
+	</fileset>
+	
+	<!-- Definizione Parte JavaScript Messaggi e Dizionari DB -->
+	<property name="jsmm.jsappmsg_pt_dir"      		         value="WebContent/org"/>
+	<property name="jsmm.jsappmsg_pt_destfile"	 		       value="WebContent/org/r3/jquery_r3ng_jsappmsg_pt.js"/>
+	<property name="jsmm.jsappmsg_pt_tempfile"			       value="_mergingFiles_jsappmsg_pt.tmp"/>
+	<property name="jsmm.jsappmsg_pt_tempfile.min"         value="_mergingFiles_jsappmsg_pt.min.tmp"/>
+	<property name="fileset.jsmm.jsappmsg_pt_dir.destfile" value="WebContent/org/r3/jquery_r3ng_jsappmsg_pt.txt"/>
+
+	<fileset id='fileset.jsmm.jsappmsg_pt_dir' dir="${jsmm.jsappmsg_pt_dir}">		
+			<include name="**/messages.js.pt"/>
+			<include name="**/Messages.js.pt"/>
+			<include name="**/*Dictionary.js.pt"/>
+	</fileset>
+
+	<target name="all" depends="clean,merge_js,merge_jsr3,merge_jsapp,merge_jsappmsg,merge_jsappmsg_pt,minify">
+	</target>
+
+	<!-- Merge Plugin Javascript Terzi -->
+	<target name="merge_js">
+		<concat destfile="${jsmm.js_tempfile}" append="true" fixlastline="true">
+			<filelist refid='filelist.jsmm.js_dir' />
+		</concat>
+
+		<pathconvert pathsep="${line.separator}" property="filelist.jsmm.js_dir.filelist" refid="filelist.jsmm.js_dir">
+		</pathconvert>
+		<echo file="${filelist.jsmm.js_dir.destfile}">${filelist.jsmm.js_dir.filelist}</echo>
+	</target>
+
+	<!-- Merge Codice Applicativo -->
+	<target name="merge_jsapp">
+		<!--Concatenate the single-file filesets in the correct order-->
+		<concat destfile="${jsmm.jsapp_tempfile}" append="true" fixlastline="true">
+			<fileset refid="fileset.jsmm.jsapp_dir" />
+		</concat>
+
+		<pathconvert pathsep="${line.separator}" property="fileset.jsmm.jsapp_dir.filelist" refid="fileset.jsmm.jsapp_dir">
+			<!-- Add this if you want the path stripped
+  	    <mapper>
+  	        <flattenmapper />
+  	    </mapper>
+  	     -->
+		</pathconvert>
+		<echo file="${fileset.jsmm.jsapp_dir.destfile}">${fileset.jsmm.jsapp_dir.filelist}</echo>
+	</target>
+
+	<!-- Merge File dei messaggi -->
+	<target name="merge_jsappmsg">
+		<!--Concatenate the single-file filesets in the correct order-->		
+		<concat destfile="${jsmm.jsappmsg_tempfile}" append="true" fixlastline="true">
+			<fileset refid="fileset.jsmm.jsappmsg_dir" />
+		</concat>
+
+		<pathconvert pathsep="${line.separator}" property="fileset.jsmm.jsappmsg_dir.filelist" refid="fileset.jsmm.jsappmsg_dir">
+		</pathconvert>
+		<echo file="${fileset.jsmm.jsappmsg_dir.destfile}">${fileset.jsmm.jsappmsg_dir.filelist}</echo>
+	</target>
+
+	<!-- Merge File dei messaggi -->
+	<target name="merge_jsappmsg_pt">
+		<!--Concatenate the single-file filesets in the correct order-->
+		<concat destfile="${jsmm.jsappmsg_pt_tempfile}" append="true" fixlastline="true">
+			<fileset refid="fileset.jsmm.jsappmsg_pt_dir" />
+		</concat>
+
+		<pathconvert pathsep="${line.separator}" property="fileset.jsmm.jsappmsg_pt_dir.filelist" refid="fileset.jsmm.jsappmsg_pt_dir">
+		</pathconvert>
+		<echo file="${fileset.jsmm.jsappmsg_pt_dir.destfile}">${fileset.jsmm.jsappmsg_pt_dir.filelist}</echo>
+	</target>
+
+	<!-- Merge Plugin Javascript R3 -->
+	<target name="merge_jsr3">
+		<concat destfile="${jsmm.jsr3_tempfile}" append="true" fixlastline="true" >
+			<filelist refid='filelist.jsmm.jsr3_dir' />
+		</concat>
+
+		<pathconvert pathsep="${line.separator}" property="filelist.jsmm.jsr3_dir.filelist" refid="filelist.jsmm.jsr3_dir">
+		</pathconvert>
+		<echo file="${filelist.jsmm.jsr3_dir.destfile}">${filelist.jsmm.jsr3_dir.filelist}</echo>
+	</target>
+
+	<!--Clear config and temporary files-->
+	<target name="clean">
+		<delete file="${jsmm.js_tempfile}" />
+		<delete file="${jsmm.jsr3_tempfile}" />
+		<delete file="${jsmm.jsapp_tempfile}" />
+		<delete file="${jsmm.jsappmsg_tempfile}" />
+		<delete file="${jsmm.jsappmsg_pt_tempfile}" />
+				
+    <delete file="${jsmm.js_destfile}"/>
+		<delete file="${filelist.jsmm.js_dir.destfile}"/>
+	  <delete file="${jsmm.jsapp_destfile}"/>
+		<delete file="${fileset.jsmm.jsapp_dir.destfile}"/>
+    <delete file="${jsmm.jsappmsg_destfile}"/>
+		<delete file="${fileset.jsmm.jsappmsg_dir.destfile}"/>
+	  <delete file="${jsmm.jsappmsg_pt_destfile}"/>
+		<delete file="${fileset.jsmm.jsappmsg_pt_dir.destfile}"/>
+    <delete file="${jsmm.jsr3_destfile}"/>
+		<delete file="${filelist.jsmm.jsr3_dir.destfile}"/>						
+	</target>
+
+	<!--Minify temporary file-->
+	<target name="minify">
+		<jsmin srcfile="${jsmm.js_tempfile}" destdir="." force="true" suffix="true" />
+		<jsmin srcfile="${jsmm.jsr3_tempfile}" destdir="." force="true" suffix="true" />
+		<jsmin srcfile="${jsmm.jsapp_tempfile}" destdir="." force="true" suffix="true" />
+		<jsmin srcfile="${jsmm.jsappmsg_tempfile}" destdir="." force="true" suffix="true" />
+		<jsmin srcfile="${jsmm.jsappmsg_pt_tempfile}" destdir="." force="true" suffix="true" />
+		
+		<move file="${jsmm.js_tempfile.min}"          tofile="${jsmm.js_destfile}"       />
+		<move file="${jsmm.jsr3_tempfile.min}"        tofile="${jsmm.jsr3_destfile}"     />
+		<move file="${jsmm.jsapp_tempfile.min}"       tofile="${jsmm.jsapp_destfile}"    />
+		<move file="${jsmm.jsappmsg_tempfile.min}"    tofile="${jsmm.jsappmsg_destfile}"    />
+		<move file="${jsmm.jsappmsg_pt_tempfile.min}" tofile="${jsmm.jsappmsg_pt_destfile}"    />
+		
+		<delete file="${jsmm.js_tempfile}"/>
+		<delete file="${jsmm.jsr3_tempfile}"/>
+		<delete file="${jsmm.jsapp_tempfile}"/>
+		<delete file="${jsmm.jsappmsg_tempfile}"/>
+		<delete file="${jsmm.jsappmsg_pt_tempfile}"/>
+		<!-- <move file="_mergingFiles.min.tmp" tofile="${jsmm.destFile}"/> -->
+	</target>
+
+
+</project>

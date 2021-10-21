@@ -1,0 +1,28 @@
+//
+// GPA Gruppo Progetti Avanzati s.r.l. - 
+// Progetto UNEP 2012 per PosteItaliane S.p.a.
+//
+//
+// TODO: Readme Section.
+//
+
+jQuery.r3Utils.namespace("org.r3.db.system.fileimport.fileimport", window, function(aNamespace) 
+{
+ aNamespace.message = {
+ site :  "site",
+ importid :  "importid",
+ importname :  "Nome do Import",
+ importcontext :  "importcontext",
+ majortype :  "majortype",
+ minortype :  "minortype",
+ withheader :  "withheader",
+ numberofcolumns :  "numberofcolumns",
+ numberofrecords :  "numberofrecords",
+ uploaddate :  "uploaddate",
+ recstatus :  "Estado",
+ rectimestamp :  "Data",
+ queryactionform_caption: 'Lista importação'
+  };
+});
+
+

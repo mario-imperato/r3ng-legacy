@@ -1,0 +1,10 @@
+
+$.r3Utils.namespace("org.r3.wbs.wsreport", window, function(aNamespace) 
+{
+  aNamespace.message = {
+    waiting:"Aguarde por favor...",
+    wbstextEmptyConfirmation: "Atenção, não pode deixar a atividade em branco!",
+    initializationerror: "Atenção: ocorreu um erro durante a inicialização da página. O processamento não pode ser continuado",
+    gmenubar_action_fullreport: "Relatório"
+  };
+});

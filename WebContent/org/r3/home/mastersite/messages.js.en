@@ -1,0 +1,8 @@
+
+$.r3Utils.namespace("org.r3.home.mastersite", window, function(aNamespace) 
+{
+  aNamespace.message = {
+    waiting:"Wait Please...",
+    initializationerror: "Warning: A fatal error has been detected during page initizliaztion. The Operation cannot be completed"
+  };
+});

@@ -1,0 +1,16 @@
+
+$.r3Utils.namespace("org.r3.console.siteconfig.site", window, function(aNamespace) 
+{
+  aNamespace.message = {
+  		  siteDetailActionForm_tab_generale: 'Geral',
+		  siteDetailActionForm_tab_cardfile: 'Anexos',
+		  siteDetailActionForm_urlhome: 'URL Usuário',
+		  siteDetailActionForm_urlhomeconsole: 'URL de Administração',
+
+		  uploadfileactionform_form_legend: 'Carregamento do arquivo',
+		  uploadfileactionform_form_formmessage: "Selecionar os arquivos clicando 'Incluir arquivo' e iniciar o carregamento",
+		  uploadfileactionform_cms_attachtype: 'Tipo de Anexo',
+		  
+		  sitefileactionform_form_legend: 'Anexos'  
+  };
+});

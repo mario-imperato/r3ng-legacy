@@ -1,0 +1,35 @@
+##
+##
+## $siteDTO: DTO site regata in fase di registrazione
+## $sevEventDTO: DTO sev_event
+## $siteSequence: String
+## $userDTO: Logged User
+
+
+##
+## BOF CMSPAGE
+##
+
+insert into r3_cmspage ( 
+  site, pageid, pagetype, pagetitle, pagelink, pageorder, visibility, pagestyle, forwardview, onuserstatus, permissions, viewoptions ) 
+  values('${siteDTO.site}', 'manage_resource', 'page', 'Risorse', '/org/r3/console/resources.do', 60, 'cmspg_consolemenu', 'grade1', 'Success', 'userlogged', null, null) 
+  ;(EOS)
+ 
+insert into r3_cmspagedescr (site, pageid, languagecode, pagetitle)
+  select site, pageid, 'it', pagetitle from r3_cmspage where site = '${siteDTO.site}';(EOS)
+
+## EOF CMSPAGE
+##
+   
+##
+## BOF CLASSIFIERS
+insert into r3_classifier (site, clsid, clsdescr, clstypecode, clsambitcode, cacheinterval) 
+  values ('${siteDTO.site}', 'skillprofile', 'Profilo Professionale', 'linear', 'system', 60)
+  ;(EOS)
+
+insert into r3_classifier (site, clsid, clsdescr, clstypecode, clsambitcode, cacheinterval) 
+  values ('${siteDTO.site}', 'skillambit', 'Figura Professionale', 'linear', 'system', 60)
+  ;(EOS)
+## EOF CLASSIFIERS 
+##
+

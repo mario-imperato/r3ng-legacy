@@ -1,0 +1,151 @@
+/*!
+ * Start Bootstrap - Simple Sidebar HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+/* Toggle Styles */
+
+.gsidebar-pane {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.gsidebar-nav {
+    z-index: 1000;
+    position: fixed;
+    left: 0px;
+    width: 0; /* disini agar ketika di kecilkan tidak hilang semua default 0*/
+    height: 100%;
+    margin-left: 0px;
+    overflow-y: hidden;
+    background: @gsidebar-bg;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.gsidebar-content {
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+}
+
+.fixed-brand{
+    width: auto;
+}
+
+/* Sidebar Styles */
+
+.gsidebar-nav  ul.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    margin-top: 20px;
+    padding: 0;
+    list-style: none;
+    /* margin-top: 2px; */
+}
+
+.gsidebar-nav  ul.sidebar-nav ul {
+    padding-left: 0;
+    background: @gsidebar-nested-list-bg;
+}
+
+.gsidebar-nav  ul.sidebar-nav li {
+    text-indent: 15px;
+    line-height: 40px;
+    
+}
+
+.gsidebar-nav  ul.sidebar-nav li.section.empty {
+    display: none    
+}
+
+.gsidebar-nav  ul.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: @gsidebar-color;
+    border-left: @gsidebar-bg @gsidebar-borderleft-size solid;
+}
+
+.gsidebar-nav  ul.sidebar-nav li.active > a 
+{
+   border-left: @gsidebar-borderleft-size @gsidebar-active solid;
+   background-color: @gsidebar-active;
+}
+
+.gsidebar-nav  ul.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: @gsidebar-hover-color;
+    background: @gsidebar-hover-bg;
+    border-left: @gsidebar-hover-borderleft @gsidebar-borderleft-size solid;
+}
+
+.gsidebar-nav  ul.sidebar-nav li a:active,
+.gsidebar-nav  ul.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.gsidebar-nav  ul.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+}
+
+.gsidebar-nav  ul.sidebar-nav > .sidebar-brand a {
+    color: #999999;
+}
+
+.gsidebar-nav  ul.sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+}
+
+
+@media(min-width:768px) {
+    .gsidebar-pane {
+        padding-left: 50px;
+    }
+    .fixed-brand{
+    width: 250px;
+}
+
+    .gsidebar-nav {
+        width: 250px;
+    }
+
+    .gsidebar-pane .gsidebar-nav {
+        width: 50px;
+    }
+    
+    .gsidebar-pane .gsidebar-nav.open,     
+    .gsidebar-pane .gsidebar-nav.csshoverenabled:hover 
+    {
+        width: 250px;
+        overflow-y: auto
+    }
+    
+    .gsidebar-content {
+        padding: 40px;
+        position: relative;
+         -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    }
+
+        .gsidebar-pane .gsidebar-content {
+        position: relative;
+        margin-right: 0;
+        margin-left: 0px;
+         -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+    }
+}

@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<action path="/org/r3/mvc_view"
+    className="org.r3.system.struts.GWFActionMapping"            
+    type="org.r3.system.struts.R3Manager"
+    parameter="viewRouter" >
+
+    <!--
+    scope="request"
+    name="loginForm"
+    validate="true"
+    input="/security/signin.jsp">-->
+       <set-property property="sessionBehaviour"   value="create"    />
+       <set-property property="functionId"         value="pub"          />    
+       <set-property property="functionalAreaId"   value="home"         />           
+       <set-property property="enforceTimeToken"   value="false"        />           
+       
+       <forward name="Success"                         path="/org/r3/registration/registration.jsp"    redirect="false" />               
+       <forward name="HomeIconMenuActionForm"          path="/org/r3/jsportlet/sev/homeiconmenu/HomeIconMenuActionForm.html.jsp" redirect="false" />
+       
+</action>
+
+
+<action path="/org/r3/home"
+    className="org.r3.system.struts.GWFActionMapping"            
+    type="org.r3.system.struts.R3Manager"
+    parameter="home" >
+
+    <!--
+    scope="request"
+    name="loginForm"
+    validate="true"
+    input="/security/signin.jsp">-->
+       <set-property property="sessionBehaviour"   value="create"       />
+       <set-property property="functionId"         value="pub"          />    
+       <set-property property="functionalAreaId"   value="home"         />           
+       <set-property property="enforceTimeToken"   value="false"        />           
+       <set-property property="snoopRequest"       value="console_address"      />
+       
+       <forward name="YachtClubSiteHome"    path="/org/r3/home/yachtclubsite/home.jsp"  redirect="false" />
+       <forward name="RegattaSiteHome"      path="/org/r3/home/site/home.jsp"           redirect="false" />        
+       <forward name="DefaultSiteHome"      path="/org/r3/home/defaultsite/home.jsp"    redirect="false" />       
+       <forward name="SpeedSailsHome"       path="/org/r3/home/speedsails/home.jsp"     redirect="false" />              
+       <forward name="WorkshopHome"         path="/org/r3/home/workshop/home.jsp"       redirect="false" />
+       <forward name="MasterSiteHome"       path="/org/r3/home/mastersite/home.jsp"     redirect="false" />
+       <forward name="ShakeusHome"          path="/org/r3/home/shakeus/home.jsp"        redirect="false" />
+       <forward name="ShakeusNeighbHome"    path="/org/r3/home/shakeusneighb/home.jsp"  redirect="false" />              
+       <forward name="ShakeusHomeGuest"     path="/org/r3/home/shakeus_guest/home.jsp"  redirect="false" />
+       <forward name="ShakeusShopHome"      path="/org/r3/home/shkshop/home.jsp"        redirect="false" />
+</action>
+
+
+<action path="/org/r3/registration/register"
+    className="org.r3.system.struts.GWFActionMapping"            
+    type="org.r3.system.struts.R3Manager"
+    parameter="success" >
+
+    <!--
+    scope="request"
+    name="loginForm"
+    validate="true"
+    input="/security/signin.jsp">-->
+       <set-property property="sessionBehaviour"   value="create"    />
+       <set-property property="functionId"         value="pub"          />    
+       <set-property property="functionalAreaId"   value="home"         />           
+       <set-property property="enforceTimeToken"   value="false"        />           
+       
+       <forward name="Success"              path="/org/r3/registration/registration.jsp"    redirect="false" />               
+
+</action>
+
+<action path="/org/r3/registration/activate"
+    className="org.r3.system.struts.GWFActionMapping"
+    type="org.r3.ws.user.user.UserRegistrationActivation"            
+    parameter="activate" >
+
+    <!--
+    scope="request"
+    name="loginForm"
+    validate="true"
+    input="/security/signin.jsp">-->
+       <set-property property="sessionBehaviour"   value="create"    />
+       <set-property property="functionId"         value="pub"          />    
+       <set-property property="functionalAreaId"   value="home"         />           
+       <set-property property="enforceTimeToken"   value="false"        />           
+       
+       <forward name="Success"              path="/org/r3/registration/successactivation.jsp"    redirect="false" />               
+       <forward name="Failure"              path="/org/r3/registration/failactivation.jsp"    redirect="false" />
+
+</action>
+
+<action path="/org/r3/user/resetpwd"
+    className="org.r3.system.struts.GWFActionMapping"            
+    type="org.r3.system.struts.R3Manager"
+    parameter="success" >
+
+    <!--
+    scope="request"
+    name="loginForm"
+    validate="true"
+    input="/security/signin.jsp">-->
+       <set-property property="sessionBehaviour"   value="create"    />
+       <set-property property="functionId"         value="pub"          />    
+       <set-property property="functionalAreaId"   value="home"         />           
+       <set-property property="enforceTimeToken"   value="false"        />           
+       
+       <forward name="Success"              path="/org/r3/user/resetuserpwd/resetuserpwd.jsp"    redirect="false" />               
+
+</action>
+
+<action path="/org/r3/user/myr3"
+    className="org.r3.system.struts.GWFActionMapping"            
+    type="org.r3.system.struts.R3Manager"
+    parameter="successProfiled" >
+
+    <!--
+    scope="request"
+    name="loginForm"
+    validate="true"
+    input="/security/signin.jsp">-->
+       <set-property property="sessionBehaviour"   value="required"    />
+       <set-property property="functionId"         value="pub"          />    
+       <set-property property="functionalAreaId"   value="home"         />           
+       <set-property property="enforceTimeToken"   value="false"        />           
+       
+       <forward name="Success"              path="/org/r3/user/myr3/myr3.jsp"         redirect="false" />               
+       <forward name="SuccessProfile1"      path="/org/r3/user/myr3_profile1/myr3.jsp"    redirect="false" />               
+
+</action>
+
+<action path="/org/r3/siteconstants"
+    className="org.r3.system.struts.GWFActionMapping"            
+    type="org.r3.system.struts.R3Manager"
+    parameter="success" >
+
+    <!--
+    scope="request"
+    name="loginForm"
+    validate="true"
+    input="/security/signin.jsp">-->
+       <set-property property="sessionBehaviour"   value="required"    />
+       <set-property property="functionId"         value="pub"          />    
+       <set-property property="functionalAreaId"   value="home"         />           
+       <set-property property="enforceTimeToken"   value="false"        />           
+       
+       <forward name="Success"              path="/org/r3/home/siteconstants.jsp"    redirect="false" />               
+
+</action>
+
+<action path="/org/r3/constants"
+    className="org.r3.system.struts.GWFActionMapping"            
+    type="org.r3.system.struts.R3Manager"
+    parameter="success" >
+
+    <!--
+    scope="request"
+    name="loginForm"
+    validate="true"
+    input="/security/signin.jsp">-->
+       <set-property property="sessionBehaviour"   value="required"    />
+       <set-property property="functionId"         value="pub"          />    
+       <set-property property="functionalAreaId"   value="home"         />           
+       <set-property property="enforceTimeToken"   value="false"        />           
+       
+       <forward name="Success"   path="/org/r3/Constants.jsp"    redirect="false" />               
+
+</action>
+
+<action path="/org/r3/wbs/wbsfillout"
+    className="org.r3.system.struts.GWFActionMapping"            
+    type="org.r3.system.struts.R3Manager"
+    parameter="page" >
+
+    <!--
+    scope="request"
+    name="loginForm"
+    validate="true"
+    input="/security/signin.jsp">-->
+       <set-property property="sessionBehaviour"   value="required"    />
+       <set-property property="functionId"         value="workshop"          />    
+       <set-property property="functionalAreaId"   value="home"         />           
+       <set-property property="enforceTimeToken"   value="false"        />           
+       
+       <forward name="Success"              path="/org/r3/wbs/wbsfillout/wbs.jsp"    redirect="false" />               
+
+</action>
+
+<action path="/org/r3/wbs/wsreport"
+    className="org.r3.system.struts.GWFActionMapping"            
+    type="org.r3.system.struts.R3Manager"
+    parameter="page" >
+
+    <!--
+    scope="request"
+    name="loginForm"
+    validate="true"
+    input="/security/signin.jsp">-->
+       <set-property property="sessionBehaviour"   value="required"    />
+       <set-property property="functionId"         value="workshop"          />    
+       <set-property property="functionalAreaId"   value="home"         />           
+       <set-property property="enforceTimeToken"   value="false"        />           
+       
+       <forward name="Success"              path="/org/r3/wbs/wsreport/wbs.jsp"    redirect="false" />               
+
+</action>
+
+<action path="/org/r3/discussion/discussion"
+    className="org.r3.system.struts.GWFActionMapping"            
+    type="org.r3.system.struts.R3Manager"
+    parameter="page" >
+
+    <!--
+    scope="request"
+    name="loginForm"
+    validate="true"
+    input="/security/signin.jsp">-->
+       <set-property property="sessionBehaviour"   value="required"    />
+       <set-property property="functionId"         value="pub"          />    
+       <set-property property="functionalAreaId"   value="home"         />           
+       <set-property property="enforceTimeToken"   value="false"        />           
+       
+       <forward name="Success"    path="/org/r3/discussion/discussion.jsp"    redirect="false" />               
+
+</action>
+
+<action path="/org/r3/wbs/towfillout"
+    className="org.r3.system.struts.GWFActionMapping"            
+    type="org.r3.system.struts.R3Manager"
+    parameter="page" >
+
+    <!--
+    scope="request"
+    name="loginForm"
+    validate="true"
+    input="/security/signin.jsp">-->
+       <set-property property="sessionBehaviour"   value="required"    />
+       <set-property property="functionId"         value="workshop"          />    
+       <set-property property="functionalAreaId"   value="home"         />           
+       <set-property property="enforceTimeToken"   value="false"        />           
+       
+       <forward name="Success"              path="/org/r3/wbs/towfillout/tow.jsp"    redirect="false" />               
+
+</action>

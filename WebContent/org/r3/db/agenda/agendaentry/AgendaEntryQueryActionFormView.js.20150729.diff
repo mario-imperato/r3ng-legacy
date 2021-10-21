@@ -1,0 +1,12 @@
+<< BOF Inserting rows at: 97
+        defaultColumnDefinitions['alldayflag'] = 
+       {
+       	  "aTargets": [ -1 ],
+          "sClass": "left",
+          "sTitle": org.r3.db.agenda.agendaentry.message.alldayflag,
+          "render": function ( data, type, row, meta )
+          {
+             var item = data; 
+             return item.dataBean.alldayflag || '';
+          }       
+       };

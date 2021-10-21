@@ -1,0 +1,8 @@
+
+$.r3Utils.namespace("org.r3.jsportlet.project.siteresource", window, function(aNamespace) 
+{
+  aNamespace.message = {
+		  
+     siteresourceform_form_legend: 'Informações sobre recursos'
+  };
+});

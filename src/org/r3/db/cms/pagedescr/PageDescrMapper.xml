@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--
+  TODO: xmlCopyRight.txt
+   
+  -->
+<!--
+  TODO: xmlReadme.txt
+   
+  -->
+
+<!-- <mapper resource="org/r3/db/cms/pagedescr/PageDescrMapper.xml"/> -->
+<mapper namespace="org.r3.db.cms.pagedescr.PageDescrMapper" >
+    <resultMap id="BaseResultMap" type="org.r3.db.cms.pagedescr.PageDescrDTO" >
+         <id column="site" property="site" jdbcType="VARCHAR" />
+           <id column="pageid" property="pageid" jdbcType="VARCHAR" />
+           <id column="languagecode" property="languagecode" jdbcType="VARCHAR" />
+           <result column="pagetitle" property="pagetitle" jdbcType="VARCHAR" />
+           <result column="summary" property="summary" jdbcType="VARCHAR" />
+           <result column="textbody" property="textbody" jdbcType="VARCHAR" />
+           <result column="recstatus" property="recstatus" jdbcType="VARCHAR" />
+           <result column="rectimestamp" property="rectimestamp" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+  <sql id="Filter_Where_Clause" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+                <when test="criterion.subSelectCriterion" >
+                  and ${criterion.prefixCondition} #{criterion.value} ${criterion.suffixCondition}
+                </when>                                
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <!--
+  <sql id="Filter_Where_Clause_4_Update" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  -->  
+  <sql id="Base_Column_List" >
+    site,  pageid,  languagecode,  pagetitle,  summary,  textbody,  recstatus,  rectimestamp  </sql>
+  <select id="selectBySitePageidLanguagecode" resultMap="BaseResultMap" parameterType="HashMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from r3_cmspagedescr
+    where  site = #{site,jdbcType=VARCHAR} and  pageid = #{pageid,jdbcType=VARCHAR} and  languagecode = #{languagecode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteBySitePageidLanguagecode" parameterType="HashMap" >
+    delete
+    from r3_cmspagedescr
+    where  site = #{site,jdbcType=VARCHAR} and  pageid = #{pageid,jdbcType=VARCHAR} and  languagecode = #{languagecode,jdbcType=VARCHAR}
+  </delete>  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from r3_cmspagedescr    
+    where  site = #{pk.site,jdbcType=VARCHAR} and  pageid = #{pk.pageid,jdbcType=VARCHAR} and  languagecode = #{pk.languagecode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete
+    from r3_cmspagedescr
+    where  site = #{pk.site,jdbcType=VARCHAR} and  pageid = #{pk.pageid,jdbcType=VARCHAR} and  languagecode = #{pk.languagecode,jdbcType=VARCHAR}
+  </delete>  
+  <select id="select" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <if test="filter != null &amp;&amp; filter.distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from r3_cmspagedescr
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+    <if test="filter != null &amp;&amp; filter.orderByClause != null" >
+      order by ${filter.orderByClause}
+    </if>
+    <if test="filter != null &amp;&amp; filter.limitFetch > 0" >
+      limit ${filter.limitFetch}
+    </if>
+  </select>
+  <select id="count" parameterType="map" resultType="java.lang.Integer" >
+    select count(*) from r3_cmspagedescr
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </select>  
+  <delete id="delete" parameterType="map" >
+    delete from r3_cmspagedescr
+    <!-- _parameter: dato che e' una map lo sostituisco con il nome del parametro in quanto non è l'unico -->
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="map" >
+    insert into r3_cmspagedescr (
+ site, pageid, languagecode, pagetitle, summary, textbody, recstatus, rectimestamp      )
+    values (
+ 
+ #{record.site,jdbcType=VARCHAR}, 
+ #{record.pageid,jdbcType=VARCHAR}, 
+ #{record.languagecode,jdbcType=VARCHAR}, 
+ #{record.pagetitle,jdbcType=VARCHAR},
+ 
+ #{record.summary,jdbcType=VARCHAR}, 
+ #{record.textbody,jdbcType=VARCHAR}, 
+ #{record.recstatus,jdbcType=VARCHAR}, 
+ #{record.rectimestamp,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="update" parameterType="map" >
+    update r3_cmspagedescr
+    <set >
+      <if test="record.pagetitleDirty" >
+        pagetitle = #{record.pagetitle,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.summaryDirty" >
+        summary = #{record.summary,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.textbodyDirty" >
+        textbody = #{record.textbody,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.recstatusDirty" >
+        recstatus = #{record.recstatus,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.rectimestampDirty" >
+        rectimestamp = #{record.rectimestamp,jdbcType=TIMESTAMP},
+      </if>      
+    </set>
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+      <!-- Non dovrebbe servire in quanto il filter e' sempre named. -->
+      <!-- <include refid="Filter_Where_Clause_4_Update" /> -->
+    </if>
+  </update>
+  <update id="updateByPrimaryKey" parameterType="map" >
+    update r3_cmspagedescr
+    <set >
+      <if test="record.pagetitleDirty" >
+        pagetitle = #{record.pagetitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.summaryDirty" >
+        summary = #{record.summary,jdbcType=VARCHAR},
+      </if>
+      <if test="record.textbodyDirty" >
+        textbody = #{record.textbody,jdbcType=VARCHAR},
+      </if>
+      <if test="record.recstatusDirty" >
+        recstatus = #{record.recstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rectimestampDirty" >
+        rectimestamp = #{record.rectimestamp,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where  site = #{record.site,jdbcType=VARCHAR} and  pageid = #{record.pageid,jdbcType=VARCHAR} and  languagecode = #{record.languagecode,jdbcType=VARCHAR}
+  </update>
+
+</mapper>

@@ -1,0 +1,90 @@
+<div class="panel tabbed-panel ">
+  <div class="panel-heading" >  
+    <h3 class="panel-title" >Profilo Risorsa: <span id='resourceteam_resourcedescr'></span></h3>
+  </div>
+  
+  <div class="panel-body">
+
+  <div id="resourceteam_fieldset_message" ></div>
+  <div class="panel ">
+  <div class="panel-body ">
+  
+  <form id="resourceteam_form" method="POST" class='form-horizontal'>
+
+  <input type='hidden' name="resourceid" id="resourceteamform_resourceid" />
+  
+  <div class='row'>
+  <div class='col-md-6'>
+
+  <div class="form-group">
+    <label class="col-md-4 control-label fieldRequired">{%=org.r3.db.project.team.message.teamdescr%}</label>
+    <div class='col-md-8'>
+    <select class="form-control"  name="teamid" id="resourceteamform_teamid" ></select>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label class="col-md-4 control-label fieldRequired">{%=org.r3.db.project.teamresource.message.profileid%}</label>
+    <div class='col-md-8'>
+    <select class="form-control"  name="profileid" id="resourceteamform_profileid" ></select>
+    </div>
+  </div>
+           
+  </div>
+  
+  <div class='col-md-6'>
+  
+   
+  </div>  
+  </div>
+       
+  </form>
+  
+  <div class="form-action-bar">
+		
+		<!-- 
+		<div class="dropdown" style='display: inline-block'>
+		  <button class="btn btn-default dropdown-toggle" type="button" id="resourceteamform_action_add2team" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+		    Aggiungi a Team
+		    <span class="caret"></span>
+		  </button>
+		  <ul id="resourceteamform_action_add2team_teamlist" class="dropdown-menu" aria-labelledby="dropdownMenu1">
+		  </ul>
+		</div>
+        -->
+        
+        <button type="button" id="resourceteamform_action_save" class="btn btn-default" >
+          <span>Salva</span>
+        </button>
+
+        <button type="button" id="resourceteamform_action_clear" class="btn btn-default" >
+          <span>Pulisci</span>
+        </button>            
+   </div>
+      
+  </div>
+</div>
+
+{% if (o.buttons && o.buttons.length) { %}
+ <div class="action-bar position-top">
+  {% for(var i = 0; i < o.buttons.length; i++) { %}
+    <button type="button" class="btn btn-primary start" id="{%=o.buttons[i].id%}"{% if (o.buttons[i].disabled) { %} disabled {% } %} >
+      <span>{%=o.buttons[i].label%}</span>
+    </button>
+    {% } %}
+ </div>
+{% } %}
+     
+ <table id="ResourceTeamsActionFormView" style='width: 100%' class="table table-striped table-bordered table-hover {%=o.gradeLevel%}" >
+        <tbody>
+        </tbody>
+    </table>
+    
+
+
+</div>
+</div>
+
+   
+
+

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">  
+  <display-name>r3ng</display-name>
+
+  <!--   
+  <context-param>
+       <param-name>config-file</param-name>
+       <param-value>C:/usr/eclipseWorkspace/r3ng/WebContent/etc/quartz/gwf_quartz.properties</param-value>
+  </context-param>
+  <context-param>
+       <param-name>shutdown-on-unload</param-name>
+       <param-value>true</param-value>
+  </context-param>
+  <context-param>
+       <param-name>start-scheduler-on-load</param-name>
+       <param-value>false</param-value>
+  </context-param>
+  
+ -->
+ 
+<!--    <context-param> -->
+<!--       <param-name>resteasy.servlet.mapping.prefix</param-name> -->
+<!--       <param-value>/was</param-value> -->
+<!--    </context-param> -->
+
+ <!-- 
+   <context-param>
+      <param-name>resteasy.scan</param-name>
+      <param-value>true</param-value>
+   </context-param>
+   -->
+
+  <context-param>
+   <param-name>resteasy.media.type.mappings</param-name>
+   <param-value>csv : text/csv</param-value>
+   </context-param>
+
+   <context-param>
+      <param-name>deploy.environment</param-name>
+      <param-value>runtime</param-value>
+   </context-param>
+
+   <context-param>
+      <param-name>deploy.dmspubmountpoint</param-name>
+      <param-value>/r3ng</param-value>
+   </context-param>
+
+   <!-- Mongo Config. -->          
+   <context-param>
+      <param-name>MongoDBProperties</param-name>
+      <param-value>resources/mongo.properties</param-value>
+   </context-param>
+   
+    
+   <!-- 
+   <context-param>
+      <param-name>logger.properties</param-name>
+      <param-value>resources/logger.properties</param-value>
+   </context-param>
+   -->
+   
+  <listener>
+  <listener-class>org.r3.system.InitContextListener</listener-class>
+  </listener>
+  
+  <!-- 
+  <listener>
+  <listener-class>org.quartz.ee.servlet.QuartzInitializerListener</listener-class>
+  </listener>
+  -->
+  
+
+<!--   <listener> -->
+<!--       <listener-class> -->
+<!--          org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap -->
+<!--       </listener-class> -->
+<!--   </listener> -->
+
+<!--    <servlet> -->
+<!--       <servlet-name>Resteasy</servlet-name> -->
+<!--       <servlet-class> -->
+<!--          org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher -->
+<!--       </servlet-class> -->
+<!--    </servlet> -->
+  
+   
+  <servlet>
+    <servlet-name>action</servlet-name>
+    <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+    <init-param>
+      <param-name>config</param-name>
+      <param-value>/WEB-INF/struts-config.xml</param-value>
+    </init-param>
+    <init-param>
+      <param-name>chainConfig</param-name>
+      <param-value>/WEB-INF/chain-config.xml</param-value>
+    </init-param>
+   
+    <init-param>
+      <param-name>debug</param-name>
+      <param-value>2</param-value>
+    </init-param>
+    <init-param>
+      <param-name>detail</param-name>
+      <param-value>2</param-value>
+    </init-param>
+     
+    <load-on-startup>2</load-on-startup>
+  </servlet>
+
+  <servlet>
+		<servlet-name>SimpleCaptcha</servlet-name>
+		<servlet-class>org.r3.system.captcha.CaptchaServlet</servlet-class>
+        <init-param>
+            <param-name>captcha-width</param-name>
+            <param-value>200</param-value>
+        </init-param>
+        <init-param>
+            <param-name>captcha-height</param-name>
+            <param-value>50</param-value>
+        </init-param>
+  </servlet>
+
+   <servlet-mapping>
+		<servlet-name>SimpleCaptcha</servlet-name>
+		<url-pattern>/simpleCaptcha.png</url-pattern>
+	</servlet-mapping>
+	
+
+<!--    <servlet-mapping> -->
+<!--       <servlet-name>Resteasy</servlet-name> -->
+<!--       <url-pattern>/was/*</url-pattern> -->
+<!--    </servlet-mapping> -->
+
+ 
+  <servlet-mapping>
+    <servlet-name>action</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+
+  <session-config>
+     <session-timeout>30</session-timeout>
+  </session-config>
+
+  <jsp-config>
+  <taglib>
+    <taglib-uri>/tags/struts-bean</taglib-uri>
+    <taglib-location>/WEB-INF/struts-bean.tld</taglib-location>
+  </taglib>
+
+  <taglib>
+    <taglib-uri>/tags/struts-html</taglib-uri>
+    <taglib-location>/WEB-INF/struts-html.tld</taglib-location>
+  </taglib>
+
+  <taglib>
+    <taglib-uri>/tags/struts-logic</taglib-uri>
+    <taglib-location>/WEB-INF/struts-logic.tld</taglib-location>
+  </taglib>
+
+  <taglib>
+    <taglib-uri>/tags/struts-nested</taglib-uri>
+    <taglib-location>/WEB-INF/struts-nested.tld</taglib-location>
+  </taglib>
+
+  <taglib>
+    <taglib-uri>/tags/struts-tiles</taglib-uri>
+    <taglib-location>/WEB-INF/struts-tiles.tld</taglib-location>
+  </taglib>
+  
+  <taglib>
+    <taglib-uri>http://www.r3.org/taglibs/r3/lang-1.00</taglib-uri>
+    <taglib-location>/WEB-INF/r3_lang.tld</taglib-location>
+  </taglib>
+ 
+  </jsp-config>
+    
+  <!-- description="File di configurazione Log4J" -->
+  <env-entry id="loggerProps">
+  <env-entry-name>loggerProps</env-entry-name>
+  <env-entry-type>java.lang.String</env-entry-type>
+  <env-entry-value>resources/logger.properties</env-entry-value>
+  </env-entry>
+  
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

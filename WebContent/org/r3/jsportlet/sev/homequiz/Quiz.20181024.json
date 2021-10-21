@@ -1,0 +1,230 @@
+{
+	"quizid": "quiz20181024",
+	"mode": "simple",
+	"title": "Il QuizOne",
+	"description": "Da una idea di Massimo Pettirossi. CVF",
+	"questions":
+	[
+		{
+			"questionid": "quiz20181024_1",
+			"text": "In navigazione di bolina le vele rifiutano lungo l'inferitura, il vento ...",
+			"answers": [
+			{
+				"answerid": "quiz20181024_1_1",
+				"text" : "Ridonda",
+				"valid" : false
+			},
+			{
+				"answerid": "quiz20181024_1_2",
+				"text" : "Aumenta di Intensita'",
+				"valid" : false
+			},
+			{
+				"answerid": "quiz20181024_1_3",
+				"text" : "Rifiuta",
+				"valid" : true				
+			}											
+			]
+		},
+		
+		{
+			"questionid": "quiz20181024_2",
+			"text": "In navigazione in fil di ruota con vele a farfalla il fiocco tende a prendere collo, occorre...",
+			"answers": [
+			{
+				"answerid": "quiz20181024_2_1",
+				"text" : "Orzare",
+				"valid" : false
+			},
+			{
+				"answerid": "quiz20181024_2_2",
+				"text" : "Virare",
+				"valid" : false
+			},
+			{
+				"answerid": "quiz20181024_2_3",
+				"text" : "Poggiare",
+				"valid" : true				
+			}											
+			]
+		},
+		
+		{
+			"questionid": "quiz20181024_3",
+			"text": "Per accostare ad una barca in banchina non possiamo utilizzare...",
+			"answers": [
+			{
+				"answerid": "quiz20181024_3_1",
+				"text" : "Una gaffa",
+				"valid" : false
+			},
+			{
+				"answerid": "quiz20181024_3_2",
+				"text" : "Una passerella",
+				"valid" : true
+			},
+			{
+				"answerid": "quiz20181024_3_3",
+				"text" : "Un alighiero",
+				"valid" : false				
+			}											
+			]
+		},
+		
+		{
+			"questionid": "quiz20181024_4",
+			"text": "Nell' andatura di bolina gli indicatori di flusso sopravento tendono ad alzarsi ...",
+			"answers": [
+			{
+				"answerid": "quiz20181024_4_1",
+				"text" : "La barca e' troppo orzata",
+				"valid" : true
+			},
+			{
+				"answerid": "quiz20181024_4_2",
+				"text" : "La barca e' troppo poggiata",
+				"valid" : false
+			},
+			{
+				"answerid": "quiz20181024_4_3",
+				"text" : "La vela e' a segno",
+				"valid" : false				
+			}											
+			]
+		},
+		
+		{
+			"questionid": "quiz20181024_5",
+			"text": "In crociera navigando di bolina il vento rinforza e la barca tende a straorzare, e' opportuno ...",
+			"answers": [
+			{
+				"answerid": "quiz20181024_5_1",
+				"text" : "Portare il carrello del trasto randa sottovento",
+				"valid" : false
+			},
+			{
+				"answerid": "quiz20181024_5_2",
+				"text" : "Spostare il carrello del fiocco verso poppa",
+				"valid" : false
+			},
+			{
+				"answerid": "quiz20181024_5_3",
+				"text" : "Prendere una mano di terzaroli",
+				"valid" : true				
+			}											
+			]
+		},
+		
+		{
+			"questionid": "quiz20181024_6",
+			"text": "Nelle zone di alta pressione in Mediterraneo i venti ...",
+			"answers": [
+			{
+				"answerid": "quiz20181024_6_1",
+				"text" : "Girano in senso antiorario verso il centro",
+				"valid" : false
+			},
+			{
+				"answerid": "quiz20181024_6_2",
+				"text" : "Girano in senso antiorario verso l' esterno",
+				"valid" : false
+			},
+			{
+				"answerid": "quiz20181024_6_3",
+				"text" : "Girano in senso orario verso l' esterno",
+				"valid" : true				
+			}											
+			]
+		},
+		
+		{
+			"questionid": "quiz20181024_7",
+			"text": "Rosso al rosso, verde al verde ...",
+			"answers": [
+			{
+				"answerid": "quiz20181024_7_1",
+				"text" : "Mano al timone e a dritta tieni il mare",
+				"valid" : false
+			},
+			{
+				"answerid": "quiz20181024_7_2",
+				"text" : "Avanti pur la nave non si perde",
+				"valid" : true
+			},
+			{
+				"answerid": "quiz20181024_7_3",
+				"text" : "Accosta sulla dritta e il passo cedi",
+				"valid" : false				
+			}											
+			]
+		},
+		
+		{
+			"questionid": "quiz20181024_8",
+			"text": "Il punto di mura dello spi deve essere ...",
+			"answers": [
+			{
+				"answerid": "quiz20181024_8_1",
+				"text" : "Il piu' alto possibile",
+				"valid" : false
+			},
+			{
+				"answerid": "quiz20181024_8_2",
+				"text" : "Il piu' a poppa possibile",
+				"valid" : false
+			},
+			{
+				"answerid": "quiz20181024_8_3",
+				"text" : "Alla stessa altezza del punto di scotta",
+				"valid" : true				
+			}											
+			]
+		},
+		
+		{
+			"questionid": "quiz20181024_9",
+			"text": "La manovra di dar fondo a due ancore di prua, in maniera che le catene formino tra loro una angolo, si chiama ...",
+			"answers": [
+			{
+				"answerid": "quiz20181024_9_1",
+				"text" : "Afforcare",
+				"valid" : true
+			},
+			{
+				"answerid": "quiz20181024_9_2",
+				"text" : "Appennellare",
+				"valid" : false
+			},
+			{
+				"answerid": "quiz20181024_9_3",
+				"text" : "Abbisciare",
+				"valid" : false				
+			}											
+			]
+		},
+		
+		{
+			"questionid": "quiz20181024_A",
+			"text": "Il CdR espone, come segnale preparatorio, la bandiera NERA, le barche sopra la linea di partenza nell' ultimo minuto sono...",
+			"answers": [
+			{
+				"answerid": "quiz20181024_A_1",
+				"text" : "Squalificate",
+				"valid" : true
+			},
+			{
+				"answerid": "quiz20181024_A_2",
+				"text" : "Squalificate, ma in caso di annullamento della partenza possono ripartire",
+				"valid" : false
+			},
+			{
+				"answerid": "quiz20181024_A_3",
+				"text" : "Sono penalizzate con il 20% del loro tempo di percorrenza",
+				"valid" : false				
+			}											
+			]
+		}
+			
+				
+	] 
+}

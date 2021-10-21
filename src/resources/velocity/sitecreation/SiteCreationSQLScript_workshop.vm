@@ -1,0 +1,94 @@
+##
+##
+## $siteDTO: DTO site regata in fase di registrazione
+## $sevEventDTO: DTO sev_event
+## $siteSequence: String
+## $userDTO: Logged User
+
+##
+## BOF ACTORGROUP 
+insert into r3_actorgroup (eventid, groupid, grouptitle, groupnature, grouptype, businesskey, grouporder)
+ values ('${siteDTO.site}', 'ACGWORKSHOP', 'Partecipanti Workshop', 'user', 'grpt_wsattendee', 'wsattendee', 20);(EOS)
+
+insert into r3_actorgroup (eventid, groupid, grouptitle, groupnature, grouptype, businesskey, grouporder)
+ values ('${siteDTO.site}', 'ACGWSEXECS', 'Workshop Executives', 'user', 'grpt_wsexecs', 'wsexecs', 20);(EOS)
+
+insert into r3_actorgroup (eventid, groupid, grouptitle, groupnature, grouptype, businesskey, grouporder)
+ values ('${siteDTO.site}', 'ACGWSCOACHES', 'Workshop Coaches', 'user', 'grpt_wscoaches', 'wswscoaches', 20);(EOS) 
+## EOF ACTORGROUP
+##
+
+##
+## BOF CMSCATEGORY  
+insert into r3_cmscategory (site, categoryid, categorydescr, previewtmpl, fulltmpl, categorymode)
+ values('${siteDTO.site}', 'cat_meeting', 'Scheda Meeting', 'cms_tpl_simple', 'cms_tpl_simple', 'promoted');(EOS)
+
+insert into r3_cmscategory (site, categoryid, categorydescr, previewtmpl, fulltmpl, categorymode)
+ values('${siteDTO.site}', 'cat_report', 'Report', 'cms_tpl_simple', 'cms_tpl_simple', 'promoted');(EOS)
+
+## EOF CMSCATEGORY  
+##
+
+##
+## BOF CMSGROUP  
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'grp_meeting', 'Schede Meeting', 'sys_recact');(EOS)
+
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'grp_report', 'Schede Report', 'sys_recact');(EOS)      
+## EOF CMSGROUP  
+##
+
+##
+## BOF CMSPAGE
+##
+## insert into r3_cmspage (site, pageid, pagetitle, forwardview, visibility, pagetype, pageicon1, pagelink, pageorder, pagestyle)
+##   values('${siteDTO.site}', 'console', 'Area Amministrativa', null, 'cmspg_txtmenu', 'page', null, '/org/r3/console/home.do', 45, null);(EOS)
+
+insert into r3_cmspage (site, pageid, pagetitle, forwardview, visibility, pagetype, pageicon1, pageicon2, pagelink, pageorder, pagestyle)
+   values('${siteDTO.site}', 'tows', 'Consuntivaz. TOW', 'Success', 'cmspg_txtmenu,cmspg_iconmenu', 'page', 'businessplan.jpg', 'business2.jpg', '/org/r3/wbs/towfillout.do?pageid=tows', 15, 'grade3');(EOS)
+          
+insert into r3_cmspage (site, pageid, pagetitle, forwardview, visibility, pagetype, pageicon1, pageicon2, pagelink, pageorder, pagestyle)
+   values('${siteDTO.site}', 'wbses', 'Actions', 'Success', 'cmspg_txtmenu,cmspg_iconmenu', 'page', 'businessplan.jpg', 'business2.jpg', '/org/r3/wbs/wbsfillout.do?pageid=wbses', 15, 'grade3');(EOS)
+     
+insert into r3_cmspage (site, pageid, pagetitle, forwardview, visibility, pagetype, pageicon1, pageicon2, pagelink, pageorder, pagestyle, viewoptions, permissions)
+   values('${siteDTO.site}', 'wsmeeting', 'Meetings Workshop', 'grouppage1', 'cmspg_txtmenu,cmspg_iconmenu', 'cmspage', 'business1.jpg', 'business1.jpg', '/org/r3/cms/cmspage.do?pageid=wsmeeting', 15, 'grade2',
+   '{"cardindexquery": "groupid=grp_meeting", "cardtemplate": "cms_tpl_cardview_type3", "downloadCanvas": true}', 'workshop'
+   );(EOS)
+
+insert into r3_cmspage (site, pageid, pagetitle, forwardview, visibility, pagetype, pageicon1, pageicon2, pagelink, pageorder, pagestyle)
+   values('${siteDTO.site}', 'wsreport', 'Reports Workshop', 'Success', 'cmspg_txtmenu,cmspg_iconmenu', 'cmspage', 'business2.jpg', 'business2.jpg', '/org/r3/wbs/wsreport.do?pageid=wsreport', 15, 'grade4');(EOS)
+
+insert into r3_cmspage ( 
+  site, pageid, pagetype, pagetitle, pagelink, pageorder, visibility, pagestyle, forwardview, onuserstatus, permissions, viewoptions ) 
+  values('${siteDTO.site}', 'manage_wbs', 'page', 'Amministrazione WBS', '/org/r3/console/wbs.do', 60, 'cmspg_consolemenu', 'grade1', 'Success', 'userlogged', null, null) 
+  ;(EOS)
+
+insert into r3_cmspage ( 
+  site, pageid, pagetype, pagetitle, pagelink, pageorder, visibility, pagestyle, forwardview, onuserstatus, permissions, viewoptions ) 
+  values('${siteDTO.site}', 'manage_tow', 'page', 'Amministrazione TOW', '/org/r3/console/tow.do', 60, 'cmspg_consolemenu', 'grade1', 'Success', 'userlogged', null, null) 
+  ;(EOS)
+
+insert into r3_cmspage ( 
+  site, pageid, pagetype, pagetitle, pagelink, pageorder, visibility, pagestyle, forwardview, onuserstatus, permissions, viewoptions ) 
+  values('${siteDTO.site}', 'manage_resource', 'page', 'Risorse', '/org/r3/console/resources.do', 60, 'cmspg_consolemenu', 'grade1', 'Success', 'userlogged', null, null) 
+  ;(EOS)
+
+insert into r3_cmspagedescr (site, pageid, languagecode, pagetitle)
+  select site, pageid, 'it', pagetitle from r3_cmspage where site = '${siteDTO.site}';(EOS)
+
+
+ 
+##
+## BOF CLASSIFIERS 
+
+INSERT INTO r3_classifier (site,clsid,clsdescr,clstypecode,clsambitcode,cacheinterval,etag,rectimestamp) 
+VALUES ('${siteDTO.site}','skillprofile','Profilo Professionale','linear','system',60,NULL,'2013-09-18 01:11:34');(EOS)
+
+INSERT INTO r3_classifier (site,clsid,clsdescr,clstypecode,clsambitcode,cacheinterval,etag,rectimestamp) 
+VALUES ('${siteDTO.site}','skillambit','Figura Professionale','linear','system',60,NULL,'2013-09-18 01:11:34');(EOS)
+
+ 
+## EOF CLASSIFIERS 
+##
+ 

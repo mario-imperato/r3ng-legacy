@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!DOCTYPE xhtml
+  PUBLIC "XHTML1.0"
+  "../../../../../assets/xhtml1-strict.dtd">
+
+<dictionary namespace='org.r3.console.home.workshop'>
+
+     <string id='windowLayout_pageTitle'>Console - Home Page</string>
+     <string id='gmenubar_cms'>Contenuti CMS...</string>
+     <string id='gmenubar_bbs'>Discussioni (BBS)...</string>
+     <string id='gmenubar_wbs'>Amministrazione WBS</string>
+     <string id='gmenubar_tow'>Amministrazione TOW</string>
+     <string id='gmenubar_resource'>Risorse...</string>
+     <string id='gmenubar_config'>Configurazione...</string>
+     <string id='gmenubar_users'>Gestione Utenti...</string>
+     <string id='gmenubar_actors'>Contatti...</string>
+     
+</dictionary>

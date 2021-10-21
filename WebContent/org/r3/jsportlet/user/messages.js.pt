@@ -1,0 +1,22 @@
+
+$.r3Utils.namespace("org.r3.jsportlet.user", window, function(aNamespace) 
+{
+  aNamespace.message = {
+    waiting:"Attendi...",
+    search_username: "Busca para apelido",
+    search_advanced: "Busca avançada",
+    initializationerror: "Aviso: ocorreu um erro durante a inicialização da página. O processamento não pode continuar",
+    
+    userdetailactionform_form_legend: 'Detalhe do Account',
+    userDetailActionForm_tab_generale: 'Geral',
+    userdetailactionform_createsiteactor: 'Criar um contato no catálogo de endereços do site atual',
+    userdetailactionform_authrole_cnt: 'Funções',
+    
+    userdetailactionform_action_openchangepasswd: 'Alterar a senha...',
+    
+    changepasswordactionform_form_legend: 'Alterar a senha',
+    changepasswordactionform_password: 'Senha',
+    changepasswordactionform_confpasswd: 'Confirma a senha',
+    changepasswordactionform_action_ok: 'Alterar a senha'
+  };
+});

@@ -1,0 +1,9 @@
+##
+##
+## $teamDTO: DTO actor in cancellazione
+##
+##
+
+delete from prj_teamresource where  site = '$teamDTO.site' and teamid = '$teamDTO.teamid';
+delete from prj_team where  site = '$teamDTO.site' and teamid = '$teamDTO.teamid';
+   

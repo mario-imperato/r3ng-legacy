@@ -1,0 +1,19 @@
+<< BOF Changing rows at: 331
+    }	
+    }
+<< BOF Inserting rows at: 407
+ 	var columnId = 'perctempen';
+	if (!includeOnlyFieldList || includeOnlyFieldList.indexOf(columnId) >= 0)
+	{
+    	defaultColumnDefinitions[columnId] =
+    	{
+    	  	"aTargets": [ -1 ],
+       		"sClass": "text-left",
+       		"sTitle": org.r3.db.sailevent.rankinginstancedetail.message.perctempen,
+       		"render": function ( data, type, row, meta )
+       		{
+          		var item = data;
+          		return item.dataBean.perctempen || '';
+       		}
+    	};
+    }

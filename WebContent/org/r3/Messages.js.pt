@@ -1,0 +1,178 @@
+
+$.r3Utils.namespace("org.r3", window, function(aNamespace) 
+{
+  aNamespace.message = {
+    waiting:"Por favor, aguarde...",
+    initializationerror: "Atenção: ocorreu um erro durante a inicialização da página. O processamento não pode ser continuado",
+    saveconfirm: "Você realmente quer salvar os dados inseridos?",
+    deleteconfirm: "Você realmente quer excluir o item?",
+    deletemulticonfirm: "Você realmente quer excluir os itens selecionados?",
+    sessionreleaseconfirm: "Você realmente quer iniciar uma nova sessão?",
+    sessioncommitconfirm: "Você realmente quer confirmar a sessão atual?",
+    defaultBlankOptionText: "-- Selecionar --",
+    tasksNotFound: "Não existem elementos de trabalho que verificam as condições definidas",
+    success: "Operação bem sucedida",
+    closeSession_OK: "Operação bem sucedida!",
+    
+    field_email: "O valor inserido não parece ser um endereço de e-mail válido",
+    field_identifier: "O campo deve começar com uma letra e pode conter somente caracteres alfabéticos e números",
+    field_lettersNumbersPunctuation: "O nome do cliente não pode conter caracteres especiais.",
+    field_noSpecialCharacters: "Os caracteres especiais não são permitidos.",
+    field_required: "Campo obrigatório",
+    field_sailnumber: "Inputare un numero velico valido. Es. ITA15083",
+    field_number: "O campo deve ser numérico. O separador decimal é o '.' (ponto)",
+    field_maxlength: "O número de caracteres excede o limite",
+    field_minlength: "Preencher, pelo menos, {0} caracteres",
+    field_dpDate: "Preencher uma data válida",
+    field_dpDateCompare: "Preencher uma data válida",
+    
+    field_dpArrayCompareDate: "A data preenchida não é correta",
+    field_dpDateRange: "As datas preenchidas não corretas",
+    field_dpDateNotAfterToday: "A data preenchida não deve ser no futuro",
+    field_dpDateNotBeforeToday: "A data preenchida não deve ser no pasado",
+    field_dpDateNotAfterTodayAndRange: "A data preenchida não pode ser no futuro e deve ser um intervalo de data correto",
+    field_digits: "O campo deve ser numérico",
+    field_range: "O valor preenchido excede o limite",
+    field_date_check: "Confirmar a data preenchida",
+    field_codiceraccomandata: "O valor preenchido não é correto",
+    field_checkbox_minlength: "Selecionar todas as opções disponíveis",
+    field_dpDateIntervalTooBig: "O intervalo é muito grande (Max. 3 mês)",
+    field_greaterOrEqualThan: "O valor preenchido não é um intervalo correto",
+    field_greaterThan: "O valor preenchido não é um intervalo  correto",
+    field_isNotCAD:    "O valor preenchido não é um codigo CAD correto",
+    field_isNotCAN:    "O valor preenchido não é um codigo CAN correto",
+    field_min: "O valor pode ser maior ou igual a {0}",
+    field_max: "O valor pode ser menor ou igual a {0}",
+    field_timevalue: "O valor pode ser no formato hh:mm",
+    
+    calendar_confirmmove: "[MV] Você realmente quer mudar o item atual no calendar?",
+    calendar_confirmresize: "[RS] Você realmente quer mudar o item atual no calendar?",
+    calendar_confirmdelete: "Você realmente quer excluir o item atual no calendar?",
+    RESTDTO_ERROR_DUPCODE: "Código Duplicado. Mudar o valor",
+    RESTDTO_OK: "Operação bem sucedida",
+    RESTDTO_FAIL: "Ocorreu um erro durante a operação",
+    RESTDTO_UnexpectedError: "Occorreu um erro inesperado. Contatar o administrador",
+    RESTDTO_NotYetFinished: "Função não implementada",
+
+    ERR_LOGIN_001: "Erro de autenticação (1)",
+    ERR_LOGIN_002: "erro de autenticação (2)",
+    
+    USR_ERROR_001: "O usuário já existe",
+    USR_ERROR_002: "O endereço de e-mail não é conhecido",
+    USR_ERROR_003: "A alteração da senha não é bem sucedida. Pode ser que a senha atual não é correta.",
+    CAPTCHA_ERROR_001: "O codigo de segurança não é correto",
+    
+    SEV_ERR_0001: "La domanda di iscrizione non puo' essere chiusa in quanto non risulta completa. Nella pagina sono riportati dettagli maggiori. Grazie.",
+    
+    CLSF_0001: "Il codice indicato di classificazione risulta già presente a sistema e non puo' essere duplicato. Modificare codice e ripetere l'operazione.",
+    CLSF_0002: "Il codice indicato di classificazione non risulta presente a sistema.",
+    
+    CALENDAR_001: "Atenção o dia preenchido é de feria",
+    
+   
+    multiselect_nonselectedtext: "Selecionar",
+    multiselect_nselectedtext: "- Too many options selected! (pt)",
+    multiselect_allSelectedText: " Tutti selezionati (pt)",
+    multiselect_selectAllText: 'Seleziona tutti! (pt)',
+    
+	default_datepickerOptions: 
+    {
+    	format: "dd/mm/yyyy",    	
+    },
+    
+    default_momentDateFormat: "DD/MM/YYYY",
+
+    default_timepickerOptions:
+    {
+		showMeridian: false
+	},
+	        
+    default_calendar_options:
+    {
+    	timeFormat: 'H(:mm)',
+		defaultView: 'month',
+		selectable: true,
+		selectHelper: true,
+		lang: 'pt-br',
+		aspectRatio: 2,
+		  	
+		header: {
+			left: 'prev,next today',
+			center: 'title',
+			right: 'month,agendaWeek,agendaDay'
+		}
+							  	
+    },
+    
+    getDefaultMultiSelectOptions: function() 
+    {
+        var opts = {
+           "nonSelectedText": this.multiselect_nonselectedtext,
+           "nSelectedText" : this.multiselect_nselectedtext,
+           "allSelectedText": this.multiselect_allSelectedText,
+           
+           "includeSelectAllOption": false,
+           "selectAllText": this.multiselect_selectAllText,
+           selectAllValue: 'select-all-value'
+           
+        };
+        
+        return opts;       
+    },
+
+    getDefaultAcceptedCMSFileTypes: function()
+    {
+        return [ 'png', 'jpg', 'jpeg', 'pdf', 'html', 'htm', 'gif', 'docx', 'xslx', 'doc', 'xsl', 'ppt', 'pptx' ];    	
+    },
+        
+    get3LettersMonthNames: function(aZeroBasedMonthIndex)
+    {
+    	var m = [ 'Gen', 'Feb', 'Mar', 'Apr', 'Mag', 'Giu', 'Lug', 'Ago', 'Set', 'Ott', 'Nov', 'Dic' ];
+    	return m[aZeroBasedMonthIndex];
+    },
+    
+    no_second_ago: "Adesso",
+    a_second_ago: "Un Secondo Fa",
+    seconds_ago: "Secondi Fa",
+    a_minute_ago: "Un Minuto Fa",    
+    minutes_ago: "Minuti Fa",
+    an_hour_ago: "Un'Ora Fa",
+    hours_ago: "Ore Fa",
+    a_day_ago: "Un Giorno Fa",    
+    days_ago: "Giorni Fa",
+    a_month_ago: "Un Mese Fa",    
+    months_ago: "Mesi Fa",
+    an_year_ago: "Un Anno Fa",
+    years_ago: "Anni Fa",
+    approximately: "Circa",
+                
+    RESTDTO_ERROR_1000: "Código de identificação já existente",
+    RESTDTO_ERROR_ID_DUP: "Código de identificação já existente. Não pode ser duplicado.",
+    action_save: "Salvar",
+    action_cancel: "Cancelar",
+    action_delete: "Excluir",
+    action_print: "Imprimir",
+    action_printable_version: "Versão para impressão",
+    action_back: "Volte",
+    action_confirm_request: "Confirmar pedido",
+    action_export :	"Exportar",
+    action_refresh: 'Atualização',
+    action_new: "Novo",
+    action_delete: "Excluir",
+     action_export :	"Exportar",
+    action_refresh: 'Atualização',
+    action_cancel_refresh: 'Cancelar atualização',
+    
+    action_insert: 'Inserir',
+    action_upload: 'Carregar',
+    action_upload_addfile : 'Inserir arquivo',
+    action_upload_startupload  : 'Iniciar carregamento',
+    action_upload_cancelupload : 'Cancelar carregamento',    
+    action_copyurl2clipboard: 'Copiar URL para o ClipBoard',
+    
+    boolean_btrue: "Sim",
+    boolean_bfalse: "Não"
+    
+
+  };
+});

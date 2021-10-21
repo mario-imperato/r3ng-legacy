@@ -1,0 +1,253 @@
+<< BOF Inserting rows at: 11
+
+
+<< BOF Inserting rows at: 15
+           <result column="parentsite" property="parentsite" jdbcType="VARCHAR" />
+<< BOF Changing rows at: 20
+           <result column="sitelayout" property="sitelayout" jdbcType="VARCHAR" />
+           <result column="siteresourcepath" property="siteresourcepath" jdbcType="VARCHAR" />
+           <result column="sitecss" property="sitecss" jdbcType="VARCHAR" />
+           <result column="siteconsolecss" property="siteconsolecss" jdbcType="VARCHAR" />
+           <result column="sitetheme" property="sitetheme" jdbcType="VARCHAR" />
+           <result column="refsitetype" property="refsitetype" jdbcType="VARCHAR" />
+           <result column="refsite" property="refsite" jdbcType="VARCHAR" />
+           <result column="refsitevisible" property="refsitevisible" jdbcType="VARCHAR" />
+           <result column="refsitedescr" property="refsitedescr" jdbcType="VARCHAR" />
+           <result column="admrefsitetype" property="admrefsitetype" jdbcType="VARCHAR" />
+           <result column="admrefsite" property="admrefsite" jdbcType="VARCHAR" />
+           <result column="admrefsitevisible" property="admrefsitevisible" jdbcType="VARCHAR" />
+           <result column="admrefsitedescr" property="admrefsitedescr" jdbcType="VARCHAR" />
+           <result column="cardid" property="cardid" jdbcType="VARCHAR" />
+           <result column="options" property="options" jdbcType="VARCHAR" />
+           <result column="hostname" property="hostname" jdbcType="VARCHAR" />
+           <result column="homeurl" property="homeurl" jdbcType="VARCHAR" />
+           <result column="consoleurl" property="consoleurl" jdbcType="VARCHAR" />
+<< BOF Changing rows at: 46
+              <choose >
+              <choose>
+<< BOF Changing rows at: 73
+    site,  sitedescr,  sitelanguages,  sitedomain,  calendarid,  sitetype,  sitelayout,  siteresourcepath,  sitecss,
+  siteconsolecss,  sitetheme,  refsitetype,  refsite,  refsitevisible,  refsitedescr,  admrefsitetype,  admrefsite,  admrefsitevisible,
+  admrefsitedescr,  cardid,  options,  propertyscope,  propertykey,  propertyvalue  </sql>
+    site,  parentsite,  sitedescr,  sitelanguages,  sitedomain,  calendarid,  sitetype,  hostname,  homeurl,
+  consoleurl,  propertyscope,  propertykey,  propertyvalue  </sql>
+<< BOF Changing rows at: 79
+        <choose >
+        <choose>
+<< BOF Changing rows at: 87
+	      <choose >
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('parentsite')" >
+           parentsite,
+       </when>
+       <otherwise>
+           null as parentsite,
+       </otherwise>         
+     </choose> 
+	       <choose>
+<< BOF Changing rows at: 95
+	      <choose >
+	       <choose>
+<< BOF Changing rows at: 103
+	      <choose >
+	       <choose>
+<< BOF Changing rows at: 111
+	      <choose >
+	       <choose>
+<< BOF Changing rows at: 119
+	      <choose >
+	       <choose>
+<< BOF Changing rows at: 127
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('sitelayout')" >
+           sitelayout,
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('hostname')" >
+           hostname,
+<< BOF Changing rows at: 132
+           null as sitelayout,
+           null as hostname,
+<< BOF Changing rows at: 135
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('siteresourcepath')" >
+           siteresourcepath,
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('homeurl')" >
+           homeurl,
+<< BOF Changing rows at: 140
+           null as siteresourcepath,
+           null as homeurl,
+<< BOF Changing rows at: 143
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('sitecss')" >
+           sitecss,
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('consoleurl')" >
+           consoleurl,
+<< BOF Changing rows at: 148
+           null as sitecss,
+           null as consoleurl,
+<< BOF Changing rows at: 151
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('siteconsolecss')" >
+           siteconsolecss,
+       </when>
+       <otherwise>
+           null as siteconsolecss,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('sitetheme')" >
+           sitetheme,
+       </when>
+       <otherwise>
+           null as sitetheme,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('refsitetype')" >
+           refsitetype,
+       </when>
+       <otherwise>
+           null as refsitetype,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('refsite')" >
+           refsite,
+       </when>
+       <otherwise>
+           null as refsite,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('refsitevisible')" >
+           refsitevisible,
+       </when>
+       <otherwise>
+           null as refsitevisible,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('refsitedescr')" >
+           refsitedescr,
+       </when>
+       <otherwise>
+           null as refsitedescr,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('admrefsitetype')" >
+           admrefsitetype,
+       </when>
+       <otherwise>
+           null as admrefsitetype,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('admrefsite')" >
+           admrefsite,
+       </when>
+       <otherwise>
+           null as admrefsite,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('admrefsitevisible')" >
+           admrefsitevisible,
+       </when>
+       <otherwise>
+           null as admrefsitevisible,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('admrefsitedescr')" >
+           admrefsitedescr,
+       </when>
+       <otherwise>
+           null as admrefsitedescr,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('cardid')" >
+           cardid,
+       </when>
+       <otherwise>
+           null as cardid,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('options')" >
+           options,
+       </when>
+       <otherwise>
+           null as options,
+       </otherwise>         
+     </choose> 
+	      <choose >
+	       <choose>
+<< BOF Changing rows at: 255
+	      <choose >
+	       <choose>
+<< BOF Changing rows at: 263
+	      <choose >
+	       <choose>
+<< BOF Changing rows at: 271
+	      </trim>       
+	       </trim>       
+<< BOF Changing rows at: 279
+    <choose >
+       <when test="filter != null &amp;&amp; filter.groupByClause != null" >
+    <choose>
+       <when test="filter != null &amp;&amp; filter.groupByClause != null">
+<< BOF Deleting rows at: 308
+  
+ <select id="selectSiteDTO" resultMap="SiteDTOResultMap" parameterType="map" >
+ select
+    <if test="filter != null &amp;&amp; filter.distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from r3_view_site
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+    <if test="filter != null &amp;&amp; filter.orderByClause != null" >
+      order by ${filter.orderByClause}
+    </if>
+    <if test="filter != null &amp;&amp; filter.limitFetch > 0" >
+      limit ${filter.limitFetch}
+    </if>
+  </select>
+
+  	<!-- Questo resultMap e' gerarchico e torna un oggetto di tipo SiteDTO --> 
+    <resultMap id="SiteDTOResultMap" type="org.r3.db.system.site.SiteDTO" >
+         <id column="site" property="site" jdbcType="VARCHAR" />
+           <result column="sitedescr" property="sitedescr" jdbcType="VARCHAR" />
+           <result column="sitelanguages" property="sitelanguages" jdbcType="VARCHAR" />
+           <result column="sitedomain" property="sitedomain" jdbcType="VARCHAR" />
+           <result column="calendarid" property="calendarid" jdbcType="VARCHAR" />           
+           <result column="sitetype" property="sitetype" jdbcType="VARCHAR" />
+           <result column="sitelayout" property="sitelayout" jdbcType="VARCHAR" />
+           <result column="siteresourcepath" property="siteresourcepath" jdbcType="VARCHAR" />
+           <result column="sitecss" property="sitecss" jdbcType="VARCHAR" />
+           <result column="siteconsolecss" property="siteconsolecss" jdbcType="VARCHAR" />
+           <result column="sitetheme" property="sitetheme" jdbcType="VARCHAR" />
+           <result column="refsitetype" property="refsitetype" jdbcType="VARCHAR" />
+           <result column="refsite" property="refsite" jdbcType="VARCHAR" />
+           <result column="refsitevisible" property="refsitevisible" jdbcType="VARCHAR" />                    
+           <result column="refsitedescr" property="refsitedescr" jdbcType="VARCHAR" />
+           <result column="admrefsitetype" property="admrefsitetype" jdbcType="VARCHAR" />
+           <result column="admrefsite" property="admrefsite" jdbcType="VARCHAR" />
+           <result column="admrefsitevisible" property="admrefsitevisible" jdbcType="VARCHAR" />
+           <result column="admrefsitedescr" property="admrefsitedescr" jdbcType="VARCHAR" />
+           <result column="cardid" property="cardid" jdbcType="VARCHAR" />
+           <result column="options" property="options" jdbcType="VARCHAR" />
+           <collection property="siteProperties" column="propertykey" javaType="org.r3.db.system.siteproperty.SitePropertyDTOCollection" ofType="org.r3.db.system.siteproperty.SitePropertyDTO">           
+           <id column="propertykey" property="propertykey" jdbcType="VARCHAR" />
+           <result column="propertyscope" property="propertyscope" jdbcType="VARCHAR" />           
+           <result column="propertyvalue" property="propertyvalue" jdbcType="VARCHAR" />
+           </collection>
+           
+    </resultMap>
+                  

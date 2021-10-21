@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+
+<task>
+
+  <start-policy synch="defaultTask" />
+  
+  <!-- 
+  <step name="HelloWorldStep" category="default" enabled="false">
+       <processor type="it.gwf_30.gwf_quartz.job.task.stepimpl.HelloWorldStepProcessor">
+          <set-property property="helloMessage"        value="From HelloWorldStepProcessor" />
+       </processor>
+  </step>
+  
+  <step name="SendMailStep" category="default" enabled="true">
+       <processor type="it.gwf_30.gwf_quartz.job.task.stepimpl.MailStepProcessor">
+          <set-property property="queueName"         value="MailQueue" />
+          <set-property property="deadQueueName"     value="DeadMailQueue" />          
+          <set-property property="replyToQueueName"  value="RetryMailQueue" />
+          
+          Questa proprieta' non viene inizializzata qui ma all'interno della tabella GWF_SiteProperty 
+          <set-property property="smtphost"          value="mail.mclink.it" />
+          
+       </processor>
+  </step>
+    
+  <step name="ExpiredUsersStep" category="default" enabled="true">
+       <processor type="it.gwf_30.gwf_quartz.job.task.stepimpl.SQLStepProcessor">          
+          <set-property property="scriptName" value="HOUSE_KEEPING_DELETION" />                    
+       </processor>
+  </step>  
+
+  <step name="CrewVerificationStep" category="default" enabled="true">
+       <processor type="it.gwf_30.gwf_quartz.job.task.stepimpl.CrewVerificationStepProcessor">
+          <set-property property="queueName"         value="crewqueue_in" />
+          <set-property property="deadQueueName"     value="DeadMailQueue" />          
+          <set-property property="replyToQueueName"  value="crewqueue_retry" />
+          <set-property property="workDirectory"     value="C:/usr/eclipseWorkspace/regattacubed/WebContent/log" />
+          <set-property property="logHTTPResponses"  value="Y" />
+                    
+          Questa proprieta' non viene inizializzata qui ma all'interno della tabella GWF_SiteProperty 
+          <set-property property="smtphost"          value="mail.mclink.it" />
+          
+       </processor>
+  </step>
+  -->
+  
+</task>

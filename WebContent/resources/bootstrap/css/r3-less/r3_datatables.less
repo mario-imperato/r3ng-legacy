@@ -1,0 +1,87 @@
+@import "bootstrap-less/variables.less";
+
+table.dataTable.grade_clickable>tbody>tr {
+	cursor: pointer;
+}
+
+table.dataTable thead > tr > th.sorting_disabled {
+	padding: @table-cell-padding;
+}
+
+table.dataTable tbody tr:nth-of-type(odd)  .queryformview-tools,
+table.dataTable tbody tr:nth-of-type(even)  .queryformview-tools 
+{
+ display: none;
+}
+
+table.dataTable tbody tr:nth-of-type(odd):hover .queryformview-tools,
+table.dataTable tbody tr:nth-of-type(even):hover .queryformview-tools 
+{
+  display: inline-block;
+}
+
+.table-striped.grade_level1>tbody>tr:nth-of-type(odd) 
+{ 
+  background-color: #F6F781;
+}
+
+.table-striped.grade_level2>tbody>tr:nth-of-type(odd) 
+{ 
+  background-color: #ddddff;
+}
+
+.table-striped.grade_level3>tbody>tr:nth-of-type(odd) 
+{ 
+  background-color: #ffdddd;
+}
+
+.table-striped.grade_level4>tbody>tr:nth-of-type(odd) 
+{ 
+  background-color: #ddd;
+}
+
+.table-striped.grade_level5>tbody>tr:nth-of-type(odd) 
+{ 
+  background-color:  #ddffdd;
+}
+
+.table-striped.grade_level6>tbody>tr:nth-of-type(odd) 
+{ 
+  background-color: #f5f5f5;
+}
+
+.table-striped.grade_level1>tbody>tr:nth-of-type(odd).row_selected,
+.table-striped.grade_level2>tbody>tr:nth-of-type(odd).row_selected,
+.table-striped.grade_level3>tbody>tr:nth-of-type(odd).row_selected,
+.table-striped.grade_level4>tbody>tr:nth-of-type(odd).row_selected,
+.table-striped.grade_level5>tbody>tr:nth-of-type(odd).row_selected,
+.table-striped.grade_level6>tbody>tr:nth-of-type(odd).row_selected,
+.table-striped.grade_level1>tbody>tr:nth-of-type(even).row_selected,
+.table-striped.grade_level2>tbody>tr:nth-of-type(even).row_selected,
+.table-striped.grade_level3>tbody>tr:nth-of-type(even).row_selected,
+.table-striped.grade_level4>tbody>tr:nth-of-type(even).row_selected,
+.table-striped.grade_level5>tbody>tr:nth-of-type(even).row_selected,
+.table-striped.grade_level6>tbody>tr:nth-of-type(even).row_selected
+{ 
+  background-color:  #aaaaaa;
+}
+
+
+.dataTables_filter span.search_icon
+{ 
+    display:inline-block;
+    width:14px;
+    height:14px;
+    line-height:14px;
+    vertical-align:text-top;
+    background-image:url("img/glyphicons-halflings.png");
+    background-position:-48px      0;
+    background-repeat:no-repeat;
+    *margin-right:.3em;
+    cursor: pointer;
+}
+
+.dataTables_filter
+{
+    margin-bottom: 10px;
+}

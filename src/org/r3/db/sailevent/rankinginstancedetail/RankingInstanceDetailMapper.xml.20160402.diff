@@ -1,0 +1,540 @@
+<< BOF Inserting rows at: 11
+
+<!-- Mapper Target DBMS: [SERVER_MYSQL] -->
+<< BOF Inserting rows at: 24
+           <result column="racegroup" property="racegroup" jdbcType="VARCHAR" />
+           <result column="division" property="division" jdbcType="VARCHAR" />
+<< BOF Changing rows at: 129
+  model,  arrivaldate,  realtime,  drealtime,  correctedtime,  annotation,  score,  maxraces,  scorer01,
+  scorer02,  scorer03,  scorer04,  scorer05,  scorer06,  scorer07,  scorer08,  scorer09,  scorer10,
+  scorer11,  scorer12,  scorer13,  scorer14,  scorer15,  scorern01,  scorern02,  scorern03,  scorern04,
+  scorern05,  scorern06,  scorern07,  scorern08,  scorern09,  scorern10,  scorern11,  scorern12,  scorern13,
+  scorern14,  scorern15,  rectimestamp  </sql>
+  model,  racegroup,  division,  arrivaldate,  realtime,  drealtime,  correctedtime,  annotation,  score,
+  maxraces,  scorer01,  scorer02,  scorer03,  scorer04,  scorer05,  scorer06,  scorer07,  scorer08,
+  scorer09,  scorer10,  scorer11,  scorer12,  scorer13,  scorer14,  scorer15,  scorern01,  scorern02,
+  scorern03,  scorern04,  scorern05,  scorern06,  scorern07,  scorern08,  scorern09,  scorern10,  scorern11,
+  scorern12,  scorern13,  scorern14,  scorern15,  rectimestamp  </sql>
+  
+  <sql id='GroupBy_Column_List'>
+    <trim suffixOverrides=",">
+        <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('rankentryid')" >
+           rankentryid,
+       </when>
+       <otherwise>
+           null as rankentryid,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('eventid')" >
+           eventid,
+       </when>
+       <otherwise>
+           null as eventid,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('instanceid')" >
+           instanceid,
+       </when>
+       <otherwise>
+           null as instanceid,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('applicationid')" >
+           applicationid,
+       </when>
+       <otherwise>
+           null as applicationid,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('pos')" >
+           pos,
+       </when>
+       <otherwise>
+           null as pos,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('sailnumber')" >
+           sailnumber,
+       </when>
+       <otherwise>
+           null as sailnumber,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('yachtname')" >
+           yachtname,
+       </when>
+       <otherwise>
+           null as yachtname,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('owner')" >
+           owner,
+       </when>
+       <otherwise>
+           null as owner,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('club')" >
+           club,
+       </when>
+       <otherwise>
+           null as club,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('model')" >
+           model,
+       </when>
+       <otherwise>
+           null as model,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('racegroup')" >
+           racegroup,
+       </when>
+       <otherwise>
+           null as racegroup,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('division')" >
+           division,
+       </when>
+       <otherwise>
+           null as division,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('arrivaldate')" >
+           arrivaldate,
+       </when>
+       <otherwise>
+           null as arrivaldate,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('realtime')" >
+           realtime,
+       </when>
+       <otherwise>
+           null as realtime,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('drealtime')" >
+           drealtime,
+       </when>
+       <otherwise>
+           null as drealtime,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('correctedtime')" >
+           correctedtime,
+       </when>
+       <otherwise>
+           null as correctedtime,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('annotation')" >
+           annotation,
+       </when>
+       <otherwise>
+           null as annotation,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('score')" >
+           score,
+       </when>
+       <otherwise>
+           null as score,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('maxraces')" >
+           maxraces,
+       </when>
+       <otherwise>
+           null as maxraces,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorer01')" >
+           scorer01,
+       </when>
+       <otherwise>
+           null as scorer01,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorer02')" >
+           scorer02,
+       </when>
+       <otherwise>
+           null as scorer02,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorer03')" >
+           scorer03,
+       </when>
+       <otherwise>
+           null as scorer03,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorer04')" >
+           scorer04,
+       </when>
+       <otherwise>
+           null as scorer04,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorer05')" >
+           scorer05,
+       </when>
+       <otherwise>
+           null as scorer05,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorer06')" >
+           scorer06,
+       </when>
+       <otherwise>
+           null as scorer06,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorer07')" >
+           scorer07,
+       </when>
+       <otherwise>
+           null as scorer07,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorer08')" >
+           scorer08,
+       </when>
+       <otherwise>
+           null as scorer08,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorer09')" >
+           scorer09,
+       </when>
+       <otherwise>
+           null as scorer09,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorer10')" >
+           scorer10,
+       </when>
+       <otherwise>
+           null as scorer10,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorer11')" >
+           scorer11,
+       </when>
+       <otherwise>
+           null as scorer11,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorer12')" >
+           scorer12,
+       </when>
+       <otherwise>
+           null as scorer12,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorer13')" >
+           scorer13,
+       </when>
+       <otherwise>
+           null as scorer13,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorer14')" >
+           scorer14,
+       </when>
+       <otherwise>
+           null as scorer14,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorer15')" >
+           scorer15,
+       </when>
+       <otherwise>
+           null as scorer15,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorern01')" >
+           scorern01,
+       </when>
+       <otherwise>
+           null as scorern01,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorern02')" >
+           scorern02,
+       </when>
+       <otherwise>
+           null as scorern02,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorern03')" >
+           scorern03,
+       </when>
+       <otherwise>
+           null as scorern03,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorern04')" >
+           scorern04,
+       </when>
+       <otherwise>
+           null as scorern04,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorern05')" >
+           scorern05,
+       </when>
+       <otherwise>
+           null as scorern05,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorern06')" >
+           scorern06,
+       </when>
+       <otherwise>
+           null as scorern06,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorern07')" >
+           scorern07,
+       </when>
+       <otherwise>
+           null as scorern07,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorern08')" >
+           scorern08,
+       </when>
+       <otherwise>
+           null as scorern08,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorern09')" >
+           scorern09,
+       </when>
+       <otherwise>
+           null as scorern09,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorern10')" >
+           scorern10,
+       </when>
+       <otherwise>
+           null as scorern10,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorern11')" >
+           scorern11,
+       </when>
+       <otherwise>
+           null as scorern11,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorern12')" >
+           scorern12,
+       </when>
+       <otherwise>
+           null as scorern12,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorern13')" >
+           scorern13,
+       </when>
+       <otherwise>
+           null as scorern13,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorern14')" >
+           scorern14,
+       </when>
+       <otherwise>
+           null as scorern14,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('scorern15')" >
+           scorern15,
+       </when>
+       <otherwise>
+           null as scorern15,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('rectimestamp')" >
+           rectimestamp,
+       </when>
+       <otherwise>
+           null as rectimestamp,
+       </otherwise>         
+     </choose> 
+	       </trim>       
+  </sql>
+  
+<< BOF Changing rows at: 161
+    <include refid="Base_Column_List" />
+    
+    <choose>
+       <when test="filter != null &amp;&amp; filter.groupByClause != null" >
+           <include refid="GroupBy_Column_List" />
+       </when>
+       <otherwise>
+           <include refid="Base_Column_List" />
+       </otherwise>
+    </choose>
+        
+<< BOF Inserting rows at: 166
+    <if test="filter != null &amp;&amp; filter.groupByClause != null" >
+      group by ${filter.groupByClause}
+    </if>
+<< BOF Changing rows at: 189
+ model, arrivaldate, realtime, drealtime, correctedtime, annotation, score, maxraces, scorer01,
+ scorer02, scorer03, scorer04, scorer05, scorer06, scorer07, scorer08, scorer09, scorer10,
+ scorer11, scorer12, scorer13, scorer14, scorer15, scorern01, scorern02, scorern03, scorern04,
+ scorern05, scorern06, scorern07, scorern08, scorern09, scorern10, scorern11, scorern12, scorern13,
+ scorern14, scorern15, rectimestamp      )
+ model, racegroup, division, arrivaldate, realtime, drealtime, correctedtime, annotation, score,
+ maxraces, scorer01, scorer02, scorer03, scorer04, scorer05, scorer06, scorer07, scorer08,
+ scorer09, scorer10, scorer11, scorer12, scorer13, scorer14, scorer15, scorern01, scorern02,
+ scorern03, scorern04, scorern05, scorern06, scorern07, scorern08, scorern09, scorern10, scorern11,
+ scorern12, scorern13, scorern14, scorern15, rectimestamp      )
+<< BOF Changing rows at: 208
+ #{record.arrivaldate,jdbcType=TIMESTAMP}, 
+ #{record.realtime,jdbcType=INTEGER},
+ #{record.racegroup,jdbcType=VARCHAR}, 
+ #{record.division,jdbcType=VARCHAR},
+<< BOF Inserting rows at: 211
+ #{record.arrivaldate,jdbcType=TIMESTAMP}, 
+ #{record.realtime,jdbcType=INTEGER}, 
+<< BOF Changing rows at: 212
+ #{record.correctedtime,jdbcType=INTEGER}, 
+ #{record.annotation,jdbcType=VARCHAR}, 
+ #{record.score,jdbcType=REAL},
+ #{record.correctedtime,jdbcType=INTEGER},
+<< BOF Inserting rows at: 216
+ #{record.annotation,jdbcType=VARCHAR}, 
+ #{record.score,jdbcType=REAL}, 
+<< BOF Changing rows at: 217
+ #{record.scorer01,jdbcType=REAL}, 
+ #{record.scorer02,jdbcType=REAL}, 
+ #{record.scorer03,jdbcType=REAL},
+ #{record.scorer01,jdbcType=REAL},
+<< BOF Inserting rows at: 221
+ #{record.scorer02,jdbcType=REAL}, 
+ #{record.scorer03,jdbcType=REAL}, 
+<< BOF Changing rows at: 222
+ #{record.scorer05,jdbcType=REAL}, 
+ #{record.scorer06,jdbcType=REAL}, 
+ #{record.scorer07,jdbcType=REAL},
+ #{record.scorer05,jdbcType=REAL},
+<< BOF Inserting rows at: 226
+ #{record.scorer06,jdbcType=REAL}, 
+ #{record.scorer07,jdbcType=REAL}, 
+<< BOF Changing rows at: 227
+ #{record.scorer09,jdbcType=REAL}, 
+ #{record.scorer10,jdbcType=REAL}, 
+ #{record.scorer11,jdbcType=REAL},
+ #{record.scorer09,jdbcType=REAL},
+<< BOF Inserting rows at: 231
+ #{record.scorer10,jdbcType=REAL}, 
+ #{record.scorer11,jdbcType=REAL}, 
+<< BOF Changing rows at: 232
+ #{record.scorer13,jdbcType=REAL}, 
+ #{record.scorer14,jdbcType=REAL}, 
+ #{record.scorer15,jdbcType=REAL},
+ #{record.scorer13,jdbcType=REAL},
+<< BOF Inserting rows at: 236
+ #{record.scorer14,jdbcType=REAL}, 
+ #{record.scorer15,jdbcType=REAL}, 
+<< BOF Changing rows at: 237
+ #{record.scorern02,jdbcType=VARCHAR}, 
+ #{record.scorern03,jdbcType=VARCHAR}, 
+ #{record.scorern04,jdbcType=VARCHAR},
+ #{record.scorern02,jdbcType=VARCHAR},
+<< BOF Inserting rows at: 241
+ #{record.scorern03,jdbcType=VARCHAR}, 
+ #{record.scorern04,jdbcType=VARCHAR}, 
+<< BOF Changing rows at: 242
+ #{record.scorern06,jdbcType=VARCHAR}, 
+ #{record.scorern07,jdbcType=VARCHAR}, 
+ #{record.scorern08,jdbcType=VARCHAR},
+ #{record.scorern06,jdbcType=VARCHAR},
+<< BOF Inserting rows at: 246
+ #{record.scorern07,jdbcType=VARCHAR}, 
+ #{record.scorern08,jdbcType=VARCHAR}, 
+<< BOF Changing rows at: 247
+ #{record.scorern10,jdbcType=VARCHAR}, 
+ #{record.scorern11,jdbcType=VARCHAR}, 
+ #{record.scorern12,jdbcType=VARCHAR},
+ #{record.scorern10,jdbcType=VARCHAR},
+<< BOF Inserting rows at: 251
+ #{record.scorern11,jdbcType=VARCHAR}, 
+ #{record.scorern12,jdbcType=VARCHAR}, 
+<< BOF Changing rows at: 252
+ #{record.scorern14,jdbcType=VARCHAR}, 
+ #{record.scorern14,jdbcType=VARCHAR},
+ 
+<< BOF Inserting rows at: 287
+      <if test="record.racegroupDirty" >
+        racegroup = #{record.racegroup,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.divisionDirty" >
+        division = #{record.division,jdbcType=VARCHAR},
+      </if>      
+<< BOF Inserting rows at: 438
+      <if test="record.racegroupDirty" >
+        racegroup = #{record.racegroup,jdbcType=VARCHAR},
+      </if>
+      <if test="record.divisionDirty" >
+        division = #{record.division,jdbcType=VARCHAR},
+      </if>

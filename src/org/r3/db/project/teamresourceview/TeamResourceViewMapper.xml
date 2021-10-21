@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--
+  TODO: xmlCopyRight.txt
+   
+  -->
+<!--
+  TODO: xmlReadme.txt
+   
+  -->
+
+<!-- <mapper resource="org/r3/db/project/teamresourceview/TeamResourceViewMapper.xml"/> -->
+<mapper namespace="org.r3.db.project.teamresourceview.TeamResourceViewMapper" >
+    <resultMap id="BaseResultMap" type="org.r3.db.project.teamresourceview.TeamResourceViewDTO" >
+         <result column="site" property="site" jdbcType="VARCHAR" />
+           <result column="teamid" property="teamid" jdbcType="VARCHAR" />
+           <result column="teamdescr" property="teamdescr" jdbcType="VARCHAR" />
+           <result column="periodindex" property="periodindex" jdbcType="INTEGER" />
+           <result column="periodtype" property="periodtype" jdbcType="VARCHAR" />
+           <result column="teamstatus" property="teamstatus" jdbcType="VARCHAR" />
+           <result column="resourceid" property="resourceid" jdbcType="VARCHAR" />
+           <result column="resourcedescr" property="resourcedescr" jdbcType="VARCHAR" />
+           <result column="profileid" property="profileid" jdbcType="VARCHAR" />
+           <result column="evalueunit" property="evalueunit" jdbcType="VARCHAR" />
+           <result column="price" property="price" jdbcType="REAL" />
+           <result column="cost" property="cost" jdbcType="REAL" />
+           <result column="resourcedefstatus" property="resourcedefstatus" jdbcType="VARCHAR" />
+           <result column="recstatus" property="recstatus" jdbcType="VARCHAR" />
+    </resultMap>
+
+  <sql id="Filter_Where_Clause" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+                <when test="criterion.subSelectCriterion" >
+                  and ${criterion.prefixCondition} #{criterion.value} ${criterion.suffixCondition}
+                </when>                                
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    site,  teamid,  teamdescr,  periodindex,  periodtype,  teamstatus,  resourceid,  resourcedescr,  profileid,
+  evalueunit,  price,  cost,  resourcedefstatus,  recstatus  </sql>
+  <select id="select" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <if test="filter != null &amp;&amp; filter.distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from prj_view_teamresource
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+    <if test="filter != null &amp;&amp; filter.orderByClause != null" >
+      order by ${filter.orderByClause}
+    </if>
+    <if test="filter != null &amp;&amp; filter.limitFetch > 0" >
+      limit ${filter.limitFetch}
+    </if>
+  </select>
+  <select id="count" parameterType="map" resultType="java.lang.Integer" >
+    select count(*) from prj_view_teamresource
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </select>  
+</mapper>

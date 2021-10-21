@@ -1,0 +1,29 @@
+##
+##
+## $siteDTO: DTO site regata in fase di registrazione
+
+[delete:r3_filecollection];(EOS)
+
+{ "site": "${siteDTO.site}" };(EOS)
+
+[delete:r3_postcommentcollection];(EOS)
+
+{ "site": "${siteDTO.site}" };(EOS)
+
+[delete:r3_postcollection];(EOS)
+
+{ "site": "${siteDTO.site}" };(EOS)
+
+[delete:r3_timelinecollection];(EOS)
+
+{ "site": "${siteDTO.site}" };(EOS)
+
+[delete:r3_sitecollection];(EOS)
+
+{ "_id": "${siteDTO.site}" };(EOS)
+
+[update:r3_usercollection];(EOS)
+
+{  };(EOH) { $pull: { "favsites": "${siteDTO.site}" } };(EOS)
+
+

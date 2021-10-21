@@ -1,0 +1,97 @@
+<< BOF Inserting rows at: 28
+           <result column="timoniere" property="timoniere" jdbcType="VARCHAR" />
+<< BOF Changing rows at: 133
+  model,  racegroup,  division,  arrivaldate,  realtime,  drealtime,  correctedtime,  annotation,  score,
+  maxraces,  scorer01,  scorer02,  scorer03,  scorer04,  scorer05,  scorer06,  scorer07,  scorer08,
+  scorer09,  scorer10,  scorer11,  scorer12,  scorer13,  scorer14,  scorer15,  scorern01,  scorern02,
+  scorern03,  scorern04,  scorern05,  scorern06,  scorern07,  scorern08,  scorern09,  scorern10,  scorern11,
+  scorern12,  scorern13,  scorern14,  scorern15,  rectimestamp  </sql>
+  model,  racegroup,  division,  timoniere,  arrivaldate,  realtime,  drealtime,  correctedtime,  annotation,
+  score,  maxraces,  scorer01,  scorer02,  scorer03,  scorer04,  scorer05,  scorer06,  scorer07,
+  scorer08,  scorer09,  scorer10,  scorer11,  scorer12,  scorer13,  scorer14,  scorer15,  scorern01,
+  scorern02,  scorern03,  scorern04,  scorern05,  scorern06,  scorern07,  scorern08,  scorern09,  scorern10,
+  scorern11,  scorern12,  scorern13,  scorern14,  scorern15,  rectimestamp  </sql>
+<< BOF Inserting rows at: 238
+       <when test="filter != null &amp;&amp; filter.isGroupBy('timoniere')" >
+           timoniere,
+       </when>
+       <otherwise>
+           null as timoniere,
+       </otherwise>         
+     </choose> 
+	       <choose>
+<< BOF Changing rows at: 611
+ model, racegroup, division, arrivaldate, realtime, drealtime, correctedtime, annotation, score,
+ maxraces, scorer01, scorer02, scorer03, scorer04, scorer05, scorer06, scorer07, scorer08,
+ scorer09, scorer10, scorer11, scorer12, scorer13, scorer14, scorer15, scorern01, scorern02,
+ scorern03, scorern04, scorern05, scorern06, scorern07, scorern08, scorern09, scorern10, scorern11,
+ scorern12, scorern13, scorern14, scorern15, rectimestamp      )
+ model, racegroup, division, timoniere, arrivaldate, realtime, drealtime, correctedtime, annotation,
+ score, maxraces, scorer01, scorer02, scorer03, scorer04, scorer05, scorer06, scorer07,
+ scorer08, scorer09, scorer10, scorer11, scorer12, scorer13, scorer14, scorer15, scorern01,
+ scorern02, scorern03, scorern04, scorern05, scorern06, scorern07, scorern08, scorern09, scorern10,
+ scorern11, scorern12, scorern13, scorern14, scorern15, rectimestamp      )
+<< BOF Inserting rows at: 633
+ #{record.timoniere,jdbcType=VARCHAR}, 
+<< BOF Changing rows at: 635
+ #{record.drealtime,jdbcType=INTEGER}, 
+ #{record.correctedtime,jdbcType=INTEGER},
+ #{record.drealtime,jdbcType=INTEGER},
+<< BOF Inserting rows at: 638
+ #{record.correctedtime,jdbcType=INTEGER}, 
+<< BOF Changing rows at: 640
+ #{record.maxraces,jdbcType=INTEGER}, 
+ #{record.scorer01,jdbcType=REAL},
+ #{record.maxraces,jdbcType=INTEGER},
+<< BOF Inserting rows at: 643
+ #{record.scorer01,jdbcType=REAL}, 
+<< BOF Changing rows at: 645
+ #{record.scorer04,jdbcType=REAL}, 
+ #{record.scorer05,jdbcType=REAL},
+ #{record.scorer04,jdbcType=REAL},
+<< BOF Inserting rows at: 648
+ #{record.scorer05,jdbcType=REAL}, 
+<< BOF Changing rows at: 650
+ #{record.scorer08,jdbcType=REAL}, 
+ #{record.scorer09,jdbcType=REAL},
+ #{record.scorer08,jdbcType=REAL},
+<< BOF Inserting rows at: 653
+ #{record.scorer09,jdbcType=REAL}, 
+<< BOF Changing rows at: 655
+ #{record.scorer12,jdbcType=REAL}, 
+ #{record.scorer13,jdbcType=REAL},
+ #{record.scorer12,jdbcType=REAL},
+<< BOF Inserting rows at: 658
+ #{record.scorer13,jdbcType=REAL}, 
+<< BOF Changing rows at: 660
+ #{record.scorern01,jdbcType=VARCHAR}, 
+ #{record.scorern02,jdbcType=VARCHAR},
+ #{record.scorern01,jdbcType=VARCHAR},
+<< BOF Inserting rows at: 663
+ #{record.scorern02,jdbcType=VARCHAR}, 
+<< BOF Changing rows at: 665
+ #{record.scorern05,jdbcType=VARCHAR}, 
+ #{record.scorern06,jdbcType=VARCHAR},
+ #{record.scorern05,jdbcType=VARCHAR},
+<< BOF Inserting rows at: 668
+ #{record.scorern06,jdbcType=VARCHAR}, 
+<< BOF Changing rows at: 670
+ #{record.scorern09,jdbcType=VARCHAR}, 
+ #{record.scorern10,jdbcType=VARCHAR},
+ #{record.scorern09,jdbcType=VARCHAR},
+<< BOF Inserting rows at: 673
+ #{record.scorern10,jdbcType=VARCHAR}, 
+<< BOF Changing rows at: 675
+ #{record.scorern13,jdbcType=VARCHAR}, 
+ #{record.scorern14,jdbcType=VARCHAR},
+ #{record.scorern13,jdbcType=VARCHAR},
+<< BOF Inserting rows at: 678
+ #{record.scorern14,jdbcType=VARCHAR}, 
+<< BOF Inserting rows at: 718
+      <if test="record.timoniereDirty" >
+        timoniere = #{record.timoniere,jdbcType=VARCHAR},
+      </if>      
+<< BOF Inserting rows at: 875
+      <if test="record.timoniereDirty" >
+        timoniere = #{record.timoniere,jdbcType=VARCHAR},
+      </if>

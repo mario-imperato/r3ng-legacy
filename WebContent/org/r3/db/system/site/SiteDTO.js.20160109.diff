@@ -1,0 +1,4 @@
+<< BOF Inserting rows at: 25
+        this.calendarid = aDataBean.calendarid || null;
+<< BOF Inserting rows at: 40
+        this.options = aDataBean.options || null;

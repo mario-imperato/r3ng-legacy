@@ -1,0 +1,50 @@
+##
+## Variabili in ingresso:
+##     ServiceEnvironment         as $senv 
+##     UserDTO                    as $userObj
+##     OTPDTO                     as $otpObj
+##
+## The variable userDataBean is supposed to hold the GWFUserDataBean
+## The variable password contains the imposed user password.
+
+<p>
+Prezado $userObj.lastname,<br />
+para confirmar o seu endereço de e-mail e concluir o credenciamento, você pode usar a seguinte link<br /> 
+<a href="${senv.getRequestSchemeHostPort()}/r3ng/${senv.getRequestSiteId()}/${senv.getRequestLanguage()}/org/r3/registration/activate.do?otp=$otpObj.digest">Para confirmar o cadastramento clique aqui</a>
+</p>
+
+<p>
+Se n⭠pode clicar, você pode copiar e colar no seu navegador o seguinte enderço<br />
+${senv.getRequestSchemeHostPort()}/r3ng/${senv.getRequestSiteId()}/${senv.getRequestLanguage()}/org/r3/registration/activate.do?otp=$otpObj.digest
+</p>
+
+<p>
+Por favor, note que para confirmar o endereço você em 48 horas, depois você precisa para re-iniciar o processo de credenciamento.<br />
+Boa navegação.
+</p>
+ 
+<p>
+Cumprimentos,<br />
+Team S100
+</p>
+
+<p>
+Gentile $userObj.lastname,<br />
+per confermare il tuo indirizzo di posta elettronica e completare la registrazione, puoi utilizzare il seguente link<br /> 
+<a href="${senv.getRequestSchemeHostPort()}/r3ng/${senv.getRequestSiteId()}/${senv.getRequestLanguage()}/org/r3/registration/activate.do?otp=$otpObj.digest">Per confermare la registrazione clicca qui</a>
+</p>
+
+<p>
+Qualora non fosse cliccabile, puoi copiare e incollare nella barra del tuo browser il seguente indirizzo:<br />
+${senv.getRequestSchemeHostPort()}/r3ng/${senv.getRequestSiteId()}/${senv.getRequestLanguage()}/org/r3/registration/activate.do?otp=$otpObj.digest
+</p>
+
+<p>
+Ti ricordiamo che per confermare l'indirizzo hai a disposizione 48 ore, al termine delle quali dovrai nuovamente avviare il processo di registrazione.<br />
+Buona navigazione.
+</p>
+ 
+<p>
+Distinti Saluti,<br />
+Team S100
+</p>

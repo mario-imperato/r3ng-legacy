@@ -1,0 +1,29 @@
+<< BOF Inserting rows at: 19
+           <result column="alldayflag" property="alldayflag" jdbcType="VARCHAR" />
+<< BOF Changing rows at: 89
+    agendaentryid,  agendaid,  entrydescr,  entrytype,  entrytyperefid,  startdate,  starttime,  enddate,  endtime  </sql>
+    agendaentryid,  agendaid,  entrydescr,  entrytype,  entrytyperefid,  alldayflag,  startdate,  starttime,  enddate,
+  endtime  </sql>
+<< BOF Changing rows at: 144
+ agendaentryid, agendaid, entrydescr, entrytype, entrytyperefid, startdate, starttime, enddate, endtime      )
+ agendaentryid, agendaid, entrydescr, entrytype, entrytyperefid, alldayflag, startdate, starttime, enddate,
+ endtime      )
+<< BOF Inserting rows at: 153
+ #{record.alldayflag,jdbcType=VARCHAR}, 
+<< BOF Changing rows at: 154
+ #{record.starttime,jdbcType=VARCHAR}, 
+ #{record.enddate,jdbcType=DATE},
+ #{record.starttime,jdbcType=VARCHAR},
+<< BOF Inserting rows at: 157
+ #{record.enddate,jdbcType=DATE}, 
+<< BOF Inserting rows at: 175
+      <if test="record.alldayflagDirty" >
+        alldayflag = #{record.alldayflag,jdbcType=VARCHAR},
+      </if>      
+<< BOF Inserting rows at: 209
+      <if test="record.alldayflagDirty" >
+        alldayflag = #{record.alldayflag,jdbcType=VARCHAR},
+      </if>
+<< BOF Deleting rows at: 225
+
+

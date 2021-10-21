@@ -1,0 +1,40 @@
+
+$.r3Utils.namespace("org.r3.jsportlet.cmsconsole", window, function(aNamespace) 
+{
+  aNamespace.message = {
+    waiting:"Aguarde...",
+    
+    any: "Todo mundo",
+    search_category: "Por categoria",
+    	
+    search_username: "Busca por código",
+    search_advanced: "Busca avançada",
+    initializationerror: "Aviso: ocorreu um erro durante a inicialização da página. O processamento não pode continuar",
+    
+    gmenubar_action_newcard: "Novo cartão",
+    gmenubar_action_querycards: "Lista Geral dos Cartãos...",
+    gmenubar_action_promotedcategories: 'Principali categorie (pt)',
+
+    breadcrumb_newcard: "Nova cartão",
+    breadcrumb_carddetail: "Det. cartão",
+    breadcrumb_fileupload: "Carregar arquivo",
+    breadcrumb_managecards: "Gestão dos cartãos de CMS",
+    
+    cardDetailActionForm_tab_generale: 'Geral',
+    cardDetailActionForm_tab_cardtext: 'Descrição',
+    cardDetailActionForm_tab_cardfile: 'Anexos',
+    cardDetailActionForm_tab_cardlink: 'Links',
+    
+    carddetailactionform_form_legend: 'Detalhe do Cartão',
+    carddetailactionform_pubchannels: 'Publicar no canal',
+    carddetailactionform_cardgroup: 'Grupos',
+    
+    cardtextactionform_form_legend: 'Conteúdo do Cartão',
+    cardfileactionform_form_legend: 'Anexos',
+    cardlinkactionform_form_legend: 'Links',
+        
+    uploadfileactionform_form_legend: 'Carregamento do arquivo',
+    uploadfileactionform_form_formmessage: "Selecionar os arquivos clicando 'Incluir arquivo' e iniciar o carregamento",
+    uploadfileactionform_cms_attachtype: 'Tipo de Anexos'
+  };
+});

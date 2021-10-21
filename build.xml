@@ -1,0 +1,234 @@
+<?xml version="1.0"?>
+
+<!--
+  TOMCAT file
+
+  A "project" describes a set of Targets that may be requested
+  when Ant is executed.  The "default" attribute defines the
+  Target which is executed if no specific Target is requested,
+  and the "basedir" attribute defines the current working directory
+  from which Ant executes the requested task.  This is normally
+  set to the current working directory. -->
+
+<project name="appweb" default="help" basedir=".">
+
+<!-- =================================================================== -->
+<!-- Help on usage                                                       -->
+<!-- =================================================================== -->
+ <target name="help">
+
+	<echo message=""/>
+	<echo message=""/>
+	<echo message="Ant gwf based application deploy tool - USAGE"/>
+	<echo message=" available targets are:"/>
+	<echo message=""/>
+	<echo message="-------------------------------------------------------------"/>
+	<!-- <echo message=" 01) help - default target                   "/> -->
+	<echo message="-------------------------------------------------------------"/>
+	<echo message=""/>
+	<echo message=""/>
+ </target>
+
+<!--
+  ===================== Property Definitions ===========================
+  Each of the following properties are used in the build script.
+  Values for these properties are set by the first place they are
+  defined, from the following list:
+  * Definitions on the "ant" command line (ant -Dcatalina.home=xyz compile)
+  * Definitions from a "build.properties" file in the top level
+    source directory
+  * Definitions from a "build.properties" file in the developer's
+    home directory
+  * Default definitions in this build.xml file
+
+  You will note below that property values can be composed based on the
+  contents of previously defined properties.  This is a powerful technique
+  that helps you minimize the number of changes required when your development
+  environment is modified.  Note that property composition is allowed within
+  "build.properties" files as well as in the "build.xml" script. -->
+
+  <!--
+  <property file="build.properties"/>
+  <property file="${user.home}/build.properties"/>
+  -->
+  
+<!--
+  ==================== File and Directory Names ========================
+  These properties generally define file and directory names (or paths) that
+  affect where the build process stores its outputs.
+
+  app.name             Base name of this application, used to
+                       construct filenames and directories.
+                       Defaults to "myapp".
+
+ -->
+
+  <property name="app.name"          value="${properties.app.name}"/>
+  <property name="app.version"       value="1.0"/>
+
+  <property name="src.home"          value="src"/>  
+  <property name="web.home"          value="WebContent"/>  
+  
+  <property name="dist.home"         value="${properties.dist.home}/${properties.app.name}.war"/>  
+  <property name="dist.replace.file" value="${properties.dist.replace.file}"/>  
+  
+  <property name="compile.debug"       value="true"/>
+  <property name="compile.deprecation" value="false"/>
+  <property name="compile.optimize"    value="true"/>
+
+  <path id="compile.classpath">
+
+    <fileset dir="${web.home}/WEB-INF/lib">
+      <include name="**/*.jar"/>
+    </fileset>
+
+    <fileset dir="C:/usr/apache-tomcat-8.5.23/lib">
+      <include name="**/*.jar"/>
+    </fileset>
+
+  </path>
+
+  <target name="compile" depends="coxpreprocess,distWebContent" description="Compile Java sources">
+
+    <!-- Compile Java classes as necessary -->
+    <mkdir  dir="${dist.home}/WEB-INF/classes"/>
+    <javac srcdir="src"
+          destdir="${dist.home}/WEB-INF/classes"
+            debug="${compile.debug}"
+      deprecation="${compile.deprecation}"
+         optimize="${compile.optimize}">
+        <classpath refid="compile.classpath"/>
+    	<!-- <compilerarg value="-Xlint:unchecked"/>-->
+    </javac>
+
+    <!-- Copy associated resource files -->
+    <copy  todir="${dist.home}/WEB-INF/classes">
+        <fileset dir="src" includes="**/*.properties, **/*.xml, resources/**, *.dist"/>
+    </copy>
+
+  </target>
+  
+  <target name="distWebContent">
+
+    <!-- Compile Java classes as necessary -->
+    <mkdir  dir="${dist.home}" />
+
+    <!-- Copy associated resource files -->
+    <copy  todir="${dist.home}">
+        <fileset dir="${web.home}" />
+    </copy>
+    
+  </target>
+  
+  <target name="clean" >
+     <delete dir="${dist.home}"/>
+  </target>
+  
+  <target name="process_dist" depends="distWebContent,compile">
+
+      <echo message=""/>
+	    <echo message="Attenzione --------------------------------------------------"/>
+	    <echo message="Nel caso di creazione distribuzione JBOSS:"/>
+	    <echo message=" -- Eliminare context.xml dalla cartella META-INF "/>
+	    <echo message=" -- Commentare il parametro logger.properties all'interno del file web.xml "/>
+	    <echo message=""/>
+	    <echo message="-------------------------------------------------------------"/>
+	
+    <!--  -->
+    <replace dir="${dist.home}" summary="true" propertyFile="${dist.replace.file}">
+      <include name="**/*.dist"/>
+      <replacefilter token="@deployLogDirectory@"       property="properties.deployLogDirectory" />
+      <replacefilter token="@deployEtcDirectory@"       property="properties.deployEtcDirectory" />
+      <replacefilter token="@deployEtcDirectoryAsURL@"  property="properties.deployEtcDirectoryAsURL" />
+      <replacefilter token="@deployHomeDirectory@"      property="properties.deployHomeDirectory" />
+      <replacefilter token="@applicationUrl@"           property="properties.applicationUrl" />
+      <replacefilter token="@homeAbsoluteUrl@"          property="properties.homeAbsoluteUrl" />
+      <replacefilter token="@applicationName@"          property="properties.app.name" />
+      <replacefilter token="@deployUploadDirectory@"    property="properties.deployUploadDirectory" />
+      <replacefilter token="@jndiJavaContext@"          property="properties.jndiJavaContext" />    	
+      <replacefilter token="@jndiDataSourceName@"       property="properties.jndiDataSourceName" />   
+    	
+      <replacefilter token="@jdbcUrl@"         property="properties.jdbcUrl" />
+      <replacefilter token="@jdbcUser@"        property="properties.jdbcUser" />
+      <replacefilter token="@jdbcPassword@"    property="properties.jdbcPassword" />            
+    </replace>
+
+	  <move todir="${dist.home}" >
+		<fileset dir="${dist.home}" />
+		    <mapper type="glob" from="*.dist" to="*"/>
+	  </move>
+
+  </target>
+
+  <target name="inplace_dist" >
+
+    <replace dir="${src.home}" summary="true" propertyFile="build.properties">
+      <include name="**/*.dist"/>
+      <replacefilter token="@deployLogDirectory@"       property="properties.deployLogDirectory" />
+      <replacefilter token="@deployEtcDirectory@"       property="properties.deployEtcDirectory" />
+      <replacefilter token="@deployEtcDirectoryAsURL@"  property="properties.deployEtcDirectoryAsURL" />
+      <replacefilter token="@deployHomeDirectory@"      property="properties.deployHomeDirectory" />
+      <replacefilter token="@applicationUrl@"           property="properties.applicationUrl" />
+      <replacefilter token="@homeAbsoluteUrl@"          property="properties.homeAbsoluteUrl" />
+      <replacefilter token="@applicationName@"          property="properties.app.name" />
+      <replacefilter token="@deployUploadDirectory@"    property="properties.deployUploadDirectory" />
+    </replace>
+
+	  <move todir="${src.home}" >
+		<fileset dir="${src.home}" />
+		    <mapper type="glob" from="*.dist" to="*"/>
+	  </move>
+
+    <replace dir="${web.home}" summary="true" propertyFile="build.properties">
+      <include name="**/*.dist"/>
+      <replacefilter token="@deployLogDirectory@"       property="properties.deployLogDirectory" />
+      <replacefilter token="@deployEtcDirectory@"       property="properties.deployEtcDirectory" />
+      <replacefilter token="@deployEtcDirectoryAsURL@"  property="properties.deployEtcDirectoryAsURL" />
+      <replacefilter token="@deployHomeDirectory@"      property="properties.deployHomeDirectory" />
+      <replacefilter token="@applicationUrl@"           property="properties.applicationUrl" />
+      <replacefilter token="@homeAbsoluteUrl@"          property="properties.homeAbsoluteUrl" />
+      <replacefilter token="@applicationName@"          property="properties.app.name" />
+      <replacefilter token="@deployUploadDirectory@"    property="properties.deployUploadDirectory" />
+    </replace>
+
+	  <move todir="${web.home}" >
+		<fileset dir="${web.home}" />
+		    <mapper type="glob" from="*.dist" to="*"/>
+	  </move>
+
+  </target>
+
+<!-- ==================== All Target ====================================== -->
+
+<!--
+  The "all" Target is a shortcut for running the "clean" Target followed
+  by the "deploy" Target, to force a complete recompile and deploy.
+-->
+
+  <target name="all" depends="process_dist,compile" >
+  </target>
+
+  <!-- ================================================================ -->
+  <!-- TouchJSP.                                                        -->
+  <!-- ================================================================ -->
+  <target name="touchjsp">
+   <touch>
+     <fileset dir="${web.home}"/>
+   </touch>
+  </target>
+
+  <!-- ================================================================ -->
+  <!-- Preprocess the COX files.                                        -->
+  <!-- ================================================================ -->
+  <target name="coxpreprocess">
+  <apply executable="java" failonerror="true" dest="${src.home}">
+     <arg value="-cp" />
+     <arg value="gwf_tools/gwf_tools_runtime/lib/jUDPTTools.jar" />
+     <arg value="jUDPTTools.coxParser.CoxParser" />
+     <fileset dir="${src.home}" includes="**/*.cox"/>
+     <mapper  type="glob" from="*.cox" to="*" />
+  </apply>
+  </target>
+
+</project>
+

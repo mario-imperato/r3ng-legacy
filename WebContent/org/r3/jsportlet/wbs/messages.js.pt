@@ -1,0 +1,36 @@
+
+$.r3Utils.namespace("org.r3.jsportlet.wbs", window, function(aNamespace) 
+{
+  aNamespace.message = {
+       wbstextEmptyConfirmation: "Atenção, não pode deixar a atividade em branco!",
+       wbsmillertip: "Ferramentas para mudar o plano de ações",
+       
+       portlet_list_of_wbs: "Lista ações",
+       console_wbs_action_refresh: 'Atualização',
+       wbsActionForm_tab_generale: 'Geral',
+       wbsActionForm_tab_nodes: 'Ações',
+       wbs_outline_panel_caption: 'Delineação PDA',
+       
+       wbsactionform_form_legend_title: 'Detalhe PDA',
+       wbsactionform_options : 'Opções',
+       wbsactionform_options_notify : 'Notificação do atraso',
+       wbsactionform_options_discussion: 'Discussão',
+       
+       wbsactionform_wbstitle : 'Titulo',
+       wbsactionform_wbscoach: "Coach",
+       wbsactionform_wbsmanager: "Manager",
+       wbsactionform_wbssponsor: "Sponsor",
+       wbsactionform_bbstopicid: 'Id. Tópico de Discussão' ,
+       
+       wbsnodemanager_legend_title: 'Inserir ou modificar os itens do PDA',
+       
+       wbsnodemanager_milleraction_outline: 'Delineação',
+       wbsnodemanager_milleraction_add: 'Incluir',
+       wbsnodemanager_milleraction_delete: 'Excluir',
+       
+       wbsnodeactionform_form_legend_title : 'Detalhe do nó',
+       wbsnodeactionform_completion: "Nível de complemento",
+       wbsnodeactionform_completion_note: "Anotação"
+  
+  };
+});

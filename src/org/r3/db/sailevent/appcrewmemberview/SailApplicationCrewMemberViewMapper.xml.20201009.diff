@@ -1,0 +1,314 @@
+<< BOF Inserting rows at: 11
+
+
+<< BOF Changing rows at: 14
+         <id column="crewmemberid" property="crewmemberid" jdbcType="VARCHAR" />           
+           <result column="applicationid" property="applicationid" jdbcType="VARCHAR" />
+         <result column="crewmemberid" property="crewmemberid" jdbcType="VARCHAR" />
+<< BOF Inserting rows at: 17
+           <result column="applicationid" property="applicationid" jdbcType="VARCHAR" />
+<< BOF Inserting rows at: 41
+           <result column="numcoviddocs" property="numcoviddocs" jdbcType="DECIMAL" />
+<< BOF Deleting rows at: 43
+    <resultMap id="CrewReportResultMap" type="org.r3.db.sailevent.appcrewmemberview.SailApplicationCrewMemberViewSummaryDTO" >
+         <id column="applicationid" property="applicationid" jdbcType="VARCHAR" />
+         <result column="eventid" property="eventid" jdbcType="VARCHAR" />
+         <result column="sailnumber" property="sailnumber" jdbcType="VARCHAR" />
+         <result column="yachtname" property="yachtname" jdbcType="VARCHAR" />
+         <collection property="listOfCrewMembers" column="crewmemberid" ofType="org.r3.db.sailevent.appcrewmemberview.SailApplicationCrewMemberViewDTO" notNullColumn="crewmemberid">         
+           <result column="crewmemberid" property="crewmemberid" jdbcType="VARCHAR" />           
+           <result column="cardnumber" property="cardnumber" jdbcType="VARCHAR" />
+           <result column="crewmembername" property="crewmembername" jdbcType="VARCHAR" />
+           <result column="weight" property="weight" jdbcType="REAL" />
+           <result column="crewmemberrolecode" property="crewmemberrolecode" jdbcType="VARCHAR" />
+           <result column="memberstatuscode" property="memberstatuscode" jdbcType="VARCHAR" />
+           <result column="createtimestamp" property="createtimestamp" jdbcType="TIMESTAMP" />
+           <result column="deletetimestamp" property="deletetimestamp" jdbcType="TIMESTAMP" />
+           <result column="checkcardnumber" property="checkcardnumber" jdbcType="VARCHAR" />
+           <result column="checkcardnumber_ts" property="checkcardnumber_ts" jdbcType="TIMESTAMP" />
+           <result column="recstatus" property="recstatus" jdbcType="VARCHAR" />
+           <result column="rectimestamp" property="rectimestamp" jdbcType="TIMESTAMP" />
+           <result column="cardnumberstatuscode" property="cardnumberstatuscode" jdbcType="VARCHAR" />
+           <result column="yachtclub" property="yachtclub" jdbcType="VARCHAR" />
+           <result column="cardholdername" property="cardholdername" jdbcType="VARCHAR" />
+           <result column="cardholderlastname" property="cardholderlastname" jdbcType="VARCHAR" />
+           <result column="medexamexpirationdate" property="medexamexpirationdate" jdbcType="TIMESTAMP" />
+           <result column="cardexpirationdate" property="cardexpirationdate" jdbcType="TIMESTAMP" />
+           <result column="renewaldate" property="renewaldate" jdbcType="TIMESTAMP" />
+           <result column="generalcardexpirationdate" property="generalcardexpirationdate" jdbcType="TIMESTAMP" />
+           <result column="systemcheckdate" property="systemcheckdate" jdbcType="TIMESTAMP" />
+         </collection>
+    </resultMap>
+
+<< BOF Changing rows at: 79
+              <choose >
+              <choose>
+<< BOF Changing rows at: 108
+  medexamexpirationdate,  cardexpirationdate,  renewaldate,  generalcardexpirationdate,  systemcheckdate,  sailnumber,  yachtname,  completionstatus,  verificationstatus  </sql>
+  medexamexpirationdate,  cardexpirationdate,  renewaldate,  generalcardexpirationdate,  systemcheckdate,  sailnumber,  yachtname,  completionstatus,  verificationstatus,
+  numcoviddocs  </sql>
+  
+  <sql id='GroupBy_Column_List'>
+    <trim suffixOverrides=",">
+        <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('crewmemberid')" >
+           crewmemberid,
+       </when>
+       <otherwise>
+           null as crewmemberid,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('eventid')" >
+           eventid,
+       </when>
+       <otherwise>
+           null as eventid,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('applicationid')" >
+           applicationid,
+       </when>
+       <otherwise>
+           null as applicationid,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('cardnumber')" >
+           cardnumber,
+       </when>
+       <otherwise>
+           null as cardnumber,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('crewmembername')" >
+           crewmembername,
+       </when>
+       <otherwise>
+           null as crewmembername,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('weight')" >
+           weight,
+       </when>
+       <otherwise>
+           null as weight,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('crewmemberrolecode')" >
+           crewmemberrolecode,
+       </when>
+       <otherwise>
+           null as crewmemberrolecode,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('memberstatuscode')" >
+           memberstatuscode,
+       </when>
+       <otherwise>
+           null as memberstatuscode,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('createtimestamp')" >
+           createtimestamp,
+       </when>
+       <otherwise>
+           null as createtimestamp,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('deletetimestamp')" >
+           deletetimestamp,
+       </when>
+       <otherwise>
+           null as deletetimestamp,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('checkcardnumber')" >
+           checkcardnumber,
+       </when>
+       <otherwise>
+           null as checkcardnumber,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('checkcardnumber_ts')" >
+           checkcardnumber_ts,
+       </when>
+       <otherwise>
+           null as checkcardnumber_ts,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('recstatus')" >
+           recstatus,
+       </when>
+       <otherwise>
+           null as recstatus,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('rectimestamp')" >
+           rectimestamp,
+       </when>
+       <otherwise>
+           null as rectimestamp,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('cardnumberstatuscode')" >
+           cardnumberstatuscode,
+       </when>
+       <otherwise>
+           null as cardnumberstatuscode,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('yachtclub')" >
+           yachtclub,
+       </when>
+       <otherwise>
+           null as yachtclub,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('cardholdername')" >
+           cardholdername,
+       </when>
+       <otherwise>
+           null as cardholdername,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('cardholderlastname')" >
+           cardholderlastname,
+       </when>
+       <otherwise>
+           null as cardholderlastname,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('medexamexpirationdate')" >
+           medexamexpirationdate,
+       </when>
+       <otherwise>
+           null as medexamexpirationdate,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('cardexpirationdate')" >
+           cardexpirationdate,
+       </when>
+       <otherwise>
+           null as cardexpirationdate,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('renewaldate')" >
+           renewaldate,
+       </when>
+       <otherwise>
+           null as renewaldate,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('generalcardexpirationdate')" >
+           generalcardexpirationdate,
+       </when>
+       <otherwise>
+           null as generalcardexpirationdate,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('systemcheckdate')" >
+           systemcheckdate,
+       </when>
+       <otherwise>
+           null as systemcheckdate,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('sailnumber')" >
+           sailnumber,
+       </when>
+       <otherwise>
+           null as sailnumber,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('yachtname')" >
+           yachtname,
+       </when>
+       <otherwise>
+           null as yachtname,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('completionstatus')" >
+           completionstatus,
+       </when>
+       <otherwise>
+           null as completionstatus,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('verificationstatus')" >
+           verificationstatus,
+       </when>
+       <otherwise>
+           null as verificationstatus,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('numcoviddocs')" >
+           numcoviddocs,
+       </when>
+       <otherwise>
+           null as numcoviddocs,
+       </otherwise>         
+     </choose> 
+	       </trim>       
+  </sql>
+  
+<< BOF Changing rows at: 114
+    <include refid="Base_Column_List" />
+    <choose>
+       <when test="filter != null &amp;&amp; filter.groupByClause != null">
+           <include refid="GroupBy_Column_List" />
+       </when>
+       <otherwise>
+           <include refid="Base_Column_List" />
+       </otherwise>
+    </choose>
+    
+<< BOF Inserting rows at: 119
+    <if test="filter != null &amp;&amp; filter.groupByClause != null" >
+      group by ${filter.groupByClause}
+    </if>    
+<< BOF Deleting rows at: 132
+  
+  <select id="selectCrewReport" resultMap="CrewReportResultMap" parameterType="map" >
+    select
+    <if test="filter != null &amp;&amp; filter.distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sev_view_appcrewmember
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+    <if test="filter != null &amp;&amp; filter.orderByClause != null" >
+      order by ${filter.orderByClause}
+    </if>
+    <if test="filter != null &amp;&amp; filter.limitFetch > 0" >
+      limit ${filter.limitFetch}
+    </if>    
+  </select>
+  

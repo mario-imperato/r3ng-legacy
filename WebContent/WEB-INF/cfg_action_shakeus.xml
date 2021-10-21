@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+
+
+<action path="/org/r3/newNeighborhood"
+    className="org.r3.system.struts.GWFActionMapping"            
+    type="org.r3.system.struts.R3Manager"
+    parameter="successAndSuccessGuest" >
+
+    <!--
+    scope="request"
+    name="loginForm"
+    validate="true"
+    input="/security/signin.jsp">-->
+       <set-property property="sessionBehaviour"   value="required"       />
+       <set-property property="functionId"         value="pub"          />    
+       <set-property property="functionalAreaId"   value="home"         />           
+       <set-property property="enforceTimeToken"   value="false"        />           
+       <set-property property="snoopRequest"       value="console_address"      />
+       
+       <forward name="Success"      path="/org/r3/shakeus/newsite/neighborhood/newsite.jsp"        redirect="false" />
+       <forward name="SuccessGuest"  path="/org/r3/home.do"  redirect="true" />
+</action>
+
+<action path="/org/r3/newShop"
+    className="org.r3.system.struts.GWFActionMapping"            
+    type="org.r3.system.struts.R3Manager"
+    parameter="successAndSuccessGuest" >
+
+    <!--
+    scope="request"
+    name="loginForm"
+    validate="true"
+    input="/security/signin.jsp">-->
+       <set-property property="sessionBehaviour"   value="required"       />
+       <set-property property="functionId"         value="pub"          />    
+       <set-property property="functionalAreaId"   value="home"         />           
+       <set-property property="enforceTimeToken"   value="false"        />           
+       <set-property property="snoopRequest"       value="console_address"      />
+       
+       <forward name="Success"      path="/org/r3/shakeus/newsite/shop/newsite.jsp"        redirect="false" />
+       <forward name="SuccessGuest"  path="/org/r3/home.do"  redirect="true" />
+</action>
+

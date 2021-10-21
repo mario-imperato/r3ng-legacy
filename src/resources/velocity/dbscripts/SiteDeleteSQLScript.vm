@@ -1,0 +1,82 @@
+##
+##
+## $siteDTO: DTO site regata in fase di registrazione
+##
+##
+
+delete from prj_resourcets where site = '${siteDTO.site}';
+delete from prj_teamresource where site = '${siteDTO.site}';
+delete from prj_team where site = '${siteDTO.site}';
+delete from prj_teammemberprofile where site = '${siteDTO.site}';
+## delete from prj_resource where site = '${siteDTO.site}';
+
+delete from r3_fileimportdata where site = '${siteDTO.site}';
+delete from r3_fileimport where site = '${siteDTO.site}';
+
+delete from r3_wbsactor where site = '${siteDTO.site}';
+delete from r3_wbsnode where site = '${siteDTO.site}';
+delete from r3_wbs where site = '${siteDTO.site}';
+
+delete from r3_agendaentry where agendaid = '${siteDTO.site}';
+delete from r3_agenda where agendaid = '${siteDTO.site}';
+
+delete from r3_outmailspoolerrecipient where site = '${siteDTO.site}';
+delete from r3_outmailattach where site = '${siteDTO.site}';
+delete from r3_outmailspooler where site = '${siteDTO.site}';
+
+delete from r3_siteportletconfig where site = '${siteDTO.site}';
+
+delete from sev_rankinginstancedetail where eventid = '${siteDTO.site}';
+delete from sev_rankinginstance where eventid = '${siteDTO.site}';
+delete from sev_ranking where eventid = '${siteDTO.site}';
+
+delete from r3_smsqueueitem where site = '${siteDTO.site}';
+delete from r3_smsqueue where site = '${siteDTO.site}';
+
+delete from r3_relactorgroup where eventid = '${siteDTO.site}';
+delete from r3_actor where eventid = '${siteDTO.site}';
+delete from r3_actorgroup where eventid = '${siteDTO.site}';
+
+delete from sev_yachtclub where eventid = '${siteDTO.site}';
+delete from sev_sponsor where eventid = '${siteDTO.site}';
+delete from sev_boatgroup where eventid = '${siteDTO.site}';
+delete from sev_calendar where eventid = '${siteDTO.site}';
+delete from sev_appcrewmember where eventid = '${siteDTO.site}';
+delete from sev_appdocument where eventid = '${siteDTO.site}';
+delete from sev_appdata where eventid = '${siteDTO.site}';
+delete from sev_application where eventid = '${siteDTO.site}';
+
+delete from sev_event where eventid = '${siteDTO.site}';
+
+delete from r3_eventlog where site = '${siteDTO.site}';
+delete from r3_cmscardchannel where site = '${siteDTO.site}';
+
+delete from r3_cmspagedescr where site = '${siteDTO.site}';
+delete from r3_cmspage where site = '${siteDTO.site}';
+delete from r3_cmscategory where site = '${siteDTO.site}';
+delete from r3_cmscardcategory where site = '${siteDTO.site}';
+delete from r3_cmscarddescr where site = '${siteDTO.site}';
+delete from r3_cmscardgroup where site = '${siteDTO.site}';
+
+update r3_cmscardproperty set refpropertyid = null where site = '${siteDTO.site}';
+delete from r3_cmscardproperty where site = '${siteDTO.site}';
+delete from r3_cmsgroup  where site = '${siteDTO.site}';
+delete from r3_cmsattachmenttype where site = '${siteDTO.site}';
+
+
+delete from r3_siteproperty where site = '${siteDTO.site}';
+delete from r3_userrole where site = '${siteDTO.site}';
+
+delete from r3_classifieritem where site = '${siteDTO.site}' and classifieritemdepth = 1;
+delete from r3_classifieritem where site = '${siteDTO.site}' and classifieritemdepth = 0;
+
+delete from r3_cmscard where site = '${siteDTO.site}';
+
+delete from r3_dmsfolder where folderlogicalpath like '/PUB/${siteDTO.site}%';
+delete from r3_dmsfolder where folderlogicalpath like '/${siteDTO.site}%';
+
+delete from r3_site where site = '${siteDTO.site}';
+
+delete from r3_classifier where site = '${siteDTO.site}';
+
+

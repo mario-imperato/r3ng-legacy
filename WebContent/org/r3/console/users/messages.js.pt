@@ -1,0 +1,10 @@
+
+$.r3Utils.namespace("org.r3.console.users", window, function(aNamespace) 
+{
+  aNamespace.message = {
+    waiting:"Attendi...",
+    search_username: "Busca para apelido",
+    search_advanced: "Busca avançada",
+    initializationerror: "Aviso: ocorreu um erro durante a inicialização da página. O processamento não pode continuar"
+  };
+});

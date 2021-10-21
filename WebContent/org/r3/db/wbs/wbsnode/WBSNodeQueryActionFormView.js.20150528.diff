@@ -1,0 +1,12 @@
+<< BOF Inserting rows at: 217
+        defaultColumnDefinitions['completionstatus'] = 
+       {
+       	  "aTargets": [ -1 ],
+          "sClass": "left",
+          "sTitle": "completionstatus",
+          "fnRender": function ( oObj, sVal )
+          {
+             var item = oObj.aData; 
+             return item.dataBean.completionstatus || '';
+          }       
+       };

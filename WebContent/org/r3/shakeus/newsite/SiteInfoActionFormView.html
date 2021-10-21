@@ -1,0 +1,38 @@
+ 
+<div style="margin: 10px 0 20px; padding-bottom: 8px; border-bottom: 1px solid #dddddd;">
+    <h1 style="color: #CF221B;">{%=o.title%}</h1>
+</div>
+ <div class='siteCodeDescriptionCard'></div>
+ <div id="siteinfoform_fieldset_message" ></div>  
+  
+ <form id="siteinfoform_form" method="POST" class="form-horizontal">
+     <input type="hidden" name="sitetype" value="{%=o.sitetype%}" />
+     
+     <div class="form-group">
+	    <label class="col-md-2 control-label fieldRequired ">{%=o.sitecode%}</label>
+	    <div class='col-md-10'>
+	    <input type="text" name="site" class='form-control' id="siteinfoform_site" maxlength="15"  />
+	    </div>
+	  </div>
+	  
+     <div class="form-group">
+	    <label class="col-md-2 control-label fieldRequired ">{%=o.sitedescr%}</label>
+	    <div class='col-md-10'>
+	    <input type="text" name="sitedescr" class='form-control' id="siteinfoform_sitedescr" maxlength="40"  />
+	    </div>
+	  </div>	  
+ 
+ </form>
+
+ <div class="form-action-bar">
+      
+      <button type="button" id="siteinfoform_confirm_action" class="btn btn-success" >
+          <span>{%=org.r3.message.action_confirm%}</span>
+      </button>
+     
+      <button type="button" id="siteinfoform_cancel_action" class="btn btn-danger" >
+        <span>{%=org.r3.message.action_cancel%}</span>
+      </button>
+                 
+ </div> 
+     

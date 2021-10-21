@@ -1,0 +1,214 @@
+html,body {
+	margin: 0;
+	height: 100%;
+}
+
+#left_canvas {
+	height: 100%;
+	background-color: #DF7227;
+}
+
+#right_top_canvas {
+	height: 110px;
+}
+
+.main-heading
+{
+	color: #ffffff;
+}
+
+.main-heading a,
+.featured_events_canvas ul li a:link,.featured_events_canvas ul li a:visited,.featured_events_canvas ul li a:hover,.featured_events_canvas ul li a:active
+{ 
+ 	color: #E8F255;
+} 
+
+.featured_events_canvas div.action-bar
+{
+	border-top: 1px solid #fff; 
+ 	color: #ff9; 
+} 
+
+.main-heading a:hover,
+.featured_events_canvas ul li a:hover,
+.featured_events_canvas p
+{ 
+	color: #FFFFFF;
+} 
+
+.splash_logo
+{
+	background: url('mastersite_splash_home.jpg') no-repeat;
+	background-size: 100% auto;
+	height: 300px;
+}
+
+/*  */
+/* { */
+/* 	color: #E8F255; #FF9C01; */
+/* }
+
+/* #canvas_body { */
+/* 	width: 960px; */
+/* 	margin-left: auto; */
+/* 	margin-right: auto; */
+/* 	position: relative; */
+/* 	height: 100%; */
+/* } */
+
+
+/* img { */
+/* 	border: 0; */
+/* } */
+
+/* #left_innercanvas { */
+/* 	background-color: #DF7227; #142A38; */
+/* 	height: auto; */
+/* 	min-height: 652px; */
+/* } */
+
+/* #r3_welcome_canvas { */
+/* } */
+
+
+
+
+
+/* .featured_events_canvas { */
+/* 	padding-left: 12px; */
+/* 	padding-right: 20px; */
+/* } */
+
+/* .footer_actions_canvas span { */
+/* 	position: absolute; */
+/* 	right: 0px; */
+/* 	margin: 0px; */
+/* } */
+
+/* .footer_actions_canvas ul { */
+/* 	-moz-padding-start: 0; */
+/* 	position: absolute; */
+/* 	right: 0px; */
+/* 	margin: 0px; */
+/* } */
+
+/* .footer_actions_canvas ul li { */
+/* 	display: inline; */
+/* 	list-style-image: none; */
+/* 	list-style-position: outside; */
+/* 	list-style-type: none; */
+/* } */
+
+
+
+/* .bottomActions ul li a:hover { */
+/* 	color: #013470; */
+/* } */
+
+/* .footer_actions_canvas ul li a,.bottomActions ul li span { */
+/* 	color: #013470; */
+/* 	display: block; */
+/* 	float: left; */
+/* 	font-weight: normal; */
+/* 	padding-top: 0.5em; */
+/* 	padding-left: 0.5em; */
+/* 	padding-left: 0.5em; */
+/* 	font-size: 0.9em; */
+/* 	text-decoration: none; */
+/* } */
+
+/* #r3_welcome_canvas a */
+/* { */
+/* 	color: #E8F255; */
+/* } */
+
+/* #r3_welcome_canvas a:hover { */
+/* 	color: #FFFFFF; */
+/* } */
+
+/* .featured_events_canvas { */
+	
+/* } */
+
+/* .featured_events_canvas ul { */
+/* 	-moz-padding-start: 0; */
+/* 	list-style-position: outside; */
+/* 	list-style-type: disc; */
+/* 	padding: 0; */
+/* 	margin: 0; */
+/* } */
+
+/* .featured_events_canvas ul li { */
+/* 	display: inline; */
+/* 	list-style-image: none; */
+/* 	list-style-position: outside; */
+/* 	list-style-type: none; */
+/* } */
+
+/* .featured_events_canvas ul li a { */
+/* 	color: #FFFFFF; */
+/* 	display: block; */
+/* 	font-weight: normal; */
+/* 	padding-top: 0.5em; */
+/* 	padding-left: 0; */
+/* 	font-size: 0.9em; */
+/* 	text-decoration: none; */
+/* } */
+
+ */
+
+/* .featured_events_canvas ul li a:hover { */
+/* 	color: #FFFFFF; */
+/* } */
+
+/* .featured_events_canvas ul li p { */
+/* 	color: #FFFFFF; */
+/* 	display: block; */
+/* 	font-weight: normal; */
+/* 	padding-left: 0; */
+/* 	margin-top: 0.5em; */
+/* 	text-decoration: none; */
+/* } */
+
+/* .featured_events_canvas div.action-bar a */
+/* { */
+/* 	display: inline; */
+/* } */
+
+/* .featured_events_canvas div.action-bar */
+/* { */
+/* 	border-top: 1px solid #fff; */
+/* 	color: #ff9; */
+/* } */
+
+  
+/* .featured_events_canvas .eventName { */
+/* 	margin-bottom: 0px; */
+/* 	font-weight: bold; */
+/* } */
+
+/* .featured_events_canvas .eventYachtClub { */
+	
+/* } */
+
+/* .featured_events_canvas .eventDescr { */
+	
+/* } */
+
+/* .language_selection_canvas ul { */
+/* 	-moz-padding-start: 0; */
+/* 	list-style-position: outside; */
+/* 	list-style-type: disc; */
+/* 	padding: 0; */
+/* 	margin: 0; */
+/* 	position: absolute; */
+/* 	bottom: 2px; */
+/* 	right: 2px; */
+/* } */
+
+/* .language_selection_canvas ul li { */
+/* 	display: inline; */
+/* 	list-style-image: none; */
+/* 	list-style-position: outside; */
+/* 	list-style-type: none; */
+/* } */

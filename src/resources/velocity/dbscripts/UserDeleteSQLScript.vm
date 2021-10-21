@@ -1,0 +1,24 @@
+##
+##
+## $userDTO: DTO utente in fase di registrazione
+##
+##
+   
+-- update r3_agenda set actorid = null where actorid = '$userDTO.userid';
+update r3_actor set userid = null 
+   where userid = '$userDTO.userid';
+   
+update sev_application set userid = null 
+   where userid = '$userDTO.userid';
+   
+delete from r3_eventlog 
+   where userid = '$userDTO.userid';
+   
+delete from r3_userrole 
+   where userid = '$userDTO.userid';
+   
+delete from r3_usersession 
+   where userid = '$userDTO.userid';
+
+delete from r3_user 
+   where userid = '$userDTO.userid';

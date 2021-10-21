@@ -1,0 +1,248 @@
+<< BOF Changing rows at: 14
+         <id column="caldate" property="caldate" jdbcType="DATE" />
+         <id column="sitedomain" property="sitedomain" jdbcType="VARCHAR" />
+           <id column="calendarid" property="calendarid" jdbcType="VARCHAR" />
+           <id column="caldate" property="caldate" jdbcType="DATE" />
+<< BOF Deleting rows at: 29
+           <result column="calendarid" property="calendarid" jdbcType="VARCHAR" />
+<< BOF Changing rows at: 96
+    caldate,  caleveday,  caleveworkday,  calday,  calmonth,  calyear,  calweek,  calquarter,  calyday,
+  calwday,  calevemonth,  caleveweek,  calevequarter,  caleveyear,  calentrytype,  calendarid  </sql>
+  <select id="selectByCaldate" resultMap="BaseResultMap" parameterType="map" >
+    sitedomain,  calendarid,  caldate,  caleveday,  caleveworkday,  calday,  calmonth,  calyear,  calweek,
+  calquarter,  calyday,  calwday,  calevemonth,  caleveweek,  calevequarter,  caleveyear,  calentrytype  </sql>
+  
+  <sql id='GroupBy_Column_List'>
+    <trim suffixOverrides=",">
+        <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('sitedomain')" >
+           sitedomain,
+       </when>
+       <otherwise>
+           null as sitedomain,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('calendarid')" >
+           calendarid,
+       </when>
+       <otherwise>
+           null as calendarid,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('caldate')" >
+           caldate,
+       </when>
+       <otherwise>
+           null as caldate,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('caleveday')" >
+           caleveday,
+       </when>
+       <otherwise>
+           null as caleveday,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('caleveworkday')" >
+           caleveworkday,
+       </when>
+       <otherwise>
+           null as caleveworkday,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('calday')" >
+           calday,
+       </when>
+       <otherwise>
+           null as calday,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('calmonth')" >
+           calmonth,
+       </when>
+       <otherwise>
+           null as calmonth,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('calyear')" >
+           calyear,
+       </when>
+       <otherwise>
+           null as calyear,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('calweek')" >
+           calweek,
+       </when>
+       <otherwise>
+           null as calweek,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('calquarter')" >
+           calquarter,
+       </when>
+       <otherwise>
+           null as calquarter,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('calyday')" >
+           calyday,
+       </when>
+       <otherwise>
+           null as calyday,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('calwday')" >
+           calwday,
+       </when>
+       <otherwise>
+           null as calwday,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('calevemonth')" >
+           calevemonth,
+       </when>
+       <otherwise>
+           null as calevemonth,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('caleveweek')" >
+           caleveweek,
+       </when>
+       <otherwise>
+           null as caleveweek,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('calevequarter')" >
+           calevequarter,
+       </when>
+       <otherwise>
+           null as calevequarter,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('caleveyear')" >
+           caleveyear,
+       </when>
+       <otherwise>
+           null as caleveyear,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('calentrytype')" >
+           calentrytype,
+       </when>
+       <otherwise>
+           null as calentrytype,
+       </otherwise>         
+     </choose> 
+	      </trim>       
+  </sql>
+  
+  <select id="selectBySitedomainCalendaridCaldate" resultMap="BaseResultMap" parameterType="HashMap" >
+<< BOF Changing rows at: 102
+    where caldate = #{caldate,jdbcType=DATE}
+    where  sitedomain = #{sitedomain,jdbcType=VARCHAR} and  calendarid = #{calendarid,jdbcType=VARCHAR} and  caldate = #{caldate,jdbcType=DATE}
+<< BOF Changing rows at: 104
+  <delete id="deleteByCaldate" parameterType="map" >
+  <delete id="deleteBySitedomainCalendaridCaldate" parameterType="HashMap" >
+<< BOF Changing rows at: 107
+    where caldate = #{caldate,jdbcType=DATE}
+  </delete>
+    where  sitedomain = #{sitedomain,jdbcType=VARCHAR} and  calendarid = #{calendarid,jdbcType=VARCHAR} and  caldate = #{caldate,jdbcType=DATE}
+  </delete>  
+<< BOF Changing rows at: 113
+    where  caldate = #{pk.caldate,jdbcType=DATE}
+    where  sitedomain = #{pk.sitedomain,jdbcType=VARCHAR} and  calendarid = #{pk.calendarid,jdbcType=VARCHAR} and  caldate = #{pk.caldate,jdbcType=DATE}
+<< BOF Changing rows at: 118
+    where  caldate = #{pk.caldate,jdbcType=DATE}
+    where  sitedomain = #{pk.sitedomain,jdbcType=VARCHAR} and  calendarid = #{pk.calendarid,jdbcType=VARCHAR} and  caldate = #{pk.caldate,jdbcType=DATE}
+<< BOF Changing rows at: 125
+    <include refid="Base_Column_List" />
+    
+    <choose >
+       <when test="filter != null &amp;&amp; filter.groupByClause != null" >
+           <include refid="GroupBy_Column_List" />
+       </when>
+       <otherwise>
+           <include refid="Base_Column_List" />
+       </otherwise>
+    </choose>
+        
+<< BOF Inserting rows at: 130
+    <if test="filter != null &amp;&amp; filter.groupByClause != null" >
+      group by ${filter.groupByClause}
+    </if>
+<< BOF Changing rows at: 152
+ caldate, caleveday, caleveworkday, calday, calmonth, calyear, calweek, calquarter, calyday,
+ calwday, calevemonth, caleveweek, calevequarter, caleveyear, calentrytype, calendarid      )
+ sitedomain, calendarid, caldate, caleveday, caleveworkday, calday, calmonth, calyear, calweek,
+ calquarter, calyday, calwday, calevemonth, caleveweek, calevequarter, caleveyear, calentrytype      )
+<< BOF Inserting rows at: 156
+ #{record.sitedomain,jdbcType=VARCHAR}, 
+ #{record.calendarid,jdbcType=VARCHAR}, 
+<< BOF Changing rows at: 157
+ #{record.caleveday,jdbcType=INTEGER}, 
+ #{record.caleveworkday,jdbcType=INTEGER}, 
+ #{record.calday,jdbcType=INTEGER},
+ #{record.caleveday,jdbcType=INTEGER},
+<< BOF Inserting rows at: 161
+ #{record.caleveworkday,jdbcType=INTEGER}, 
+ #{record.calday,jdbcType=INTEGER}, 
+<< BOF Changing rows at: 162
+ #{record.calyear,jdbcType=INTEGER}, 
+ #{record.calweek,jdbcType=INTEGER}, 
+ #{record.calquarter,jdbcType=INTEGER},
+ #{record.calyear,jdbcType=INTEGER},
+<< BOF Inserting rows at: 166
+ #{record.calweek,jdbcType=INTEGER}, 
+ #{record.calquarter,jdbcType=INTEGER}, 
+<< BOF Changing rows at: 167
+ #{record.calwday,jdbcType=INTEGER}, 
+ #{record.calevemonth,jdbcType=INTEGER}, 
+ #{record.caleveweek,jdbcType=INTEGER},
+ #{record.calwday,jdbcType=INTEGER},
+<< BOF Inserting rows at: 171
+ #{record.calevemonth,jdbcType=INTEGER}, 
+ #{record.caleveweek,jdbcType=INTEGER}, 
+<< BOF Changing rows at: 172
+ #{record.caleveyear,jdbcType=INTEGER}, 
+ #{record.calentrytype,jdbcType=VARCHAR}, 
+ #{record.calendarid,jdbcType=VARCHAR}
+ #{record.caleveyear,jdbcType=INTEGER},
+ 
+ #{record.calentrytype,jdbcType=VARCHAR}
+<< BOF Deleting rows at: 222
+      <if test="record.calendaridDirty" >
+        calendarid = #{record.calendarid,jdbcType=VARCHAR},
+      </if>      
+<< BOF Deleting rows at: 277
+      <if test="record.calendaridDirty" >
+        calendarid = #{record.calendarid,jdbcType=VARCHAR},
+      </if>
+<< BOF Changing rows at: 281
+    where  caldate = #{record.caldate,jdbcType=DATE}
+    where  sitedomain = #{record.sitedomain,jdbcType=VARCHAR} and  calendarid = #{record.calendarid,jdbcType=VARCHAR} and  caldate = #{record.caldate,jdbcType=DATE}
+<< BOF Deleting rows at: 284
+  <select id="countWorkingDays" parameterType="map" resultType="java.lang.Integer" >
+    select sum(case when calentrytype in ('work', 'saturday' ) then 1 else 0 end) as countval
+    from unep_calendar
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>    
+  </select>   
+  

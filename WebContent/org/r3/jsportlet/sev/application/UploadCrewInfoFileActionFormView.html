@@ -1,0 +1,151 @@
+<div class="panel panel-default">
+  <div class="panel-heading" style='background: white'>  
+    <h3 class="panel-title">Caricamento File</h3>
+  </div>
+  <div class="panel-body">
+
+  <div style='color: #000; background: url(/r3ng/resources/img/covid.png) no-repeat; background-color: #f5f5f5; padding: 10px 10px 10px 120px; border: 1px solid darkred; min-height: 100px;margin-bottom: 10px;'>
+  Protocollo di Sicurezza EMERGENZA COVID-19 - ALLEGATO 3 - AUTOCERTIFICAZIONE. 
+  <br />Si prega di allegare l'autocertificazione relativa al Sig./Sig.ra <strong id="crewinfodocuploadform_crewname"></strong> No. Tessera  <strong id="crewinfodocuploadform_crewcardnumber"></strong>
+  <br >Per procedere selezionare il file contenente il modulo compilato e firmato (bottone 'Aggiungi File') e iniziare il caricamento
+  </div>
+
+  <!-- 
+  <div id="crewinfodocuploadform_fieldset_message" >
+  <div class="formmessageCanvas info" style="">Per procedere selezionare i file che si desiderano attivando il bottone 'Aggiungi File' e iniziare il caricamento</div>
+  </div>
+  -->
+  
+  <form id="crewinfodocuploadform_form" action="server.jsp" method="POST" enctype="multipart/form-data" accept-charset="UTF-8" class="form-horizontal">
+  <input type="hidden" id="crewinfodocuploadform_documenttype" name="documenttype" value="r3ea_dtcovidcrew" />
+  <input type="hidden" id="crewinfodocuploadform_crewmemberid" name="crewmemberid" />     
+
+   
+           <div class="row fileupload-buttonbar">
+            <div class="col-lg-9">
+                <!-- The fileinput-button span is used to style the file input field as button -->
+                <span class="btn btn-success fileinput-button">
+                    <i class="glyphicon glyphicon-plus"></i>
+                    <span>Aggiungi File...</span>
+                    <input type="file" name="files[]" multiple>
+                </span>
+                <button type="submit" class="btn btn-primary start">
+                    <i class="glyphicon glyphicon-upload"></i>
+                    <span>Inizia Caricamento</span>
+                </button>
+                <button type="reset" class="btn btn-warning cancel">
+                    <i class="glyphicon glyphicon-ban-circle"></i>
+                    <span>Annulla Caricamento</span>
+                </button>
+                
+                <button class="btn btn-default" id="crewinfodocuploadform_action_back">
+                    <i class="glyphicon glyphicon-upload"></i>
+                    <span>Indietro</span>
+                </button>
+                                
+                <!-- 
+                <button type="button" class="btn btn-danger delete">
+                    <i class="glyphicon glyphicon-trash"></i>
+                    <span>Delete</span>
+                </button>
+                <input type="checkbox" class="toggle">
+                 -->
+                 
+                <!-- The global file processing state -->
+                <span class="fileupload-process"></span>
+            </div>
+            <!-- The global progress state -->
+            <div class="col-lg-3 fileupload-progress fade">
+                <!-- The global progress bar -->
+                <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar progress-bar-success" style="width:0%;"></div>
+                </div>
+                <!-- The extended global progress state -->
+                <div class="progress-extended">&nbsp;</div>
+            </div>
+        </div>
+        <!-- The table listing the files available for upload/download -->
+        
+        <table role="presentation" class="table table-striped"><tbody class="files"></tbody></table>
+        
+  </form>
+  
+  </div>
+</div>
+
+<!-- The template to display files available for upload -->
+<script id="template-upload" type="text/x-tmpl">
+{% for (var i=0, file; file=o.files[i]; i++) { %}
+    <tr class="template-upload fade">
+        <td>
+            <span class="preview"></span>
+        </td>
+        <td>
+            <p class="name">{%=file.name%}</p>
+            <strong class="error text-danger"></strong>
+        </td>
+        <td>
+            <p class="size">Processing...</p>
+            <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-bar progress-bar-success" style="width:0%;"></div></div>
+        </td>
+        <td>
+            {% if (!i && !o.options.autoUpload) { %}
+                <button class="btn btn-primary start" disabled>
+                    <i class="glyphicon glyphicon-upload"></i>
+                    <span>Start</span>
+                </button>
+            {% } %}
+            {% if (!i) { %}
+                <button class="btn btn-warning cancel">
+                    <i class="glyphicon glyphicon-ban-circle"></i>
+                    <span>Cancel</span>
+                </button>
+            {% } %}
+        </td>
+    </tr>
+{% } %}
+</script>
+
+<script id="template-download" type="text/x-tmpl">
+{% for (var i=0, file; file=o.files[i]; i++) { %}
+    <tr class="template-download fade">
+        <td>
+            <span class="preview">
+                {% if (file.thumbnailUrl) { %}
+                    <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" data-gallery><img src="{%=file.thumbnailUrl%}"></a>
+                {% } %}
+            </span>
+        </td>
+        <td>
+            <p class="name">
+                {% if (file.url) { %}
+                    <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" {%=file.thumbnailUrl?'data-gallery':''%}>{%=file.name%}</a>
+                {% } else { %}
+                    <span>{%=file.name%}</span>
+                {% } %}
+            </p>
+            {% if (file.error) { %}
+                <div><span class="label label-danger">Error</span> {%=file.error%}</div>
+            {% } %}
+        </td>
+        <td>
+            <span class="size">{%=o.formatFileSize(file.size)%}</span>
+        </td>
+        <td>
+            {% if (file.deleteUrl) { %}
+                <button class="btn btn-danger delete" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}"{% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
+                    <i class="glyphicon glyphicon-trash"></i>
+                    <span>Delete</span>
+                </button>
+                <input type="checkbox" name="delete" value="1" class="toggle">
+            {% } else { %}
+                <button class="btn btn-warning cancel">
+                    <i class="glyphicon glyphicon-ban-circle"></i>
+                    <span>Cancel</span>
+                </button>
+            {% } %}
+        </td>
+    </tr>
+{% } %}
+</script>
+

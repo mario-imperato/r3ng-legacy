@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--
+  TODO: xmlCopyRight.txt
+   
+  -->
+<!--
+  TODO: xmlReadme.txt
+   
+  -->
+
+<!-- <mapper resource="org/r3/db/cms/cardchannelview/CardChannelViewMapper.xml"/> -->
+<mapper namespace="org.r3.db.cms.cardchannelview.CardChannelViewMapper" >
+    <resultMap id="BaseResultMap" type="org.r3.db.cms.cardchannelview.CardChannelViewDTO" >
+         <result column="channelid" property="channelid" jdbcType="VARCHAR" />
+           <result column="site" property="site" jdbcType="VARCHAR" />
+           <result column="cardid" property="cardid" jdbcType="VARCHAR" />
+           <result column="languagecode" property="languagecode" jdbcType="VARCHAR" />
+           <result column="categoryid" property="categoryid" jdbcType="VARCHAR" />
+           <result column="pagelinktype" property="pagelinktype" jdbcType="VARCHAR" />
+           <result column="pagelink" property="pagelink" jdbcType="VARCHAR" />
+           <result column="pageid" property="pageid" jdbcType="VARCHAR" />
+           <result column="refdate" property="refdate" jdbcType="DATE" />
+           <result column="options" property="options" jdbcType="VARCHAR" />
+           <result column="title" property="title" jdbcType="VARCHAR" />
+           <result column="summary" property="summary" jdbcType="VARCHAR" />
+           <result column="textbody" property="textbody" jdbcType="VARCHAR" />
+           <result column="rectimestamp" property="rectimestamp" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+  <sql id="Filter_Where_Clause" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+                <when test="criterion.subSelectCriterion" >
+                  and ${criterion.prefixCondition} #{criterion.value} ${criterion.suffixCondition}
+                </when>                                
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    channelid,  site,  cardid,  languagecode,  categoryid,  pagelinktype,  pagelink,  pageid,  refdate,
+  options,  title,  summary,  textbody,  rectimestamp  </sql>
+  
+  <sql id='GroupBy_Column_List'>
+    <trim suffixOverrides=",">
+        <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('channelid')" >
+           channelid,
+       </when>
+       <otherwise>
+           null as channelid,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('site')" >
+           site,
+       </when>
+       <otherwise>
+           null as site,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('cardid')" >
+           cardid,
+       </when>
+       <otherwise>
+           null as cardid,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('languagecode')" >
+           languagecode,
+       </when>
+       <otherwise>
+           null as languagecode,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('categoryid')" >
+           categoryid,
+       </when>
+       <otherwise>
+           null as categoryid,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('pagelinktype')" >
+           pagelinktype,
+       </when>
+       <otherwise>
+           null as pagelinktype,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('pagelink')" >
+           pagelink,
+       </when>
+       <otherwise>
+           null as pagelink,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('pageid')" >
+           pageid,
+       </when>
+       <otherwise>
+           null as pageid,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('refdate')" >
+           refdate,
+       </when>
+       <otherwise>
+           null as refdate,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('options')" >
+           options,
+       </when>
+       <otherwise>
+           null as options,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('title')" >
+           title,
+       </when>
+       <otherwise>
+           null as title,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('summary')" >
+           summary,
+       </when>
+       <otherwise>
+           null as summary,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('textbody')" >
+           textbody,
+       </when>
+       <otherwise>
+           null as textbody,
+       </otherwise>         
+     </choose> 
+	      <choose >
+       <when test="filter != null &amp;&amp; filter.isGroupBy('rectimestamp')" >
+           rectimestamp,
+       </when>
+       <otherwise>
+           null as rectimestamp,
+       </otherwise>         
+     </choose> 
+	      </trim>       
+  </sql>
+  
+  <select id="select" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <if test="filter != null &amp;&amp; filter.distinct" >
+      distinct
+    </if>
+    <choose >
+       <when test="filter != null &amp;&amp; filter.groupByClause != null" >
+           <include refid="GroupBy_Column_List" />
+       </when>
+       <otherwise>
+           <include refid="Base_Column_List" />
+       </otherwise>
+    </choose>
+    
+    from r3_view_cmscardchannel
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+    <if test="filter != null &amp;&amp; filter.groupByClause != null" >
+      group by ${filter.groupByClause}
+    </if>    
+    <if test="filter != null &amp;&amp; filter.orderByClause != null" >
+      order by ${filter.orderByClause}
+    </if>
+    <if test="filter != null &amp;&amp; filter.limitFetch > 0" >
+      limit ${filter.limitFetch}
+    </if>
+  </select>
+  <select id="count" parameterType="map" resultType="java.lang.Integer" >
+    select count(*) from r3_view_cmscardchannel
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </select>  
+</mapper>

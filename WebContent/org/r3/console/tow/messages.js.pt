@@ -1,0 +1,13 @@
+
+$.r3Utils.namespace("org.r3.console.tow", window, function(aNamespace) 
+{
+  aNamespace.message = {
+    waiting:"Aguarde por favor...",
+    initializationerror: "Atenção: ocorreu um erro durante a inicialização da página. O processamento não pode ser continuado",
+    
+    gmenubar_act_newwbs: "Nova PDA",
+    act_query_wbs: "Lista PDA",
+    wbs_breadcrumb: "PDA",
+    list_of_wbs_breadcrumb: "Lista PDA"
+  };
+});

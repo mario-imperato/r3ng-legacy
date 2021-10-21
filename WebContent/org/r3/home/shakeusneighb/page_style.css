@@ -1,0 +1,64 @@
+
+div:empty.hidden-on-empty
+{
+	display: none;	
+}
+
+@media (max-width: 991px) {
+.container {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+}
+}
+
+@media (min-width: 992px) {
+.content {
+    background: url('/r3ng/resources/test/bg01.jpg') no-repeat fixed;
+    background-position: top left;
+}
+
+/* .row.shakeuscanvas */
+.shakeuscanvas
+{
+	margin-left: 0;
+    margin-right: 0;
+    padding: 20px 10px; 
+    background-color: #ecf0f5;	
+}
+
+.shakeuscanvas > .row
+{
+	margin-left: 0;
+    margin-right: 0;
+}
+
+
+.container {
+    background-color: rgba(255,255,255,0.5);
+    padding: 0; /* Tolgo il padding al Container che cre-erebbe un passpartout in trasparenza 20px */
+}
+}
+
+@media (max-width: 768px) {
+.content {
+    padding: 0px;
+}
+}
+
+.timeline_selection
+{
+	margin: 10px;
+}
+
+.timeline_selection .btn-group
+{
+	width: 120px;
+	margin-top: 5px;
+}
+
+.timeline_selection .btn-group .btn:first-child
+{
+	width: 90px;
+}
+

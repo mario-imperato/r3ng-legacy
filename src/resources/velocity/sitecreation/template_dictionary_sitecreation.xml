@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<templates>
+
+     <template name="SiteCreationSQLScript_common">
+        <filename>resources/velocity/sitecreation/SiteCreationSQLScript_common.vm</filename>
+     </template>
+     
+     <template name="MongoSiteCollectionScript_common">
+        <filename>resources/velocity/sitecreation/MongoSiteCollectionScript_common.vm</filename>
+     </template>
+           
+     <template name="SiteCreationSQLScript_regatta">
+        <filename>resources/velocity/sitecreation/SiteCreationSQLScript_regatta.vm</filename>
+     </template>
+
+     <template name="SiteCreationSQLScript_yachtclub">
+        <filename>resources/velocity/sitecreation/SiteCreationSQLScript_yachtclub.vm</filename>
+     </template>
+
+     <template name="SiteCreationSQLScript_speedsails">
+        <filename>resources/velocity/sitecreation/SiteCreationSQLScript_speedsails.vm</filename>
+     </template>
+    
+     <template name="SiteCreationSQLScript_workshop">
+        <filename>resources/velocity/sitecreation/SiteCreationSQLScript_workshop.vm</filename>
+     </template>
+
+     <template name="SiteCreationSQLScript_mastersite">
+        <filename>resources/velocity/sitecreation/SiteCreationSQLScript_mastersite.vm</filename>
+     </template>
+           
+     <template name="SiteCreationSQLScript_cptes">
+        <filename>resources/velocity/sitecreation/SiteCreationSQLScript_cptes.vm</filename>
+     </template>
+     
+     <template name="SiteCreationSQLScript_shakeus">
+        <filename>resources/velocity/sitecreation/SiteCreationSQLScript_shakeus.vm</filename>
+     </template>     
+
+     <template name="SiteCreationSQLScript_shkneighb">
+        <filename>resources/velocity/sitecreation/SiteCreationSQLScript_shkneighb.vm</filename>
+     </template>     
+
+     <template name="SiteCreationSQLScript_shkshop">
+        <filename>resources/velocity/sitecreation/SiteCreationSQLScript_shkshop.vm</filename>
+     </template>     
+
+ </templates>
+     

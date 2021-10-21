@@ -1,0 +1,137 @@
+/*
+.image_carousel {
+	    padding: 15px 0 15px 40px;
+	}
+	.image_carousel img {
+	    border: 1px solid #ccc;
+	    background-color: white;
+	    padding: 9px;
+	    margin: 7px;
+	    display: block;
+	    float: left;
+	}
+	.clearfix {
+	    float: none;
+	    clear: both;
+	}
+	*/
+	
+.iconic_menu_carousel {
+	
+	padding: 10px 0 10px 0px;
+	background-color: #dddddd;
+    margin: 0 auto
+}
+
+	.iconic_menu_carousel .pagination {
+	    text-align: center;
+	    padding-top: 10px;
+	}
+	.iconic_menu_carousel .pagination a {
+	    background: url(miscellaneous_sprite.png) 0 -300px no-repeat transparent;
+	    width: 15px;
+	    height: 15px;
+	    margin: 0 5px 0 0;
+	    display: inline-block;
+	}
+	.iconic_menu_carousel .pagination a.selected {
+	    background-position: -25px -300px;
+	    cursor: default;
+	}
+	.iconic_menu_carousel .pagination a span {
+	    display: none;
+	}
+
+.iconic_menu_carousel div.iconic_menu_carousel_item {
+	position: relative;
+	float: left;
+	margin-left: 5px;
+	margin-right: 5px;
+	border: 3px solid #ffffff;
+	overflow: hidden
+}
+
+.iconic_menu_carousel div.iconic_menu_carousel_item.grade1 {
+    border: 3px solid #AA0D0D;
+}
+
+.iconic_menu_carousel div.iconic_menu_carousel_item.grade2 {
+    border: 3px solid #FF9601;
+}
+
+.iconic_menu_carousel div.iconic_menu_carousel_item.grade3 {
+    border: 3px solid #367ECE;
+}
+
+.iconic_menu_carousel div.iconic_menu_carousel_item.grade5 {
+    border: 3px solid #8CC63F;
+}
+
+
+
+.iconic_menu_carousel div.iconic_menu_carousel_item img 
+{
+	float: left;  margin: 0; padding: 0;
+	width: 100px; height: 100px;	
+	border: 0;
+}
+
+.iconic_menu_carousel div.iconic_menu_carousel_item div {
+	
+	top: 78px; 
+	width: 100%;
+	
+	background: none repeat scroll 0 0 #003A50;
+	display: inline;	
+	float: left;
+	height: 99px;
+	left: 0;
+	opacity: 0.8;
+	padding: 2px;
+	position: absolute;
+}
+
+.iconic_menu_carousel div.iconic_menu_carousel_item div:hover
+{
+	top: 60px;
+}
+
+.iconic_menu_carousel div.iconic_menu_carousel_item p {
+	font-size: 12px;
+	font-weight : bold;
+	padding: 3px;
+	color : #ffffff;
+	margin : 0;
+	line-height: 1.5em;
+    padding: 0 3px 3px;
+    margin-top: 0px
+}
+
+
+/*
+div.thumbnails {
+	text-align: center;
+}
+
+div.thumbnails img {
+	cursor: pointer;
+	border: 1px solid #ccc;
+	background-color: white;
+	padding: 9px;
+	margin: 7px;
+	display: inline-block;
+}
+
+div.thumbnails img:hover {
+	background-color: #eee;
+}
+
+div.thumbnails img.selected {
+	background-color: #ccc;
+}
+
+.clearfix {
+	float: none;
+	clear: both;
+}
+*/

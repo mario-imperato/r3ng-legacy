@@ -1,0 +1,25 @@
+
+$.r3Utils.namespace("org.r3.console.home", window, function(aNamespace) 
+{
+  aNamespace.message = {
+    waiting:"Attendi...",
+    initializationerror: "Attenzione: si � verificato un errore durante la fase di inizializzazione della pagina. La lavorazione non pu&ograve; proseguire",
+    
+    gmenubar_act_newsite: "Novo Site",
+    gmenubar_act_queryregattas: "Lista dos Sites",
+    gmenubar_act_contacts: "Contatos...",
+    gmenubar_act_cms: "Conteúdos CMS...",
+    gmenubar_act_bbs:  "Conversas (BBS)...",
+    gmenubar_act_wbs: "Administração PDA...",
+    gmenubar_act_config: "Configuração...",
+    gmenubar_act_users: "Gerenciamento de usuários...",
+    gmenubar_act_resturls: "Rest...",
+    gmenubar_act_childrensite: 'Linked Sites (pt)',
+    
+    breadcrumb_newsite: "Novo Site",
+    breadcrumb_querysites: "Lista dos Sites",
+    breadcrumb_sitedeatil: "Det. Site"
+    	
+    
+  };
+});

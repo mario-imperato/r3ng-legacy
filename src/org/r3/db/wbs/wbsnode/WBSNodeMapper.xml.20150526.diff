@@ -1,0 +1,98 @@
+<< BOF Inserting rows at: 28
+           <result column="enddate" property="enddate" jdbcType="DATE" />
+<< BOF Inserting rows at: 35
+           <result column="completioneffunit" property="completioneffunit" jdbcType="VARCHAR" />
+<< BOF Changing rows at: 109
+  nodeparentid,  nodepath,  assignedto,  duration,  startdate,  completiontype,  completiondescr,  completion,  completionfrom,
+  completionto,  completiondate,  completioneffort,  economicvalue,  economicvalue2,  economicvalue3,  remarks,  stereotype,  recstatus,
+  rectimestamp  </sql>
+  nodeparentid,  nodepath,  assignedto,  duration,  startdate,  enddate,  completiontype,  completiondescr,  completion,
+  completionfrom,  completionto,  completiondate,  completioneffort,  completioneffunit,  economicvalue,  economicvalue2,  economicvalue3,  remarks,
+  stereotype,  recstatus,  rectimestamp  </sql>
+<< BOF Changing rows at: 167
+ nodeparentid, nodepath, assignedto, duration, startdate, completiontype, completiondescr, completion, completionfrom,
+ completionto, completiondate, completioneffort, economicvalue, economicvalue2, economicvalue3, remarks, stereotype, recstatus,
+ rectimestamp      )
+ nodeparentid, nodepath, assignedto, duration, startdate, enddate, completiontype, completiondescr, completion,
+ completionfrom, completionto, completiondate, completioneffort, completioneffunit, economicvalue, economicvalue2, economicvalue3, remarks,
+ stereotype, recstatus, rectimestamp      )
+<< BOF Changing rows at: 189
+ #{record.completiontype,jdbcType=VARCHAR}, 
+ #{record.completiondescr,jdbcType=VARCHAR},
+ #{record.enddate,jdbcType=DATE}, 
+ #{record.completiontype,jdbcType=VARCHAR},
+<< BOF Inserting rows at: 192
+ #{record.completiondescr,jdbcType=VARCHAR}, 
+<< BOF Changing rows at: 194
+ #{record.completionto,jdbcType=REAL}, 
+ #{record.completiondate,jdbcType=TIMESTAMP},
+ #{record.completionto,jdbcType=REAL},
+<< BOF Inserting rows at: 197
+ #{record.completiondate,jdbcType=TIMESTAMP}, 
+<< BOF Changing rows at: 198
+ #{record.economicvalue,jdbcType=REAL}, 
+ #{record.economicvalue2,jdbcType=REAL}, 
+ #{record.economicvalue3,jdbcType=REAL},
+ #{record.completioneffunit,jdbcType=VARCHAR}, 
+ #{record.economicvalue,jdbcType=REAL},
+<< BOF Inserting rows at: 202
+ #{record.economicvalue2,jdbcType=REAL}, 
+ #{record.economicvalue3,jdbcType=REAL}, 
+<< BOF Changing rows at: 203
+ #{record.stereotype,jdbcType=VARCHAR}, 
+ #{record.stereotype,jdbcType=VARCHAR},
+ 
+<< BOF Inserting rows at: 250
+      <if test="record.enddateDirty" >
+        enddate = #{record.enddate,jdbcType=DATE},
+      </if>      
+<< BOF Inserting rows at: 271
+      <if test="record.completioneffunitDirty" >
+        completioneffunit = #{record.completioneffunit,jdbcType=VARCHAR},
+      </if>      
+<< BOF Inserting rows at: 341
+      <if test="record.enddateDirty" >
+        enddate = #{record.enddate,jdbcType=DATE},
+      </if>
+<< BOF Inserting rows at: 362
+      <if test="record.completioneffunitDirty" >
+        completioneffunit = #{record.completioneffunit,jdbcType=VARCHAR},
+      </if>
+<< BOF Deleting rows at: 386
+  <resultMap id="CountChildrenResultMap" type="org.r3.db.CountByDTO" >
+           <result column="countval"      property="count"  jdbcType="INTEGER" />
+           <result column="minval"        property="minintvalue"     jdbcType="INTEGER" />
+           <result column="maxval"        property="maxintvalue"     jdbcType="INTEGER" />
+    </resultMap>
+<< BOF Deleting rows at: 392
+  <select id="countChildren" parameterType="map" resultMap="CountChildrenResultMap" >
+    select count(*) as countval, min(nodeorder) as minval, max(nodeorder) as maxval from r3_wbsnode
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </select>  
+
+  <update id="shiftChildrenNodes" parameterType="map" >
+    update r3_wbsnode
+    <set >      
+        nodeorder = nodeorder + #{shiftAmount,jdbcType=INTEGER}
+    </set>
+    
+     <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+     </if>
+     
+  </update>
+
+  <update id="updateChildrenPath" parameterType="map" >
+    update r3_wbsnode
+    <set >      
+        nodepath = concat(#{toPathPrefix,jdbcType=VARCHAR}, right(nodePath, length(nodePath) - #{fromPathPrefixLength,jdbcType=INTEGER}))
+    </set>
+    
+     <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+     </if>
+     
+  </update>
+  

@@ -1,0 +1,67 @@
+
+$.r3Utils.namespace("org.r3.console.siteconfig", window, function(aNamespace) 
+{
+  aNamespace.message = {
+    waiting:"Aguarde...",
+    initializationerror: "Aviso: ocorreu um erro durante a inicialização da página. O processamento não pode continuar",
+    numberoftargets: "A mensagem SMS  está na fila. Número de contactos: {0}",
+    
+    gmenubar_act_site: 'Geral',
+    gmenubar_act_properties : "Propriedade...",
+    gmenubar_act_homeportlets : "Home Portlet...",
+    gmenubar_act_newpage : "Nova Página",
+    gmenubar_act_querypages : "Lista de Páginas...",
+    gmenubar_act_calendar : "Calendário do evento",
+    gmenubar_act_classifiers: 'Classifiers (pt)',
+    
+    breadcrumb_general : "Configuração Geral",
+    breadcrumb_properties: "Configuração Propriedade",
+    breadcrumb_homeportlet : "Configuração Home Portlet",
+    breadcrumb_calendar : "Calendário do evento",
+    breadcrumb_classifiers : "Classificadores",
+    breadcrumb_fileupload : "Carregamento do arquivo",
+    breadcrumb_pages : "Gerenciamento de Páginas",
+    breadcrumb_newpage : "Nova Página",
+    breadcrumb_pagedetail : "Det. Página",
+    
+    sitePropertiesActionForm_tab_pkg_uicfg : 'Interface',
+    sitePropertiesActionForm_tab_pkg_google	: 'Google',
+    sitePropertiesActionForm_tab_pkg_sms : 'SMS',
+    sitePropertiesActionForm_tab_pkg_mail : 'Mail',
+    sitePropertiesActionForm_tab_pkg_sevapp : 'Formulário de Registro',
+    sitePropertiesActionForm_tab_pkg_sevranking : 'Posições',
+    sitePropertiesActionForm_tab_pkg_fiv : 'FIV',
+    
+    pkg_uicfg_form_legend : "Proprieade do Grupo UI CFG",
+    pkg_uicfg_form_menus_cnt : 'Menu Ativado',
+    
+    pkg_googleanalytics_form : "Propriedade do Grupo Google Analytics",
+    pkg_googleanalytics_domain: "Domínio",
+    pkg_googleanalytics_trackerid: "Tracker Id.",
+    
+    pkg_sms_form: "Propriedade do Grupo SMS",
+    sms_smslogin: "SMS Log-in",
+    sms_smspasswd: "SMS Senha",
+    sms_smssender: "Remetente",
+    
+    pkg_mail_form: "Propriedade do Grupo Mail",
+    mail_profile: "Perfil",
+    mail_profile_smtpdefault: "Outro",
+    mail_profile_google: "Google",
+    
+    mail_host: "Mail Host",
+    mail_auth_account: "Account",
+    mail_auth_passwd: "Senha",
+    mail_sevcrewchange: "Notifiche Cambio Equipaggio (pt)",
+    
+    homeportletcfgactionform_form_legend 	: 'Configuração Portlet Home',
+    homeportletcfgactionform_jsclassname    : 'Portlet',
+    homeportletcfgactionform_cssclassname   : 'Classe CSS',
+    homeportletcfgactionform_datacardid     : 'Codígo do cartão',
+    homeportletcfgactionform_dataoptions    : 'Opções',
+    homeportletcfgactionform_dataonuserstatus : "Estado do Usuário",
+    homeportletcfgactionform_dataonuserstatus_always:  "Sempre",
+    homeportletcfgactionform_dataonuserstatus_userlogged: "Identificado",
+    homeportletcfgactionform_dataonuserstatus_usernotlogged: "Não Identificado"
+  };
+});

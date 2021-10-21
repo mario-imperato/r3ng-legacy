@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--
+  TODO: xmlCopyRight.txt
+   
+  -->
+<!--
+  TODO: xmlReadme.txt
+   
+  -->
+
+<!-- <mapper resource="org/r3/db/sailevent/appcrewmember/SailApplicationCrewMemberMapper.xml"/> -->
+<mapper namespace="org.r3.db.sailevent.appcrewmember.SailApplicationCrewMemberMapper" >
+    <resultMap id="BaseResultMap" type="org.r3.db.sailevent.appcrewmember.SailApplicationCrewMemberDTO" >
+         <id column="crewmemberid" property="crewmemberid" jdbcType="VARCHAR" />
+           <result column="eventid" property="eventid" jdbcType="VARCHAR" />
+           <result column="applicationid" property="applicationid" jdbcType="VARCHAR" />
+           <result column="cardnumber" property="cardnumber" jdbcType="VARCHAR" />
+           <result column="crewmembername" property="crewmembername" jdbcType="VARCHAR" />
+           <result column="weight" property="weight" jdbcType="REAL" />
+           <result column="crewmemberrolecode" property="crewmemberrolecode" jdbcType="VARCHAR" />
+           <result column="memberstatuscode" property="memberstatuscode" jdbcType="VARCHAR" />
+           <result column="createtimestamp" property="createtimestamp" jdbcType="TIMESTAMP" />
+           <result column="deletetimestamp" property="deletetimestamp" jdbcType="TIMESTAMP" />
+           <result column="checkcardnumber" property="checkcardnumber" jdbcType="VARCHAR" />
+           <result column="checkcardnumber_ts" property="checkcardnumber_ts" jdbcType="TIMESTAMP" />
+           <result column="recstatus" property="recstatus" jdbcType="VARCHAR" />
+           <result column="rectimestamp" property="rectimestamp" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+  <sql id="Filter_Where_Clause" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+                <when test="criterion.subSelectCriterion" >
+                  and ${criterion.prefixCondition} #{criterion.value} ${criterion.suffixCondition}
+                </when>                                
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <!--
+  <sql id="Filter_Where_Clause_4_Update" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  -->  
+  <sql id="Base_Column_List" >
+    crewmemberid,  eventid,  applicationid,  cardnumber,  crewmembername,  weight,  crewmemberrolecode,  memberstatuscode,  createtimestamp,
+  deletetimestamp,  checkcardnumber,  checkcardnumber_ts,  recstatus,  rectimestamp  </sql>
+  <select id="selectByCrewmemberid" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from sev_appcrewmember
+    where crewmemberid = #{crewmemberid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByCrewmemberid" parameterType="map" >
+    delete
+    from sev_appcrewmember
+    where crewmemberid = #{crewmemberid,jdbcType=VARCHAR}
+  </delete>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from sev_appcrewmember    
+    where  crewmemberid = #{pk.crewmemberid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete
+    from sev_appcrewmember
+    where  crewmemberid = #{pk.crewmemberid,jdbcType=VARCHAR}
+  </delete>  
+  <select id="select" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <if test="filter != null &amp;&amp; filter.distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sev_appcrewmember
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+    <if test="filter != null &amp;&amp; filter.orderByClause != null" >
+      order by ${filter.orderByClause}
+    </if>
+    <if test="filter != null &amp;&amp; filter.limitFetch > 0" >
+      limit ${filter.limitFetch}
+    </if>
+  </select>
+  <select id="count" parameterType="map" resultType="java.lang.Integer" >
+    select count(*) from sev_appcrewmember
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </select>  
+  <delete id="delete" parameterType="map" >
+    delete from sev_appcrewmember
+    <!-- _parameter: dato che e' una map lo sostituisco con il nome del parametro in quanto non è l'unico -->
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="map" >
+    insert into sev_appcrewmember (
+ crewmemberid, eventid, applicationid, cardnumber, crewmembername, weight, crewmemberrolecode, memberstatuscode, createtimestamp,
+ deletetimestamp, checkcardnumber, checkcardnumber_ts, recstatus, rectimestamp      )
+    values (
+ 
+ #{record.crewmemberid,jdbcType=VARCHAR}, 
+ #{record.eventid,jdbcType=VARCHAR}, 
+ #{record.applicationid,jdbcType=VARCHAR}, 
+ #{record.cardnumber,jdbcType=VARCHAR},
+ 
+ #{record.crewmembername,jdbcType=VARCHAR}, 
+ #{record.weight,jdbcType=REAL}, 
+ #{record.crewmemberrolecode,jdbcType=VARCHAR}, 
+ #{record.memberstatuscode,jdbcType=VARCHAR},
+ 
+ #{record.createtimestamp,jdbcType=TIMESTAMP}, 
+ #{record.deletetimestamp,jdbcType=TIMESTAMP}, 
+ #{record.checkcardnumber,jdbcType=VARCHAR}, 
+ #{record.checkcardnumber_ts,jdbcType=TIMESTAMP},
+ 
+ #{record.recstatus,jdbcType=VARCHAR}, 
+ #{record.rectimestamp,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="update" parameterType="map" >
+    update sev_appcrewmember
+    <set >
+      <if test="record.eventidDirty" >
+        eventid = #{record.eventid,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.applicationidDirty" >
+        applicationid = #{record.applicationid,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.cardnumberDirty" >
+        cardnumber = #{record.cardnumber,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.crewmembernameDirty" >
+        crewmembername = #{record.crewmembername,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.weightDirty" >
+        weight = #{record.weight,jdbcType=REAL},
+      </if>      
+      <if test="record.crewmemberrolecodeDirty" >
+        crewmemberrolecode = #{record.crewmemberrolecode,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.memberstatuscodeDirty" >
+        memberstatuscode = #{record.memberstatuscode,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.createtimestampDirty" >
+        createtimestamp = #{record.createtimestamp,jdbcType=TIMESTAMP},
+      </if>      
+      <if test="record.deletetimestampDirty" >
+        deletetimestamp = #{record.deletetimestamp,jdbcType=TIMESTAMP},
+      </if>      
+      <if test="record.checkcardnumberDirty" >
+        checkcardnumber = #{record.checkcardnumber,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.checkcardnumber_tsDirty" >
+        checkcardnumber_ts = #{record.checkcardnumber_ts,jdbcType=TIMESTAMP},
+      </if>      
+      <if test="record.recstatusDirty" >
+        recstatus = #{record.recstatus,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.rectimestampDirty" >
+        rectimestamp = #{record.rectimestamp,jdbcType=TIMESTAMP},
+      </if>      
+    </set>
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+      <!-- Non dovrebbe servire in quanto il filter e' sempre named. -->
+      <!-- <include refid="Filter_Where_Clause_4_Update" /> -->
+    </if>
+  </update>
+  <update id="updateByPrimaryKey" parameterType="map" >
+    update sev_appcrewmember
+    <set >
+      <if test="record.eventidDirty" >
+        eventid = #{record.eventid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.applicationidDirty" >
+        applicationid = #{record.applicationid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cardnumberDirty" >
+        cardnumber = #{record.cardnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.crewmembernameDirty" >
+        crewmembername = #{record.crewmembername,jdbcType=VARCHAR},
+      </if>
+      <if test="record.weightDirty" >
+        weight = #{record.weight,jdbcType=REAL},
+      </if>
+      <if test="record.crewmemberrolecodeDirty" >
+        crewmemberrolecode = #{record.crewmemberrolecode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.memberstatuscodeDirty" >
+        memberstatuscode = #{record.memberstatuscode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createtimestampDirty" >
+        createtimestamp = #{record.createtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.deletetimestampDirty" >
+        deletetimestamp = #{record.deletetimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.checkcardnumberDirty" >
+        checkcardnumber = #{record.checkcardnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.checkcardnumber_tsDirty" >
+        checkcardnumber_ts = #{record.checkcardnumber_ts,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.recstatusDirty" >
+        recstatus = #{record.recstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rectimestampDirty" >
+        rectimestamp = #{record.rectimestamp,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where  crewmemberid = #{record.crewmemberid,jdbcType=VARCHAR}
+  </update>
+
+</mapper>

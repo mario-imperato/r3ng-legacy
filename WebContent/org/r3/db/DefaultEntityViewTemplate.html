@@ -1,0 +1,90 @@
+{% if (o.getCanvasType().substr(0, 5) == 'panel') { %}
+<div class="panel {%=o.getCanvasType()%}">
+  <div class="panel-heading">
+    <h3 class="panel-title">{%=o.legend%}</h3>
+  </div>
+  <div class="panel-body">
+{% } %}
+    
+{% if (o.getCanvasType() == 'list-group') { %}   
+     <h4>{%=o.legend%}</h4>
+{% } %}
+    
+      {% if (o.getActionBarPosition() == 'top') { %} 
+            
+      <div class="action-bar position-top">
+      {% 
+         for(var i = 0; i < o.buttons.length; i++)
+         {      
+      %}      
+         <button type="button" class="btn btn-primary start" id="{%=o.buttons[i].id%}"  {% if (o.buttons[i].disabled) { %} disabled {% } %} >         
+         <span>{%=o.buttons[i].label%}</span>
+         </button>
+      {% 
+         }      
+      %}      
+      </div>            
+                  
+      {% } %}
+
+      {% if (o.getActionBarPosition() == 'right') { %}      
+      <div class='row'>
+      <div class='col-md-10'>       
+      {% } %}
+          
+      <div class="dataTables_wrapper">      
+      {% if (o.isSearchEnabled()) { %}      
+      <div id="{%=o.dataTableId%}_filter" class="dataTables_filter">
+      
+      <a class="{%=o.dataTableId%}_filter_search" href="javascript:void(0)" >{%=o.getSearchLabel()%}</a>
+      {% if (o.isAdvancedSearchEnabled()) { 
+            for(var i = 0; i < o.getNumberOfAdvancedSearchOptions(); i++)
+            {
+      %}
+      &nbsp;|&nbsp;<a href="javascript:void(0)" id="{%=o.dataTableId%}_filter_advsearch_{%=i+''%}" class="{%=o.dataTableId%}_filter_advsearch">{%=o.getAdvancedSearchLabel(i)%}</a>      
+      {% }} %}
+      <span class="search_icon {%=o.dataTableId%}_filter_search" ></span>
+      <form id="{%=o.dataTableId%}_filter_searchform">
+      {% if (o.isSearchWidgetSelect()) { %}
+
+          <select name="filter_item" class='form-control' style='display: inline-block; width: 50%' id="{%=o.dataTableId%}_filter_searchitem" >
+          </select>
+                   
+      {% } 
+         else { %}
+          <input type="text" name="filter_item" id="{%=o.dataTableId%}_filter_searchitem" class='form-control' style='display: inline-block; width: 50%'>
+      {% } %}
+      </form>
+      
+      </div>
+      {% } %}	
+                        
+      <form id="{%=o.dataTableId%}_tableform">
+      <table id="{%=o.dataTableId%}" style='width: 100%' class="table table-striped table-bordered table-hover {%=o.gradeLevel%}" >
+        <tbody>
+        </tbody>
+      </table>
+      </form>
+      
+      </div>
+      
+      {% if (o.getActionBarPosition() == 'right') { %}      
+      </div>
+      <div class='col-md-2'>
+      {% for(var i = 0; i < o.buttons.length; i++) { %}
+        <button type="button" class="btn btn-primary start btn-block" id="{%=o.buttons[i].id%}"{% if (o.buttons[i].disabled) { %} disabled {% } %} >
+          <span>{%=o.buttons[i].label%}</span>
+        </button>
+      {% } %}      
+      </div>
+      </div>             
+      {% } %}
+                         
+{% if (o.getCanvasType() == 'panel-default') { %}
+  </div>
+</div>
+{% } %}
+    
+{% if (o.getCanvasType() == 'listgroup') { %}
+  <!-- End of list item group -->
+{% } %}

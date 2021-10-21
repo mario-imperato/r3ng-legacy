@@ -1,0 +1,29 @@
+#top-banner-box-link1 { 
+		position: absolute; 
+		top: 4px; 
+		left: 116px; 
+		width: 160px; 
+		height: 90px; 
+		background-color: transparent; 
+		border: 0px solid yellow; 
+}
+
+#top-banner-box-link2 { 
+		position: absolute; 
+		top: 4px; 
+		left: 279px; 
+		width: 180px; 
+		height: 90px; 
+		background-color: transparent; 
+		border: 0px solid yellow; 
+}
+
+#top-banner-box-link3 { 
+		position: absolute; 
+		top: 4px; 
+		left: 760px; 
+		width: 233px; 
+		height: 90px; 
+		background-color: transparent; 
+		border: 0px solid yellow; 
+}

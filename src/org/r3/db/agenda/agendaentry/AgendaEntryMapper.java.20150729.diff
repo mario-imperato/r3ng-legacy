@@ -1,0 +1,15 @@
+<< BOF Deleting rows at: 12
+
+<< BOF Deleting rows at: 55
+  int insert4FullCalendarWidget(@Param("record") FullCalendarWidgetDTO aRecord,
+          @Param("pcfg")   org.r3.db.PersistenceConfigInfo pcfg);
+  
+  int updateByPrimaryKey4FullCalendarWidget(
+          @Param("record") FullCalendarWidgetDTO aRecord, 
+          @Param("pcfg")   org.r3.db.PersistenceConfigInfo pcfg);    
+<< BOF Deleting rows at: 62
+ 
+  List<FullCalendarWidgetDTO> select4FullCalendarWidget(
+          @Param("filter") AgendaEntryFilter filterCondition, 
+          @Param("pcfg")   org.r3.db.PersistenceConfigInfo pcfg);
+  

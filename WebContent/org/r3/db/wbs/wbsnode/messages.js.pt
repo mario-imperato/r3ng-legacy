@@ -1,0 +1,45 @@
+
+$.r3Utils.namespace("org.r3.db.wbs.wbsnode", window, function(aNamespace) 
+{
+  aNamespace.message = {
+		  wbsnodeid: "Id.",
+		  wbsid : "Id. Wbs",
+		  nodetype: "Tipo de nó",
+		  nodeorder : "Ordem",
+		  nodesect : "Seção",
+		  nodename : "Nome",
+		  nodesummary : "Resumo",
+		  nodetext : "Texto",
+		  nodeparentid : "Nó pai",
+		  nodepath  : "Caminho do nó",
+
+		  startdate : "Data de início",
+		  duration : "Duração",	
+		  unit_duration: 'Dias',	  
+		  enddate : "Data final",
+		  assignee : "Gestor",
+		  assignedto : "Gestor",
+  
+		  completiontype : "Tipo Complemento",
+		  completiontype_percentage: "Percentagem",
+		  completiontype_int_pos_range: 'Intervalo',
+		  
+		  completiondescr  : "Percentual de realização",
+		  completion  : "Andamento",
+		  completionfrom  : "Complemento De",
+		  completionto  : "A",
+		  completionstatus  : "- ND -",
+		  completiondate  : "Última atualização",
+		  completioneffort  : "Dias trabalhados",
+		  completioneffunit  : "- ND -",
+		  economicvalue  : "Despesas/Investimento",
+		  economicvalue2  : "Projeção Financeira",
+		  completioneffortevalue : "Custo do Gestor/dia",
+		  economicvalue3  : "Custo do Gestor/dia",
+		  remarks  : "- ND - ",
+		  stereotype  : "Perfil",
+		  recstatus  : "- ND -",
+		  rectimestamp  : "- ND -"
+  
+  };
+});

@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--
+  TODO: xmlCopyRight.txt
+   
+  -->
+<!--
+  TODO: xmlReadme.txt
+   
+  -->
+
+
+<!-- Mapper Target DBMS: [SERVER_MYSQL] -->
+<!-- <mapper resource="org/r3/db/system/user/user/UserMapper.xml"/> -->
+<mapper namespace="org.r3.db.system.user.user.UserMapper" >
+    <resultMap id="BaseResultMap" type="org.r3.db.system.user.user.UserDTO" >
+         <id column="userid" property="userid" jdbcType="VARCHAR" />
+           <result column="nickname" property="nickname" jdbcType="VARCHAR" />
+           <result column="password" property="password" jdbcType="VARCHAR" />
+           <result column="firstname" property="firstname" jdbcType="VARCHAR" />
+           <result column="lastname" property="lastname" jdbcType="VARCHAR" />
+           <result column="companyid" property="companyid" jdbcType="VARCHAR" />
+           <result column="email" property="email" jdbcType="VARCHAR" />
+           <result column="usertype" property="usertype" jdbcType="VARCHAR" />
+           <result column="avatarrole" property="avatarrole" jdbcType="VARCHAR" />
+           <result column="parentuserid" property="parentuserid" jdbcType="VARCHAR" />
+           <result column="userphoto" property="userphoto" jdbcType="VARCHAR" />
+           <result column="lastlogin" property="lastlogin" jdbcType="TIMESTAMP" />
+           <result column="numberoflogins" property="numberoflogins" jdbcType="INTEGER" />
+           <result column="userconsent" property="userconsent" jdbcType="VARCHAR" />
+           <result column="fbuserid" property="fbuserid" jdbcType="VARCHAR" />
+           <result column="recstatus" property="recstatus" jdbcType="VARCHAR" />
+           <result column="rectimestamp" property="rectimestamp" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+  <sql id="Filter_Where_Clause" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+                <when test="criterion.subSelectCriterion" >
+                  and ${criterion.prefixCondition} #{criterion.value} ${criterion.suffixCondition}
+                </when>                                
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <!--
+  <sql id="Filter_Where_Clause_4_Update" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  -->  
+  <sql id="Base_Column_List" >
+    userid,  nickname,  password,  firstname,  lastname,  companyid,  email,  usertype,  avatarrole,
+  parentuserid,  userphoto,  lastlogin,  numberoflogins,  userconsent,  fbuserid,  recstatus,  rectimestamp  </sql>
+  
+  <sql id='GroupBy_Column_List'>
+    <trim suffixOverrides=",">
+        <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('userid')" >
+           userid,
+       </when>
+       <otherwise>
+           null as userid,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('nickname')" >
+           nickname,
+       </when>
+       <otherwise>
+           null as nickname,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('password')" >
+           password,
+       </when>
+       <otherwise>
+           null as password,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('firstname')" >
+           firstname,
+       </when>
+       <otherwise>
+           null as firstname,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('lastname')" >
+           lastname,
+       </when>
+       <otherwise>
+           null as lastname,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('companyid')" >
+           companyid,
+       </when>
+       <otherwise>
+           null as companyid,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('email')" >
+           email,
+       </when>
+       <otherwise>
+           null as email,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('usertype')" >
+           usertype,
+       </when>
+       <otherwise>
+           null as usertype,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('avatarrole')" >
+           avatarrole,
+       </when>
+       <otherwise>
+           null as avatarrole,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('parentuserid')" >
+           parentuserid,
+       </when>
+       <otherwise>
+           null as parentuserid,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('userphoto')" >
+           userphoto,
+       </when>
+       <otherwise>
+           null as userphoto,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('lastlogin')" >
+           lastlogin,
+       </when>
+       <otherwise>
+           null as lastlogin,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('numberoflogins')" >
+           numberoflogins,
+       </when>
+       <otherwise>
+           null as numberoflogins,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('userconsent')" >
+           userconsent,
+       </when>
+       <otherwise>
+           null as userconsent,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('fbuserid')" >
+           fbuserid,
+       </when>
+       <otherwise>
+           null as fbuserid,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('recstatus')" >
+           recstatus,
+       </when>
+       <otherwise>
+           null as recstatus,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('rectimestamp')" >
+           rectimestamp,
+       </when>
+       <otherwise>
+           null as rectimestamp,
+       </otherwise>         
+     </choose> 
+	       </trim>       
+  </sql>
+  
+  <select id="selectByUserid" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from r3_user
+    where userid = #{userid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByUserid" parameterType="map" >
+    delete
+    from r3_user
+    where userid = #{userid,jdbcType=VARCHAR}
+  </delete>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from r3_user    
+    where  userid = #{pk.userid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete
+    from r3_user
+    where  userid = #{pk.userid,jdbcType=VARCHAR}
+  </delete>  
+  <select id="select" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <if test="filter != null &amp;&amp; filter.distinct" >
+      distinct
+    </if>
+    
+    <choose>
+       <when test="filter != null &amp;&amp; filter.groupByClause != null" >
+           <include refid="GroupBy_Column_List" />
+       </when>
+       <otherwise>
+           <include refid="Base_Column_List" />
+       </otherwise>
+    </choose>
+        
+    from r3_user
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+    <if test="filter != null &amp;&amp; filter.groupByClause != null" >
+      group by ${filter.groupByClause}
+    </if>
+    <if test="filter != null &amp;&amp; filter.orderByClause != null" >
+      order by ${filter.orderByClause}
+    </if>
+    <if test="filter != null &amp;&amp; filter.limitFetch > 0" >
+      limit ${filter.limitFetch}
+    </if>
+  </select>
+  <select id="count" parameterType="map" resultType="java.lang.Integer" >
+    select count(*) from r3_user
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </select>  
+  <delete id="delete" parameterType="map" >
+    delete from r3_user
+    <!-- _parameter: dato che e' una map lo sostituisco con il nome del parametro in quanto non è l'unico -->
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="map" >
+    insert into r3_user (
+ userid, nickname, password, firstname, lastname, companyid, email, usertype, avatarrole,
+ parentuserid, userphoto, lastlogin, numberoflogins, userconsent, fbuserid, recstatus, rectimestamp      )
+    values (
+ 
+ #{record.userid,jdbcType=VARCHAR}, 
+ #{record.nickname,jdbcType=VARCHAR}, 
+ #{record.password,jdbcType=VARCHAR}, 
+ #{record.firstname,jdbcType=VARCHAR},
+ 
+ #{record.lastname,jdbcType=VARCHAR}, 
+ #{record.companyid,jdbcType=VARCHAR}, 
+ #{record.email,jdbcType=VARCHAR}, 
+ #{record.usertype,jdbcType=VARCHAR},
+ 
+ #{record.avatarrole,jdbcType=VARCHAR}, 
+ #{record.parentuserid,jdbcType=VARCHAR}, 
+ #{record.userphoto,jdbcType=VARCHAR}, 
+ #{record.lastlogin,jdbcType=TIMESTAMP},
+ 
+ #{record.numberoflogins,jdbcType=INTEGER}, 
+ #{record.userconsent,jdbcType=VARCHAR}, 
+ #{record.fbuserid,jdbcType=VARCHAR}, 
+ #{record.recstatus,jdbcType=VARCHAR},
+ 
+ #{record.rectimestamp,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="update" parameterType="map" >
+    update r3_user
+    <set >
+      <if test="record.nicknameDirty" >
+        nickname = #{record.nickname,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.passwordDirty" >
+        password = #{record.password,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.firstnameDirty" >
+        firstname = #{record.firstname,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.lastnameDirty" >
+        lastname = #{record.lastname,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.companyidDirty" >
+        companyid = #{record.companyid,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.emailDirty" >
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.usertypeDirty" >
+        usertype = #{record.usertype,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.avatarroleDirty" >
+        avatarrole = #{record.avatarrole,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.parentuseridDirty" >
+        parentuserid = #{record.parentuserid,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.userphotoDirty" >
+        userphoto = #{record.userphoto,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.lastloginDirty" >
+        lastlogin = #{record.lastlogin,jdbcType=TIMESTAMP},
+      </if>      
+      <if test="record.numberofloginsDirty" >
+        numberoflogins = #{record.numberoflogins,jdbcType=INTEGER},
+      </if>      
+      <if test="record.userconsentDirty" >
+        userconsent = #{record.userconsent,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.fbuseridDirty" >
+        fbuserid = #{record.fbuserid,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.recstatusDirty" >
+        recstatus = #{record.recstatus,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.rectimestampDirty" >
+        rectimestamp = #{record.rectimestamp,jdbcType=TIMESTAMP},
+      </if>      
+    </set>
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+      <!-- Non dovrebbe servire in quanto il filter e' sempre named. -->
+      <!-- <include refid="Filter_Where_Clause_4_Update" /> -->
+    </if>
+  </update>
+  <update id="updateByPrimaryKey" parameterType="map" >
+    update r3_user
+    <set >
+      <if test="record.nicknameDirty" >
+        nickname = #{record.nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.passwordDirty" >
+        password = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.firstnameDirty" >
+        firstname = #{record.firstname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastnameDirty" >
+        lastname = #{record.lastname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyidDirty" >
+        companyid = #{record.companyid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.emailDirty" >
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usertypeDirty" >
+        usertype = #{record.usertype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.avatarroleDirty" >
+        avatarrole = #{record.avatarrole,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parentuseridDirty" >
+        parentuserid = #{record.parentuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userphotoDirty" >
+        userphoto = #{record.userphoto,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastloginDirty" >
+        lastlogin = #{record.lastlogin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.numberofloginsDirty" >
+        numberoflogins = #{record.numberoflogins,jdbcType=INTEGER},
+      </if>
+      <if test="record.userconsentDirty" >
+        userconsent = #{record.userconsent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fbuseridDirty" >
+        fbuserid = #{record.fbuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.recstatusDirty" >
+        recstatus = #{record.recstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rectimestampDirty" >
+        rectimestamp = #{record.rectimestamp,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where  userid = #{record.userid,jdbcType=VARCHAR}
+  </update>
+
+</mapper>

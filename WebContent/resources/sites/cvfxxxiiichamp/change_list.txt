@@ -1,0 +1,11 @@
+Annotazioni e modifiche: 16/09/2013 16:36:39 
+
+Inserito IBAN nell'informativa.
+Modificato lo stile per le schede informative
+Modificate le schede delle liberatorie: inserito il titolo
+Aggiornata la lista dei materiali delle vele
+Modificata la visualizzazione dei documenti nella versione stampabile della domanda
+Modificati i salti pagina nella versione stampabile.
+Inserita l'obbligatorietà mooring loc per altro.
+Inseriti campi addizionali in application con quello che ne consegue
+Modificata la gerarchia di boatgroup (prima lineare).

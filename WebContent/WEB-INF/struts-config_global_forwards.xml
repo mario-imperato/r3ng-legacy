@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<global-forwards>
+
+    <forward name="SystemFailure"              path="/globals/SystemFailure.jsp"                 redirect="true" />
+    <forward name="AuthorizationFailure"       path="/globals/AuthorizationFailure.jsp"          redirect="false" />
+    <forward name="SSLRequiredFailure"         path="/globals/SSLRequiredFailure.jsp"            redirect="true" />
+
+    <forward name="SessionRequiredFailure"         path="/org/r3/home.do"                   redirect="true" />
+    <forward name="ConsoleSessionRequiredFailure"  path="/org/r3/console/login.do"               redirect="true" />
+    
+    <forward name="NoForwardFailure"           path="/globals/NoForwardFailure.jsp"           redirect="true" />
+
+    <forward name="Failure"                    path="/globals/Failure.jsp"            redirect="false" />
+    <forward name="Success"                    path="/globals/Success.jsp"            redirect="true" />
+
+</global-forwards>

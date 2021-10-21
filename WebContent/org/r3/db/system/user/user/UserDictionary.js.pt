@@ -1,0 +1,32 @@
+//
+// GPA Gruppo Progetti Avanzati s.r.l. - 
+// Progetto UNEP 2012 per PosteItaliane S.p.a.
+//
+//
+// TODO: Readme Section.
+//
+
+jQuery.r3Utils.namespace("org.r3.db.system.user.user", window, function(aNamespace) 
+{
+ aNamespace.message = {
+ userid :  "Id. ",
+ nickname :  "Log-in",
+ password :  "Senha",
+ firstname :  "Nome",
+ lastname :  "Sobrenome",
+ companyid :  "companyid",
+ email :  "Email",
+ usertype :  "usertype",
+ avatarrole :  "avatarrole",
+ parentuserid :  "parentuserid",
+ userphoto :  "userphoto",
+ lastlogin :  "lastlogin",
+ numberoflogins :  "numberoflogins",
+ userconsent :  "userconsent",
+ recstatus :  "Estado",
+ rectimestamp :  "rectimestamp",
+ queryactionformview_legend: 'Lista de Usuários'
+  };
+});
+
+

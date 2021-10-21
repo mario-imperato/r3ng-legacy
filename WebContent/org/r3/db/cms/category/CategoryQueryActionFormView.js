@@ -1,0 +1,125 @@
+//
+// GPA Gruppo Progetti Avanzati s.r.l. - 
+// Progetto UNEP 2012 per PosteItaliane S.p.a.
+//
+//
+// TODO: Readme Section.
+//
+
+
+jQuery.r3Utils.namespace("org.r3.db.cms.category");
+
+org.r3.db.cms.category.CategoryQueryActionFormView = org.r3.db.DataTableEntityActionFormView.extend(
+{
+   //
+   // optionsHash: dataTableId, dataTableSource, dataTableColumns, searchEnabled, advancedSearchActionFormView, htmlTemplateUrl
+   //
+   init: function(anHtmlActionFormContainerId, anActionFormManager, optionsHash)
+   {
+      this._super(anHtmlActionFormContainerId, anActionFormManager, optionsHash);
+   },
+
+   getAdapterFromServerData: function(serverResponseData)
+   {
+      var adapter = new org.r3.db.DTOTableAdapter(serverResponseData, function(aRowDataBean) { return new org.r3.db.cms.category.CategoryDTOAdapter(aRowDataBean); });   
+      return adapter;
+   },
+   
+   _setupDefaultColumnDefinitions: function()
+   { 
+   	   var defaultColumnDefinitions = {};
+   	      
+   	   defaultColumnDefinitions['indexofitem'] = 
+       {  
+       	  "aTargets": [ -1 ], 
+       	  "sClass": "center", "sTitle": "",
+          "fnRender": function ( oObj, sVal ) 
+          {
+          	    var item = oObj.aData; 
+                return item.indexOfItem;
+          }
+       };
+
+        defaultColumnDefinitions['site'] = 
+       {
+       	  "aTargets": [ -1 ],
+          "sClass": "left",
+          "sTitle": "site",
+          "fnRender": function ( oObj, sVal )
+          {
+             var item = oObj.aData; 
+             return item.dataBean.site || '';
+          }       
+       };
+        defaultColumnDefinitions['categoryid'] = 
+       {
+       	  "aTargets": [ -1 ],
+          "sClass": "left",
+          "sTitle": "categoryid",
+          "fnRender": function ( oObj, sVal )
+          {
+             var item = oObj.aData; 
+             return item.dataBean.categoryid || '';
+          }       
+       };
+        defaultColumnDefinitions['categorymode'] = 
+        {
+        	  "aTargets": [ -1 ],
+           "sClass": "left",
+           "sTitle": "categorymode",
+           "fnRender": function ( oObj, sVal )
+           {
+              var item = oObj.aData; 
+              return item.dataBean.categorymode || '';
+           }       
+        };
+        defaultColumnDefinitions['categorydescr'] = 
+       {
+       	  "aTargets": [ -1 ],
+          "sClass": "left",
+          "sTitle": "categorydescr",
+          "fnRender": function ( oObj, sVal )
+          {
+             var item = oObj.aData; 
+             return item.dataBean.categorydescr || '';
+          }       
+       };
+        defaultColumnDefinitions['previewtmpl'] = 
+       {
+       	  "aTargets": [ -1 ],
+          "sClass": "left",
+          "sTitle": "previewtmpl",
+          "fnRender": function ( oObj, sVal )
+          {
+             var item = oObj.aData; 
+             return item.dataBean.previewtmpl || '';
+          }       
+       };
+        defaultColumnDefinitions['fulltmpl'] = 
+       {
+       	  "aTargets": [ -1 ],
+          "sClass": "left",
+          "sTitle": "fulltmpl",
+          "fnRender": function ( oObj, sVal )
+          {
+             var item = oObj.aData; 
+             return item.dataBean.fulltmpl || '';
+          }       
+       };
+        
+       return defaultColumnDefinitions;
+   },
+   
+   addRawItem: function(anItem)
+   {
+   	  var adaptedItem = new org.r3.db.cms.category.CategoryDTOAdapter(anItem);   
+   	  this.addItem(adaptedItem);
+   },
+   
+   addAdaptedItem: function(anAdaptedItem)
+   {
+   	  this.addItem(anAdaptedItem);
+   }
+ 
+});
+

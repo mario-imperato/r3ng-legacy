@@ -1,0 +1,232 @@
+<< BOF Inserting rows at: 11
+
+
+<< BOF Inserting rows at: 38
+           <result column="accepted" property="accepted" jdbcType="VARCHAR" />
+<< BOF Changing rows at: 46
+              <choose >
+              <choose>
+<< BOF Changing rows at: 75
+  boaticonwidth,  boaticonheight,  ownerfirstname,  ownerlastname,  owneremail,  ownercellphone  </sql>
+  boaticonwidth,  boaticonheight,  ownerfirstname,  ownerlastname,  owneremail,  ownercellphone,  accepted  </sql>
+  
+  <sql id='GroupBy_Column_List'>
+    <trim suffixOverrides=",">
+        <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('eventid')" >
+           eventid,
+       </when>
+       <otherwise>
+           null as eventid,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('applicationid')" >
+           applicationid,
+       </when>
+       <otherwise>
+           null as applicationid,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('userid')" >
+           userid,
+       </when>
+       <otherwise>
+           null as userid,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('verificationstatus')" >
+           verificationstatus,
+       </when>
+       <otherwise>
+           null as verificationstatus,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('plate')" >
+           plate,
+       </when>
+       <otherwise>
+           null as plate,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('sailnumber')" >
+           sailnumber,
+       </when>
+       <otherwise>
+           null as sailnumber,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('yachtname')" >
+           yachtname,
+       </when>
+       <otherwise>
+           null as yachtname,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('yachtclub')" >
+           yachtclub,
+       </when>
+       <otherwise>
+           null as yachtclub,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('yachttype')" >
+           yachttype,
+       </when>
+       <otherwise>
+           null as yachttype,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('yachtbsf')" >
+           yachtbsf,
+       </when>
+       <otherwise>
+           null as yachtbsf,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('yachtgph')" >
+           yachtgph,
+       </when>
+       <otherwise>
+           null as yachtgph,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('racegroup')" >
+           racegroup,
+       </when>
+       <otherwise>
+           null as racegroup,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('raceclass')" >
+           raceclass,
+       </when>
+       <otherwise>
+           null as raceclass,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('apptype')" >
+           apptype,
+       </when>
+       <otherwise>
+           null as apptype,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('boatimageurl')" >
+           boatimageurl,
+       </when>
+       <otherwise>
+           null as boatimageurl,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('boatimageheight')" >
+           boatimageheight,
+       </when>
+       <otherwise>
+           null as boatimageheight,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('boatimagewidth')" >
+           boatimagewidth,
+       </when>
+       <otherwise>
+           null as boatimagewidth,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('boaticonurl')" >
+           boaticonurl,
+       </when>
+       <otherwise>
+           null as boaticonurl,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('boaticonwidth')" >
+           boaticonwidth,
+       </when>
+       <otherwise>
+           null as boaticonwidth,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('boaticonheight')" >
+           boaticonheight,
+       </when>
+       <otherwise>
+           null as boaticonheight,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('ownerfirstname')" >
+           ownerfirstname,
+       </when>
+       <otherwise>
+           null as ownerfirstname,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('ownerlastname')" >
+           ownerlastname,
+       </when>
+       <otherwise>
+           null as ownerlastname,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('owneremail')" >
+           owneremail,
+       </when>
+       <otherwise>
+           null as owneremail,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('ownercellphone')" >
+           ownercellphone,
+       </when>
+       <otherwise>
+           null as ownercellphone,
+       </otherwise>         
+     </choose> 
+	       <choose>
+       <when test="filter != null &amp;&amp; filter.isGroupBy('accepted')" >
+           accepted,
+       </when>
+       <otherwise>
+           null as accepted,
+       </otherwise>         
+     </choose> 
+	       </trim>       
+  </sql>
+  
+<< BOF Changing rows at: 81
+    <include refid="Base_Column_List" />
+    <choose>
+       <when test="filter != null &amp;&amp; filter.groupByClause != null">
+           <include refid="GroupBy_Column_List" />
+       </when>
+       <otherwise>
+           <include refid="Base_Column_List" />
+       </otherwise>
+    </choose>
+    
+<< BOF Inserting rows at: 86
+    <if test="filter != null &amp;&amp; filter.groupByClause != null" >
+      group by ${filter.groupByClause}
+    </if>    

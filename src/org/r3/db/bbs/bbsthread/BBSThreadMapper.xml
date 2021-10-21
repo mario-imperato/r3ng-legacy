@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--
+  TODO: xmlCopyRight.txt
+   
+  -->
+<!--
+  TODO: xmlReadme.txt
+   
+  -->
+
+<!-- <mapper resource="org/r3/db/bbs/bbsthread/BBSThreadMapper.xml"/> -->
+<mapper namespace="org.r3.db.bbs.bbsthread.BBSThreadMapper" >
+    <resultMap id="BaseResultMap" type="org.r3.db.bbs.bbsthread.BBSThreadDTO" >
+         <id column="site" property="site" jdbcType="VARCHAR" />
+           <id column="threadid" property="threadid" jdbcType="VARCHAR" />
+           <result column="topicid" property="topicid" jdbcType="VARCHAR" />
+           <result column="threadtitle" property="threadtitle" jdbcType="VARCHAR" />
+           <result column="threadprofile" property="threadprofile" jdbcType="VARCHAR" />
+           <result column="userid" property="userid" jdbcType="VARCHAR" />
+           <result column="creationdate" property="creationdate" jdbcType="TIMESTAMP" />
+           <result column="numposts" property="numposts" jdbcType="INTEGER" />
+           <result column="lastthreadnodeid" property="lastthreadnodeid" jdbcType="VARCHAR" />
+           <result column="lastposttimestamp" property="lastposttimestamp" jdbcType="TIMESTAMP" />
+           <result column="recstatus" property="recstatus" jdbcType="VARCHAR" />
+           <result column="rectimestamp" property="rectimestamp" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+  <sql id="Filter_Where_Clause" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+                <when test="criterion.subSelectCriterion" >
+                  and ${criterion.prefixCondition} #{criterion.value} ${criterion.suffixCondition}
+                </when>                                
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <!--
+  <sql id="Filter_Where_Clause_4_Update" >
+    <where >
+      <foreach collection="filter.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  -->  
+  <sql id="Base_Column_List" >
+    site,  threadid,  topicid,  threadtitle,  threadprofile,  userid,  creationdate,  numposts,  lastthreadnodeid,
+  lastposttimestamp,  recstatus,  rectimestamp  </sql>
+  <select id="selectBySiteThreadid" resultMap="BaseResultMap" parameterType="HashMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from r3_bbsthread
+    where  site = #{site,jdbcType=VARCHAR} and  threadid = #{threadid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteBySiteThreadid" parameterType="HashMap" >
+    delete
+    from r3_bbsthread
+    where  site = #{site,jdbcType=VARCHAR} and  threadid = #{threadid,jdbcType=VARCHAR}
+  </delete>  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from r3_bbsthread    
+    where  site = #{pk.site,jdbcType=VARCHAR} and  threadid = #{pk.threadid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete
+    from r3_bbsthread
+    where  site = #{pk.site,jdbcType=VARCHAR} and  threadid = #{pk.threadid,jdbcType=VARCHAR}
+  </delete>  
+  <select id="select" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <if test="filter != null &amp;&amp; filter.distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from r3_bbsthread
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+    <if test="filter != null &amp;&amp; filter.orderByClause != null" >
+      order by ${filter.orderByClause}
+    </if>
+    <if test="filter != null &amp;&amp; filter.limitFetch > 0" >
+      limit ${filter.limitFetch}
+    </if>
+  </select>
+  <select id="count" parameterType="map" resultType="java.lang.Integer" >
+    select count(*) from r3_bbsthread
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </select>  
+  <delete id="delete" parameterType="map" >
+    delete from r3_bbsthread
+    <!-- _parameter: dato che e' una map lo sostituisco con il nome del parametro in quanto non è l'unico -->
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="map" >
+    insert into r3_bbsthread (
+ site, threadid, topicid, threadtitle, threadprofile, userid, creationdate, numposts, lastthreadnodeid,
+ lastposttimestamp, recstatus, rectimestamp      )
+    values (
+ 
+ #{record.site,jdbcType=VARCHAR}, 
+ #{record.threadid,jdbcType=VARCHAR}, 
+ #{record.topicid,jdbcType=VARCHAR}, 
+ #{record.threadtitle,jdbcType=VARCHAR},
+ 
+ #{record.threadprofile,jdbcType=VARCHAR}, 
+ #{record.userid,jdbcType=VARCHAR}, 
+ #{record.creationdate,jdbcType=TIMESTAMP}, 
+ #{record.numposts,jdbcType=INTEGER},
+ 
+ #{record.lastthreadnodeid,jdbcType=VARCHAR}, 
+ #{record.lastposttimestamp,jdbcType=TIMESTAMP}, 
+ #{record.recstatus,jdbcType=VARCHAR}, 
+ #{record.rectimestamp,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="update" parameterType="map" >
+    update r3_bbsthread
+    <set >
+      <if test="record.topicidDirty" >
+        topicid = #{record.topicid,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.threadtitleDirty" >
+        threadtitle = #{record.threadtitle,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.threadprofileDirty" >
+        threadprofile = #{record.threadprofile,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.useridDirty" >
+        userid = #{record.userid,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.creationdateDirty" >
+        creationdate = #{record.creationdate,jdbcType=TIMESTAMP},
+      </if>      
+      <if test="record.numpostsDirty" >
+        numposts = #{record.numposts,jdbcType=INTEGER},
+      </if>      
+      <if test="record.lastthreadnodeidDirty" >
+        lastthreadnodeid = #{record.lastthreadnodeid,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.lastposttimestampDirty" >
+        lastposttimestamp = #{record.lastposttimestamp,jdbcType=TIMESTAMP},
+      </if>      
+      <if test="record.recstatusDirty" >
+        recstatus = #{record.recstatus,jdbcType=VARCHAR},
+      </if>      
+      <if test="record.rectimestampDirty" >
+        rectimestamp = #{record.rectimestamp,jdbcType=TIMESTAMP},
+      </if>      
+    </set>
+    <if test="filter != null" >
+      <include refid="Filter_Where_Clause" />
+      <!-- Non dovrebbe servire in quanto il filter e' sempre named. -->
+      <!-- <include refid="Filter_Where_Clause_4_Update" /> -->
+    </if>
+  </update>
+  <update id="updateByPrimaryKey" parameterType="map" >
+    update r3_bbsthread
+    <set >
+      <if test="record.topicidDirty" >
+        topicid = #{record.topicid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.threadtitleDirty" >
+        threadtitle = #{record.threadtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.threadprofileDirty" >
+        threadprofile = #{record.threadprofile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.useridDirty" >
+        userid = #{record.userid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.creationdateDirty" >
+        creationdate = #{record.creationdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.numpostsDirty" >
+        numposts = #{record.numposts,jdbcType=INTEGER},
+      </if>
+      <if test="record.lastthreadnodeidDirty" >
+        lastthreadnodeid = #{record.lastthreadnodeid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastposttimestampDirty" >
+        lastposttimestamp = #{record.lastposttimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.recstatusDirty" >
+        recstatus = #{record.recstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rectimestampDirty" >
+        rectimestamp = #{record.rectimestamp,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where  site = #{record.site,jdbcType=VARCHAR} and  threadid = #{record.threadid,jdbcType=VARCHAR}
+  </update>
+
+ <!-- Aggiunta di un post -->
+  <update id="updatePostCountersOnAddBySiteThreadid" parameterType="map" >
+    update r3_bbsthread
+    <set >
+      numposts = numposts + 1,
+      lastthreadnodeid = #{lastthreadnodeid,jdbcType=VARCHAR},
+      lastposttimestamp = CURRENT_TIMESTAMP,
+    </set>
+    where  site = #{site,jdbcType=VARCHAR} and  threadid = #{threadid,jdbcType=VARCHAR}
+  </update>
+
+  <!-- Delete di un post -->
+  <update id="updatePostCountersOnDeleteBySiteThreadid" parameterType="map" >
+    update r3_bbsthread
+    <set >
+      numposts = numposts - #{numposts,jdbcType=INTEGER},
+    </set>
+    where  site = #{site,jdbcType=VARCHAR} and  threadid = #{threadid,jdbcType=VARCHAR}
+  </update>
+
+
+</mapper>

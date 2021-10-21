@@ -1,0 +1,190 @@
+body {
+	margin: 0;
+	background: transparent;
+	font-size: 11px;
+}
+
+video {
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	/* top: -100px;
+	right: 0; */
+	min-width: 100%;
+	min-height: 100%;
+	width: auto;
+	height: auto;
+	z-index: -100;
+	background: url('poster.jpg') no-repeat;
+	background-size: cover;
+}
+   
+#speedsails_canvas1
+{
+	background: url('scan_logo_alt.png') bottom left no-repeat;	
+	/* background-size: cover; */
+    display: table;
+    width: 100%;       	
+    background-position: 0 134px;   
+    /* background-size: cover */ 
+}
+
+#speedsails_canvas1:after
+{
+    content: "";
+    clear: both;
+}
+
+#triangle {
+    border-bottom: 136px solid rgba(0, 0, 0, 0.3);
+    border-left: 26px solid transparent;
+    float: right;
+    height: 0;
+    width: 0px;
+}
+
+
+#triangle-topleft {
+    border-right: 97px solid transparent;
+    border-top: 486px solid rgba(0, 0, 0, 0.3);
+    float: left;
+    height: 0;
+    width: 8px;
+}
+
+#triangle2 {
+    border-bottom: 136px solid rgba(0, 0, 0, 0.3);
+    border-left: 27px solid transparent;
+    float: right;
+    height: 0;
+    left: 258px;
+    position: absolute;
+    width: 0px;
+}
+
+.transparent_canvas {
+	background: none repeat scroll 0 0 rgba(0, 0, 0, 0.3); 	
+    color: white;
+    float: left;
+    left: 285px;
+    padding: 10px;
+    position: absolute;
+    right: 0;
+    min-width: 700px;
+}
+
+.clearfix {
+    float: none;
+    clear: both;
+}
+
+
+#iconic_menu_cnt {
+   
+}
+
+#iconic_menu_cnt .iconic_menu {
+	/* padding: 10px 0 10px 0px; */
+	/* background-color: #373737; */
+	margin: 0 auto;	
+}
+
+#iconic_menu_cnt .iconic_menu div.iconic_menu_item {
+	position: relative;
+	float: left;
+	margin-left: 5px;
+	margin-right: 5px;
+	border: 3px solid #ffffff;
+	overflow: hidden
+}
+
+#iconic_menu_cnt .iconic_menu div.iconic_menu_item.grade6
+{
+	border: 3px solid #425AA2;
+}
+
+#iconic_menu_cnt .iconic_menu div.iconic_menu_item img {
+	float: left;
+	margin: 0;
+	padding: 0;
+	width: 100px;
+	height: 100px;
+	border: 0;
+}
+
+#iconic_menu_cnt .iconic_menu div.iconic_menu_item div {
+	top: 78px;
+	width: 100%;
+	background: none repeat scroll 0 0 #003A50;
+	display: inline;
+	float: left;
+	height: 99px;
+	left: 0;
+	opacity: 0.8;
+	padding: 2px;
+	position: absolute;
+}
+
+#iconic_menu_cnt .iconic_menu div.iconic_menu_item div:hover
+	{
+	top: 60px;
+}
+
+#iconic_menu_cnt .iconic_menu div.iconic_menu_item p {
+	font-size: 12px;
+	font-weight: bold;
+	padding: 3px;
+	color: #ffffff;
+	margin: 0;
+	line-height: 1.5em;
+	padding: 0 3px 3px;
+	margin-top: 0px
+}
+
+#site_logo {	    
+	background: url('logoSS.png') center left no-repeat rgba(0, 0, 0, 0.3);;
+	padding-left: 110px;
+	right: 0;
+    bottom: 0;
+    padding-left: 110px;
+    position: absolute;
+    width: 210px;	
+    min-height: 92px
+}
+
+#site_logo h4 {
+    font-size: 30px;
+    padding: 10px 0 0 0px;
+    margin: 0;
+    color: #000000;
+}
+
+#site_logo  p {
+    font-size: 16px;
+    padding: 0 0 30px 0px;
+}
+
+#site_logo  p {
+    color: white;
+    margin: 0;  
+}
+
+h3.p1
+{
+	margin: 5px 0;
+}
+
+p.p1
+{
+	margin: 5px 0px;
+}
+
+#triangle-filler {
+    border-right: 10px solid transparent;
+    border-top: 10px solid rgba(0, 0, 0, 0.3);
+    height: 0;
+    left: 257px;
+    position: absolute;
+    top: 136px;
+    width: 0;
+}

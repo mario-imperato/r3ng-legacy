@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<action path="/org/r3/sev/application/editMyApplication"
+    className="org.r3.system.struts.GWFActionMapping"            
+    type="org.r3.struts.sev.SailApplicationManager"
+    parameter="editMyApplication" >
+
+    <!--
+    scope="request"
+    name="loginForm"
+    validate="true"
+    input="/security/signin.jsp">-->
+       <set-property property="sessionBehaviour"   value="required"     />
+       <set-property property="functionId"         value="pub"          />    
+       <set-property property="functionalAreaId"   value="home"         />           
+       <set-property property="enforceTimeToken"   value="false"        />           
+       
+       <forward name="Success"              path="/org/r3/sev/application/application.jsp"         redirect="false" />        
+       <forward name="Failure"              path="/org/r3/sev/application/application_fail.jsp"    redirect="false" />       
+       
+</action>
+
+<action path="/org/r3/sev/entrylist"
+    className="org.r3.system.struts.GWFActionMapping"            
+    type="org.r3.system.struts.R3Manager"
+    parameter="success" >
+
+    <!--
+    scope="request"
+    name="loginForm"
+    validate="true"
+    input="/security/signin.jsp">-->
+       <set-property property="sessionBehaviour"   value="create"       />
+       <set-property property="functionId"         value="pub"          />    
+       <set-property property="functionalAreaId"   value="home"         />           
+       <set-property property="enforceTimeToken"   value="false"        />           
+       
+       <forward name="Success"              path="/org/r3/sev/entrylist/entrylist.jsp"             redirect="false" />               
+       
+</action>
+
+<action path="/org/r3/console/sev/applications"
+    className="org.r3.system.struts.GWFActionMapping"            
+    type="org.r3.system.struts.R3Manager"
+    parameter="success" >
+
+    <!--
+    scope="request"
+    name="loginForm"
+    validate="true"
+    input="/security/signin.jsp">-->
+       <set-property property="sessionBehaviour"   value="required"     />
+       <set-property property="functionId"         value="console"      />    
+       <set-property property="functionalAreaId"   value="home"         />           
+       <set-property property="enforceTimeToken"   value="false"        />           
+       
+       <set-property property="sessionRequiredFailureForward"        value="ConsoleSessionRequiredFailure"  />
+       <set-property property="authorizationRequiredFailureForward"  value="ConsoleSessionRequiredFailure"  />
+       
+       <forward name="Success"              path="/org/r3/console/sev/application/manageapplications.jsp"    redirect="false" />        
+       
+</action>
+
+<action path="/org/r3/console/sev/application/adminApplication"
+    className="org.r3.system.struts.GWFActionMapping"            
+    type="org.r3.struts.sev.SailApplicationManager"
+    parameter="adminApplication" >
+
+    <!--
+    scope="request"
+    name="loginForm"
+    validate="true"
+    input="/security/signin.jsp">-->
+       <set-property property="sessionBehaviour"   value="required"     />
+       <set-property property="functionId"         value="console"          />    
+       <set-property property="functionalAreaId"   value="home"         />           
+       <set-property property="enforceTimeToken"   value="false"        />           
+       
+       <forward name="Success"              path="/org/r3/console/sev/application/application.jsp"        redirect="false" />        
+       
+</action>
+
+<action path="/org/r3/sev/ranking"
+    className="org.r3.system.struts.GWFActionMapping"            
+    type="org.r3.system.struts.R3Manager"
+    parameter="success" >
+
+    <!--
+    scope="request"
+    name="loginForm"
+    validate="true"
+    input="/security/signin.jsp">-->
+       <set-property property="sessionBehaviour"   value="create"       />
+       <set-property property="functionId"         value="pub"          />    
+       <set-property property="functionalAreaId"   value="home"         />           
+       <set-property property="enforceTimeToken"   value="false"        />           
+       
+       <forward name="Success"              path="/org/r3/sev/ranking/ranking.jsp"             redirect="false" />               
+       
+</action>
+
+<action path="/org/r3/sev/cmspage"
+    className="org.r3.system.struts.GWFActionMapping"            
+    type="org.r3.system.struts.R3Manager"
+    parameter="page" >
+
+    <!--
+    scope="request"
+    name="loginForm"
+    validate="true"
+    input="/security/signin.jsp">-->
+       <set-property property="sessionBehaviour"   value="create"    />
+       <set-property property="functionId"         value="pub"          />    
+       <set-property property="functionalAreaId"   value="home"         />           
+       <set-property property="enforceTimeToken"   value="false"        />           
+       
+       <forward name="tracker"              path="/org/r3/sev/cms/tracker/tracker.jsp"          redirect="false" />      
+       <forward name="comunicati"           path="/org/r3/sev/cms/comunicati/page.jsp"          redirect="false" />          
+       <forward name="meteo"                path="/org/r3/sev/cms/meteo/page.jsp"               redirect="false" />
+       <forward name="pressroom"            path="/org/r3/sev/cms/pressroom/page.jsp"           redirect="false" />
+       <forward name="miscellanea"          path="/org/r3/sev/cms/miscellanea/page.jsp"         redirect="false" />
+
+</action>

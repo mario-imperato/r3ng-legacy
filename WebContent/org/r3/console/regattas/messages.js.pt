@@ -1,0 +1,11 @@
+
+$.r3Utils.namespace("org.r3.console.regattas", window, function(aNamespace) 
+{
+  aNamespace.message = {
+       regattadetailactionform_formmessage: 
+			"Para completar a configuração do site você precisa da seção de administração do mesmo, onde todas as opções estão disponíveis" +  
+		    "Por conveniência, a seguir estão os links para o usuário e para a área de administração",
+	   regattadetailactionform_urlhome: 'URL usuários',
+	   regattadetailactionform_urlhomeconsole: 'URL Admin'
+ };
+});

@@ -1,0 +1,234 @@
+/*
+.image_carousel {
+	    padding: 15px 0 15px 40px;
+	}
+	.image_carousel img {
+	    border: 1px solid #ccc;
+	    background-color: white;
+	    padding: 9px;
+	    margin: 7px;
+	    display: block;
+	    float: left;
+	}
+	.clearfix {
+	    float: none;
+	    clear: both;
+	}
+	*/
+	
+.iconic_menu_carousel {
+	
+	padding: 10px 0 10px 0px;
+	background-color: #BACED6;
+    margin: 0 auto
+}
+
+	.iconic_menu_carousel .iconic_menu_carousel_pagination {
+	    text-align: center;
+	    padding-top: 10px;
+	    width: 100%
+	}
+	.iconic_menu_carousel .iconic_menu_carousel_pagination a {
+	    background: url(miscellaneous_sprite.png) 0 -300px no-repeat transparent;
+	    width: 15px;
+	    height: 15px;
+	    margin: 0 5px 0 0;
+	    display: inline-block;
+	}
+	.iconic_menu_carousel .iconic_menu_carousel_pagination a.selected {
+	    background-position: -25px -300px;
+	    cursor: default;
+	}
+	.iconic_menu_carousel .iconic_menu_carousel_pagination a span {
+	    display: none;
+	}
+
+.iconic_menu_carousel div.iconic_menu_carousel_item {
+	position: relative;
+	float: left;
+	margin-left: 5px;
+	margin-right: 5px;
+	border: 3px solid #ffffff;
+	overflow: hidden
+}
+
+.iconic_menu_carousel div.iconic_menu_carousel_item.grade1 {
+    border: 3px solid #AA0D0D;
+}
+
+.iconic_menu_carousel div.iconic_menu_carousel_item.grade2 {
+    border: 3px solid #FF9601;
+}
+
+.iconic_menu_carousel div.iconic_menu_carousel_item.grade3 {
+    border: 3px solid #367ECE;
+}
+
+.iconic_menu_carousel div.iconic_menu_carousel_item.grade5 {
+    border: 3px solid #8CC63F;
+}
+
+
+
+.iconic_menu_carousel div.iconic_menu_carousel_item img 
+{
+	float: left;  margin: 0; padding: 0;
+	width: 100px; height: 100px;	
+	border: 0;
+}
+
+.iconic_menu_carousel div.iconic_menu_carousel_item div {
+	
+	top: 78px; 
+	width: 100%;
+	
+	background: none repeat scroll 0 0 #003A50;
+	display: inline;	
+	float: left;
+	height: 99px;
+	left: 0;
+	opacity: 0.8;
+	padding: 2px;
+	position: absolute;
+}
+
+.iconic_menu_carousel div.iconic_menu_carousel_item div:hover
+{
+	top: 60px;
+}
+
+.iconic_menu_carousel div.iconic_menu_carousel_item p {
+	font-size: 12px;
+	font-weight : bold;
+	padding: 3px;
+	color : #ffffff;
+	margin : 0;
+	line-height: 1.5em;
+    padding: 0 3px 3px;
+    margin-top: 0px
+}
+
+
+/*
+div.thumbnails {
+	text-align: center;
+}
+
+div.thumbnails img {
+	cursor: pointer;
+	border: 1px solid #ccc;
+	background-color: white;
+	padding: 9px;
+	margin: 7px;
+	display: inline-block;
+}
+
+div.thumbnails img:hover {
+	background-color: #eee;
+}
+
+div.thumbnails img.selected {
+	background-color: #ccc;
+}
+
+.clearfix {
+	float: none;
+	clear: both;
+}
+*/
+
+.quiz-info-box
+{
+
+display: block;
+
+min-height: 40px;
+
+background: #fff;
+
+width: 23%;
+
+box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+
+border-radius: 2px;
+
+margin-bottom: 15px;
+
+float: left;
+
+margin-left: 1%;
+
+margin-right: 1%;
+}
+
+@media (max-width: 767px)
+{
+.quiz-info-box {
+    width: 48%;
+}
+}
+
+.quiz-info-box .quiz-info-box-icon
+{
+	border-radius: 2px 0 0 2px;
+	display: block;
+	float: left;
+	height: 40px;
+	width: 30px;
+	text-align: center;
+	font-size: 20px;
+	line-height: 40px;
+	background: rgba(0,0,0,.2);
+}
+
+.quiz-info-box .quiz-info-box-content
+{
+	padding: 5px 10px;
+	margin-left: 30px;
+}
+
+.quiz-info-box .quiz-info-box-content .quiz-info-box-text
+{
+	    display: block;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.quiz-info-box .quiz-info-box-content .quiz-info-box-number
+{
+	display: block;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.quiz-timer
+{
+    border: 1px solid #aaa;
+    margin-bottom: 10px;
+}
+    
+.quiz-timer .quiz-timer-display
+{
+    font-size: 20px;
+    text-align: right;
+    color: #777;
+    font-weight: bold;
+    line-height: 40px;
+    padding-right: 10px;	
+}
+
+.quiz-timer .quiz-timer-display.timed-out
+{
+    color: red;
+}
+
+.quiz-sessions .editableuserblock
+{
+	cursor: pointer;
+	color: #0099cc;
+}
+    
+
+    

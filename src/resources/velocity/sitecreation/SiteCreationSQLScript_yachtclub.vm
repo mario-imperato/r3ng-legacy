@@ -1,0 +1,117 @@
+##
+##
+## $siteDTO: DTO site regata in fase di registrazione
+## $sevEventDTO: DTO sev_event
+## $siteSequence: String
+## $userDTO: Logged User
+  
+## Il Layout dipende dal tipo di sito. Lo aggiorno Assegnando un default. Saranno poi i singoli script a farne uno diverso.
+DELETE from r3_siteproperty where 
+   site = '${siteDTO.site}' and propertyscope = 'site.config' and propertykey = 'sitelayout';(EOS)
+   
+insert into r3_siteproperty (site, propertyscope, propertykey, propertyvalue)
+   values('${siteDTO.site}', 'site.config', 'sitelayout',  'yachtclublayout');(EOS)   
+   
+##
+## BOF CMSCATEGORY  
+insert into r3_cmscategory (site, categoryid, categorydescr, previewtmpl, fulltmpl,categorymode)
+ values('${siteDTO.site}', 'article', 'Articolo', 'cms_tpl_simple', 'cms_tpl_simple', 'promoted');(EOS)
+
+insert into r3_cmscategory (site, categoryid, categorydescr, previewtmpl, fulltmpl,categorymode)
+ values('${siteDTO.site}', 'c_carousel', 'Scheda Carousel', 'cms_tpl_simple', 'cms_tpl_simple', 'promoted');(EOS)
+
+## EOF CMSCATEGORY  
+##
+
+##
+## BOF CMSATTACHMENTTYPE  
+insert into  r3_cmsattachmenttype (site, attachtypeid, attachtypedescr, contenttype, imagescaling, iconscaling, propertyrole, attachscope)
+values ('${siteDTO.site}', 'cms_carousel_lg', 'Banner Grande Carousel', 'image/jpeg,image/gif,image/png', null, null, 'cms_carousel_lg', 'card_scope');(EOS)
+
+insert into  r3_cmsattachmenttype (site, attachtypeid, attachtypedescr, contenttype, imagescaling, iconscaling, propertyrole, attachscope)
+values ('${siteDTO.site}', 'cms_carousel_sm', 'Banner Piccolo Carousel', 'image/jpeg,image/gif,image/png', '140,80', null, 'cms_carousel_sm', 'card_scope');(EOS)
+## EOF CMSATTACHMENTTYPE  
+##
+
+##
+## BOF CMSGROUP  
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'grp_pressinfo', 'Comunicati Stampa', 'sys_recact');(EOS)
+
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'articles', 'Articoli', 'sys_recact');(EOS)
+
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'homearticles', 'Articoli Home Page', 'sys_recact');(EOS)
+
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'c_homecarousel', 'Home Carousel', 'sys_recact');(EOS)
+
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'friendcarousel', 'Friend Carousel', 'sys_recact');(EOS)
+
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'sponsorcarousel', 'Sponsor Carousel', 'sys_recact');(EOS)
+
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'homebriefnews', 'Notizie Brevi Home Page', 'sys_recact');(EOS)
+
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'club', 'Club', 'sys_recact');(EOS)
+      
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'sailevent', 'Regate', 'sys_recact');(EOS)
+
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'homesailevent', 'Regate Home Page', 'sys_recact');(EOS)
+
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'media', 'Media', 'sys_recact');(EOS)
+
+insert into r3_cmsgroup (site, groupid, groupname, recstatus)
+  values('${siteDTO.site}', 'sailschool', 'Scuola Vela', 'sys_recact');(EOS)
+## EOF CMSGROUP  
+##
+
+##
+## BOF CMSPAGE
+##
+## insert into r3_cmspage (site, pageid, pagetitle, forwardview, visibility, pagetype, pageicon1, pagelink, pageorder, pagestyle)
+##   values('${siteDTO.site}', 'console', 'Area Amministrativa', null, 'cmspg_txtmenu', 'page', null, '/org/r3/console/home.do', 45, null);(EOS)
+
+
+insert into r3_cmspage (site, pageid, pagetitle, forwardview, visibility, pagetype, pageorder, pagelink, pageicon1, pagestyle)
+   values('${siteDTO.site}', 'articles', 'Articoli', 'articles', 'cmspg_txtmenu,cmspg_iconmenu', 'cmspage', 20, '/org/r3/cms/cmspage.do?pageid=articles', 'icon_002.jpg', 'grade3');(EOS)
+
+insert into r3_cmspage (site, pageid, pagetitle, forwardview, visibility, pagetype, pageorder, pagelink, pageicon1, pagestyle)
+   values('${siteDTO.site}', 'home', 'Home', null, 'cmspg_iconmenu', 'page', 10, '/org/r3/home.do', 'icon_cvf.png', 'grade4');(EOS)
+
+insert into r3_cmspage (site, pageid, pagetitle, forwardview, visibility, pagetype, pageorder, pagelink, pageicon1, pagestyle)
+   values('${siteDTO.site}', 'club', 'Club', 'club', 'cmspg_txtmenu,cmspg_iconmenu', 'cmspage', 50, '/org/r3/cms/cmspage.do?pageid=club', 'icon_008.jpg', 'grade3');(EOS)
+
+insert into r3_cmspage (site, pageid, pagetitle, forwardview, visibility, pagetype, pageorder, pagelink, pageicon1, pagestyle)
+   values('${siteDTO.site}', 'meteo', 'Meteo', 'meteo', 'cmspg_txtmenu,cmspg_iconmenu', 'cmspage', 45, '/org/r3/cms/cmspage.do?pageid=meteo&cardid=00_METEO', 'icon_011.jpg', 'grade3');(EOS)
+
+insert into r3_cmspage (site, pageid, pagetitle, forwardview, visibility, pagetype, pageorder, pagelink, pageicon1, pagestyle)
+   values('${siteDTO.site}', 'pressroom', 'Sala Stampa', 'pressroom', 'cmspg_txtmenu,cmspg_iconmenu', 'cmspage', 35, '/org/r3/cms/cmspage.do?pageid=pressroom', 'icon_005.jpg', 'grade3');(EOS)
+
+insert into r3_cmspage (site, pageid, pagetitle, forwardview, visibility, pagetype, pageorder, pagelink, pageicon1, pagestyle)
+   values('${siteDTO.site}', 'regattas', 'Regate', 'regattas', 'cmspg_txtmenu,cmspg_iconmenu', 'cmspage', 25, '/org/r3/cms/cmspage.do?pageid=regattas', 'icon_003.jpg', 'grade3');(EOS)
+
+insert into r3_cmspage (site, pageid, pagetitle, forwardview, visibility, pagetype, pageorder, pagelink, pageicon1, pagestyle)
+   values('${siteDTO.site}', 'school', 'Scuola Vela', 'school', 'cmspg_txtmenu,cmspg_iconmenu', 'cmspage', 30, '/org/r3/cms/cmspage.do?pageid=school', 'icon_004.jpg', 'grade3');(EOS)
+						
+insert into r3_cmspage (site, pageid, pagetitle, forwardview, visibility, pagetype, pageorder, pagelink, pageicon1, pagestyle)
+   values('${siteDTO.site}', 'galleries', 'Photo', 'media', 'cmspg_txtmenu,cmspg_iconmenu', 'cmspage', 40, '/org/r3/cms/cmspage.do?pageid=galleries', 'icon_006.jpg', 'grade3');(EOS)
+
+insert into r3_cmspage (site, pageid, pagetitle, forwardview, visibility, pagetype, pageorder, pagelink, pageicon1, pagestyle)
+   values('${siteDTO.site}', 'news', 'News', 'WIP', 'cmspg_none', 'cmspage', 15, '/org/r3/cms/cmspage.do?pageid=news', 'icon_001.jpg', 'grade3');(EOS)
+
+insert into r3_cmspage (site, pageid, pagetitle, forwardview, visibility, pagetype, pageorder, pagelink, pageicon1, pagestyle)
+   values('${siteDTO.site}', 'media2013', 'Media 2013', 'media', 'cmspg_none', 'cmspage', 0, null, null, 'grade3');(EOS)
+
+insert into r3_cmspagedescr (site, pageid, languagecode, pagetitle)
+  select site, pageid, 'it', pagetitle from r3_cmspage where site = '${siteDTO.site}';(EOS)
+
+
+ 

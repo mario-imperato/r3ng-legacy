@@ -1,0 +1,169 @@
+//
+// GPA Gruppo Progetti Avanzati s.r.l. - 
+// Progetto UNEP 2012 per PosteItaliane S.p.a.
+//
+//
+// TODO: Readme Section.
+//
+
+jQuery.r3Utils.namespace("org.r3.db.agenda.agendaentry");
+
+org.r3.db.agenda.agendaentry.AgendaEntryQueryActionFormView = org.r3.db.DataTableEntityActionFormView.extend(
+{
+   //
+   // optionsHash: dataTableId, dataTableSource, dataTableColumns, searchEnabled, advancedSearchActionFormView, htmlTemplateUrl
+   //
+   init: function(anHtmlActionFormContainerId, anActionFormManager, optionsHash)
+   {
+      this._super(anHtmlActionFormContainerId, anActionFormManager, optionsHash);
+   },
+
+   getAdapterFromServerData: function(serverResponseData)
+   {
+      var adapter = new org.r3.db.DTOTableAdapter(serverResponseData, function(aRowDataBean) { return new org.r3.db.agenda.agendaentry.AgendaEntryDTOAdapter(aRowDataBean); });   
+      return adapter;
+   },
+   
+   _setupDefaultColumnDefinitions: function()
+   { 
+   	   var defaultColumnDefinitions = {};
+   	      
+   	   defaultColumnDefinitions['indexofitem'] = 
+       {  
+       	  "aTargets": [ -1 ], 
+       	  "sClass": "center", 
+       	  "sTitle": "",
+          "fnRender": function ( oObj, sVal ) 
+          {
+          	    var item = oObj.aData; 
+                return item.indexOfItem;
+          }
+       };
+
+        defaultColumnDefinitions['agendaentryid'] = 
+       {
+       	  "aTargets": [ -1 ],
+          "sClass": "left",
+          "sTitle": org.r3.db.agenda.agendaentry.message.agendaentryid,
+          "render": function ( data, type, row, meta )
+          {
+             var item = data; 
+             return item.dataBean.agendaentryid || '';
+          }       
+       };
+        defaultColumnDefinitions['agendaid'] = 
+       {
+       	  "aTargets": [ -1 ],
+          "sClass": "left",
+          "sTitle": org.r3.db.agenda.agendaentry.message.agendaid,
+          "render": function ( data, type, row, meta )
+          {
+             var item = data; 
+             return item.dataBean.agendaid || '';
+          }       
+       };
+        defaultColumnDefinitions['entrydescr'] = 
+       {
+       	  "aTargets": [ -1 ],
+          "sClass": "left",
+          "sTitle": org.r3.db.agenda.agendaentry.message.entrydescr,
+          "render": function ( data, type, row, meta )
+          {
+             var item = data; 
+             return item.dataBean.entrydescr || '';
+          }       
+       };
+        defaultColumnDefinitions['entrytype'] = 
+       {
+       	  "aTargets": [ -1 ],
+          "sClass": "left",
+          "sTitle": org.r3.db.agenda.agendaentry.message.entrytype,
+          "render": function ( data, type, row, meta )
+          {
+             var item = data; 
+             return item.dataBean.entrytype || '';
+          }       
+       };
+        defaultColumnDefinitions['entrytyperefid'] = 
+       {
+       	  "aTargets": [ -1 ],
+          "sClass": "left",
+          "sTitle": org.r3.db.agenda.agendaentry.message.entrytyperefid,
+          "render": function ( data, type, row, meta )
+          {
+             var item = data; 
+             return item.dataBean.entrytyperefid || '';
+          }       
+       };
+        defaultColumnDefinitions['alldayflag'] = 
+       {
+       	  "aTargets": [ -1 ],
+          "sClass": "left",
+          "sTitle": org.r3.db.agenda.agendaentry.message.alldayflag,
+          "render": function ( data, type, row, meta )
+          {
+             var item = data; 
+             return item.dataBean.alldayflag || '';
+          }       
+       };
+        defaultColumnDefinitions['startdate'] = 
+       {
+       	  "aTargets": [ -1 ],
+          "sClass": "left",
+          "sTitle": org.r3.db.agenda.agendaentry.message.startdate,
+          "render": function ( data, type, row, meta )
+          {
+             var item = data; 
+             return item.dataBean.startdate || '';
+          }       
+       };
+        defaultColumnDefinitions['starttime'] = 
+       {
+       	  "aTargets": [ -1 ],
+          "sClass": "left",
+          "sTitle": org.r3.db.agenda.agendaentry.message.starttime,
+          "render": function ( data, type, row, meta )
+          {
+             var item = data; 
+             return item.dataBean.starttime || '';
+          }       
+       };
+        defaultColumnDefinitions['enddate'] = 
+       {
+       	  "aTargets": [ -1 ],
+          "sClass": "left",
+          "sTitle": org.r3.db.agenda.agendaentry.message.enddate,
+          "render": function ( data, type, row, meta )
+          {
+             var item = data; 
+             return item.dataBean.enddate || '';
+          }       
+       };
+        defaultColumnDefinitions['endtime'] = 
+       {
+       	  "aTargets": [ -1 ],
+          "sClass": "left",
+          "sTitle": org.r3.db.agenda.agendaentry.message.endtime,
+          "render": function ( data, type, row, meta )
+          {
+             var item = data; 
+             return item.dataBean.endtime || '';
+          }       
+       };
+        
+       return defaultColumnDefinitions;
+   },
+   
+   addRawItem: function(anItem)
+   {
+   	  var adaptedItem = new org.r3.db.agenda.agendaentry.AgendaEntryDTOAdapter(anItem);   
+   	  this.addItem(adaptedItem);
+   },
+   
+   addAdaptedItem: function(anAdaptedItem)
+   {
+   	  this.addItem(anAdaptedItem);
+   }
+ 
+});
+
