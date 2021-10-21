@@ -367,9 +367,9 @@ org.r3.db.sailevent.entrylist.SailEntryListQueryActionFormView = org.r3.db.DataT
               		var item = data;
               		
               		if (item.dataBean.accepted && item.dataBean.accepted == 'btrue')
-              			return "<div style='background-color: #12633e; color: white; padding: 2px'>CONFERMATA</div>";
+              			return "<div style='background-color: #12633e; color: white; padding: 2px'>COMPLETATA</div>";
               		
-              		return "<div style='background-color: #bb0606; color: white; padding: 2px'>DA&nbsp;CONFERMARE</div>";
+              		return "<div style='background-color: #bb0606; color: white; padding: 2px'>DA&nbsp;COMPLETARE</div>";
            		}
         	};
        
