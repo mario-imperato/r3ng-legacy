@@ -11,11 +11,19 @@ import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.methods.RequestBuilder;
+import org.apache.http.config.RegistryBuilder;
+import org.apache.http.conn.socket.ConnectionSocketFactory;
+import org.apache.http.conn.socket.PlainConnectionSocketFactory;
+import org.apache.http.conn.ssl.NoopHostnameVerifier;
+import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.cookie.Cookie;
 import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.message.BasicHeader;
+import org.apache.http.ssl.SSLContextBuilder;
+import org.apache.http.ssl.SSLContexts;
 import org.apache.http.util.EntityUtils;
 import org.regattacubed.r3ds9_fivgtw.resources.persona.PersonaResource;
 import org.regattacubed.r3ds9_fivgtw.resources.societa.SocietaResource;
@@ -25,6 +33,7 @@ import org.regattacubed.r3ds9_fivgtw.util.SystemUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.net.ssl.SSLContext;
 import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
@@ -43,7 +52,14 @@ public class FivSiteClient {
     private HttpHost targetHost;
 
     public FivSiteClient() {
-        this("federvela.coninet.it", 80, "http");
+        this(true);
+    }
+
+    public FivSiteClient(boolean useSSL) {
+        if (useSSL)
+            targetHost = new HttpHost("federvela.coninet.it", 443, "https");
+        else
+            targetHost = new HttpHost("federvela.coninet.it", 80, "http");
     }
 
     public FivSiteClient(String hostName, int port, String protocolScheme) {
@@ -81,29 +97,51 @@ public class FivSiteClient {
 
     private HttpClient getHttpClient() {
         if (httpClient == null) {
-            RequestConfig globalConfig = RequestConfig.custom()
-                    .setCookieSpec(CookieSpecs.DEFAULT)
-                    .setRedirectsEnabled(false)
-                    .build();
 
-            List<Header> defaultHeaders = new ArrayList<>();
-            defaultHeaders.add(new BasicHeader("Accept", "text/html,application/xhtml+xml,application/xml,application/json,text/plain,*/*"));
+            try {
+                RequestConfig globalConfig = RequestConfig.custom()
+                        .setCookieSpec(CookieSpecs.DEFAULT)
+                        .setRedirectsEnabled(false)
+                        .build();
 
-            if (cookieStore == null)
-                cookieStore = new BasicCookieStore();
+                List<Header> defaultHeaders = new ArrayList<>();
+                defaultHeaders.add(new BasicHeader("Accept", "text/html,application/xhtml+xml,application/xml,application/json,text/plain,*/*"));
 
-            httpClient = HttpClientBuilder.create()
-                    .setUserAgent(USER_AGENT_MAC)
-                    .setDefaultRequestConfig(globalConfig)
-                    .setDefaultCookieStore(cookieStore)
-                    .setDefaultHeaders(defaultHeaders)
-                    .build();
+                if (cookieStore == null)
+                    cookieStore = new BasicCookieStore();
+
+                HttpClientBuilder httpBuilder = HttpClientBuilder.create()
+                        .setUserAgent(USER_AGENT_MAC)
+                        .setDefaultRequestConfig(globalConfig)
+                        .setDefaultCookieStore(cookieStore)
+                        .setDefaultHeaders(defaultHeaders);
+
+                final SSLContext sslContext = new SSLContextBuilder()
+                        .loadTrustMaterial(null, (x509CertChain, authType) -> true)
+                        .build();
+
+                httpBuilder.setSSLContext(sslContext)
+                        .setConnectionManager(
+                                new PoolingHttpClientConnectionManager(
+                                        RegistryBuilder.<ConnectionSocketFactory>create()
+                                                .register("http", PlainConnectionSocketFactory.INSTANCE)
+                                                .register("https", new SSLConnectionSocketFactory(sslContext,
+                                                        NoopHostnameVerifier.INSTANCE))
+                                                .build()
+                                ));
+
+                httpClient = httpBuilder.build();
 
             /*
              * Not anymore?
             httpClient.getParams().setParameter(CoreProtocolPNames.PROTOCOL_VERSION, HttpVersion.HTTP_1_1);
              */
+            }
+            catch(Exception exc) {
+                System.out.println("Got Error:" + exc);
+            }
         }
+
 
         return httpClient;
     }
@@ -120,6 +158,7 @@ public class FivSiteClient {
             HttpUriRequest login = RequestBuilder.post()
                     .setUri(new URI("/user/login?destination="))
                     .setVersion(HttpVersion.HTTP_1_1)
+
                     .addParameter("name", userId)
                     .addParameter("pass", passwd)
                     .addParameter("form_id", "user_login_form")

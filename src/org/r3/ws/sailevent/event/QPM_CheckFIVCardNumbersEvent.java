@@ -87,7 +87,7 @@ public class QPM_CheckFIVCardNumbersEvent extends QPM_SEVQueueEventProcessor {
 
 							// Ad una verifica potrebbe in effetti non esistere...
 							if (fivMemberDTO2 != null) {
-								sevQueueLogger.info(String.format("[%s] - Returning FIV Info from Site For Holder: %s", crewDTO.getCardnumber(), fivMemberDTO2.getCardholderlastname()));
+								sevQueueLogger.info(String.format("[%s] - Returning FIV Info from Site For Holder: %s - [Insert]", crewDTO.getCardnumber(), fivMemberDTO2.getCardholderlastname()));
 								fivPersistence.insert(fivMemberDTO2, pctx.getPersistenceConfigInfo());
 							} else
 								sevQueueLogger.info(String.format("[%s] - Unable to Return FIV Info from Site",	crewDTO.getCardnumber()));
@@ -104,7 +104,7 @@ public class QPM_CheckFIVCardNumbersEvent extends QPM_SEVQueueEventProcessor {
 								// Ad una verifica potrebbe in effetti non
 								// esistere...
 								if (fivMemberDTO2 != null) {
-									sevQueueLogger.info(String.format("[%s] - Returning FIV Info from Site For Holder: %s", crewDTO.getCardnumber(), fivMemberDTO2.getCardholderlastname()));
+									sevQueueLogger.info(String.format("[%s] - Returning FIV Info from Site For Holder: %s [Update]", crewDTO.getCardnumber(), fivMemberDTO2.getCardholderlastname()));
 									fivPersistence.updateByPrimaryKey(fivMemberDTO2, pctx.getPersistenceConfigInfo());
 								} else
 									sevQueueLogger.error(String.format("Unable to Return FIV Info from Site"));
@@ -113,7 +113,7 @@ public class QPM_CheckFIVCardNumbersEvent extends QPM_SEVQueueEventProcessor {
 								// fivMemberDTO.setSystemcheckdate();
 								// fivPersistence.updateByPrimaryKey(fivMemberDTO,
 								// pctx.getPersistenceConfigInfo());
-							}
+							} 
 
 						}
 
@@ -124,9 +124,11 @@ public class QPM_CheckFIVCardNumbersEvent extends QPM_SEVQueueEventProcessor {
 					}
 				}
 
+				sevQueueLogger.info(String.format("Committing session"));
 				session.commit();
 			}
 		} catch (Exception e) {
+			sevQueueLogger.error(String.format("Roll-backing session"));
 			session.rollback();
 			e.printStackTrace();
 			throw new QueueMessageProcessorException(e.getMessage());
@@ -178,20 +180,32 @@ public class QPM_CheckFIVCardNumbersEvent extends QPM_SEVQueueEventProcessor {
 	{
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		
-		FIVMemberDTO fivMemberDataBean = new FIVMemberDTO();				
+		FIVMemberDTO fivMemberDataBean = null;				
 		
-		fivMemberDataBean.setCardnumber(String.valueOf(finfo.getCodiceTessera()));
+		// In caso di non tesseramento nell'ultimo quadriennio il servizio non mi restituisce il numero di tessera....
+		if (finfo.getCodiceTessera() > 0) {
+			fivMemberDataBean = new FIVMemberDTO();
+			fivMemberDataBean.setCardnumber(String.valueOf(finfo.getCodiceTessera()));
 
 		java.util.Calendar calNow = java.util.Calendar.getInstance();
 		fivMemberDataBean.setSystemcheckdate(new java.sql.Timestamp(finfo.getSystemcheckdate().getTimeInMillis()));
 		
 		try {
-		java.sql.Timestamp renewalDate = new java.sql.Timestamp(df.parse(finfo.getDataEmissione()).getTime());
-		java.sql.Timestamp medicalExamExpirationDate = new java.sql.Timestamp(df.parse(finfo.getCertificatoScadenza()).getTime());
-		java.sql.Timestamp cardExpirationDate = new java.sql.Timestamp(df.parse(finfo.getDataScadenzaValidita()).getTime());
-		fivMemberDataBean.setCardexpirationdate(cardExpirationDate);
-		fivMemberDataBean.setRenewaldate(renewalDate);
-		fivMemberDataBean.setMedexamexpirationdate(medicalExamExpirationDate);
+			if (finfo.getDataEmissione() != null) {
+		       java.sql.Timestamp renewalDate = new java.sql.Timestamp(df.parse(finfo.getDataEmissione()).getTime());
+		       fivMemberDataBean.setRenewaldate(renewalDate);
+			}
+			
+			if (finfo.getCertificatoScadenza() != null) {
+				java.sql.Timestamp medicalExamExpirationDate = new java.sql.Timestamp(df.parse(finfo.getCertificatoScadenza()).getTime());
+				fivMemberDataBean.setMedexamexpirationdate(medicalExamExpirationDate);
+			}
+		
+			if (finfo.getDataScadenzaValidita() != null) {
+				java.sql.Timestamp cardExpirationDate = new java.sql.Timestamp(df.parse(finfo.getDataScadenzaValidita()).getTime());
+				fivMemberDataBean.setCardexpirationdate(cardExpirationDate);
+			}
+		
 		} catch (Exception exc) {
 			sevQueueLogger.error("error in parsing dates.", exc);
 		}
@@ -205,6 +219,7 @@ public class QPM_CheckFIVCardNumbersEvent extends QPM_SEVQueueEventProcessor {
 		fivMemberDataBean.setPhone(finfo.getPhone());
 		
 		fivMemberDataBean.setCardnumberstatuscode(finfo.getCardnumberstatuscode());
+		}
 		
 		return fivMemberDataBean;
 	}
