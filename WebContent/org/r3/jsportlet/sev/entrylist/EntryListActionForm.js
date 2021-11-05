@@ -23,7 +23,7 @@ org.r3.jsportlet.sev.entrylist.EntryListActionForm = org.r3.ActionFormManager.ex
 					sortable: true,
 					htmlTemplateUrl: org.r3.Constants.applicationContext + '/org/r3/jsportlet/sev/entrylist/EntryListActionFormViewTemplate.html.jsp',
 					// onInitializationComplete : $.unepUtils.hitch(this, this.populateRiepilogo),
-					dataTableColumns : "boaticon,sailnumber;sort,yachtname,yachttype,yachtclub,ownerlastname,racegroup_raceclass,accepted",
+					dataTableColumns : "boaticon,sailnumber;sort,yachtname,yachttype,yachtclub,ownerlastname,racegroup_raceclass",
 					requiredLUTs : [ 
                         "GET_classifier_sys_recstatus", "GET_classifier_r3ea_raceclass", "GET_classifier_r3ea_boatgroup" ],
 					
