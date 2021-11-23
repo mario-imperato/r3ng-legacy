@@ -124,6 +124,18 @@ e non utilizzare eventuali bookmark salvati. Vi preghiamo infine di segnalarci t
   <div class='col-md-12 col-sm-6 col-xs-12'>      
   
   <div style='position: relative; width: 100%; height: 0; padding-bottom: 56%; margin-bottom: 10px;'>
+  <iframe style='position: absolute; width: 100%; height: 100%; left: 0; top: 0;' src="https://www.youtube.com/embed/gta2RHuYlGw" title="Invernali Live" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+  
+  <div style='position: relative; width: 100%; height: 0; padding-bottom: 56%; margin-bottom: 10px;'>
+  <iframe style='position: absolute; width: 100%; height: 100%; left: 0; top: 0;' src="https://www.youtube.com/embed/vzShNkwfPh0" title="Invernali Live: intervista a Franco Quadrana" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+  
+  <div style='position: relative; width: 100%; height: 0; padding-bottom: 56%; margin-bottom: 10px;'>
+  <iframe style='position: absolute; width: 100%; height: 100%; left: 0; top: 0;' src="https://www.youtube.com/embed/av7ZSd932Z8" title="Invernali Live: intervista a Massimo Pettirossi" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+  
+  <div style='position: relative; width: 100%; height: 0; padding-bottom: 56%; margin-bottom: 10px;'>
   <iframe style='position: absolute; width: 100%; height: 100%; left: 0; top: 0;' src="https://www.youtube.com/embed/2acLP67qYAE" title="Benvenuti al 41o Campionato" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
   
