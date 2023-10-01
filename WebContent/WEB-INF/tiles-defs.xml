@@ -47,6 +47,13 @@
         <put name="layout_templates"                 value="/resources/tileslayouts/site_page_templates.jsp" />
     </definition>
     
+    <definition name="yachtclublayout_vedetta"        path="/resources/tileslayouts/yachtclub_layout_vedetta.jsp" >
+        <put name="windowLayout_pageTitle"           value="Regatta3" />
+        <put name="windowLayout_footer"              value="/resources/tileslayouts/yachtclub_page_footer.jsp" />
+        <put name="windowLayout_header"              value="/resources/tileslayouts/yachtclub_page_header.jsp" />
+        <put name="layout_templates"                 value="/resources/tileslayouts/site_page_templates.jsp" />
+    </definition>
+    
     <!-- #####################################################################################  -->
     <definition name="regattalayout2"    path="/resources/tileslayouts/site_layout_skinned.jsp" >
         <put name="windowLayout_pageTitle"         value="Regatta3" />                

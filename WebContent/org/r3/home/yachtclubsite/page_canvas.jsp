@@ -10,6 +10,16 @@
 
 <div class='r3_container' style='margin-top: 30px;'>
 
+<!--
+<div style='padding: 10px 10px 20px 10px; text-align: center; font-size: 24px; font-family: Arial,'Helvetica Neue',Helvetica,sans-serif !important; line-height: 1.05; font-weight: bold;'>
+<div style='border: 1px solid #C90B0B; padding: 20px'>
+<div style="color: #C90B0B; !important">
+Informiamo che il Campionato Invernale riprende l'8 Gennaio 2023. <br />Buon Anno!
+</div>
+</div>
+</div>
+-->
+
 <!-- style="color: #C90B0B #ff00FF;" style="color: #008080;" style="color: #333333;"
 <div style='padding: 10px 10px 20px 10px; text-align: center; font-size: 24px; font-family: Arial,'Helvetica Neue',Helvetica,sans-serif !important; line-height: 1.05; font-weight: bold;'>
 <div style='border: 1px solid #C90B0B; padding: 20px'>
@@ -23,12 +33,6 @@ Comunicheremo non appena possibile la ripresa delle attività sportiva.<br />
 <span style="color: #C90B0B">Si informa che la segreteria dal 5 luglio al 31 agosto 2021 rimarr&agrave; chiusa al pubblico. <br />Richieste e necessita&#39; verranno gestite esclusivamente per via informatica.
 </span>
 </p>
-</div>
-
-<div style="color: #C90B0B; !important">
-In considerazione del DCPM del 4 marzo 2020, nonch&eacute;,delle disposizioni del Presidente della FIV tutte le attivit&agrave; sportive sono sospese fino al 22 marzo p.v.<br />
-Pertanto la regata dell&rsquo;8 marzo &egrave; stata annullata e il campionato &egrave; da considerarsi concluso e la premiazione rimandata a data da destinarsi.<br />
-Il presidente e Il comitato organizzatore.
 </div>
 
 </div>
@@ -105,7 +109,12 @@ e non utilizzare eventuali bookmark salvati. Vi preghiamo infine di segnalarci t
   <a class="twitter-timeline" href="https://twitter.com/cvfiumicino" data-widget-id="483963506908069888">Tweets di @cvfiumicino</a>  
   </div>
   -->
-
+  <div class='col-md-12 col-sm-6 col-xs-12'>  
+  <a href="/r3ng/cvfonline/it/org/r3/cms/cmspage.do?pageid=webcam&cardid=00_METEO">
+  <img src="/r3ng/resources/img/vedetta.png" style="width: 100%; margin-bottom: 10px" />
+  </a>
+  </div>
+  
   <div class='col-md-12 col-sm-6 hidden-xs'>
   <div style='margin-bottom: 10px;'>
   <div class="fb-page" data-href="https://www.facebook.com/Circolo-Velico-Fiumicino-714928588568140/" data-tabs="timeline" data-width="500" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/Circolo-Velico-Fiumicino-714928588568140/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Circolo-Velico-Fiumicino-714928588568140/">Circolo Velico Fiumicino</a></blockquote></div>
@@ -147,9 +156,7 @@ e non utilizzare eventuali bookmark salvati. Vi preghiamo infine di segnalarci t
   <iframe style='position: absolute; width: 100%; height: 100%; left: 0; top: 0;' src="https://www.youtube.com/embed/MSZpr1llqL8" title="Il Tack Tracker" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
   
-  <div style='position: relative; width: 100%; height: 0; padding-bottom: 56%; margin-bottom: 10px;'>
-  <iframe style='position: absolute; width: 100%; height: 100%; left: 0; top: 0;' src="https://www.youtube.com/embed/L240MNGEG8c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
+
   
 
   </div>

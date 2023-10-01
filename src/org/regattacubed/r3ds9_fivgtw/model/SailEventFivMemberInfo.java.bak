@@ -61,9 +61,6 @@ public class SailEventFivMemberInfo {
                     certificatoScadenza = cm.getDataFine();
                     certificatoTipo = cm.getIdTipoCertificato();
                     certificatoScaduto = cm.getScaduto();
-                } else {
-                    certificatoScaduto = 1;
-                    certificatoScadenza = "2000-01-01";
                 }
 
                 if (certificatoScadenza != null && dataScadenza != null) {

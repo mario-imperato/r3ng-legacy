@@ -46,7 +46,7 @@ public class LUTManager
 		sys_recstatus, locale, cms_attachtype, country, unitofmeasure, currency,
 		
 		r3ea_completion, r3ea_verificat, r3ea_sailmat, r3ea_crociera, r3ea_boatgroup, r3ea_boatgroup2, r3ea_apptype, r3ea_ratings, r3ea_crewrole, r3ea_authoriz,
-		r3ea_doctype, r3ea_ranktype, r3ea_mooringloc, r3ea_admincks, r3ea_racegroups, fivcardstatus, r3ea_calendar, r3ea_orcgrancroc, r3ea_boatelse,
+		r3ea_doctype, r3ea_ranktype, r3ea_mooringloc, r3ea_admincks, r3ea_racegroups, fivcardstatus, r3ea_calendar, r3ea_orcgranc, r3ea_boatelse,
 		
 		cms_category, cms_group, cms_page, cms_channel, portlets,
 		

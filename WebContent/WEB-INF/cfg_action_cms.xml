@@ -25,7 +25,8 @@
        <forward name="media"            path="/org/r3/cms/media/page.jsp"       redirect="false" />
        <forward name="grouppage1"       path="/org/r3/cms/grouppage1/page.jsp"  redirect="false" />
        <forward name="grouppage1"       path="/org/r3/cms/grouppage1/page.jsp"  redirect="false" />
-
+       <forward name="webcam"            path="/org/r3/cms/vedetta/page.jsp"       redirect="false" />
+       <!-- <forward name="webcam"            path="/org/r3/cms/webcam/index.html"       redirect="false" />  -->
 
        <forward name="ss_veleria"       path="/org/r3/cms/ss/veleria/page.jsp"     redirect="false" />
        <forward name="ss_genoa"         path="/org/r3/cms/ss/genoa/page.jsp"       redirect="false" />

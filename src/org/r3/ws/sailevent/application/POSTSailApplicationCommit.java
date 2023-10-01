@@ -61,9 +61,11 @@ public class POSTSailApplicationCommit extends ServicePattern
 		if (numberOfInsuranceDocument == 0)
 			return true;
 
+		/*
 		int numberOfCovidOwnerDocument = documentPersistence.numberOfDocumentsByDocumentType(dto1.getEventid(), dto1.getApplicationid(), SailApplicationDTO.DocumentType.r3ea_dtcovidowner, pcfg.getPersistenceConfigInfo(), aSession);		
 		if (numberOfCovidOwnerDocument == 0)
 			return true;
+		*/
 		
 		SailApplicationCrewMemberPersistence crewPersistence = SailApplicationCrewMemberPersistence.createPersistenceObject(pcfg, aSession);
 		int crewSize = crewPersistence.crewSize(dto1.getEventid(), dto1.getApplicationid(), pcfg.getPersistenceConfigInfo(), aSession);

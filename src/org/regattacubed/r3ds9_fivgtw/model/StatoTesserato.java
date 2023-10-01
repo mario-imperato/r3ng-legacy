@@ -80,7 +80,7 @@ public class StatoTesserato {
         if (tesseramenti != null) {
             String pdes = String.valueOf(year);
             for (Tesseramento t1 : tesseramenti) {
-                if (t1.getPeriodo_des() == pdes) {
+                if (t1.getPeriodo_des().equalsIgnoreCase(pdes)) {
                     t = t1;
                     break;
                 } else {
@@ -93,11 +93,34 @@ public class StatoTesserato {
             }
         }
 
+                /* Non ritorno l'ultimo....
+        if (t.getPeriodo_des().equalsIgnoreCase(String.valueOf(year))) {
+            return t;
+        }
+         */
+
+        return t;
+    }
+
+    public Tesseramento findLastTesseramento() {
+
+        Tesseramento t = null;
+        String period = "";
+        if (tesseramenti != null) {            
+            for (Tesseramento t1 : tesseramenti) {
+                if (t1.getPeriodo_des().compareTo(period) > 0) {
+                    t = t1;
+                    period = t1.getPeriodo_des();
+                } 
+            }
+        }
+
+
         return t;
     }
 
     @JsonIgnore
-    public InfoCertificatoMedico findCertificato(int year) {
+    public InfoCertificatoMedico findLastCertificato() {
 
         InfoCertificatoMedico m = null;
         if (certificati != null && certificati.size() > 0) {
