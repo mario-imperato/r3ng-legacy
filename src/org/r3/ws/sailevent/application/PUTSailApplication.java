@@ -116,8 +116,11 @@ public class PUTSailApplication extends ServicePattern
 				break;
 				
 			case r3ea_authorinfo:
-				ep.logEventAuthorInfo(pcfg.getPersistenceConfigInfo(), senv.getRequestSiteId(), applicationId, senv.getUserProfile().getUserid());
-				
+				ep.logEventAuthorInfo(pcfg.getPersistenceConfigInfo(), senv.getRequestSiteId(), applicationId, senv.getUserProfile().getUserid());				
+				break;
+			
+			case r3ea_attsheet:
+				ep.logEventAttendanceSheetInfo(pcfg.getPersistenceConfigInfo(), senv.getRequestSiteId(), applicationId, senv.getUserProfile().getUserid());				
 				break;
 				
 			case r3ea_payinfo:
@@ -161,9 +164,16 @@ public class PUTSailApplication extends ServicePattern
 			}
 					
 			SailApplicationDataPersistence p1 = SailApplicationDataPersistence.createPersistenceObject(pcfg, aSession);
-			p1.deleteByEventidApplicationidSectionid(senv.getRequestSiteId(), applicationId, section.toString(),
+			if (section == ApplicationSection.r3ea_attsheet) {
+				if (actionForm.getAttendanceSheetActiveItem() != "") {
+				p1.deleteByEventidApplicationidSectionidParamNamePrefix(senv.getRequestSiteId(), applicationId, section.toString(), actionForm.getAttendanceSheetActiveItem(),
+						pcfg.getPersistenceConfigInfo());
+				}
+			} else {
+			    p1.deleteByEventidApplicationidSectionid(senv.getRequestSiteId(), applicationId, section.toString(),
 							pcfg.getPersistenceConfigInfo());
-
+			}
+			
 			List<SailApplicationDataDTO> listOfProperties = 
 				getDTO4UpdateProperties(senv.getRequestSiteId(), applicationId, section, actionForm);
 			
@@ -203,6 +213,10 @@ public class PUTSailApplication extends ServicePattern
 			
 		case r3ea_authorinfo:
 			resList = anActionForm.getDTO4UpdateAuthorInfoProperties(anEventId, anApplicationId);
+			break;
+			
+		case r3ea_attsheet:
+			resList = anActionForm.getDTO4UpdateAttendanceSheetInfoProperties(anEventId, anApplicationId);
 			break;
 			
 		case r3ea_payinfo:

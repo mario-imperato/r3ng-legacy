@@ -100,6 +100,17 @@
   </p>  
 </div>
 
+<div id="HLP_SEVATTSHEET" class="cmsCard actionForm sidebar applicationactionform_helpsidebar" style="display: none; margin-top: 0; padding: 5px;">
+  <h2>Aiuto rapido</h2>
+
+  <p class="text">
+  Il foglio presenza aiuta il CdR nel suo lavoro.In ogni giornata di regata l'armatore e' chiamato a compilare due dichiarazioni: la prima riguarda la presenza della barca in regata, la seconda
+  riguarda l'assunzione di responsabilità per la regolarità della lista equipaggio.        
+  Il pannello permette di valorizzare le dichiarazioni relative alla sola giornata successiva. Non sarà possibile modificare tali dichiaraizoni successivamente.
+  </p>  
+</div>
+
+
 <div id="HLP_SEVDOCINFO" class="cmsCard actionForm sidebar applicationactionform_helpsidebar" style="display: none; margin-top: 0; padding: 5px;">
   <h2>Aiuto rapido</h2>
   
@@ -165,6 +176,8 @@
 
 <div id="JSPortlet_SEVApplicationActionForm_AuthorInfoActionForm" class="actionForm" style="display: none">
 </div>
+
+<div id="JSPortlet_SEVApplicationActionForm_AttendanceSheetActionForm" class="actionForm" style="display: none"></div>
 
 <div id="JSPortlet_SEVApplicationActionForm_DocInfoActionForm" class="actionForm" style="display: none">
 </div>

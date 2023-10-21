@@ -2,6 +2,7 @@ package org.r3.db.system.queues.simplemail;
 
 import java.io.File;
 import java.security.Security;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Properties;
@@ -9,6 +10,7 @@ import java.util.Properties;
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.activation.FileDataSource;
+import javax.mail.Address;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Multipart;
@@ -27,6 +29,9 @@ import org.r3.db.system.queues.model.QueueMessageProcessorException;
 import org.r3.db.system.queues.model.QueueProcessorContext;
 import org.r3.db.system.siteproperty.SitePropertyDTO;
 import org.r3.db.system.siteproperty.SitePropertyDTO.PropertyScope;
+import org.r3.ws.actors.actor.WsActor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.r3.db.system.siteproperty.SitePropertyLUT;
 
 public class MailQueueMessageProcessor extends QueueMessageProcessor
@@ -35,6 +40,8 @@ public class MailQueueMessageProcessor extends QueueMessageProcessor
 	{
 		// Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
 	}
+	
+	private static Logger logger = LoggerFactory.getLogger(MailQueueMessageProcessor.class);
 	
 	private String siteContext;
 	
@@ -45,6 +52,7 @@ public class MailQueueMessageProcessor extends QueueMessageProcessor
 	@Override
 	public void initialize(String aSiteContext, QueueProcessorContext processContext)
 	{
+		final String semLogContext = "mail-queue-processor::initialize";
 		siteContext = aSiteContext;
 		
 		if (!initialized)
@@ -60,11 +68,12 @@ public class MailQueueMessageProcessor extends QueueMessageProcessor
 			
 			pvalue = getSmtpProperty(aSiteContext, SitePropertyDTO.SMTPAUTH).getPropertyvalue();
 			props.put("mail.smtp.auth", pvalue);
-			System.out.printf("MAIL Processor Using: %s as Account\n", pvalue);
+			logger.debug(String.format("MAIL Processor - with account: %s", pvalue));
 
 			String mailConfigProfile = getSmtpProperty(aSiteContext, SitePropertyDTO.MAILPROFILE).getPropertyvalue();
 			if (mailConfigProfile != null && mailConfigProfile.equalsIgnoreCase(SitePropertyDTO.MailProfile.google.toString()))
 			{
+				logger.debug(String.format("%s - google config activated", semLogContext));
 			props.put("mail.smtp.port", getSmtpProperty(aSiteContext, SitePropertyDTO.SMTPPORT).getPropertyvalue());
 			props.put("mail.smtp.socketFactory.port", getSmtpProperty(aSiteContext, SitePropertyDTO.SMTPSOCKETFACTORYPORT).getPropertyvalue());
 			props.put("mail.smtp.socketFactory.class", getSmtpProperty(aSiteContext, SitePropertyDTO.SMTPSOCKETFACTORYCLASS).getPropertyvalue());
@@ -72,6 +81,12 @@ public class MailQueueMessageProcessor extends QueueMessageProcessor
 			props.setProperty("mail.smtp.quitwait", getSmtpProperty(aSiteContext, SitePropertyDTO.SMTPQUITWAIT).getPropertyvalue());
 			}
 			
+			 Enumeration e = props.propertyNames();
+			  while (e.hasMoreElements()) {
+			      String key = (String) e.nextElement();
+			      logger.debug(String.format("%s - %s=%s", semLogContext, key, props.getProperty(key)));
+			}
+			  
 			mailSession = Session.getInstance(props, getAuthenticator());
 			mailSession.setDebug(debug);
 		}
@@ -85,6 +100,8 @@ public class MailQueueMessageProcessor extends QueueMessageProcessor
 	@Override
 	public boolean process(QueueProcessorContext processContext, QueueMessage aQueueMessage) throws QueueMessageProcessorException
 	{
+		final String semLogContext = "mail-queue-processor::process";
+		
 		MailMessage s = (MailMessage)aQueueMessage;
 		
 		if (s == null)
@@ -182,6 +199,9 @@ public class MailQueueMessageProcessor extends QueueMessageProcessor
 			// add the Multipart to the message
 			msg.setContent(mp);
 
+			logger.error(String.format("%s - sending message", semLogContext));
+			logMailMessage(msg);
+			
 			// send the message
 			Transport.send(msg);
 
@@ -189,6 +209,7 @@ public class MailQueueMessageProcessor extends QueueMessageProcessor
 		}
 		catch (Exception ex)
 		{
+			logger.error(String.format("%s - %s", semLogContext, ex.getMessage()));
 			ex.printStackTrace();
 
 			if (ex != null)
@@ -208,6 +229,29 @@ public class MailQueueMessageProcessor extends QueueMessageProcessor
 		return mailSession;
 	}
 
+	private void logMailMessage(MimeMessage msg) {		
+		final String semLogContext = "mail-queue-processor::process-log-mail-message";
+		
+		try {
+		    Address[] f = msg.getFrom();
+		    if (f != null) {
+		    	for (int i = 0; i < f.length; i++) {
+		    		logger.debug("%s - from %s", semLogContext, f[i].toString());
+		    	}
+		    }
+
+		    Address[] r = msg.getAllRecipients();
+		    if (r != null) {
+		    	for (int i = 0; i < r.length; i++) {
+		    		logger.debug("%s - to %s", semLogContext, r[i].toString());
+		    	}
+		    }
+		} catch( Exception exc) {
+			exc.printStackTrace();
+			logger.error(String.format("%s - %s", semLogContext, exc.getMessage()));
+		}
+	}
+	
 	private SitePropertyDTO getSmtpProperty(String aSiteContext, String propertyName)
 	{
 		SitePropertyLUT sitePropertyLUT = (SitePropertyLUT) LUTManager.getLUTManager().getLUT(LUTName.siteproperty, null);

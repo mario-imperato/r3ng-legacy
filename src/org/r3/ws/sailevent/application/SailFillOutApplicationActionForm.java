@@ -20,7 +20,7 @@ public class SailFillOutApplicationActionForm
 		prop_havehelmsman,
 		helmsmanfirstname, helmsmanlastname, helmsmanemail, helmsmancellphone, helmsmanphone, helmsmanaddress, helmsmantown, helmsmanzipcode,
 		mooringloc,
-		completionstatus, verificationstatus, annotation, adminchecks, adminracegroup, adminraceclass, yachtbsf, yachtgph };
+		completionstatus, verificationstatus, annotation, adminchecks, adminracegroup, adminraceclass, yachtbsf, yachtgph, attendancesheetactiveitem };
 	
     private MultivaluedMap<String, String> requestData;
     
@@ -109,6 +109,11 @@ public class SailFillOutApplicationActionForm
     	return DTOBase.nullOnEmpty(requestData.getFirst(SailApplicationFormFields.ownerzipcode.toString()));
     }
 
+	public String getAttendanceSheetActiveItem()
+	{
+		return DTOBase.nullOnEmpty(requestData.getFirst(SailApplicationFormFields.attendancesheetactiveitem.toString()));
+	}
+	
     // Helmsman
     private boolean haveHelmsman()
     {
@@ -278,6 +283,12 @@ public class SailFillOutApplicationActionForm
 		return getDTO4UpdateProperties(eventId, applicationid, SailApplicationDTO.ApplicationSection.r3ea_authorinfo);
 	}
 
+	public List<SailApplicationDataDTO> getDTO4UpdateAttendanceSheetInfoProperties(String eventId, String applicationid)
+	{
+		return getDTO4UpdateProperties(eventId, applicationid, SailApplicationDTO.ApplicationSection.r3ea_attsheet);
+	}
+	
+	
 	private List<SailApplicationDataDTO> getDTO4UpdateProperties(String eventId, String applicationid, SailApplicationDTO.ApplicationSection formSection)
 	{
 		List<SailApplicationDataDTO> listOfProps = null; // new ArrayList<SailApplicationDataDTO>();

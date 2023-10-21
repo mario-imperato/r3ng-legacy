@@ -20,7 +20,7 @@ public class SailApplicationDTO extends SailApplicationDTOBase
 	
 	public enum ApplicationSection { 
 		r3ea_boatinfo, r3ea_classinfo, r3ea_ownerinfo, r3ea_crewinfo, r3ea_docinfo, r3ea_authorinfo, r3ea_payinfo, r3ea_summaryinfo, 
-		r3ea_adminchecks, r3ea_adminraceinfo
+		r3ea_adminchecks, r3ea_adminraceinfo, r3ea_attsheet
 	}
 	
 	public enum DocumentType { r3ea_dtircstd, r3ea_dtorcintl, r3ea_dtircclub, r3ea_dtorcclub, r3ea_dtinsur, r3ea_dtadv, r3ea_dtboatimg, r3ea_doc, r3ea_dtreqprovrate, r3ea_dtcovidowner, r3ea_dtcovidcrew };

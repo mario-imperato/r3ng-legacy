@@ -83,6 +83,9 @@
   <r3_lang:script path2resolve="/org/r3/jsportlet/sev/application/AuthorInfoActionFormView.js" />
   <r3_lang:script path2resolve="/org/r3/jsportlet/sev/application/AuthorInfoActionFormView_validation.js" />
 
+  <r3_lang:script path2resolve="/org/r3/jsportlet/sev/application/AttendanceSheetActionFormView.js" />
+  <r3_lang:script path2resolve="/org/r3/jsportlet/sev/application/AttendanceSheetActionFormView_validation.js" />
+  
   <r3_lang:script path2resolve="/org/r3/jsportlet/sev/application/DocInfoActionFormView.js" />
   <r3_lang:script path2resolve="/org/r3/jsportlet/sev/application/DocInfoActionFormView_validation.js" />
 

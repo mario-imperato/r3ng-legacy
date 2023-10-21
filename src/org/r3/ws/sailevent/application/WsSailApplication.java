@@ -504,6 +504,41 @@ public class WsSailApplication extends RestService
 		return response;
 	}
 	
+	@PUT
+	@Path("{id}/attendancesheetinfo")
+	@Produces({ "application/xml", "application/json" })
+	public Response updateattendancesheetinfo(
+		     @Context javax.servlet.ServletContext ctx, @Context javax.servlet.http.HttpServletRequest servletRequest,
+		     @Context Request request, 
+		     @Context HttpHeaders headers,
+		     @PathParam("site") String aSite,
+		     @PathParam("language") String aLanguage,
+		     @PathParam("id") String anApplicationId,
+		     MultivaluedMap<String, String> rawData
+		     )
+	{
+		AccessLogInfo a = null;
+		if (logger.isInfoEnabled())
+		{
+			a = this.accessLogInfo();	
+		}		
+
+		if (logger.isDebugEnabled())
+		{
+
+		}		
+
+		SailFillOutApplicationActionForm actionForm = new SailFillOutApplicationActionForm(rawData);
+
+		PUTSailApplication bl = new PUTSailApplication(ctx, getServiceEnvironment(ctx, servletRequest, headers, aSite, aLanguage), anApplicationId, SailApplicationDTO.ApplicationSection.r3ea_attsheet, actionForm);
+		Response response = bl.process(request);
+	    if (a != null)
+	    {
+	       logger.info(a.close());	 
+	    }
+		return response;
+	}
+	
 	@POST
 	@Path("{id}/files")
 	@Consumes("multipart/form-data")

@@ -23,6 +23,7 @@ org.r3.db.sailevent.appcrewmemberview.SailApplicationCrewMemberViewSummaryDTO = 
         this.yachtname = aDataBean.yachtname || null; 
         
         this.crewSize = 0;
+        this.reserveCrewSize = 0;
         this.crewValid = 0;
         this.crewExpired = 0;
         this.crewError = 0;
@@ -40,8 +41,12 @@ org.r3.db.sailevent.appcrewmemberview.SailApplicationCrewMemberViewSummaryDTO = 
         	{
         		var theItem = aDataBean.listOfCrewMembers[j];
         		if (theItem.recstatus && theItem.recstatus == 'sys_recact')
-                    this.crewSize++;
-
+        		{
+        		    if (theItem.memberstatuscode == "r3ea_titolare")
+                           this.crewSize++;
+                    else   this.reserveCrewSize++;
+                    
+                }
         		if (theItem.recstatus && theItem.recstatus == 'sys_recdeleted')
        			{
         			this.crewDeleted++;

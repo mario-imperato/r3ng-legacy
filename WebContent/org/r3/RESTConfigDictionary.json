@@ -206,6 +206,8 @@
    "PUT_SEV_Application_ClassInfo"          : "/sev/applications/{0}/classinfo",
    "PUT_SEV_Application_OwnerInfo"          : "/sev/applications/{0}/ownerinfo",
    "PUT_SEV_Application_AuthorInfo"         : "/sev/applications/{0}/authorinfo",
+   "PUT_SEV_Application_AttendanceSheet"    : "/sev/applications/{0}/attendancesheetinfo",
+   
 
    "GET_FileImports"                        : "/fileimports",
    "GET_FileImportData"                     : "/fileimports/{0}/data",
@@ -483,6 +485,7 @@
    "GET_classifier_r3ea_ratings"             : "/lut/classifiers/r3ea_ratings/items",
    "GET_classifier_r3ea_crewrole"            : "/lut/classifiers/r3ea_crewrole/items",
    "GET_classifier_r3ea_authoriz"            : "/lut/classifiers/r3ea_authoriz/items",
+   "GET_classifier_r3ea_attsheet"            : "/lut/classifiers/r3ea_attsheet/items",
    "GET_classifier_r3ea_doctype"             : "/lut/classifiers/r3ea_doctype/items",         
    "GET_classifier_r3ea_ranktype"            : "/lut/classifiers/r3ea_ranktype/items",
    "GET_classifier_r3ea_mooringloc"          : "/lut/classifiers/r3ea_mooringloc/items",

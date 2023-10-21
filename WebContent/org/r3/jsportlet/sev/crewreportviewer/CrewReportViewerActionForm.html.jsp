@@ -49,6 +49,9 @@
       A bordo
       </th>
       <th  style="vertical-align: middle; text-align: center; width: 5%">
+      Riserve
+      </th>      
+      <th  style="vertical-align: middle; text-align: center; width: 5%">
       Validi
       </th>
       <th  style="vertical-align: middle; text-align: center; width: 5%">
@@ -91,6 +94,9 @@
       <td  style="vertical-align: middle; text-align: center; width: 5%">
       {%=theItem.getCrewSize()%}
       </td>
+      <td  style="vertical-align: middle; text-align: center; width: 5%">
+      {%=theItem.getReserveCrewSize()%}
+      </td>      
       <td  style="vertical-align: middle; text-align: center; width: 5%">
       {%=theItem.getCrewValid()%}
       </td>

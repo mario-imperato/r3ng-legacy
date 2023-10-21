@@ -80,6 +80,15 @@ public class EventLogPersistence extends EventLogPersistenceBase
 		return rc;
 	}
 
+	public int logEventAttendanceSheetInfo(PersistenceConfigInfo cfgInfo, String site, String applicationId, String aUserId)
+	{
+		int rc = 0;
+
+		EventLogAttendanceSheetInfo dto = new EventLogAttendanceSheetInfo(site, applicationId, aUserId);
+		rc = insert(dto, cfgInfo);
+		return rc;
+	}
+	
 	public int logEventAddDocInfo(PersistenceConfigInfo cfgInfo, String site, String applicationId, String documentid, String aUserid)
 	{
 		int rc = 0;

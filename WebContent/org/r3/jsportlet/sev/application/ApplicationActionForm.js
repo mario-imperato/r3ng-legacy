@@ -16,6 +16,8 @@ org.r3.jsportlet.sev.application.ApplicationActionForm = org.r3.ActionFormManage
 		this.classInfoView = new org.r3.jsportlet.sev.application.ClassInfoActionFormView("#JSPortlet_SEVApplicationActionForm_ClassInfoActionForm", this);
 		this.ownerInfoView = new org.r3.jsportlet.sev.application.OwnerInfoActionFormView("#JSPortlet_SEVApplicationActionForm_OwnerInfoActionForm", this);
 		this.crewInfoView = new org.r3.jsportlet.sev.application.CrewInfoActionFormView("#JSPortlet_SEVApplicationActionForm_CrewInfoActionForm", this);
+		this.attendanceSheetView = new org.r3.jsportlet.sev.application.AttendanceSheetActionFormView("#JSPortlet_SEVApplicationActionForm_AttendanceSheetActionForm", this);
+
 		this.authorInfoView = new org.r3.jsportlet.sev.application.AuthorInfoActionFormView("#JSPortlet_SEVApplicationActionForm_AuthorInfoActionForm", this);
 		this.docInfoView = new org.r3.jsportlet.sev.application.DocInfoActionFormView("#JSPortlet_SEVApplicationActionForm_DocInfoActionForm", this);
 		this.docUploadView = new org.r3.jsportlet.sev.application.UploadFileActionFormView("#JSPortlet_SEVApplicationActionForm_UploadFileActionForm", this);
@@ -36,6 +38,7 @@ org.r3.jsportlet.sev.application.ApplicationActionForm = org.r3.ActionFormManage
 		this.classInfoView.close();
 		this.ownerInfoView.close();
 		this.crewInfoView.close();
+		this.attendanceSheetView.close();
 		this.authorInfoView.close();
 		this.docInfoView.close();
 		this.docUploadView.close();
@@ -65,10 +68,10 @@ org.r3.jsportlet.sev.application.ApplicationActionForm = org.r3.ActionFormManage
 		var navigatorSteps = [];
 		if (anApplicationDTOAdapter.isDraft() || anApplicationDTOAdapter.isEmpty() || (this.isAdmin && org.r3.PageManager.isUserInRole('console')))
 		{
-			navigatorSteps = this._setupFullApplicationNavigatorSteps(anApplicationDTOAdapter, this.isAdmin);	
+		 	navigatorSteps = this._setupFullApplicationNavigatorSteps(anApplicationDTOAdapter, this.isAdmin);	
 		}
 		else 
-			navigatorSteps = this._setupPartialApplicationNavigatorSteps(anApplicationDTOAdapter, false);
+		 	navigatorSteps = this._setupPartialApplicationNavigatorSteps(anApplicationDTOAdapter, false);
 		
 		org.r3.PageManager.googleAnalyticsSendPageView();
 		this.wizardNavigatorActionFormView.open(anApplicationDTOAdapter, navigatorSteps);		
@@ -91,6 +94,18 @@ org.r3.jsportlet.sev.application.ApplicationActionForm = org.r3.ActionFormManage
 		
 		this.crewInfoView.open(anApplicationDTOAdapter, "next", true);			
 
+		navigatorSteps.push({
+			id : 'attendancesheetinfo',
+			title : "Foglio presenza",
+			briefTitle : "Foglio Presenza",					
+			active : activateJumpsFlag,
+			selected : false,
+			onClick : $.r3Utils.hitch(this, this.onActiveStepClick),
+			actionFormView: this.attendanceSheetView
+		});
+		
+		this.attendanceSheetView.open(anApplicationDTOAdapter, "prev,next", false);	
+		
 		navigatorSteps.push({
 			id : 'summaryinfo',
 			title : "Iscrizione - Riepilogo",
@@ -157,7 +172,7 @@ org.r3.jsportlet.sev.application.ApplicationActionForm = org.r3.ActionFormManage
 		});
 		
 		this.crewInfoView.open(anApplicationDTOAdapter, "prev,next", false);			
-
+				
 		navigatorSteps.push({
 			id : 'authorinfo',
 			title : "Iscrizione - Liberatorie",
@@ -194,6 +209,20 @@ org.r3.jsportlet.sev.application.ApplicationActionForm = org.r3.ActionFormManage
 		
 		this.payInfoView.open(anApplicationDTOAdapter, "prev,next", false);			
 
+        if (activateJumpsFlag) {
+		navigatorSteps.push({
+			id : 'attendancesheetinfo',
+			title : "Foglio presenza",
+			briefTitle : "Foglio Presenza",					
+			active : activateJumpsFlag,
+			selected : false,
+			onClick : $.r3Utils.hitch(this, this.onActiveStepClick),
+			actionFormView: this.attendanceSheetView
+		});
+		
+		this.attendanceSheetView.open(anApplicationDTOAdapter, "prev,next", false);
+		}	
+		
 		navigatorSteps.push({
 			id : 'summaryinfo',
 			title : "Iscrizione - Riepilogo",
@@ -345,6 +374,11 @@ org.r3.jsportlet.sev.application.ApplicationActionForm = org.r3.ActionFormManage
 		this.updateInfo('PUT_SEV_Application_AuthorInfo', this.authorInfoView, $('#authorinfoform_form'), $('#authorinfoform_fieldset_message'), gotoAction);				
 	},
 
+	updateAttendanceSheet: function(gotoAction)
+	{
+		this.updateInfo('PUT_SEV_Application_AttendanceSheet', this.attendanceSheetView, $('#attendancesheetform_form'), $('#attendancesheetform_fieldset_message'), gotoAction);				
+	},
+	
 	updateDocInfo: function(gotoAction)
 	{
 		var _self = this;

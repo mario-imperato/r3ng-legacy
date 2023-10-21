@@ -21,6 +21,11 @@ org.r3.db.sailevent.appcrewmemberview.SailApplicationCrewMemberViewSummaryDTOAda
 	       return this.dataBean.crewSize || '0';	 
 	 },
 	 
+	 getReserveCrewSize: function()
+	 {
+	       return this.dataBean.reserveCrewSize || '0';	 
+	 },
+	 
 	 getCrewValid: function()
 	 {
 		 return this.dataBean.crewValid || '0';

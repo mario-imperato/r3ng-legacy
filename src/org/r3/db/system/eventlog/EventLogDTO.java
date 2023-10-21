@@ -15,7 +15,7 @@ public class EventLogDTO extends EventLogDTOBase
 	public enum UseCase 
 	{ 
 		ev_boatinfo, ev_classinfo, ev_ownerinfo, ev_crewinfo, ev_adddocinfo, ev_deldocinfo, ev_upddocinfo, ev_authorinfo, ev_sevcommit,
-		ev_quizstart, ev_quizenter, ev_quizend, ev_quizanswer, unknown;
+		ev_quizstart, ev_quizenter, ev_quizend, ev_quizanswer,ev_attsheetinfo, unknown;
 		
 		public static UseCase getUseCase4(String s, UseCase defaultValue)
 		{
