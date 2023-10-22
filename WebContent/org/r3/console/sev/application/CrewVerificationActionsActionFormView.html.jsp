@@ -13,7 +13,12 @@
   
 <!--   <div class="panel-body"> -->
 
+
       <div class="action-bar position-top">
+         <button type="button" class="btn btn-primary start" id="submitcrewcheckform_action_attendancesheetreport" >         
+         <span>Rapporto Foglio Presenza</span>
+         </button>
+               
          <button type="button" class="btn btn-primary start" id="submitcrewcheckform_action_athletesreport" >         
          <span>Rapporto Atleti</span>
          </button>

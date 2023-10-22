@@ -85,7 +85,8 @@ org.r3.console.sev.application.CrewVerificationActionsActionFormView = org.r3.Ac
 			
 			$('#submitcrewcheckform_action_fleetreport').unbind().click($.r3Utils.hitch(this, this.onFleetReport));
 			$('#submitcrewcheckform_action_athletesreport').unbind().click($.r3Utils.hitch(this, this.onAthletesReport));
-						
+			$('#submitcrewcheckform_action_attendancesheetreport').unbind().click($.r3Utils.hitch(this, this.onAttendanceSheetReport));
+									
 			this.show();
 		}),
 
@@ -105,6 +106,11 @@ org.r3.console.sev.application.CrewVerificationActionsActionFormView = org.r3.Ac
 	onAthletesReport: function()
 	{
 		this.actionFormManager.athletesReport();
+	},
+	
+	onAttendanceSheetReport: function()
+	{
+		this.actionFormManager.attendanceSheetReport();
 	},
 	
 	onSubmitClick: function(event)

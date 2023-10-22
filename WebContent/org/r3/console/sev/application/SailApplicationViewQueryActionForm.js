@@ -111,6 +111,11 @@ org.r3.console.sev.application.SailApplicationViewQueryActionForm = org.r3.Actio
 	   this.pageManager.athletesReport(); 
    },
    
+   attendanceSheetReport: function()
+   {
+   	   this.pageManager.attendanceSheetReport(); 
+   },
+   
    doProcessUserForm: function(aMethod, dictionaryUrl, theForm, onSuccess, onError)
    {
 		var _self = this;

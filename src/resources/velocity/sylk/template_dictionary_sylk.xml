@@ -7,6 +7,11 @@
      <template name="SylkAthletesReport">
         <filename>resources/velocity/sylk/SylkAthletesReport.vm</filename>
      </template>     
+     
+     <template name="SylkAttendanceSheetReport">
+        <filename>resources/velocity/sylk/SylkAttendanceSheetReport.vm</filename>
+     </template>     
+     
      <!-- EOF SYLK Report -->
                                
 </templates>

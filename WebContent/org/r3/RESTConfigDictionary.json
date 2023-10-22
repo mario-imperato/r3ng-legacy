@@ -184,6 +184,7 @@
    "POST_SEV_ConsoleFleet_CrewCheck"        : "/sev/console/applications/checkcrew",
    "GET_SEV_ConsoleCrewReport"              : "/sev/console/applications/crewreport",
    "GET_SEV_ConsoleAthletesReport"          : "/sev/console/applications/athletesreport.slk",
+   "GET_SEV_ConsoleAttendanceSheetReport"   : "/sev/console/applications/attendancesheetreport.slk",
    
    "GET_SEV_Applications"                   : "/sev/applications",
    "GET_SEV_Application_Detail"             : "/sev/applications/{0}",

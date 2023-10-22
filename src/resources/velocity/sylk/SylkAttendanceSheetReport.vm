@@ -1,0 +1,114 @@
+#[[ID;PWXL;N;E
+P;PGeneral
+P;P0
+P;P0.00
+P;P#,##0
+P;P#,##0.00
+P;P#,##0;;\-#,##0
+P;P#,##0;;[Red]\-#,##0
+P;P#,##0.00;;\-#,##0.00
+P;P#,##0.00;;[Red]\-#,##0.00
+P;P#,##0\ "$";;\-#,##0\ "$"
+P;P#,##0\ "$";;[Red]\-#,##0\ "$"
+P;P#,##0.00\ "$";;\-#,##0.00\ "$"
+P;P#,##0.00\ "$";;[Red]\-#,##0.00\ "$"
+P;P0%
+P;P0.00%
+P;P0.00E+00
+P;P##0.0E+0
+P;P#\ ?/?
+P;P#\ ??/??
+P;Pdd/mm/yy
+P;Pdd\-mmm\-yy
+P;Pdd\-mmm
+P;Pmmm\-yy
+P;Ph:mm\ AM/PM
+P;Ph:mm:ss\ AM/PM
+P;Phh:mm
+P;Phh:mm:ss
+P;Pdd/mm/yy\ hh:mm
+P;Pmm:ss
+P;Pmm:ss.0
+P;P@
+P;P[h]:mm:ss
+P;P_-* #,##0\ "$"_-;;\-* #,##0\ "$"_-;;_-* "-"\ "$"_-;;_-@_-
+P;P_-* #,##0_-;;\-* #,##0_-;;_-* "-"_-;;_-@_-
+P;P_-* #,##0.00\ "$"_-;;\-* #,##0.00\ "$"_-;;_-* "-"??\ "$"_-;;_-@_-
+P;P_-* #,##0.00_-;;\-* #,##0.00_-;;_-* "-"??_-;;_-@_-
+P;FCalibri;M240;L9
+P;FCalibri;M240;L9
+P;FCalibri;M240;L9
+P;FCalibri;M240;L9
+P;ECalibri;M240;L9
+P;ECalibri Light;M360;L55
+P;ECalibri;M300;SB;L55
+P;ECalibri;M260;SB;L55
+P;ECalibri;M220;SB;L55
+P;ECalibri;M240;L18
+P;ECalibri;M240;L21
+P;ECalibri;M240;L61
+P;ECalibri;M240;L63
+P;ECalibri;M240;SB;L64
+P;ECalibri;M240;SB;L53
+P;ECalibri;M240;L53
+P;ECalibri;M240;SB;L10
+P;ECalibri;M240;L11
+P;ECalibri;M240;SI;L24
+P;ECalibri;M240;SB;L9
+P;ECalibri;M240;L10
+P;ECalibri;M240;L9
+P;ECalibri Light;M360;L55
+P;ECalibri;M300;SB;L55
+P;ECalibri;M260;SB;L55
+P;ECalibri;M220;SB;L55
+P;ECalibri;M240;L18
+P;ECalibri;M240;L21
+P;ECalibri;M240;L61
+P;ECalibri;M240;L63
+P;ECalibri;M240;SB;L64
+P;ECalibri;M240;SB;L53
+P;ECalibri;M240;L53
+P;ECalibri;M240;SB;L10
+P;ECalibri;M240;L11
+P;ECalibri;M240;SI;L24
+P;ECalibri;M240;SB;L9
+P;ECalibri;M240;L10
+P;ECalibri;M240;L9
+P;ECalibri;M240;L11
+F;P0;DG0G10;M320
+B;Y41;X5;D0 0 40 4
+O;L;D;V0;K47;G100 0.001
+F;W1 1 19
+F;W2 2 17
+C;Y1;X1;K"#Iscrizione"
+C;X2;K"Nime imbarcazione"
+C;X3;K"No. Velico"
+C;X4;K"Presente"
+C;X5;K"Equipaggio in regola"
+]]#
+
+#if (${listOfDTOs.getiTotalRecords()} > 0)
+#set  ( $rowCounter = 2 ) 
+#foreach ( $dto in $listOfDTOs.aaData)
+#if (${dto.attendanceyesAsYESNO} == "NO" || ${dto.crewregularAsYESNO} == "NO")
+F;SM40;Y${rowCounter};X1
+C;Y${rowCounter};X1;K"${dto.applicationid}"
+F;SM40;Y${rowCounter};X2
+C;X2;K"${dto.yachtname}"
+F;SM40;Y${rowCounter};X3
+C;X3;K"${dto.sailnumber}"
+F;SM40;Y${rowCounter};X4
+C;X4;K"${dto.attendanceyesAsYESNO}"
+F;SM40;Y${rowCounter};X5
+C;X5;K"${dto.crewregularAsYESNO}"
+#else
+C;Y${rowCounter};X1;K"${dto.applicationid}"
+C;X2;K"${dto.yachtname}"
+C;X3;K"${dto.sailnumber}"
+C;X4;K"${dto.attendanceyesAsYESNO}"
+C;X5;K"${dto.crewregularAsYESNO}"
+#end
+#set  ( $rowCounter = $rowCounter + 1 ) 
+#end
+#end
+E

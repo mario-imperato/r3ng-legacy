@@ -100,6 +100,12 @@ org.r3.console.sev.application.PageManager =
 		 window.location.href = restUrl;	
 	 },
 	 
+	 attendanceSheetReport: function()
+	 {
+		 var restUrl = org.r3.PageManager.getRESTUrl('GET_SEV_ConsoleAttendanceSheetReport');			 
+		 window.location.href = restUrl;	
+	 },
+	 
 	 openApplicationPortlet : function(anApplicationDTOAdapter)
 	 {
 		 var _self = this;

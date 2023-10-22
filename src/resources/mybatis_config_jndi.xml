@@ -73,6 +73,7 @@
   <mapper resource="org/r3/db/sailevent/appeventlogview/SailApplicationEventLogViewMapper.xml"/>
   <mapper resource="org/r3/db/sailevent/fivmember/FIVMemberMapper.xml"/>
   <mapper resource="org/r3/db/sailevent/appcrewmemberview/SailApplicationCrewMemberViewMapper.xml"/>
+  <mapper resource="org/r3/db/sailevent/attendancesheetview/SailAttendanceSheetViewMapper.xml"/>
   
   <mapper resource="org/r3/db/dms/device/DMSDeviceMapper.xml"/>
   <mapper resource="org/r3/db/dms/devicealias/DMSDeviceAliasMapper.xml"/>

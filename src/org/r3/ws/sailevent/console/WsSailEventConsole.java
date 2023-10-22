@@ -17,6 +17,7 @@ import org.r3.ws.sailevent.appcrewmemberview.GETSailApplicationCrewReport;
 import org.r3.ws.sailevent.appcrewmemberview.GETSailEventAthletesReport;
 import org.r3.ws.sailevent.appcrewmemberview.GETSailEventCrewReport;
 import org.r3.ws.sailevent.appcrewmemberview.SailApplicationCrewMemberViewQueryActionForm;
+import org.r3.ws.sailevent.attendancesheetview.GETSailEventAttendanceSheetReport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -274,6 +275,37 @@ public class WsSailEventConsole extends RestService
 		}		
 
 		GETSailEventAthletesReport bl = new GETSailEventAthletesReport(ctx, getServiceEnvironment(ctx, servletRequest, headers, aSite, aLanguage), OutputFormat.sylk);
+		Response response = bl.process(request);
+	    if (a != null)
+	    {
+	       logger.info(a.close());	 
+	    }
+		return response;
+	}
+	
+	@GET
+	@Path("applications/attendancesheetreport.slk")
+	@Produces({ "text/csv" })	
+	public Response attendanceSheet(
+		     @Context javax.servlet.ServletContext ctx, @Context javax.servlet.http.HttpServletRequest servletRequest,
+		     @Context Request request, 
+		     @Context HttpHeaders headers,
+		     @PathParam("site") String aSite,
+		     @PathParam("language") String aLanguage
+		     )
+	{
+		AccessLogInfo a = null;
+		if (logger.isInfoEnabled())
+		{
+			a = this.accessLogInfo();	
+		}		
+
+		if (logger.isDebugEnabled())
+		{
+
+		}		
+
+		GETSailEventAttendanceSheetReport bl = new GETSailEventAttendanceSheetReport(ctx, getServiceEnvironment(ctx, servletRequest, headers, aSite, aLanguage), OutputFormat.sylk);
 		Response response = bl.process(request);
 	    if (a != null)
 	    {
