@@ -84,7 +84,7 @@ C;Y1;X1;K"#Iscrizione"
 C;X2;K"Nime imbarcazione"
 C;X3;K"No. Velico"
 C;X4;K"Presente"
-C;X5;K"Equipaggio in regola"
+C;X5;K"Conferma equipaggio"
 ]]#
 
 #if (${listOfDTOs.getiTotalRecords()} > 0)

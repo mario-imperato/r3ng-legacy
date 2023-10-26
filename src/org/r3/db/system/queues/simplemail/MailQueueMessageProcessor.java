@@ -199,8 +199,8 @@ public class MailQueueMessageProcessor extends QueueMessageProcessor
 			// add the Multipart to the message
 			msg.setContent(mp);
 
-			logger.error(String.format("%s - sending message", semLogContext));
 			logMailMessage(msg);
+			logger.error(String.format("%s - sending message", semLogContext));
 			
 			// send the message
 			Transport.send(msg);
@@ -236,14 +236,14 @@ public class MailQueueMessageProcessor extends QueueMessageProcessor
 		    Address[] f = msg.getFrom();
 		    if (f != null) {
 		    	for (int i = 0; i < f.length; i++) {
-		    		logger.debug("%s - from %s", semLogContext, f[i].toString());
+		    		logger.debug(String.format("%s - from %s", semLogContext, f[i].toString()));
 		    	}
 		    }
 
 		    Address[] r = msg.getAllRecipients();
 		    if (r != null) {
 		    	for (int i = 0; i < r.length; i++) {
-		    		logger.debug("%s - to %s", semLogContext, r[i].toString());
+		    		logger.debug(String.format("%s - to %s", semLogContext, r[i].toString()));
 		    	}
 		    }
 		} catch( Exception exc) {
