@@ -110,6 +110,13 @@ e non utilizzare eventuali bookmark salvati. Vi preghiamo infine di segnalarci t
   </div>
   -->
   <div class='col-md-12 col-sm-6 col-xs-12'>  
+  <a href="https://www.createevashop.com/pages/abbigliamento-vela">
+  <img src="/r3ng/resources/img/emporia.gif" style="width: 100%; margin-bottom: 10px" />
+  </a>
+  </div>
+  
+  
+  <div class='col-md-12 col-sm-6 col-xs-12'>  
   <a href="/r3ng/cvfonline/it/org/r3/cms/cmspage.do?pageid=webcam&cardid=00_METEO">
   <img src="/r3ng/resources/img/vedetta.png" style="width: 100%; margin-bottom: 10px" />
   </a>
