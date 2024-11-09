@@ -14,7 +14,21 @@
 <div style='padding: 10px 10px 20px 10px; text-align: center; font-size: 24px; font-family: Arial,'Helvetica Neue',Helvetica,sans-serif !important; line-height: 1.05; font-weight: bold;'>
 <div style='border: 1px solid #C90B0B; padding: 20px'>
 <div style="color: #C90B0B; !important">
-Informiamo che il Campionato Invernale riprende l'8 Gennaio 2023. <br />Buon Anno!
+Che queste  Festività Natalizie siano piena di gioia e momenti indimenticabili con amici e famiglia.<br />
+Non vediamo l'ora di poter tornare insieme in acqua nel nuovo anno che verrà!<br />
+Grazie per il vostro sostegno e per far parte di questa splendida comunità.<br />
+I nostri uffici riapriranno il 3 gennaio 2024.<br />
+La seconda manche del Campionato invernale di Roma inizierà il <strong>7 gennaio!</strong>
+</div>
+</div>
+</div>
+-->
+
+<!--
+<div style='padding: 10px 10px 20px 10px; text-align: center; font-size: 24px; font-family: Arial,'Helvetica Neue',Helvetica,sans-serif !important; line-height: 1.05; font-weight: bold;'>
+<div style='border: 1px solid #C90B0B; padding: 20px'>
+<div style="color: #C90B0B; !important">
+A parziale modifica del comunicato n. 24 si comunica che sabato 17 febbraio è <b>ipotizzabile</b> una eventuale giornata di recupero. Entro il giorno 15 febbraio sarà emesso ulteriore comunicato
 </div>
 </div>
 </div>
@@ -47,8 +61,6 @@ e non utilizzare eventuali bookmark salvati. Vi preghiamo infine di segnalarci t
 <div style='color: #058b7b; !important;'>Ci scusiamo per qualsiasi inconveniente e vi auguriamo Buone Feste!
 </div>
 -->
-
-
 
 
 <div class="row">
@@ -138,7 +150,20 @@ e non utilizzare eventuali bookmark salvati. Vi preghiamo infine di segnalarci t
   <div class='row'>
   
   <div class='col-md-12 col-sm-6 col-xs-12'>      
+
+  <div style='position: relative; width: 100%; height: 0; padding-bottom: 56%; margin-bottom: 10px;'>
+  <iframe style='position: absolute; width: 100%; height: 100%; left: 0; top: 0;' src="https://www.youtube.com/embed/3rGmmoxaZAM" title="Invernali Live - La giornata perfetta" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+    
+  <div style='position: relative; width: 100%; height: 0; padding-bottom: 56%; margin-bottom: 10px;'>
+  <iframe style='position: absolute; width: 100%; height: 100%; left: 0; top: 0;' src="https://www.youtube.com/embed/cfqAYbiBKvY" title="Invernali Live - Intervista Kalima Quadrana" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
   
+  <div style='position: relative; width: 100%; height: 0; padding-bottom: 56%; margin-bottom: 10px;'>
+  <iframe style='position: absolute; width: 100%; height: 100%; left: 0; top: 0;' src="https://www.youtube.com/embed/_iOm3zvH0Ic" title="Invernali Live - Intervista Massimo Pettirossi" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+  
+  <!-- 
   <div style='position: relative; width: 100%; height: 0; padding-bottom: 56%; margin-bottom: 10px;'>
   <iframe style='position: absolute; width: 100%; height: 100%; left: 0; top: 0;' src="https://www.youtube.com/embed/gta2RHuYlGw" title="Invernali Live" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
@@ -162,7 +187,7 @@ e non utilizzare eventuali bookmark salvati. Vi preghiamo infine di segnalarci t
   <div style='position: relative; width: 100%; height: 0; padding-bottom: 56%; margin-bottom: 10px;'>
   <iframe style='position: absolute; width: 100%; height: 100%; left: 0; top: 0;' src="https://www.youtube.com/embed/MSZpr1llqL8" title="Il Tack Tracker" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
-  
+  -->
 
   
 

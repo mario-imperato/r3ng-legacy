@@ -28,7 +28,7 @@ public class GETSailEventAttendanceSheetReport extends ServicePattern
 	protected Object process(PersistenceContext pcfg, SqlSession aSession)
 	{
 		SailAttendanceSheetViewPersistence p = SailAttendanceSheetViewPersistence.createPersistenceObject(pcfg, aSession);			
-		SailAttendanceSheetViewDataTableAdapter dt = p.selectAttendanceSheetReport(senv.getRequestSiteId(), "ats000000000003", pcfg.getPersistenceConfigInfo());
+		SailAttendanceSheetViewDataTableAdapter dt = p.selectAttendanceSheetReport(senv.getRequestSiteId(), "ats000000000002", pcfg.getPersistenceConfigInfo());
 		
 		VelocityStreamingOutput sout = new VelocityStreamingOutput(velocityEngine, "SylkAttendanceSheetReport");
 		sout.addParameter("listOfDTOs", dt);

@@ -3,9 +3,20 @@
 
 <%@ page language="java" session="false" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"
     import="java.io.*,
-    java.util.*
+    java.util.*,
+    org.r3.db.system.site.SiteDTO
     " %>
 
+<r3_lang:environment id="r3Env">
+
+<%
+  SiteDTO targetSite = r3Env.getRequestSite();
+  boolean enabled = true;
+  if (targetSite.getSite().equalsIgnoreCase("cvfincarb024")) {
+	  enabled = false;
+  }
+ %>
+ 
 
 {% if (!o.guest) {  %}
 
@@ -54,14 +65,19 @@
    else { %}
  <p class="description">
   
-  Per procedere con l'iscrizione attivare il pulsante successivo
-   <!-- false && 
- <span style='color: #ff0000'>Le Nuove Iscrizioni Sono Bloccate Per Esaurimento Disponibilita'. Contattare la Segreteria per maggiori informazioni</span>
+  <!-- 
+  
   -->
+ <!-- commentare e togliere false -->  
+ <% if (enabled) { %>
+ Per procedere con l'iscrizione attivare il pulsante successivo
+ <% } else { %>
+ <span style='color: #ff0000'>Le Nuove iscrizioni sono bloccate per scadenza dei termini. Contattare la Segreteria per maggiori informazioni</span>
+ <% } %> 
  </p>
 {% } %}  
 
-{% if (o.numberOfDraftApplications == 0) {  %}
+{% if ( <%=enabled%> && o.numberOfDraftApplications == 0) {  %}
     <div class="action-bar">
     {% if (o.emptyApplicationId) {  %}
         <button type="button" id="{%=o.emptyApplicationId%}" class='btn btn-default myappactionform_action_editapp'  >
@@ -81,3 +97,4 @@
 
 {%    } %}
 
+</r3_lang:environment>
