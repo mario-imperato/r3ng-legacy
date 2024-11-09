@@ -14,26 +14,25 @@ import org.r3.system.rest.ServicePattern;
 import org.r3.system.util.velocity.VelocityTemplateModel;
 import org.r3.ws.system.velocity.VelocityStreamingOutput;
 
-public class GETSailEventAttendanceSheetReport extends ServicePattern
-{
+public class GETSailEventAttendanceSheetReport extends ServicePattern {
 	private VelocityTemplateModel velocityEngine;
-	
-	public GETSailEventAttendanceSheetReport(ServletContext ctx,  ServiceEnvironment serviceEnvironment, OutputFormat aFormat)
-	{
+
+	public GETSailEventAttendanceSheetReport(ServletContext ctx, ServiceEnvironment serviceEnvironment,
+			OutputFormat aFormat) {
 		super(ctx, serviceEnvironment);
-		velocityEngine = VelocityTemplateModel.getVelocityPlugInModel(ctx);	
+		velocityEngine = VelocityTemplateModel.getVelocityPlugInModel(ctx);
 	}
 
 	@Override
-	protected Object process(PersistenceContext pcfg, SqlSession aSession)
-	{
-		SailAttendanceSheetViewPersistence p = SailAttendanceSheetViewPersistence.createPersistenceObject(pcfg, aSession);			
-		SailAttendanceSheetViewDataTableAdapter dt = p.selectAttendanceSheetReport(senv.getRequestSiteId(), "ats000000000002", pcfg.getPersistenceConfigInfo());
-		
+	protected Object process(PersistenceContext pcfg, SqlSession aSession) {
+		SailAttendanceSheetViewPersistence p = SailAttendanceSheetViewPersistence.createPersistenceObject(pcfg,
+				aSession);
+		SailAttendanceSheetViewDataTableAdapter dt = p.selectAttendanceSheetReport(senv.getRequestSiteId(),
+				"ats000000000002", pcfg.getPersistenceConfigInfo());
+
 		VelocityStreamingOutput sout = new VelocityStreamingOutput(velocityEngine, "SylkAttendanceSheetReport");
 		sout.addParameter("listOfDTOs", dt);
-		return sout;		
+		return sout;
 	}
-	
 
 }
