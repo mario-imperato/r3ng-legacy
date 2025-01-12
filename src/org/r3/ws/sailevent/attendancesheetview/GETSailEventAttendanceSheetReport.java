@@ -28,7 +28,7 @@ public class GETSailEventAttendanceSheetReport extends ServicePattern {
 		SailAttendanceSheetViewPersistence p = SailAttendanceSheetViewPersistence.createPersistenceObject(pcfg,
 				aSession);
 		SailAttendanceSheetViewDataTableAdapter dt = p.selectAttendanceSheetReport(senv.getRequestSiteId(),
-				"ats000000000003", pcfg.getPersistenceConfigInfo());
+				"ats000000000005", pcfg.getPersistenceConfigInfo());
 
 		VelocityStreamingOutput sout = new VelocityStreamingOutput(velocityEngine, "SylkAttendanceSheetReport");
 		sout.addParameter("listOfDTOs", dt);
