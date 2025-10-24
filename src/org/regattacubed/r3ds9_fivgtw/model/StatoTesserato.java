@@ -106,12 +106,18 @@ public class StatoTesserato {
 
         Tesseramento t = null;
         String period = "";
+        String maxDataScadenza = "";
         if (tesseramenti != null) {            
             for (Tesseramento t1 : tesseramenti) {
-                if (t1.getPeriodo_des().compareTo(period) > 0) {
+            	if (t1.getDataScadenza().compareTo(maxDataScadenza) > 0) {
                     t = t1;
                     period = t1.getPeriodo_des();
+                    maxDataScadenza = t1.getDataScadenza();
                 } 
+				/*
+				 * if (t1.getPeriodo_des().compareTo(period) > 0) { t = t1; period =
+				 * t1.getPeriodo_des(); }
+				 */
             }
         }
 
