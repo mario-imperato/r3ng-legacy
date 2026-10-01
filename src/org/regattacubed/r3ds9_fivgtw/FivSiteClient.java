@@ -208,10 +208,17 @@ public class FivSiteClient {
                     + "&privacy=on"
                     + "&op=Accedi";
 
-            int status = curlPost(loginUrl, postData, cookiePath);
+            String[] postResult = curlPost(loginUrl, postData, cookiePath);
+            int status = Integer.parseInt(postResult[0]);
             System.out.println("logIn: POST status=" + status);
             if (status != 302) {
                 System.out.println("logIn: expected 302, got " + status);
+                String body = postResult[1];
+                System.out.println("logIn: response body length=" + body.length());
+                // Print in 500-char chunks so server logs don't truncate long lines
+                for (int i = 0; i < body.length(); i += 500) {
+                    System.out.println("logIn: body[" + i + "]=" + body.substring(i, Math.min(i + 500, body.length())));
+                }
                 return false;
             }
 
@@ -270,6 +277,7 @@ public class FivSiteClient {
                 "-H", "upgrade-insecure-requests: 1",
                 "-H", "user-agent: " + USER_AGENT_MAC
             ));
+            System.out.println("curlGet: " + logCmd(cmd));
             ProcessBuilder pb = new ProcessBuilder(cmd);
             pb.redirectErrorStream(true);
             Process proc = pb.start();
@@ -286,7 +294,8 @@ public class FivSiteClient {
         }
     }
 
-    private int curlPost(String url, String postData, String cookiePath) {
+    // Returns String[] { statusCode, responseBody }
+    private String[] curlPost(String url, String postData, String cookiePath) {
         try {
             List<String> cmd = new ArrayList<>(Arrays.asList(
                 "curl", "-s",
@@ -311,6 +320,7 @@ public class FivSiteClient {
                 "--data-raw", postData,
                 "-w", "\n%{http_code}"
             ));
+            System.out.println("curlPost: " + logCmd(cmd));
             ProcessBuilder pb = new ProcessBuilder(cmd);
             pb.redirectErrorStream(true);
             Process proc = pb.start();
@@ -318,10 +328,11 @@ public class FivSiteClient {
             proc.waitFor();
             int lastNl = output.lastIndexOf('\n');
             String statusStr = lastNl >= 0 ? output.substring(lastNl + 1).trim() : output;
-            return Integer.parseInt(statusStr);
+            String body = lastNl >= 0 ? output.substring(0, lastNl) : "";
+            return new String[] { statusStr, body };
         } catch (Exception e) {
             e.printStackTrace();
-            return -1;
+            return new String[] { "-1", "" };
         }
     }
 
@@ -366,6 +377,19 @@ public class FivSiteClient {
                 cookie.setExpiryDate(new Date(expiry * 1000L));
             cookieStore.addCookie(cookie);
         }
+    }
+
+    private static String logCmd(List<String> cmd) {
+        StringBuilder sb = new StringBuilder();
+        for (String arg : cmd) {
+            if (sb.length() > 0) sb.append(' ');
+            if (arg.contains(" ") || arg.contains("\"") || arg.contains("'") || arg.isEmpty()) {
+                sb.append('\'').append(arg.replace("'", "'\\''")).append('\'');
+            } else {
+                sb.append(arg);
+            }
+        }
+        return sb.toString();
     }
 
     private static String readStream(InputStream is) throws IOException {
