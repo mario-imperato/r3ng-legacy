@@ -17,7 +17,7 @@
   <div class="col-md-4">
     <div class='h2'>Segreteria</div>
     <ul class='list-unstyled'>
-     <li><span><a href="mailto:segreteria@cvfiumicino.it">Roberta e Tatiana </a>    </span></li>
+     <li><span><a href="mailto:segreteria@cvfiumicino.it">Roberta e Sara </a>    </span></li>
 
     </ul>                        
 
@@ -38,7 +38,7 @@
 <li><span>Lunedì   09:00 - 13:00                                              </span></li>
 <li><span>Martedì       10:00 - 13:00                                              </span></li>
 <li><span>Mercoledì     10:00 - 13:00                                               </span></li>
-<li><span>Giovedì       10:00 - 18:00                                              </span></li>
+<li><span>Giovedì       10:00 - 16:00                                              </span></li>
 <li><span>Venerdì       10:00 - 18:00                                              </span></li>
 <li><span>Sabato        10:00 - 16:00 Orario continuato                                 </span></li>
 <li><span>Domenica di regata dalle 08:00 fino alla pubblicazione delle classifiche.</span></li>
